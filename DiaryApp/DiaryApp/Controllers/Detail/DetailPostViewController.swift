@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  DetailPostViewController.swift
 //  DiaryApp
 //
 //  Created by 모상현 on 2022/10/12.
@@ -7,22 +7,14 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class DetailPostViewController: UIViewController {
 
-    @IBOutlet weak var homeInfoView: UIView!
-    @IBOutlet weak var homeCollectionView: UICollectionView!
-    @IBOutlet weak var defaultStackView: UIStackView!
-    @IBOutlet weak var addPostBtn: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setView()
+
         // Do any additional setup after loading the view.
     }
-    func setView(){
-        homeInfoView.clipsToBounds = true
-        homeInfoView.layer.cornerRadius = 20
-    }
+    
 
     /*
     // MARK: - Navigation
@@ -34,6 +26,7 @@ class HomeViewController: UIViewController {
     }
     */
 
-    @IBAction func addPost(_ sender: UIButton) {
+    @IBAction func editClick(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "toDetailPostEditView", sender: nil)
     }
 }
