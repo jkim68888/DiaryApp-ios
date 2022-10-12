@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Eoh-i1-6rD">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--로그인 옵션-->
+        <scene sceneID="6Xa-dp-AT5">
+            <objects>
+                <viewController storyboardIdentifier="ProfileSocialSignInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c7C-Ee-ULj" customClass="ProfileSocialSignInViewController" customModule="DiaryApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AAm-qx-d8y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4b-Nr-bJW">
+                                <rect key="frame" x="83.5" y="412" width="247" height="72"/>
+                                <string key="text">반가워요!
+계정을 선택해주세요.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="6Fc-f0-adb">
+                                <rect key="frame" x="40" y="534" width="334" height="235"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnB-sR-HHa">
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="aPL-Zc-Eka"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="tinted" image="applelogo" catalog="system" title=" 애플로 시작하기"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73E-8X-f2l">
+                                        <rect key="frame" x="0.0" y="65" width="334" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="iRW-Te-Ahf"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="tinted" title=" 카카오로 시작하기"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gM-ku-dVT">
+                                        <rect key="frame" x="0.0" y="130" width="334" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="kf3-A5-vTj"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="tinted" title="구글로 시작하기"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pvi-Ec-0OI">
+                                        <rect key="frame" x="0.0" y="195" width="334" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="0aS-9u-tSq"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="tinted" title="네이버로 시작하기"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sm7-Fs-xdk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Fc-f0-adb" firstAttribute="top" secondItem="Z4b-Nr-bJW" secondAttribute="bottom" constant="50" id="8AW-40-W91"/>
+                            <constraint firstItem="sm7-Fs-xdk" firstAttribute="trailing" secondItem="6Fc-f0-adb" secondAttribute="trailing" constant="40" id="8vu-ch-hWU"/>
+                            <constraint firstItem="6Fc-f0-adb" firstAttribute="leading" secondItem="sm7-Fs-xdk" secondAttribute="leading" constant="40" id="DLC-tM-hIX"/>
+                            <constraint firstItem="Z4b-Nr-bJW" firstAttribute="centerY" secondItem="AAm-qx-d8y" secondAttribute="centerY" id="P36-hP-bQf"/>
+                            <constraint firstItem="Z4b-Nr-bJW" firstAttribute="centerX" secondItem="AAm-qx-d8y" secondAttribute="centerX" id="cEz-uz-sHM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="로그인 옵션" id="gfU-Eb-t8f"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wn9-ef-L2a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3718.840579710145" y="-575.22321428571422"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="I8e-g7-nuJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Eoh-i1-6rD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DhY-EY-u8h">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="c7C-Ee-ULj" kind="relationship" relationship="rootViewController" id="Vu1-5n-xfW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cRZ-wY-FCU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2808.6956521739135" y="-575.22321428571422"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="applelogo" catalog="system" width="103" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
