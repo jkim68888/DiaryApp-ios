@@ -135,11 +135,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addPostBtn" destination="qIZ-sc-Sya" id="e3v-hz-gld"/>
+                        <outlet property="calendarImage" destination="SO5-oN-mpb" id="udt-4V-q9G"/>
                         <outlet property="defaultStackView" destination="fS3-WH-taV" id="hII-o4-CQR"/>
                         <outlet property="homeCollectionView" destination="zhi-R8-8gS" id="pvC-MM-A41"/>
                         <outlet property="homeInfoView" destination="98m-AZ-wCZ" id="6My-U0-FeD"/>
                         <segue destination="lBB-Eu-AQm" kind="push" identifier="toDetailPost" id="7lD-sq-hZj"/>
                         <segue destination="TXJ-oF-AQM" kind="push" identifier="toProfile" id="sAg-Zj-vIG"/>
+                        <segue destination="b9W-aj-bKp" kind="push" identifier="toCalendar" id="qyz-Qs-8KL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -155,6 +157,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CsZ-jz-LTz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3631.1594202898555" y="6.6964285714285712"/>
+        </scene>
+        <!--CalendarViewController-->
+        <scene sceneID="5iR-sE-RVM">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CalendarViewController" storyboardName="Calendar" referencedIdentifier="CalendarViewController" id="b9W-aj-bKp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="bEk-OA-g5l"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sTs-go-AEa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3631" y="115"/>
         </scene>
         <!--DetailPostViewController-->
         <scene sceneID="7hs-1V-gXg">
