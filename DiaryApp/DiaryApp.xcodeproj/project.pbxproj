@@ -15,16 +15,14 @@
 		A913FA4128F7D09F00ECA972 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913FA4028F7D09F00ECA972 /* CalendarViewController.swift */; };
 		A919382428F64CED00CC8B76 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A919382328F64CED00CC8B76 /* Home.storyboard */; };
 		A919382628F64E9900CC8B76 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919382528F64E9900CC8B76 /* HomeViewController.swift */; };
-		A919382F28F6597500CC8B76 /* DetailPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A919382E28F6597500CC8B76 /* DetailPost.storyboard */; };
-		A919383228F659CF00CC8B76 /* DetailPostNoImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A919383028F659CF00CC8B76 /* DetailPostNoImage.storyboard */; };
-		A919383428F65A3900CC8B76 /* DetailPostEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A919383328F65A3900CC8B76 /* DetailPostEdit.storyboard */; };
-		A919383628F65C1C00CC8B76 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A919383528F65C1C00CC8B76 /* Profile.storyboard */; };
-		A919383928F65C9000CC8B76 /* ProfileSocialSignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A919383728F65C9000CC8B76 /* ProfileSocialSignIn.storyboard */; };
-		A919383E28F65D8A00CC8B76 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919383D28F65D8A00CC8B76 /* ProfileViewController.swift */; };
-		A919384028F65D9E00CC8B76 /* ProfileSocialSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919383F28F65D9E00CC8B76 /* ProfileSocialSignInViewController.swift */; };
-		A919384228F65DDD00CC8B76 /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919384128F65DDD00CC8B76 /* DetailPostViewController.swift */; };
-		A919384428F65DE700CC8B76 /* DetailPostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919384328F65DE700CC8B76 /* DetailPostEditViewController.swift */; };
-		A919384628F65DF700CC8B76 /* DetailPostNoImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919384528F65DF700CC8B76 /* DetailPostNoImageViewController.swift */; };
+		A919382F28F6597500CC8B76 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A919382E28F6597500CC8B76 /* Post.storyboard */; };
+		A919383428F65A3900CC8B76 /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A919383328F65A3900CC8B76 /* Edit.storyboard */; };
+		A919383628F65C1C00CC8B76 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A919383528F65C1C00CC8B76 /* Settings.storyboard */; };
+		A919383928F65C9000CC8B76 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A919383728F65C9000CC8B76 /* SignIn.storyboard */; };
+		A919383E28F65D8A00CC8B76 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919383D28F65D8A00CC8B76 /* SettingsViewController.swift */; };
+		A919384028F65D9E00CC8B76 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919383F28F65D9E00CC8B76 /* SignInViewController.swift */; };
+		A919384228F65DDD00CC8B76 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919384128F65DDD00CC8B76 /* PostViewController.swift */; };
+		A919384428F65DE700CC8B76 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919384328F65DE700CC8B76 /* EditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,16 +36,14 @@
 		A913FA4028F7D09F00ECA972 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		A919382328F64CED00CC8B76 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		A919382528F64E9900CC8B76 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		A919382E28F6597500CC8B76 /* DetailPost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailPost.storyboard; sourceTree = "<group>"; };
-		A919383128F659CF00CC8B76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DiaryApp/Views/Base.lproj/DetailPostNoImage.storyboard; sourceTree = "<group>"; };
-		A919383328F65A3900CC8B76 /* DetailPostEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailPostEdit.storyboard; sourceTree = "<group>"; };
-		A919383528F65C1C00CC8B76 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		A919383828F65C9000CC8B76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DiaryApp/Views/Base.lproj/ProfileSocialSignIn.storyboard; sourceTree = "<group>"; };
-		A919383D28F65D8A00CC8B76 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		A919383F28F65D9E00CC8B76 /* ProfileSocialSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSocialSignInViewController.swift; sourceTree = "<group>"; };
-		A919384128F65DDD00CC8B76 /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
-		A919384328F65DE700CC8B76 /* DetailPostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostEditViewController.swift; sourceTree = "<group>"; };
-		A919384528F65DF700CC8B76 /* DetailPostNoImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostNoImageViewController.swift; sourceTree = "<group>"; };
+		A919382E28F6597500CC8B76 /* Post.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
+		A919383328F65A3900CC8B76 /* Edit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
+		A919383528F65C1C00CC8B76 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		A919383828F65C9000CC8B76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DiaryApp/Views/Base.lproj/SignIn.storyboard; sourceTree = "<group>"; };
+		A919383D28F65D8A00CC8B76 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A919383F28F65D9E00CC8B76 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		A919384128F65DDD00CC8B76 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		A919384328F65DE700CC8B76 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +57,225 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A43DF4D28F7E006004DBE82 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				9A43DF6428F7E537004DBE82 /* Settings */,
+				9A43DF6328F7E52D004DBE82 /* Signin */,
+				9A43DF5928F7E3B5004DBE82 /* Edit */,
+				9A43DF5828F7E3AF004DBE82 /* Post */,
+				A913FA3D28F7CC0900ECA972 /* Calendar */,
+				A919383A28F65D3500CC8B76 /* Home */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		9A43DF4E28F7E036004DBE82 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		9A43DF4F28F7E045004DBE82 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		9A43DF5128F7E0CA004DBE82 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A919382328F64CED00CC8B76 /* Home.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		9A43DF5228F7E0D4004DBE82 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A919382528F64E9900CC8B76 /* HomeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9A43DF5328F7E0DF004DBE82 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9A43DF5428F7E156004DBE82 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		9A43DF5528F7E386004DBE82 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A913FA3E28F7CC2800ECA972 /* Calendar.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		9A43DF5628F7E390004DBE82 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A913FA4028F7D09F00ECA972 /* CalendarViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9A43DF5728F7E397004DBE82 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9A43DF5828F7E3AF004DBE82 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				9A43DF5C28F7E427004DBE82 /* ViewModel */,
+				9A43DF5B28F7E3DF004DBE82 /* ViewController */,
+				9A43DF5A28F7E3D8004DBE82 /* Storyboard */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		9A43DF5928F7E3B5004DBE82 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				9A43DF5F28F7E445004DBE82 /* Storyboard */,
+				9A43DF5E28F7E43D004DBE82 /* ViewController */,
+				9A43DF5D28F7E438004DBE82 /* ViewModel */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		9A43DF5A28F7E3D8004DBE82 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A919382E28F6597500CC8B76 /* Post.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		9A43DF5B28F7E3DF004DBE82 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A919384128F65DDD00CC8B76 /* PostViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9A43DF5C28F7E427004DBE82 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9A43DF5D28F7E438004DBE82 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9A43DF5E28F7E43D004DBE82 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A919384328F65DE700CC8B76 /* EditViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9A43DF5F28F7E445004DBE82 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A919383328F65A3900CC8B76 /* Edit.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		9A43DF6328F7E52D004DBE82 /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				9A43DF6B28F7E57F004DBE82 /* ViewModel */,
+				9A43DF6A28F7E577004DBE82 /* ViewController */,
+				9A43DF6928F7E570004DBE82 /* Storyboard */,
+			);
+			path = Signin;
+			sourceTree = "<group>";
+		};
+		9A43DF6428F7E537004DBE82 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9A43DF6828F7E56B004DBE82 /* Storyboard */,
+				9A43DF6728F7E563004DBE82 /* ViewModel */,
+				9A43DF6628F7E55C004DBE82 /* ViewController */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		9A43DF6528F7E54F004DBE82 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9A43DF6628F7E55C004DBE82 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A919383D28F65D8A00CC8B76 /* SettingsViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9A43DF6728F7E563004DBE82 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9A43DF6828F7E56B004DBE82 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A919383528F65C1C00CC8B76 /* Settings.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		9A43DF6928F7E570004DBE82 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A919383728F65C9000CC8B76 /* SignIn.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		9A43DF6A28F7E577004DBE82 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A919383F28F65D9E00CC8B76 /* SignInViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9A43DF6B28F7E57F004DBE82 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9A6C77A028F229E400E1092D = {
 			isa = PBXGroup;
 			children = (
@@ -82,111 +297,34 @@
 			children = (
 				9A6C77AC28F229E400E1092D /* AppDelegate.swift */,
 				9A6C77AE28F229E400E1092D /* SceneDelegate.swift */,
-				A919382228F64C4F00CC8B76 /* Models */,
-				A919382128F64C4900CC8B76 /* Views */,
-				A919382028F64C3300CC8B76 /* Controllers */,
+				9A6C77B728F229E500E1092D /* LaunchScreen.storyboard */,
+				9A43DF6528F7E54F004DBE82 /* Model */,
+				9A43DF5428F7E156004DBE82 /* Common */,
+				9A43DF4F28F7E045004DBE82 /* Extension */,
+				9A43DF4E28F7E036004DBE82 /* Service */,
+				9A43DF4D28F7E006004DBE82 /* Scene */,
 				9A6C77B528F229E500E1092D /* Assets.xcassets */,
 				9A6C77BA28F229E500E1092D /* Info.plist */,
 			);
 			path = DiaryApp;
 			sourceTree = "<group>";
 		};
-		A913FA3C28F7CBB200ECA972 /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-				A913FA4028F7D09F00ECA972 /* CalendarViewController.swift */,
-			);
-			path = Calendar;
-			sourceTree = "<group>";
-		};
 		A913FA3D28F7CC0900ECA972 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				A913FA3E28F7CC2800ECA972 /* Calendar.storyboard */,
+				9A43DF5728F7E397004DBE82 /* ViewModel */,
+				9A43DF5628F7E390004DBE82 /* ViewController */,
+				9A43DF5528F7E386004DBE82 /* Storyboard */,
 			);
 			path = Calendar;
-			sourceTree = "<group>";
-		};
-		A919382028F64C3300CC8B76 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				A913FA3C28F7CBB200ECA972 /* Calendar */,
-				A919384928F65E7000CC8B76 /* Home */,
-				A919384728F65E3100CC8B76 /* Detail */,
-				A919384828F65E3E00CC8B76 /* Profile */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		A919382128F64C4900CC8B76 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				A913FA3D28F7CC0900ECA972 /* Calendar */,
-				9A6C77B728F229E500E1092D /* LaunchScreen.storyboard */,
-				A919383A28F65D3500CC8B76 /* Home */,
-				A919383C28F65D4200CC8B76 /* Detail */,
-				A919383B28F65D3B00CC8B76 /* Profile */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		A919382228F64C4F00CC8B76 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		A919383A28F65D3500CC8B76 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				A919382328F64CED00CC8B76 /* Home.storyboard */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		A919383B28F65D3B00CC8B76 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				A919383528F65C1C00CC8B76 /* Profile.storyboard */,
-				A919383728F65C9000CC8B76 /* ProfileSocialSignIn.storyboard */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		A919383C28F65D4200CC8B76 /* Detail */ = {
-			isa = PBXGroup;
-			children = (
-				A919382E28F6597500CC8B76 /* DetailPost.storyboard */,
-				A919383328F65A3900CC8B76 /* DetailPostEdit.storyboard */,
-				A919383028F659CF00CC8B76 /* DetailPostNoImage.storyboard */,
-			);
-			path = Detail;
-			sourceTree = "<group>";
-		};
-		A919384728F65E3100CC8B76 /* Detail */ = {
-			isa = PBXGroup;
-			children = (
-				A919384328F65DE700CC8B76 /* DetailPostEditViewController.swift */,
-				A919384528F65DF700CC8B76 /* DetailPostNoImageViewController.swift */,
-				A919384128F65DDD00CC8B76 /* DetailPostViewController.swift */,
-			);
-			path = Detail;
-			sourceTree = "<group>";
-		};
-		A919384828F65E3E00CC8B76 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				A919383F28F65D9E00CC8B76 /* ProfileSocialSignInViewController.swift */,
-				A919383D28F65D8A00CC8B76 /* ProfileViewController.swift */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		A919384928F65E7000CC8B76 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				A919382528F64E9900CC8B76 /* HomeViewController.swift */,
+				9A43DF5328F7E0DF004DBE82 /* ViewModel */,
+				9A43DF5228F7E0D4004DBE82 /* ViewController */,
+				9A43DF5128F7E0CA004DBE82 /* Storyboard */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -249,15 +387,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A919382F28F6597500CC8B76 /* DetailPost.storyboard in Resources */,
+				A919382F28F6597500CC8B76 /* Post.storyboard in Resources */,
 				9A6C77B928F229E500E1092D /* LaunchScreen.storyboard in Resources */,
 				A913FA3F28F7CC2800ECA972 /* Calendar.storyboard in Resources */,
 				9A6C77B628F229E500E1092D /* Assets.xcassets in Resources */,
-				A919383228F659CF00CC8B76 /* DetailPostNoImage.storyboard in Resources */,
-				A919383628F65C1C00CC8B76 /* Profile.storyboard in Resources */,
-				A919383928F65C9000CC8B76 /* ProfileSocialSignIn.storyboard in Resources */,
+				A919383628F65C1C00CC8B76 /* Settings.storyboard in Resources */,
+				A919383928F65C9000CC8B76 /* SignIn.storyboard in Resources */,
 				A919382428F64CED00CC8B76 /* Home.storyboard in Resources */,
-				A919383428F65A3900CC8B76 /* DetailPostEdit.storyboard in Resources */,
+				A919383428F65A3900CC8B76 /* Edit.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,15 +405,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A919384628F65DF700CC8B76 /* DetailPostNoImageViewController.swift in Sources */,
-				A919384028F65D9E00CC8B76 /* ProfileSocialSignInViewController.swift in Sources */,
+				A919384028F65D9E00CC8B76 /* SignInViewController.swift in Sources */,
 				9A6C77AD28F229E400E1092D /* AppDelegate.swift in Sources */,
 				9A6C77AF28F229E400E1092D /* SceneDelegate.swift in Sources */,
-				A919384428F65DE700CC8B76 /* DetailPostEditViewController.swift in Sources */,
-				A919383E28F65D8A00CC8B76 /* ProfileViewController.swift in Sources */,
+				A919384428F65DE700CC8B76 /* EditViewController.swift in Sources */,
+				A919383E28F65D8A00CC8B76 /* SettingsViewController.swift in Sources */,
 				A913FA4128F7D09F00ECA972 /* CalendarViewController.swift in Sources */,
 				A919382628F64E9900CC8B76 /* HomeViewController.swift in Sources */,
-				A919384228F65DDD00CC8B76 /* DetailPostViewController.swift in Sources */,
+				A919384228F65DDD00CC8B76 /* PostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,20 +427,12 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		A919383028F659CF00CC8B76 /* DetailPostNoImage.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A919383128F659CF00CC8B76 /* Base */,
-			);
-			name = DetailPostNoImage.storyboard;
-			sourceTree = "<group>";
-		};
-		A919383728F65C9000CC8B76 /* ProfileSocialSignIn.storyboard */ = {
+		A919383728F65C9000CC8B76 /* SignIn.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A919383828F65C9000CC8B76 /* Base */,
 			);
-			name = ProfileSocialSignIn.storyboard;
+			name = SignIn.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

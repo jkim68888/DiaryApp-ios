@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileSocialSignInViewController: UIViewController {
+class SignInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
