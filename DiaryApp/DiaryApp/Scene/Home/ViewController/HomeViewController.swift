@@ -38,9 +38,9 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func addPost(_ sender: UIButton) {
-        performSegue(withIdentifier: "toDetailPost", sender: nil)
+        performSegue(withIdentifier: "toPost", sender: nil)
     }
     @IBAction func profileSetClick(_ sender: Any) {
-        performSegue(withIdentifier: "toProfile", sender: nil)
+        performSegue(withIdentifier: "toSettings", sender: nil)
     }
 }

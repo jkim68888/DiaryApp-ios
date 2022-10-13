@@ -1,5 +1,5 @@
 //
-//  DetailPostNoImageViewController.swift
+//  ProfileViewController.swift
 //  DiaryApp
 //
 //  Created by 모상현 on 2022/10/12.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailPostNoImageViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +26,4 @@ class DetailPostNoImageViewController: UIViewController {
     }
     */
 
-    @IBAction func editClick(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "toDetailPostEdit", sender: nil)
-        
-    }
 }

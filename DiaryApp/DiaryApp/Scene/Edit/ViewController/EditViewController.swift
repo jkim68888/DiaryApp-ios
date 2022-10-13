@@ -8,7 +8,7 @@
 import UIKit
 import PhotosUI
 
-class DetailPostEditViewController: UIViewController {
+class EditViewController: UIViewController {
 
     @IBOutlet weak var detailPostEditImageView: UIImageView!
     @IBOutlet weak var detailPostEditDateLabel: UILabel!
@@ -51,7 +51,7 @@ class DetailPostEditViewController: UIViewController {
     }
     
 }
-extension DetailPostEditViewController: PHPickerViewControllerDelegate{
+extension EditViewController: PHPickerViewControllerDelegate{
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
         let itemProvider = results.first?.itemProvider

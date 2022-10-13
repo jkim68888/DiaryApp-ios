@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sfs-ta-wVx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sfs-ta-wVx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,13 +12,13 @@
         <!--글 보기-->
         <scene sceneID="y8r-pv-hXf">
             <objects>
-                <viewController storyboardIdentifier="DetailPostViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HVP-WG-vEe" customClass="DetailPostViewController" customModule="DiaryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HVP-WG-vEe" customClass="PostViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0As-ab-z48">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2G-yg-0g0">
-                                <rect key="frame" x="30" y="138" width="354" height="758"/>
+                                <rect key="frame" x="30" y="142" width="354" height="754"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OFa-Ex-QeC">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="360"/>
@@ -70,37 +70,24 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="KbE-Nz-y6m">
                             <connections>
                                 <action selector="editClick:" destination="HVP-WG-vEe" id="xTj-LJ-QJ4"/>
+                                <segue destination="dml-Pq-PJX" kind="show" id="U1O-tG-BqF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="CL9-mp-k2k" kind="show" identifier="toDetailPostEditView" id="hRA-Ew-Ka8"/>
-                        <segue destination="OJI-jZ-Gq7" kind="show" id="i99-7F-LH2"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="99J-oZ-Cdz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2795.6521739130435" y="474.77678571428567"/>
         </scene>
-        <!--DetailPostEditViewController-->
-        <scene sceneID="Lhc-bB-rPh">
+        <!--Edit-->
+        <scene sceneID="HHi-cV-e26">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="DetailPostEditViewController" storyboardName="DetailPostEdit" referencedIdentifier="DetailPostEditViewController" id="CL9-mp-k2k" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="3Dk-q5-xMB"/>
+                <viewControllerPlaceholder storyboardIdentifier="EditViewController" storyboardName="Edit" id="dml-Pq-PJX" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="v7z-wE-7JD"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZEE-tM-lxt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="www-f6-xj7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3628.985507246377" y="355.58035714285711"/>
-        </scene>
-        <!--DetailPostNoImageViewController-->
-        <scene sceneID="g7A-V9-coa">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="DetailPostNoImageViewController" storyboardName="DetailPostNoImage" referencedIdentifier="DetailPostNoImageViewController" id="OJI-jZ-Gq7" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="qjw-9E-f7E"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rxo-Wm-Q5A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3650.7246376811595" y="590.625"/>
+            <point key="canvasLocation" x="3367" y="451"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qbg-YS-Y8s">
@@ -108,7 +95,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sfs-ta-wVx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="w02-zp-DQ3">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

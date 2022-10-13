@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ql1-KS-jTo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ql1-KS-jTo">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -13,13 +13,13 @@
         <!--홈-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="HomeViewController" customModule="DiaryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="HomeViewController" customModule="DiaryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="98m-AZ-wCZ">
-                                <rect key="frame" x="20" y="118" width="374" height="128"/>
+                                <rect key="frame" x="20" y="122" width="374" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZt-gN-aP2">
                                         <rect key="frame" x="30" y="33" width="120" height="62.5"/>
@@ -84,11 +84,11 @@
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="addPost:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fD5-5R-aXD"/>
+                                    <action selector="addPost:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xW8-Np-efR"/>
                                 </connections>
                             </button>
                             <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zhi-R8-8gS">
-                                <rect key="frame" x="20" y="266" width="374" height="576"/>
+                                <rect key="frame" x="20" y="270" width="374" height="572"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="d7Y-zf-sNz">
                                     <size key="itemSize" width="128" height="128"/>
@@ -129,54 +129,54 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape.fill" catalog="system" id="M64-Rt-k0u">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
-                                <action selector="profileSetClick:" destination="Y6W-OH-hqX" id="xUj-Je-jLq"/>
+                                <action selector="profileSetClick:" destination="Y6W-OH-hqX" id="VJa-Ts-RWK"/>
+                                <segue destination="f2D-2U-1Lb" kind="show" id="Zb6-gl-Kdy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addPostBtn" destination="qIZ-sc-Sya" id="e3v-hz-gld"/>
-                        <outlet property="calendarImage" destination="SO5-oN-mpb" id="udt-4V-q9G"/>
-                        <outlet property="defaultStackView" destination="fS3-WH-taV" id="hII-o4-CQR"/>
-                        <outlet property="homeCollectionView" destination="zhi-R8-8gS" id="pvC-MM-A41"/>
-                        <outlet property="homeInfoView" destination="98m-AZ-wCZ" id="6My-U0-FeD"/>
-                        <segue destination="lBB-Eu-AQm" kind="push" identifier="toDetailPost" id="7lD-sq-hZj"/>
-                        <segue destination="TXJ-oF-AQM" kind="push" identifier="toProfile" id="sAg-Zj-vIG"/>
-                        <segue destination="b9W-aj-bKp" kind="push" identifier="toCalendar" id="qyz-Qs-8KL"/>
+                        <outlet property="addPostBtn" destination="qIZ-sc-Sya" id="KRu-mV-zFI"/>
+                        <outlet property="calendarImage" destination="SO5-oN-mpb" id="LYu-x5-L91"/>
+                        <outlet property="defaultStackView" destination="fS3-WH-taV" id="1Rx-GG-Me2"/>
+                        <outlet property="homeCollectionView" destination="zhi-R8-8gS" id="sit-nu-L0s"/>
+                        <outlet property="homeInfoView" destination="98m-AZ-wCZ" id="GQt-S2-O6d"/>
+                        <segue destination="9Fw-kQ-kOS" kind="show" identifier="toPost" id="f9z-gC-9X0"/>
+                        <segue destination="hBC-f1-22F" kind="show" identifier="toCalendar" id="7N3-6Y-49w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2862.3188405797105" y="114.50892857142857"/>
         </scene>
-        <!--ProfileViewController-->
-        <scene sceneID="LdB-AQ-bhQ">
+        <!--Settings-->
+        <scene sceneID="T7E-gE-es9">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="ProfileViewController" storyboardName="Profile" referencedIdentifier="ProfileViewController" id="TXJ-oF-AQM" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="u0y-KE-GBc"/>
+                <viewControllerPlaceholder storyboardIdentifier="SettingsViewController" storyboardName="Settings" id="f2D-2U-1Lb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="djq-nS-ofH"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CsZ-jz-LTz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nUX-0t-g6I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3631.1594202898555" y="6.6964285714285712"/>
+            <point key="canvasLocation" x="3522" y="58"/>
         </scene>
-        <!--CalendarViewController-->
-        <scene sceneID="5iR-sE-RVM">
+        <!--Post-->
+        <scene sceneID="naN-On-SKe">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="CalendarViewController" storyboardName="Calendar" referencedIdentifier="CalendarViewController" id="b9W-aj-bKp" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="bEk-OA-g5l"/>
+                <viewControllerPlaceholder storyboardIdentifier="PostViewController" storyboardName="Post" id="9Fw-kQ-kOS" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Huw-L7-fHJ"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sTs-go-AEa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3sp-le-aG4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3631" y="115"/>
+            <point key="canvasLocation" x="3507" y="98"/>
         </scene>
-        <!--DetailPostViewController-->
-        <scene sceneID="7hs-1V-gXg">
+        <!--Calendar-->
+        <scene sceneID="8Ym-Wm-K0w">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="DetailPostViewController" storyboardName="DetailPost" referencedIdentifier="DetailPostViewController" id="lBB-Eu-AQm" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="2e0-Uw-OKg"/>
+                <viewControllerPlaceholder storyboardIdentifier="CalendarViewController" storyboardName="Calendar" id="hBC-f1-22F" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="mFc-xH-Kmk"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mUf-sn-3CN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uCZ-iA-qxI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3647.1014492753625" y="234.375"/>
+            <point key="canvasLocation" x="3495" y="157"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wgm-BZ-BCL">
@@ -184,12 +184,12 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ql1-KS-jTo" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xFF-5o-D5z">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="iZb-fM-fKs"/>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="Vsu-Uh-GOJ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWh-QE-avm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -198,11 +198,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="calendar" catalog="system" width="128" height="106"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
-        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
+        <image name="calendar" catalog="system" width="128" height="107"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
