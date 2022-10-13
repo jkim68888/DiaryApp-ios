@@ -11,6 +11,8 @@
 		9A6C77AF28F229E400E1092D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C77AE28F229E400E1092D /* SceneDelegate.swift */; };
 		9A6C77B628F229E500E1092D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C77B528F229E500E1092D /* Assets.xcassets */; };
 		9A6C77B928F229E500E1092D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C77B728F229E500E1092D /* LaunchScreen.storyboard */; };
+		A913FA3F28F7CC2800ECA972 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A913FA3E28F7CC2800ECA972 /* Calendar.storyboard */; };
+		A913FA4128F7D09F00ECA972 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913FA4028F7D09F00ECA972 /* CalendarViewController.swift */; };
 		A919382428F64CED00CC8B76 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A919382328F64CED00CC8B76 /* Home.storyboard */; };
 		A919382628F64E9900CC8B76 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919382528F64E9900CC8B76 /* HomeViewController.swift */; };
 		A919382F28F6597500CC8B76 /* DetailPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A919382E28F6597500CC8B76 /* DetailPost.storyboard */; };
@@ -32,6 +34,8 @@
 		9A6C77B528F229E500E1092D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A6C77B828F229E500E1092D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A6C77BA28F229E500E1092D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A913FA3E28F7CC2800ECA972 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		A913FA4028F7D09F00ECA972 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		A919382328F64CED00CC8B76 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		A919382528F64E9900CC8B76 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A919382E28F6597500CC8B76 /* DetailPost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailPost.storyboard; sourceTree = "<group>"; };
@@ -87,9 +91,26 @@
 			path = DiaryApp;
 			sourceTree = "<group>";
 		};
+		A913FA3C28F7CBB200ECA972 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				A913FA4028F7D09F00ECA972 /* CalendarViewController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		A913FA3D28F7CC0900ECA972 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				A913FA3E28F7CC2800ECA972 /* Calendar.storyboard */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		A919382028F64C3300CC8B76 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A913FA3C28F7CBB200ECA972 /* Calendar */,
 				A919384928F65E7000CC8B76 /* Home */,
 				A919384728F65E3100CC8B76 /* Detail */,
 				A919384828F65E3E00CC8B76 /* Profile */,
@@ -100,6 +121,7 @@
 		A919382128F64C4900CC8B76 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A913FA3D28F7CC0900ECA972 /* Calendar */,
 				9A6C77B728F229E500E1092D /* LaunchScreen.storyboard */,
 				A919383A28F65D3500CC8B76 /* Home */,
 				A919383C28F65D4200CC8B76 /* Detail */,
@@ -229,6 +251,7 @@
 			files = (
 				A919382F28F6597500CC8B76 /* DetailPost.storyboard in Resources */,
 				9A6C77B928F229E500E1092D /* LaunchScreen.storyboard in Resources */,
+				A913FA3F28F7CC2800ECA972 /* Calendar.storyboard in Resources */,
 				9A6C77B628F229E500E1092D /* Assets.xcassets in Resources */,
 				A919383228F659CF00CC8B76 /* DetailPostNoImage.storyboard in Resources */,
 				A919383628F65C1C00CC8B76 /* Profile.storyboard in Resources */,
@@ -251,6 +274,7 @@
 				9A6C77AF28F229E400E1092D /* SceneDelegate.swift in Sources */,
 				A919384428F65DE700CC8B76 /* DetailPostEditViewController.swift in Sources */,
 				A919383E28F65D8A00CC8B76 /* ProfileViewController.swift in Sources */,
+				A913FA4128F7D09F00ECA972 /* CalendarViewController.swift in Sources */,
 				A919382628F64E9900CC8B76 /* HomeViewController.swift in Sources */,
 				A919384228F65DDD00CC8B76 /* DetailPostViewController.swift in Sources */,
 			);
@@ -405,10 +429,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = URTJJ24R4X;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6RZ3FF956G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
@@ -439,10 +464,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = URTJJ24R4X;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6RZ3FF956G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
