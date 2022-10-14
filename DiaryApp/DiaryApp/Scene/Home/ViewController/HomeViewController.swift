@@ -34,13 +34,16 @@ class HomeViewController: UIViewController {
         calendarImage.isUserInteractionEnabled = true // 유저와의 소통을 가능하게...
     }
     @objc func 달력이미지를눌렀을때(){
-        performSegue(withIdentifier: "toCalendar", sender: nil)
+        guard let calendarVC = storyboard?.instantiateViewController(identifier: "CalendarViewController") as? CalendarViewController else { return }
+        self.navigationController?.pushViewController(calendarVC, animated: true)
     }
 
-    @IBAction func addPost(_ sender: UIButton) {
-        performSegue(withIdentifier: "toPost", sender: nil)
+    @IBAction func addPostButtonTapped(_ sender: UIButton) {
+        guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
+        self.navigationController?.pushViewController(postVC, animated: true)
     }
-    @IBAction func profileSetClick(_ sender: Any) {
-        performSegue(withIdentifier: "toSettings", sender: nil)
+    @IBAction func settingButtonTapped(_ sender: UIBarButtonItem) {
+        guard let settingVC = storyboard?.instantiateViewController(identifier: "SettingsViewController") as? SettingsViewController else { return }
+        self.navigationController?.pushViewController(settingVC, animated: true)
     }
 }
