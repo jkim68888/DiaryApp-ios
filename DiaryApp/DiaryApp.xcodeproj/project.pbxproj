@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A1FCCA128FA9A73001B1584 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA028FA9A73001B1584 /* UIButtonExtension.swift */; };
 		9A6C534428F7FBC900B13BF7 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C534328F7FBC900B13BF7 /* UIColorExtension.swift */; };
+		9A6C537728FA631C00B13BF7 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C537628FA631C00B13BF7 /* EF_Diary.ttf */; };
 		9A6C77AD28F229E400E1092D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C77AC28F229E400E1092D /* AppDelegate.swift */; };
 		9A6C77AF28F229E400E1092D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C77AE28F229E400E1092D /* SceneDelegate.swift */; };
 		9A6C77B628F229E500E1092D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C77B528F229E500E1092D /* Assets.xcassets */; };
@@ -27,7 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A1FCCA028FA9A73001B1584 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		9A6C534328F7FBC900B13BF7 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		9A6C537628FA631C00B13BF7 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
 		9A6C77A928F229E400E1092D /* DiaryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiaryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6C77AC28F229E400E1092D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A6C77AE28F229E400E1092D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				9A6C534328F7FBC900B13BF7 /* UIColorExtension.swift */,
+				9A1FCCA028FA9A73001B1584 /* UIButtonExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -246,6 +251,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		9A6C537528FA626A00B13BF7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9A6C537628FA631C00B13BF7 /* EF_Diary.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		9A6C77A028F229E400E1092D = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +278,7 @@
 		9A6C77AB28F229E400E1092D /* DiaryApp */ = {
 			isa = PBXGroup;
 			children = (
+				9A6C537528FA626A00B13BF7 /* Fonts */,
 				9A6C77AC28F229E400E1092D /* AppDelegate.swift */,
 				9A6C77AE28F229E400E1092D /* SceneDelegate.swift */,
 				9A6C77B728F229E500E1092D /* LaunchScreen.storyboard */,
@@ -391,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A919382F28F6597500CC8B76 /* PostViewer.storyboard in Resources */,
+				9A6C537728FA631C00B13BF7 /* EF_Diary.ttf in Resources */,
 				9A6C77B928F229E500E1092D /* LaunchScreen.storyboard in Resources */,
 				A913FA3F28F7CC2800ECA972 /* Calendar.storyboard in Resources */,
 				9A6C77B628F229E500E1092D /* Assets.xcassets in Resources */,
@@ -409,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A919384028F65D9E00CC8B76 /* SignInViewController.swift in Sources */,
+				9A1FCCA128FA9A73001B1584 /* UIButtonExtension.swift in Sources */,
 				9A6C77AD28F229E400E1092D /* AppDelegate.swift in Sources */,
 				9A6C77AF28F229E400E1092D /* SceneDelegate.swift in Sources */,
 				A913FA9D28F91FF500ECA972 /* PostViewController.swift in Sources */,
@@ -565,8 +581,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = URTJJ24R4X;
+				DEVELOPMENT_TEAM = 6RZ3FF956G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "하루끝";
@@ -598,8 +613,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = URTJJ24R4X;
+				DEVELOPMENT_TEAM = 6RZ3FF956G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "하루끝";
