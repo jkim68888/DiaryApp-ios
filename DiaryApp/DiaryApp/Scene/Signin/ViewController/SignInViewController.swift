@@ -8,22 +8,29 @@
 import UIKit
 
 class SignInViewController: UIViewController {
-
-    override func viewDidLoad() {
+	@IBOutlet var signInButtons: [UIButton]!
+	@IBOutlet weak var titleLabel: UILabel!
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+		setUI()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+	
+	// 왼쪽이미지 가운데타이틀 설정 (extension 사용)
+	func setButtonsStyle(index: Int, item: UIButton) {
+		return item.setLeftImageCenterTitle(imageName: "signInIcon\(index)", padding: 10)
+	}
+	
+	func setUI() {
+		// 로그인 버튼 스타일 설정
+		signInButtons.enumerated().forEach { (index, item) in
+			setButtonsStyle(index: index, item: item)
+			item.layer.cornerRadius = 5
+			item.clipsToBounds = true
+			item.layer.borderWidth = 1
+		}
+		
+		// 라벨 컬러 설정
+		titleLabel.textColor = UIColor(hexString: "#7E76DE")
+	}
 }
