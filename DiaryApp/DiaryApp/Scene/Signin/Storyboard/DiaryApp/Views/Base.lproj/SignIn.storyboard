@@ -47,6 +47,9 @@
                                                 <state key="normal" title="애플로 시작하기">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="appleButtonTapped:" destination="c7C-Ee-ULj" eventType="touchUpInside" id="r1Y-h2-lmN"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4s-gP-C64">
                                                 <rect key="frame" x="0.0" y="57" width="382" height="42"/>
@@ -59,6 +62,9 @@
                                                 <state key="normal" title="카카오로 시작하기">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="kakaoButtonTapped:" destination="c7C-Ee-ULj" eventType="touchUpInside" id="FQd-dl-KZO"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvf-LX-Rcp">
                                                 <rect key="frame" x="0.0" y="114" width="382" height="42"/>
@@ -71,6 +77,9 @@
                                                 <state key="normal" title="구글로 시작하기">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="googleButtonTapped:" destination="c7C-Ee-ULj" eventType="touchUpInside" id="7xS-Ke-yVh"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKX-mi-McZ">
                                                 <rect key="frame" x="0.0" y="171" width="382" height="42"/>
@@ -83,6 +92,9 @@
                                                 <state key="normal" title="네이버로 시작하기">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="naverButtonTapped:" destination="c7C-Ee-ULj" eventType="touchUpInside" id="a0C-qP-i3s"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -114,6 +126,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wn9-ef-L2a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3718.840579710145" y="-575.22321428571422"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="Bgs-uZ-4GE">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Home" storyboardName="Home" referencedIdentifier="Home" id="2zJ-w0-GMl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T7b-Dl-0Wa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4319" y="-646"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="I8e-g7-nuJ">
