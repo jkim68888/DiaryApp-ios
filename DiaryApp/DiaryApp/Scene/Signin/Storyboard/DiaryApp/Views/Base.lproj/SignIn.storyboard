@@ -8,8 +8,13 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="EF_Diary.ttf">
+            <string>EF_Diary</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--로그인 옵션-->
+        <!--Sign In View Controller-->
         <scene sceneID="6Xa-dp-AT5">
             <objects>
                 <viewController storyboardIdentifier="SignInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c7C-Ee-ULj" customClass="SignInViewController" customModule="DiaryApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,63 +22,118 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4b-Nr-bJW">
-                                <rect key="frame" x="83.5" y="412" width="247" height="72"/>
-                                <string key="text">반가워요!
-계정을 선택해주세요.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="6Fc-f0-adb">
-                                <rect key="frame" x="40" y="534" width="334" height="235"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="DOF-BL-Rvx">
+                                <rect key="frame" x="16" y="301" width="382" height="294.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnB-sR-HHa">
-                                        <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="aPL-Zc-Eka"/>
-                                        </constraints>
-                                        <buttonConfiguration key="configuration" style="tinted" image="applelogo" catalog="system" title=" 애플로 시작하기"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73E-8X-f2l">
-                                        <rect key="frame" x="0.0" y="65" width="334" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="iRW-Te-Ahf"/>
-                                        </constraints>
-                                        <buttonConfiguration key="configuration" style="tinted" title=" 카카오로 시작하기"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gM-ku-dVT">
-                                        <rect key="frame" x="0.0" y="130" width="334" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="kf3-A5-vTj"/>
-                                        </constraints>
-                                        <buttonConfiguration key="configuration" style="tinted" title="구글로 시작하기"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pvi-Ec-0OI">
-                                        <rect key="frame" x="0.0" y="195" width="334" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="0aS-9u-tSq"/>
-                                        </constraints>
-                                        <buttonConfiguration key="configuration" style="tinted" title="네이버로 시작하기"/>
-                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4b-Nr-bJW">
+                                        <rect key="frame" x="101" y="0.0" width="180" height="51.5"/>
+                                        <string key="text">반가워요!
+계정을 선택해주세요.</string>
+                                        <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bNk-Gv-EGa">
+                                        <rect key="frame" x="0.0" y="81.5" width="382" height="213"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UN5-De-Uop">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="42"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="42" id="7mq-5D-tGk"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="15"/>
+                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="애플로 시작하기">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="appleButtonTapped:" destination="c7C-Ee-ULj" eventType="touchUpInside" id="r1Y-h2-lmN"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4s-gP-C64">
+                                                <rect key="frame" x="0.0" y="57" width="382" height="42"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="42" id="7PY-Hc-ZbN"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="15"/>
+                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="카카오로 시작하기">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="kakaoButtonTapped:" destination="c7C-Ee-ULj" eventType="touchUpInside" id="FQd-dl-KZO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvf-LX-Rcp">
+                                                <rect key="frame" x="0.0" y="114" width="382" height="42"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="42" id="Ciy-iS-9vj"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="15"/>
+                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="구글로 시작하기">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="googleButtonTapped:" destination="c7C-Ee-ULj" eventType="touchUpInside" id="7xS-Ke-yVh"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKX-mi-McZ">
+                                                <rect key="frame" x="0.0" y="171" width="382" height="42"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="42" id="i9x-lK-uaG"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="15"/>
+                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="네이버로 시작하기">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="naverButtonTapped:" destination="c7C-Ee-ULj" eventType="touchUpInside" id="a0C-qP-i3s"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="bNk-Gv-EGa" secondAttribute="trailing" id="2rS-hy-RbI"/>
+                                    <constraint firstItem="bNk-Gv-EGa" firstAttribute="leading" secondItem="DOF-BL-Rvx" secondAttribute="leading" id="ft2-qw-XYj"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sm7-Fs-xdk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Fc-f0-adb" firstAttribute="top" secondItem="Z4b-Nr-bJW" secondAttribute="bottom" constant="50" id="8AW-40-W91"/>
-                            <constraint firstItem="sm7-Fs-xdk" firstAttribute="trailing" secondItem="6Fc-f0-adb" secondAttribute="trailing" constant="40" id="8vu-ch-hWU"/>
-                            <constraint firstItem="6Fc-f0-adb" firstAttribute="leading" secondItem="sm7-Fs-xdk" secondAttribute="leading" constant="40" id="DLC-tM-hIX"/>
-                            <constraint firstItem="Z4b-Nr-bJW" firstAttribute="centerY" secondItem="AAm-qx-d8y" secondAttribute="centerY" id="P36-hP-bQf"/>
-                            <constraint firstItem="Z4b-Nr-bJW" firstAttribute="centerX" secondItem="AAm-qx-d8y" secondAttribute="centerX" id="cEz-uz-sHM"/>
+                            <constraint firstItem="DOF-BL-Rvx" firstAttribute="leading" secondItem="AAm-qx-d8y" secondAttribute="leading" constant="16" id="3JJ-wU-bnw"/>
+                            <constraint firstItem="sm7-Fs-xdk" firstAttribute="trailing" secondItem="DOF-BL-Rvx" secondAttribute="trailing" constant="16" id="B35-aX-D0L"/>
+                            <constraint firstItem="DOF-BL-Rvx" firstAttribute="centerY" secondItem="AAm-qx-d8y" secondAttribute="centerY" id="bZF-tH-2ES"/>
+                            <constraint firstItem="DOF-BL-Rvx" firstAttribute="centerX" secondItem="AAm-qx-d8y" secondAttribute="centerX" id="wDR-Wl-48O"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="로그인 옵션" id="gfU-Eb-t8f"/>
+                    <navigationItem key="navigationItem" id="gfU-Eb-t8f"/>
+                    <connections>
+                        <outlet property="titleLabel" destination="Z4b-Nr-bJW" id="g3s-xc-s0a"/>
+                        <outletCollection property="signInButtons" destination="UN5-De-Uop" collectionClass="NSMutableArray" id="DhH-eL-1vl"/>
+                        <outletCollection property="signInButtons" destination="J4s-gP-C64" collectionClass="NSMutableArray" id="wvj-3T-iyh"/>
+                        <outletCollection property="signInButtons" destination="fvf-LX-Rcp" collectionClass="NSMutableArray" id="JTa-du-ZhJ"/>
+                        <outletCollection property="signInButtons" destination="pKX-mi-McZ" collectionClass="NSMutableArray" id="Dgq-O9-yfc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wn9-ef-L2a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3718.840579710145" y="-575.22321428571422"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="Bgs-uZ-4GE">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Home" storyboardName="Home" referencedIdentifier="Home" id="2zJ-w0-GMl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T7b-Dl-0Wa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4319" y="-646"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="I8e-g7-nuJ">
@@ -95,7 +155,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="applelogo" catalog="system" width="105" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

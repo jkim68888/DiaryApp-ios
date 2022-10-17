@@ -8,16 +8,28 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+	
 	var window: UIWindow?
-
-
+	
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        window?.rootViewController = UIStoryboard(name: "Home", bundle: nil).instantiateInitialViewController()!
-		// Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-		// If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-		// This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+		manageSignInSession()
 		guard let _ = (scene as? UIWindowScene) else { return }
+	}
+	
+	// 로그인시 userDefaults에 저장되있는 키값에 따라 루트뷰 변경
+	func manageSignInSession() {
+		let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
+		let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+		let signInViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
+		let homeNavigationController = UINavigationController(rootViewController: homeViewController)
+		
+		guard let window = window else { return }
+		
+		if UserDefaults.standard.bool(forKey: "authVerificationID") {
+			window.rootViewController = homeNavigationController
+		} else {
+			window.rootViewController = signInViewController
+		}
 	}
 
 	func sceneDidDisconnect(_ scene: UIScene) {
