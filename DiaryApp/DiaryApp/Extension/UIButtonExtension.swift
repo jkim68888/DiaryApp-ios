@@ -19,7 +19,7 @@ extension UIButton {
 		// insets 계산
 		let imageWidth = img.size.width
 		let textWidth = self.titleLabel?.intrinsicContentSize.width
-		let buttonWidth = CGRectGetWidth(self.bounds)
+		let buttonWidth = self.bounds.width
 		let imageInset = buttonWidth - textWidth! - imageWidth - padding
 		let titleInset = padding + imageWidth
 	
