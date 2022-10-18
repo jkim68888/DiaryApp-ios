@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Dog.png",
+      "filename" : "AddPost.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Dog@2x.png",
+      "filename" : "AddPost@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Dog@3x.png",
+      "filename" : "AddPost@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

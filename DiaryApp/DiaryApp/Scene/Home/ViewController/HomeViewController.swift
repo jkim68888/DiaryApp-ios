@@ -12,8 +12,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var homeInfoView: UIView!
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var defaultStackView: UIStackView!
-    @IBOutlet weak var calendarImage: UIImageView!
+    @IBOutlet weak var calendarBtn: UIButton!
     @IBOutlet weak var addPostBtn: UIButton!
+    @IBOutlet weak var settingBtn: UIButton!
     
     var haveData:Bool = false
     let flowLayout = UICollectionViewFlowLayout()
@@ -22,25 +23,42 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //navigationController?.setNavigationBarHidden(true, animated: false)
-        setView()
+        setUI()
         dataRoad()
-        setGesture()
         setCollectionView()
-        // Do any additional setup after loading the view.
     }
-    
-    func setView(){
+    // View가 보이려고할 때, 네비게이션 바를 임의적으로 숨긴다.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    // View가 사라지려고 할 때, 네비게이션 바를 임의적으로 보이게한다.
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    func setUI(){
         homeInfoView.clipsToBounds = true
         homeInfoView.layer.cornerRadius = 20
+        homeInfoView.backgroundColor = UIColor(hexString: "#FFBBBC")
+        homeInfoView.layer.shadowOpacity = 0.6
+        homeInfoView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        homeInfoView.layer.shadowRadius = 5
+        homeInfoView.layer.masksToBounds = false
+        settingBtn.setTitle("", for: .normal)
         addPostBtn.setTitle("", for: .normal)
+        calendarBtn.setTitle("", for: .normal)
         addPostBtn.clipsToBounds = true
         addPostBtn.layer.cornerRadius = addPostBtn.frame.width / 2
+
     }
+    
     func setCollectionView(){
         if haveData == true{
             homeCollectionView.isHidden = false
             defaultStackView.isHidden = true
             
+            homeCollectionView.delegate = self
             homeCollectionView.dataSource = self
             homeCollectionView.backgroundColor = .white
             flowLayout.scrollDirection = .vertical
@@ -76,24 +94,19 @@ class HomeViewController: UIViewController {
             print("값을 정상적으로 불러왔습니다.")
         }
     }
-    // 제스처 기능을 부여하는 함수
-    func setGesture(){
-        let tapGestureImageView = UITapGestureRecognizer(target: self, action: #selector(달력이미지를눌렀을때))
-        calendarImage.addGestureRecognizer(tapGestureImageView) // 제스처를 추가....
-        calendarImage.isUserInteractionEnabled = true // 유저와의 소통을 가능하게...
-    }
-    @objc func 달력이미지를눌렀을때(){
-        guard let calendarVC = storyboard?.instantiateViewController(identifier: "CalendarViewController") as? CalendarViewController else { return }
-        self.navigationController?.pushViewController(calendarVC, animated: true)
-    }
 
     @IBAction func addPostButtonTapped(_ sender: UIButton) {
         guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
         self.navigationController?.pushViewController(postVC, animated: true)
     }
-    @IBAction func settingButtonTapped(_ sender: UIBarButtonItem) {
+
+    @IBAction func settingButtonTapped(_ sender: UIButton) {
         guard let settingVC = storyboard?.instantiateViewController(identifier: "SettingsViewController") as? SettingsViewController else { return }
         self.navigationController?.pushViewController(settingVC, animated: true)
+    }
+    @IBAction func calendarButtonTapped(_ sender: UIButton) {
+        guard let calendarVC = storyboard?.instantiateViewController(identifier: "CalendarViewController") as? CalendarViewController else { return }
+        self.navigationController?.pushViewController(calendarVC, animated: true)
     }
 }
 extension HomeViewController:UICollectionViewDataSource{
@@ -107,10 +120,17 @@ extension HomeViewController:UICollectionViewDataSource{
     }
 }
 extension HomeViewController:UICollectionViewDelegate{
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        <#code#>
-//    }
-//    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-//        <#code#>
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        guard let postViewerVC = storyboard?.instantiateViewController(identifier: "PostViewerViewController") as? PostViewerViewController else { return }
+        
+        postViewerVC.tempPostData = dataManager.getPostDate()[indexPath.row]
+        
+        
+        self.navigationController?.pushViewController(postViewerVC, animated: true)
+        
+        
+    }
+
 }
