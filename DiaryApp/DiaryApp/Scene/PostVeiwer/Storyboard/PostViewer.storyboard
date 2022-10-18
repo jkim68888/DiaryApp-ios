@@ -41,7 +41,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsJ-Pf-zuw">
-                                        <rect key="frame" x="30" y="452" width="299" height="126"/>
+                                        <rect key="frame" x="30" y="452" width="299" height="123"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
@@ -73,10 +73,16 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="postViewerDateLabel" destination="ICQ-yd-acB" id="QWV-SV-zZ2"/>
+                        <outlet property="postViewerDescriptionLabel" destination="rsJ-Pf-zuw" id="6i4-W8-9cd"/>
+                        <outlet property="postViewerImageView" destination="OFa-Ex-QeC" id="PyT-p9-BAG"/>
+                        <outlet property="postViewerTitleLabel" destination="Pc3-Lm-qdy" id="WkR-zX-CHo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="99J-oZ-Cdz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2795.6521739130435" y="474.77678571428567"/>
+            <point key="canvasLocation" x="2794.202898550725" y="474.77678571428567"/>
         </scene>
         <!--PostViewController-->
         <scene sceneID="HHi-cV-e26">

@@ -203,7 +203,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nUX-0t-g6I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3522" y="58"/>
+            <point key="canvasLocation" x="3495" y="49"/>
         </scene>
         <!--PostViewController-->
         <scene sceneID="naN-On-SKe">
@@ -213,7 +213,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3sp-le-aG4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3507" y="98"/>
+            <point key="canvasLocation" x="3475" y="98"/>
         </scene>
         <!--CalendarViewController-->
         <scene sceneID="8Ym-Wm-K0w">
