@@ -233,7 +233,9 @@
                             <constraint firstItem="Pez-01-hNO" firstAttribute="leading" secondItem="8hA-xv-Qek" secondAttribute="leading" constant="30" id="vG2-Rr-joQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="개인정보" id="kGp-my-FWN"/>
+                    <navigationItem key="navigationItem" title="개인정보" id="kGp-my-FWN">
+                        <barButtonItem key="backBarButtonItem" title=" " id="4K1-8t-6WW"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cSD-Ui-IHm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

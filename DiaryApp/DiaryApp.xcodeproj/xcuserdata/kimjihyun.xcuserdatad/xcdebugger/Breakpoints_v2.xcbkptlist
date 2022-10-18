@@ -16,7 +16,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
             endingLineNumber = "36"
-            landmarkName = "&#xb2ec;&#xb825;&#xc774;&#xbbf8;&#xc9c0;&#xb97c;&#xb20c;&#xb800;&#xc744;&#xb54c;()"
+            landmarkName = "viewWillDisappear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
