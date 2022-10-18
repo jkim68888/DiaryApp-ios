@@ -26,6 +26,9 @@
 		A919383E28F65D8A00CC8B76 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919383D28F65D8A00CC8B76 /* SettingsViewController.swift */; };
 		A919384028F65D9E00CC8B76 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919383F28F65D9E00CC8B76 /* SignInViewController.swift */; };
 		A919384228F65DDD00CC8B76 /* PostViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919384128F65DDD00CC8B76 /* PostViewerViewController.swift */; };
+		A9C2A6DA28FD5C0A000EB06D /* TempPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2A6D928FD5C0A000EB06D /* TempPost.swift */; };
+		A9C2A6DC28FD6A9D000EB06D /* TempDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2A6DB28FD6A9D000EB06D /* TempDataManager.swift */; };
+		A9C2A6DE28FD7F95000EB06D /* HomePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2A6DD28FD7F95000EB06D /* HomePostCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		A919383D28F65D8A00CC8B76 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A919383F28F65D9E00CC8B76 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A919384128F65DDD00CC8B76 /* PostViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewerViewController.swift; sourceTree = "<group>"; };
+		A9C2A6D928FD5C0A000EB06D /* TempPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempPost.swift; sourceTree = "<group>"; };
+		A9C2A6DB28FD6A9D000EB06D /* TempDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempDataManager.swift; sourceTree = "<group>"; };
+		A9C2A6DD28FD7F95000EB06D /* HomePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				A919382328F64CED00CC8B76 /* Home.storyboard */,
+				A9C2A6DD28FD7F95000EB06D /* HomePostCollectionViewCell.swift */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -201,6 +208,8 @@
 		9A43DF6528F7E54F004DBE82 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A9C2A6D928FD5C0A000EB06D /* TempPost.swift */,
+				A9C2A6DB28FD6A9D000EB06D /* TempDataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -426,11 +435,14 @@
 				A919384028F65D9E00CC8B76 /* SignInViewController.swift in Sources */,
 				9A1FCCA128FA9A73001B1584 /* UIButtonExtension.swift in Sources */,
 				9A6C77AD28F229E400E1092D /* AppDelegate.swift in Sources */,
+				A9C2A6DC28FD6A9D000EB06D /* TempDataManager.swift in Sources */,
 				9A6C77AF28F229E400E1092D /* SceneDelegate.swift in Sources */,
 				A913FA9D28F91FF500ECA972 /* PostViewController.swift in Sources */,
 				A919383E28F65D8A00CC8B76 /* SettingsViewController.swift in Sources */,
 				9A6C534428F7FBC900B13BF7 /* UIColorExtension.swift in Sources */,
+				A9C2A6DE28FD7F95000EB06D /* HomePostCollectionViewCell.swift in Sources */,
 				A913FA4128F7D09F00ECA972 /* CalendarViewController.swift in Sources */,
+				A9C2A6DA28FD5C0A000EB06D /* TempPost.swift in Sources */,
 				A919382628F64E9900CC8B76 /* HomeViewController.swift in Sources */,
 				A919384228F65DDD00CC8B76 /* PostViewerViewController.swift in Sources */,
 			);
@@ -581,7 +593,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6RZ3FF956G;
+				DEVELOPMENT_TEAM = URTJJ24R4X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "하루끝";
@@ -613,7 +625,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6RZ3FF956G;
+				DEVELOPMENT_TEAM = URTJJ24R4X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "하루끝";

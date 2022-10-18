@@ -16,13 +16,14 @@ class PostViewController: UIViewController {
     @IBOutlet weak var postDateView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        디자인세팅()
+        setUI()
         제스처부여하기()
 
         // Do any additional setup after loading the view.
     }
-    func 디자인세팅(){
-        postImageView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+    func setUI(){
+        postImageView.clipsToBounds = true
+        postImageView.layer.cornerRadius = 10
     }
     func 제스처부여하기(){
         let tapGestureImageView = UITapGestureRecognizer(target: self, action: #selector(이미지를눌렀을때))
