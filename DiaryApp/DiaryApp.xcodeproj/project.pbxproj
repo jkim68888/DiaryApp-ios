@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9A1FCCA128FA9A73001B1584 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA028FA9A73001B1584 /* UIButtonExtension.swift */; };
+		9A1FCCA528FE81C2001B1584 /* UINavigationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA428FE81C2001B1584 /* UINavigationExtension.swift */; };
+		9A1FCCA828FEA102001B1584 /* NavigationBarUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA728FEA102001B1584 /* NavigationBarUtils.swift */; };
 		9A6C534428F7FBC900B13BF7 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C534328F7FBC900B13BF7 /* UIColorExtension.swift */; };
 		9A6C537728FA631C00B13BF7 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C537628FA631C00B13BF7 /* EF_Diary.ttf */; };
 		9A6C77AD28F229E400E1092D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C77AC28F229E400E1092D /* AppDelegate.swift */; };
@@ -33,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		9A1FCCA028FA9A73001B1584 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		9A1FCCA428FE81C2001B1584 /* UINavigationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationExtension.swift; sourceTree = "<group>"; };
+		9A1FCCA728FEA102001B1584 /* NavigationBarUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarUtils.swift; sourceTree = "<group>"; };
 		9A6C534328F7FBC900B13BF7 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9A6C537628FA631C00B13BF7 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
 		9A6C77A928F229E400E1092D /* DiaryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiaryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A1FCCA628FEA0DB001B1584 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9A1FCCA728FEA102001B1584 /* NavigationBarUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		9A43DF4D28F7E006004DBE82 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +106,7 @@
 			children = (
 				9A6C534328F7FBC900B13BF7 /* UIColorExtension.swift */,
 				9A1FCCA028FA9A73001B1584 /* UIButtonExtension.swift */,
+				9A1FCCA428FE81C2001B1584 /* UINavigationExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -293,6 +306,7 @@
 				9A6C77B728F229E500E1092D /* LaunchScreen.storyboard */,
 				9A43DF6528F7E54F004DBE82 /* Model */,
 				9A43DF5428F7E156004DBE82 /* Common */,
+				9A1FCCA628FEA0DB001B1584 /* Utils */,
 				9A43DF4F28F7E045004DBE82 /* Extension */,
 				9A43DF4E28F7E036004DBE82 /* Service */,
 				9A43DF4D28F7E006004DBE82 /* Scene */,
@@ -438,11 +452,13 @@
 				A9C2A6DC28FD6A9D000EB06D /* TempDataManager.swift in Sources */,
 				9A6C77AF28F229E400E1092D /* SceneDelegate.swift in Sources */,
 				A913FA9D28F91FF500ECA972 /* PostViewController.swift in Sources */,
+				9A1FCCA828FEA102001B1584 /* NavigationBarUtils.swift in Sources */,
 				A919383E28F65D8A00CC8B76 /* SettingsViewController.swift in Sources */,
 				9A6C534428F7FBC900B13BF7 /* UIColorExtension.swift in Sources */,
 				A9C2A6DE28FD7F95000EB06D /* HomePostCollectionViewCell.swift in Sources */,
 				A913FA4128F7D09F00ECA972 /* CalendarViewController.swift in Sources */,
 				A9C2A6DA28FD5C0A000EB06D /* TempPost.swift in Sources */,
+				9A1FCCA528FE81C2001B1584 /* UINavigationExtension.swift in Sources */,
 				A919382628F64E9900CC8B76 /* HomeViewController.swift in Sources */,
 				A919384228F65DDD00CC8B76 /* PostViewerViewController.swift in Sources */,
 			);

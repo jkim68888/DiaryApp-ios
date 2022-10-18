@@ -11,7 +11,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
+		// 네비게이션바 공통 스타일
+		UINavigationBar.appearance().customNavigationBar()
 		return true
 	}
 
