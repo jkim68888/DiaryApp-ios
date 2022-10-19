@@ -38,7 +38,7 @@ class PostViewerViewController: UIViewController {
         postViewerView.layer.cornerRadius = 20
         postViewerView.layer.borderWidth = 0.5
         postViewerView.layer.borderColor = UIColor.black.cgColor
-        self.view.backgroundColor = UIColor(hexString: "#FFBBBC")
+        self.view.backgroundColor = UIColor.mainBGColor
     }
     func setNavigation(){
         self.navigationItem.leftBarButtonItem?.setBackgroundImage(UIImage(systemName: "back"), for: .normal, barMetrics: .default)

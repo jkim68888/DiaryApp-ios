@@ -44,7 +44,7 @@ class HomeViewController: UIViewController {
     func setUI(){
         homeInfoView.clipsToBounds = true
         homeInfoView.layer.cornerRadius = 20
-        homeInfoView.backgroundColor = UIColor(hexString: "#FFBBBC")
+        homeInfoView.backgroundColor = UIColor.mainBGColor
         homeInfoView.layer.shadowOpacity = 0.4
         homeInfoView.layer.shadowOffset = CGSize(width: 0, height: 5)
         homeInfoView.layer.shadowRadius = 2

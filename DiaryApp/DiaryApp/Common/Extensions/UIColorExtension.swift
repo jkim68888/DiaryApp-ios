@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 extension UIColor {
+    static let mainBGColor = UIColor(named: "mainBGColor")
 	convenience init(hexString: String) {
 		let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
 		var int = UInt64()
