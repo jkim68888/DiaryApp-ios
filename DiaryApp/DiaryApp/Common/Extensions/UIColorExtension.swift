@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 
 extension UIColor {
+    static let mainBGColor = UIColor(named: "mainBGColor")
+    static let mainFontColor = UIColor(named: "mainFontColor")
+    static let blackColor = UIColor(named: "blackColor") // dark모드에서는 흰색
+    
 	convenience init(hexString: String) {
 		let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
 		var int = UInt64()

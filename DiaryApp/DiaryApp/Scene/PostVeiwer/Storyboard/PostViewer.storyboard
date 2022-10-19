@@ -93,6 +93,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="글 보기" id="L5S-SX-Hqy">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Uyk-6Q-r06"/>
                         <barButtonItem key="rightBarButtonItem" title="편집" id="KbE-Nz-y6m">
                             <color key="tintColor" red="0.4941176471" green="0.46274509800000002" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>

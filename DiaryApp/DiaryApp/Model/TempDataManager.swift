@@ -25,10 +25,13 @@ class TempDataManager{
             TempPost(userID: "momo", postTitle: "즐거운 하루", postScrpit: "가을이였다....", postImage: UIImage(named: "cat.jpeg"), createDate: Date())
         ]
     }
-    func addPostData(_ post: TempPost){
-        postArray?.append(post)
+    func addPostData(_ post: TempPost?){
+        postArray?.append(post!)
     }
     func update(index:Int,_ post:TempPost){
         postArray?[index] = post
+    }
+    func delete(index:Int){
+        postArray?.remove(at: index)
     }
 }

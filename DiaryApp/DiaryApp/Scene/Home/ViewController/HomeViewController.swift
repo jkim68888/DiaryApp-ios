@@ -44,7 +44,7 @@ class HomeViewController: UIViewController {
     func setUI(){
         homeInfoView.clipsToBounds = true
         homeInfoView.layer.cornerRadius = 20
-        homeInfoView.backgroundColor = UIColor(hexString: "#FFBBBC")
+        homeInfoView.backgroundColor = UIColor.mainBGColor
         homeInfoView.layer.shadowOpacity = 0.4
         homeInfoView.layer.shadowOffset = CGSize(width: 0, height: 5)
         homeInfoView.layer.shadowRadius = 2
@@ -100,8 +100,8 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func addPostButtonTapped(_ sender: UIButton) {
-        guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
-        self.navigationController?.pushViewController(postVC, animated: true)
+        guard let postViewerVC = storyboard?.instantiateViewController(identifier: "PostViewerViewController") as? PostViewerViewController else { return }
+        self.navigationController?.pushViewController(postViewerVC, animated: false)
     }
 
     @IBAction func settingButtonTapped(_ sender: UIButton) {
