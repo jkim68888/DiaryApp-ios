@@ -19,6 +19,7 @@
 		9A1FCCC128FFB3DF001B1584 /* PostViewerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCC028FFB3DF001B1584 /* PostViewerViewModel.swift */; };
 		9A1FCCC328FFB3F3001B1584 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCC228FFB3F3001B1584 /* CalendarViewModel.swift */; };
 		9A1FCCC528FFB40A001B1584 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCC428FFB40A001B1584 /* HomeViewModel.swift */; };
+		9A1FCCC728FFB9B4001B1584 /* RootViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCC628FFB9B4001B1584 /* RootViewUtils.swift */; };
 		9A6C534428F7FBC900B13BF7 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C534328F7FBC900B13BF7 /* UIColorExtension.swift */; };
 		9A6C537728FA631C00B13BF7 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C537628FA631C00B13BF7 /* EF_Diary.ttf */; };
 		9A6C77AD28F229E400E1092D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C77AC28F229E400E1092D /* AppDelegate.swift */; };
@@ -57,6 +58,7 @@
 		9A1FCCC028FFB3DF001B1584 /* PostViewerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewerViewModel.swift; sourceTree = "<group>"; };
 		9A1FCCC228FFB3F3001B1584 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		9A1FCCC428FFB40A001B1584 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		9A1FCCC628FFB9B4001B1584 /* RootViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewUtils.swift; sourceTree = "<group>"; };
 		9A6C534328F7FBC900B13BF7 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9A6C537628FA631C00B13BF7 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
 		9A6C77A928F229E400E1092D /* DiaryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiaryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				9A1FCCA728FEA102001B1584 /* NavigationBarUtils.swift */,
+				9A1FCCC628FFB9B4001B1584 /* RootViewUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				9A6C77AF28F229E400E1092D /* SceneDelegate.swift in Sources */,
 				A913FA9D28F91FF500ECA972 /* PostViewController.swift in Sources */,
 				9A1FCCB028FFB1CE001B1584 /* SignInService.swift in Sources */,
+				9A1FCCC728FFB9B4001B1584 /* RootViewUtils.swift in Sources */,
 				9A1FCCA828FEA102001B1584 /* NavigationBarUtils.swift in Sources */,
 				9A1FCCB428FFB24E001B1584 /* SignInViewModel.swift in Sources */,
 				9A1FCCAA28FFB162001B1584 /* PostService.swift in Sources */,
