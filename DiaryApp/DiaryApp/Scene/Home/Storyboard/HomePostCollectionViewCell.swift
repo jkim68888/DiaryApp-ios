@@ -15,7 +15,7 @@ class HomePostCollectionViewCell: UICollectionViewCell {
                 return
             }
             cellImageView.image = postData.postImage ?? UIImage(named: "NoImage.png")
-            cellTitleLabel.text = postData.postTitle
+            cellTitleLabel.text = postData.createDate.toString()
             cellView.clipsToBounds = true
             cellView.layer.cornerRadius = 15
             cellView.layer.borderWidth = 1

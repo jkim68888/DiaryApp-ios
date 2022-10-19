@@ -12,11 +12,12 @@ class PostViewController: UIViewController {
     
     var postData: TempPost?
     var postNumber:Int? = 0
-    var pickImage:UIImage? = nil
     var editFormatter_time = DateFormatter()
     var delegate:TempPostDelegate?
+    var postScriptTVPlaceHolder:String?
     
     @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var cancleImgBtn: UIButton!
     @IBOutlet weak var postImageBtn: UIButton!
     @IBOutlet weak var postStackView: UIStackView!
     @IBOutlet weak var postDateLabel: UILabel!
@@ -26,27 +27,28 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
         setData()
         setUI()
+        setDelegate()
         setGesture()
         setImagePickView()
         // Do any additional setup after loading the view.
     }
-    func setDateFormat(_ date:Date) -> String{
-        editFormatter_time.dateFormat = "yyyy.MM.dd"
-        var current_time_string = editFormatter_time.string(from: date)
-        return current_time_string
-    }
     func setData(){
-        guard var postData = postData else { return }
+        if postData == nil{
+            print("데이터불러오기실패")
+            postScriptTVPlaceHolder = "텍스트를 입력하세요"
+        }else{
+            print("데이터불러오기성공")
+        }
+        guard let postData = postData else { return }
         //postNumber는 해당 Post의 고유 번호이다. 수정하거나 삭제할때 필요하다.
         postNumber = postData.postNumber
         
         // 기본적인 Post 정보에 담길 내용을 Setting해준다.
         print(#function)
         postImageView.image = postData.postImage
-        postDateLabel.text = setDateFormat(postData.createDate)
+        postDateLabel.text = postData.createDate.toString()
         postTitleTF.text = postData.postTitle
         postScriptTV.text = postData.postScript
-        
     }
     func setUI(){
         postImageBtn.setTitle("", for: .normal)
@@ -61,14 +63,22 @@ class PostViewController: UIViewController {
         postImageView.layer.borderColor = UIColor.black.cgColor
         
         postTitleTF.borderStyle = .none
+        
+        
+    }
+    func setDelegate(){
+        postTitleTF.delegate = self
+        //postScriptTV.delegate = self
     }
     func setImagePickView(){
         print(#function)
         if postImageView.image == nil{
             postImageView.isHidden = true
+            cancleImgBtn.isHidden = true
             print("값이없다.")
         }else{
             postImageView.isHidden = false
+            cancleImgBtn.isHidden = false
         }
     }
     func setGesture(){
@@ -94,28 +104,62 @@ class PostViewController: UIViewController {
         /// 피커뷰 띄우기
         self.present(picker, animated: true,completion: nil)
     }
+    @IBAction func cancleImgButtonTapped(_ sender: UIButton) {
+        postImageView.image = nil
+        postImageView.isHidden = true
+        cancleImgBtn.isHidden = true
+    }
     @IBAction func doneButtonTapped(_ sender: Any) {
-        guard var postData = postData else {
-            return
-        }
-        print(postData.postTitle)
-        print(postData.postScript)
-        postData.postImage = postImageView.image
-        postData.createDate = postDateLabel.text!.toDate() ?? Date()
-        postData.postTitle = postTitleTF.text ?? ""
-        postData.postScript = postScriptTV.text ?? ""
-        
+        print(#function)
+        print(postData)
         let postViewerVCindex = navigationController!.viewControllers.count - 2
         let homeVCindex = navigationController!.viewControllers.count - 3
         
         let postViewerVC = navigationController?.viewControllers[postViewerVCindex] as! PostViewerViewController
         let homeVC = navigationController?.viewControllers[homeVCindex] as! HomeViewController
-        
-        delegate?.update()
-        
-        postViewerVC.tempPostData = postData
-        homeVC.dataManager.update(index: postNumber!, postData)
-        self.presentingViewController?.dismiss(animated: true)
+                        
+        /// 글쓰기를 통해서 해당  View에 접근한 경우
+        if postData == nil{
+            var editpostData:TempPost?
+            editpostData?.postImage = postImageView.image ?? UIImage(named: "NoImage.png")
+            editpostData?.createDate = postDateLabel.text!.toDate() ?? Date()
+            editpostData?.postTitle = postTitleTF.text ?? ""
+            editpostData?.postScript = postScriptTV.text ?? ""
+            postData = editpostData
+            homeVC.dataManager.addPostData(postData!)
+            print(postData!)
+            delegate?.update()
+            
+            postViewerVC.tempPostData = postData!
+            homeVC.dataManager.addPostData(postData!)
+            self.navigationController?.popViewController(animated: true)
+        }
+        else{
+            print(postData!)
+            postData!.postImage = postImageView.image
+            postData!.createDate = postDateLabel.text!.toDate() ?? Date()
+            postData!.postTitle = postTitleTF.text ?? ""
+            postData!.postScript = postScriptTV.text ?? ""
+            
+            
+            
+            delegate?.update()
+            
+            postViewerVC.tempPostData = postData!
+            homeVC.dataManager.update(index: postNumber!, postData!)
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    // 삭제 기능은 아직 불완전함. 삭제할 index를 능동적으로 변화시켜야함.
+    @IBAction func postDeleteButtonTapped(_ sender: UIButton) {
+        let homeVCindex = navigationController!.viewControllers.count - 3
+        let homeVC = navigationController?.viewControllers[homeVCindex] as! HomeViewController
+        homeVC.dataManager.delete(index: postNumber!)
+        self.navigationController?.popToViewController(homeVC, animated: true)
+    }
+    /// 다른 곳을 누르면 키보드가 내려가게 설정
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
 extension PostViewController: PHPickerViewControllerDelegate{
@@ -127,6 +171,7 @@ extension PostViewController: PHPickerViewControllerDelegate{
                 DispatchQueue.main.async {
                     self.postImageView.image = image as? UIImage
                     self.postImageView.isHidden = false
+                    self.cancleImgBtn.isHidden = false
                 }
             }
         }else {
@@ -135,4 +180,18 @@ extension PostViewController: PHPickerViewControllerDelegate{
     }
     
     
+}
+extension PostViewController:UITextViewDelegate{
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == postScriptTVPlaceHolder {
+                textView.text = nil
+                textView.textColor = .black
+            }
+    }
+}
+extension PostViewController:UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.isFirstResponder
+        return true
+    }
 }

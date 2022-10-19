@@ -99,7 +99,7 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
-                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zhi-R8-8gS">
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zhi-R8-8gS">
                                 <rect key="frame" x="20" y="266" width="374" height="576"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="d7Y-zf-sNz">
@@ -215,7 +215,9 @@
                             <constraint firstItem="fS3-WH-taV" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="tPe-ht-UT0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ZsA-8M-m0f"/>
+                    <navigationItem key="navigationItem" id="ZsA-8M-m0f">
+                        <barButtonItem key="backBarButtonItem" title=" " id="njf-P3-fdA"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="addPostBtn" destination="qIZ-sc-Sya" id="0Ja-no-SJb"/>
                         <outlet property="calendarBtn" destination="lm5-2j-HOI" id="L5e-uM-iUM"/>
