@@ -35,7 +35,6 @@ func goHomeVC() {
 
 	let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
 	let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-	let signInViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
 	let homeNavigationController = UINavigationController(rootViewController: homeViewController)
 	
 	window.rootViewController = homeNavigationController
@@ -46,9 +45,7 @@ func goSingInVC() {
 	guard let window = sceneDelegate.window else { return }
 	
 	let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
-	let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
 	let signInViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-	let homeNavigationController = UINavigationController(rootViewController: homeViewController)
 	
 	window.rootViewController = signInViewController
 }
