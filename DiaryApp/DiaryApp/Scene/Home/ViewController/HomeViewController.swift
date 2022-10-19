@@ -27,10 +27,14 @@ class HomeViewController: UIViewController {
         dataRoad()
         setCollectionView()
     }
-    // View가 보이려고할 때, 네비게이션 바를 임의적으로 숨긴다.
+    // 현재View(homeVC)가 보이려고할 때,
+    /// 1. 네비게이션 바를 임의적으로 숨긴다.
+    /// 2. CollectionView를 초기화(reload)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        homeCollectionView.reloadData()
     }
     // View가 사라지려고 할 때, 네비게이션 바를 임의적으로 보이게한다.
     override func viewWillDisappear(_ animated: Bool) {
@@ -41,9 +45,9 @@ class HomeViewController: UIViewController {
         homeInfoView.clipsToBounds = true
         homeInfoView.layer.cornerRadius = 20
         homeInfoView.backgroundColor = UIColor(hexString: "#FFBBBC")
-        homeInfoView.layer.shadowOpacity = 0.6
+        homeInfoView.layer.shadowOpacity = 0.4
         homeInfoView.layer.shadowOffset = CGSize(width: 0, height: 5)
-        homeInfoView.layer.shadowRadius = 5
+        homeInfoView.layer.shadowRadius = 2
         homeInfoView.layer.masksToBounds = false
         settingBtn.setTitle("", for: .normal)
         addPostBtn.setTitle("", for: .normal)

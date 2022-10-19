@@ -31,6 +31,8 @@
 		A9C2A6DA28FD5C0A000EB06D /* TempPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2A6D928FD5C0A000EB06D /* TempPost.swift */; };
 		A9C2A6DC28FD6A9D000EB06D /* TempDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2A6DB28FD6A9D000EB06D /* TempDataManager.swift */; };
 		A9C2A6DE28FD7F95000EB06D /* HomePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2A6DD28FD7F95000EB06D /* HomePostCollectionViewCell.swift */; };
+		A9C8B9C728FF90CC006B7D09 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8B9C628FF90CC006B7D09 /* DateExtension.swift */; };
+		A9C8B9C928FF90F5006B7D09 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8B9C828FF90F5006B7D09 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		A9C2A6D928FD5C0A000EB06D /* TempPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempPost.swift; sourceTree = "<group>"; };
 		A9C2A6DB28FD6A9D000EB06D /* TempDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempDataManager.swift; sourceTree = "<group>"; };
 		A9C2A6DD28FD7F95000EB06D /* HomePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCollectionViewCell.swift; sourceTree = "<group>"; };
+		A9C8B9C628FF90CC006B7D09 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		A9C8B9C828FF90F5006B7D09 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 				9A6C534328F7FBC900B13BF7 /* UIColorExtension.swift */,
 				9A1FCCA028FA9A73001B1584 /* UIButtonExtension.swift */,
 				9A1FCCA428FE81C2001B1584 /* UINavigationExtension.swift */,
+				A9C8B9C628FF90CC006B7D09 /* DateExtension.swift */,
+				A9C8B9C828FF90F5006B7D09 /* StringExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -454,7 +460,9 @@
 				A913FA9D28F91FF500ECA972 /* PostViewController.swift in Sources */,
 				9A1FCCA828FEA102001B1584 /* NavigationBarUtils.swift in Sources */,
 				A919383E28F65D8A00CC8B76 /* SettingsViewController.swift in Sources */,
+				A9C8B9C928FF90F5006B7D09 /* StringExtension.swift in Sources */,
 				9A6C534428F7FBC900B13BF7 /* UIColorExtension.swift in Sources */,
+				A9C8B9C728FF90CC006B7D09 /* DateExtension.swift in Sources */,
 				A9C2A6DE28FD7F95000EB06D /* HomePostCollectionViewCell.swift in Sources */,
 				A913FA4128F7D09F00ECA972 /* CalendarViewController.swift in Sources */,
 				A9C2A6DA28FD5C0A000EB06D /* TempPost.swift in Sources */,

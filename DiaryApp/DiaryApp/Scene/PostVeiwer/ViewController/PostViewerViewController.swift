@@ -18,6 +18,7 @@ class PostViewerViewController: UIViewController {
     @IBOutlet weak var postViewerDateLabel: UILabel!
     @IBOutlet weak var postViewerTitleLabel: UILabel!
     @IBOutlet weak var postViewerDescriptionLabel: UILabel!
+    @IBOutlet weak var postViewerStackView: UIStackView!
     @IBOutlet weak var postViewerEditDate: UILabel!
     
     override func viewDidLoad() {
@@ -26,11 +27,12 @@ class PostViewerViewController: UIViewController {
         setPost()
         setNavigation()
     }
-    func setDateFormat(_ date:Date) -> String{
-        formatter_time.dateFormat = "yyyy.MM.dd"
-        var current_time_string = formatter_time.string(from: date)
-        return current_time_string
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setPost()
     }
+    
     func setUI(){
         postViewerView.clipsToBounds = true
         postViewerView.layer.cornerRadius = 20
@@ -45,10 +47,11 @@ class PostViewerViewController: UIViewController {
     func setPost(){
         guard var tempPostData = tempPostData else {return}
         postViewerImageView.image = tempPostData.postImage
-        postViewerDateLabel.text = setDateFormat(tempPostData.createDate)
-        postViewerEditDate.text = "최근 수정 : " + setDateFormat(tempPostData.editDate ?? tempPostData.createDate)
+        postViewerDateLabel.text = tempPostData.createDate.toString()
+        postViewerEditDate.text = "최근 수정 : " + (tempPostData.editDate?.toString() ?? tempPostData.createDate.toString())
         postViewerTitleLabel.text = tempPostData.postTitle
         postViewerDescriptionLabel.text = tempPostData.postScript
+
 
     }
     
@@ -56,7 +59,13 @@ class PostViewerViewController: UIViewController {
 
     @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
         guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
-        
+        postVC.postData = tempPostData
+        postVC.delegate = self
         self.navigationController?.pushViewController(postVC, animated: true)
+    }
+}
+extension PostViewerViewController: TempPostDelegate{
+    func update(){
+        setPost()
     }
 }
