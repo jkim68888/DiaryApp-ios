@@ -15,22 +15,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		manageSignInSession()
 		guard let _ = (scene as? UIWindowScene) else { return }
 	}
-	
-	// 로그인시 userDefaults에 저장되있는 키값에 따라 루트뷰 변경
-	func manageSignInSession() {
-		let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
-		let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-		let signInViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-		let homeNavigationController = UINavigationController(rootViewController: homeViewController)
-		
-		guard let window = window else { return }
-		
-		if UserDefaults.standard.bool(forKey: "authVerificationID") {
-			window.rootViewController = homeNavigationController
-		} else {
-			window.rootViewController = signInViewController
-		}
-	}
 
 	func sceneDidDisconnect(_ scene: UIScene) {
 		// Called as the scene is being released by the system.
