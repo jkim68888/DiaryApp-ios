@@ -37,11 +37,17 @@ class PostViewerViewController: UIViewController {
         postViewerView.clipsToBounds = true
         postViewerView.layer.cornerRadius = 20
         postViewerView.layer.borderWidth = 0.5
-        postViewerView.layer.borderColor = UIColor.black.cgColor
+        postViewerView.layer.borderColor = UIColor.black.cgColor /// Type이 달라서 공통 Color를 적용할 수 없었음.
         self.view.backgroundColor = UIColor.mainBGColor
     }
     func setNavigation(){
         self.navigationItem.leftBarButtonItem?.setBackgroundImage(UIImage(systemName: "back"), for: .normal, barMetrics: .default)
+        if tempPostData == nil{
+            guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
+            postVC.postData = tempPostData
+            postVC.delegate = self
+            self.navigationController?.pushViewController(postVC, animated: false)
+        }
     }
     
     func setPost(){

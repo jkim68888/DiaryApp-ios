@@ -100,8 +100,8 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func addPostButtonTapped(_ sender: UIButton) {
-        guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
-        self.navigationController?.pushViewController(postVC, animated: true)
+        guard let postViewerVC = storyboard?.instantiateViewController(identifier: "PostViewerViewController") as? PostViewerViewController else { return }
+        self.navigationController?.pushViewController(postViewerVC, animated: false)
     }
 
     @IBAction func settingButtonTapped(_ sender: UIButton) {
