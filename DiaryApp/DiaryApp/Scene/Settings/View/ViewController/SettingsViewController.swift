@@ -8,6 +8,8 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+	// 싱글톤 가져옴
+	let signInService = SignInService.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,4 +22,10 @@ class SettingsViewController: UIViewController {
 		
 		view.backgroundColor = UIColor(hexString: "#FFDCDC")
 	}
+	
+	@IBAction func logoutButtonTapped(_ sender: UIButton) {
+		signInService.getLogOut()
+		goSingInVC()
+	}
+	
 }

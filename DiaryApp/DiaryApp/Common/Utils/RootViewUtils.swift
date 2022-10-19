@@ -32,3 +32,10 @@ func goHomeVC() {
 	
 	window.rootViewController = homeNavigationController
 }
+
+// 로그아웃 완료시 SignIn으로 루트뷰 바꿔줌
+func goSingInVC() {
+	guard let window = sceneDelegate.window else { return }
+	
+	window.rootViewController = signInViewController
+}
