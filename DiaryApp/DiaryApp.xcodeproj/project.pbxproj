@@ -10,6 +10,15 @@
 		9A1FCCA128FA9A73001B1584 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA028FA9A73001B1584 /* UIButtonExtension.swift */; };
 		9A1FCCA528FE81C2001B1584 /* UINavigationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA428FE81C2001B1584 /* UINavigationExtension.swift */; };
 		9A1FCCA828FEA102001B1584 /* NavigationBarUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA728FEA102001B1584 /* NavigationBarUtils.swift */; };
+		9A1FCCAA28FFB162001B1584 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA928FFB162001B1584 /* PostService.swift */; };
+		9A1FCCAC28FFB17E001B1584 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCAB28FFB17E001B1584 /* PostViewModel.swift */; };
+		9A1FCCAE28FFB1BB001B1584 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCAD28FFB1BB001B1584 /* SettingsViewModel.swift */; };
+		9A1FCCB028FFB1CE001B1584 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCAF28FFB1CE001B1584 /* SignInService.swift */; };
+		9A1FCCB428FFB24E001B1584 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCB328FFB24E001B1584 /* SignInViewModel.swift */; };
+		9A1FCCBA28FFB302001B1584 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCB928FFB302001B1584 /* SettingsTableViewCell.swift */; };
+		9A1FCCC128FFB3DF001B1584 /* PostViewerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCC028FFB3DF001B1584 /* PostViewerViewModel.swift */; };
+		9A1FCCC328FFB3F3001B1584 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCC228FFB3F3001B1584 /* CalendarViewModel.swift */; };
+		9A1FCCC528FFB40A001B1584 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCC428FFB40A001B1584 /* HomeViewModel.swift */; };
 		9A6C534428F7FBC900B13BF7 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C534328F7FBC900B13BF7 /* UIColorExtension.swift */; };
 		9A6C537728FA631C00B13BF7 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C537628FA631C00B13BF7 /* EF_Diary.ttf */; };
 		9A6C77AD28F229E400E1092D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C77AC28F229E400E1092D /* AppDelegate.swift */; };
@@ -39,6 +48,15 @@
 		9A1FCCA028FA9A73001B1584 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		9A1FCCA428FE81C2001B1584 /* UINavigationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationExtension.swift; sourceTree = "<group>"; };
 		9A1FCCA728FEA102001B1584 /* NavigationBarUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarUtils.swift; sourceTree = "<group>"; };
+		9A1FCCA928FFB162001B1584 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		9A1FCCAB28FFB17E001B1584 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		9A1FCCAD28FFB1BB001B1584 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		9A1FCCAF28FFB1CE001B1584 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
+		9A1FCCB328FFB24E001B1584 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		9A1FCCB928FFB302001B1584 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		9A1FCCC028FFB3DF001B1584 /* PostViewerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewerViewModel.swift; sourceTree = "<group>"; };
+		9A1FCCC228FFB3F3001B1584 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		9A1FCCC428FFB40A001B1584 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9A6C534328F7FBC900B13BF7 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9A6C537628FA631C00B13BF7 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
 		9A6C77A928F229E400E1092D /* DiaryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiaryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +103,66 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		9A1FCCB528FFB265001B1584 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9A1FCCB828FFB2D4001B1584 /* Cell */,
+				9A1FCCB728FFB2C7001B1584 /* ViewController */,
+				9A1FCCB628FFB2BE001B1584 /* Storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9A1FCCB628FFB2BE001B1584 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A919383528F65C1C00CC8B76 /* Settings.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		9A1FCCB728FFB2C7001B1584 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A919383D28F65D8A00CC8B76 /* SettingsViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9A1FCCB828FFB2D4001B1584 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9A1FCCB928FFB302001B1584 /* SettingsTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		9A1FCCBB28FFB319001B1584 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9A43DF6A28F7E577004DBE82 /* ViewController */,
+				9A43DF6928F7E570004DBE82 /* Storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9A1FCCBC28FFB334001B1584 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9A43DF5628F7E390004DBE82 /* ViewController */,
+				9A43DF5528F7E386004DBE82 /* Storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9A1FCCBF28FFB3CE001B1584 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9A1FCCC028FFB3DF001B1584 /* PostViewerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9A43DF4D28F7E006004DBE82 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,11 +179,13 @@
 		9A43DF4E28F7E036004DBE82 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				9A1FCCA928FFB162001B1584 /* PostService.swift */,
+				9A1FCCAF28FFB1CE001B1584 /* SignInService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
 		};
-		9A43DF4F28F7E045004DBE82 /* Extension */ = {
+		9A43DF4F28F7E045004DBE82 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				9A6C534328F7FBC900B13BF7 /* UIColorExtension.swift */,
@@ -114,7 +194,7 @@
 				A9C8B9C628FF90CC006B7D09 /* DateExtension.swift */,
 				A9C8B9C828FF90F5006B7D09 /* StringExtension.swift */,
 			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		9A43DF5128F7E0CA004DBE82 /* Storyboard */ = {
@@ -137,6 +217,7 @@
 		9A43DF5328F7E0DF004DBE82 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9A1FCCC428FFB40A001B1584 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -144,6 +225,9 @@
 		9A43DF5428F7E156004DBE82 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				9A6C537528FA626A00B13BF7 /* Fonts */,
+				9A1FCCA628FEA0DB001B1584 /* Utils */,
+				9A43DF4F28F7E045004DBE82 /* Extensions */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -167,6 +251,7 @@
 		9A43DF5728F7E397004DBE82 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9A1FCCC228FFB3F3001B1584 /* CalendarViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -174,7 +259,7 @@
 		9A43DF5828F7E3AF004DBE82 /* PostVeiwer */ = {
 			isa = PBXGroup;
 			children = (
-				9A43DF5C28F7E427004DBE82 /* ViewModel */,
+				9A1FCCBF28FFB3CE001B1584 /* ViewModel */,
 				9A43DF5B28F7E3DF004DBE82 /* ViewController */,
 				9A43DF5A28F7E3D8004DBE82 /* Storyboard */,
 			);
@@ -197,19 +282,11 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		9A43DF5C28F7E427004DBE82 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		9A43DF6328F7E52D004DBE82 /* Signin */ = {
 			isa = PBXGroup;
 			children = (
+				9A1FCCBB28FFB319001B1584 /* View */,
 				9A43DF6B28F7E57F004DBE82 /* ViewModel */,
-				9A43DF6A28F7E577004DBE82 /* ViewController */,
-				9A43DF6928F7E570004DBE82 /* Storyboard */,
 			);
 			path = Signin;
 			sourceTree = "<group>";
@@ -217,9 +294,8 @@
 		9A43DF6428F7E537004DBE82 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				9A43DF6828F7E56B004DBE82 /* Storyboard */,
+				9A1FCCB528FFB265001B1584 /* View */,
 				9A43DF6728F7E563004DBE82 /* ViewModel */,
-				9A43DF6628F7E55C004DBE82 /* ViewController */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -233,27 +309,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		9A43DF6628F7E55C004DBE82 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				A919383D28F65D8A00CC8B76 /* SettingsViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		9A43DF6728F7E563004DBE82 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9A1FCCAD28FFB1BB001B1584 /* SettingsViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		9A43DF6828F7E56B004DBE82 /* Storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				A919383528F65C1C00CC8B76 /* Settings.storyboard */,
-			);
-			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		9A43DF6928F7E570004DBE82 /* Storyboard */ = {
@@ -275,6 +336,7 @@
 		9A43DF6B28F7E57F004DBE82 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9A1FCCB328FFB24E001B1584 /* SignInViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -306,14 +368,11 @@
 		9A6C77AB28F229E400E1092D /* DiaryApp */ = {
 			isa = PBXGroup;
 			children = (
-				9A6C537528FA626A00B13BF7 /* Fonts */,
 				9A6C77AC28F229E400E1092D /* AppDelegate.swift */,
 				9A6C77AE28F229E400E1092D /* SceneDelegate.swift */,
 				9A6C77B728F229E500E1092D /* LaunchScreen.storyboard */,
-				9A43DF6528F7E54F004DBE82 /* Model */,
 				9A43DF5428F7E156004DBE82 /* Common */,
-				9A1FCCA628FEA0DB001B1584 /* Utils */,
-				9A43DF4F28F7E045004DBE82 /* Extension */,
+				9A43DF6528F7E54F004DBE82 /* Model */,
 				9A43DF4E28F7E036004DBE82 /* Service */,
 				9A43DF4D28F7E006004DBE82 /* Scene */,
 				9A6C77B528F229E500E1092D /* Assets.xcassets */,
@@ -325,9 +384,8 @@
 		A913FA3D28F7CC0900ECA972 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				9A1FCCBC28FFB334001B1584 /* View */,
 				9A43DF5728F7E397004DBE82 /* ViewModel */,
-				9A43DF5628F7E390004DBE82 /* ViewController */,
-				9A43DF5528F7E386004DBE82 /* Storyboard */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -345,6 +403,7 @@
 		A913FA9928F91F7300ECA972 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9A1FCCAB28FFB17E001B1584 /* PostViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -452,13 +511,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A1FCCC128FFB3DF001B1584 /* PostViewerViewModel.swift in Sources */,
 				A919384028F65D9E00CC8B76 /* SignInViewController.swift in Sources */,
 				9A1FCCA128FA9A73001B1584 /* UIButtonExtension.swift in Sources */,
 				9A6C77AD28F229E400E1092D /* AppDelegate.swift in Sources */,
+				9A1FCCC328FFB3F3001B1584 /* CalendarViewModel.swift in Sources */,
 				A9C2A6DC28FD6A9D000EB06D /* TempDataManager.swift in Sources */,
 				9A6C77AF28F229E400E1092D /* SceneDelegate.swift in Sources */,
 				A913FA9D28F91FF500ECA972 /* PostViewController.swift in Sources */,
+				9A1FCCB028FFB1CE001B1584 /* SignInService.swift in Sources */,
 				9A1FCCA828FEA102001B1584 /* NavigationBarUtils.swift in Sources */,
+				9A1FCCB428FFB24E001B1584 /* SignInViewModel.swift in Sources */,
+				9A1FCCAA28FFB162001B1584 /* PostService.swift in Sources */,
 				A919383E28F65D8A00CC8B76 /* SettingsViewController.swift in Sources */,
 				A9C8B9C928FF90F5006B7D09 /* StringExtension.swift in Sources */,
 				9A6C534428F7FBC900B13BF7 /* UIColorExtension.swift in Sources */,
@@ -466,9 +530,13 @@
 				A9C2A6DE28FD7F95000EB06D /* HomePostCollectionViewCell.swift in Sources */,
 				A913FA4128F7D09F00ECA972 /* CalendarViewController.swift in Sources */,
 				A9C2A6DA28FD5C0A000EB06D /* TempPost.swift in Sources */,
+				9A1FCCAE28FFB1BB001B1584 /* SettingsViewModel.swift in Sources */,
 				9A1FCCA528FE81C2001B1584 /* UINavigationExtension.swift in Sources */,
+				9A1FCCC528FFB40A001B1584 /* HomeViewModel.swift in Sources */,
 				A919382628F64E9900CC8B76 /* HomeViewController.swift in Sources */,
+				9A1FCCBA28FFB302001B1584 /* SettingsTableViewCell.swift in Sources */,
 				A919384228F65DDD00CC8B76 /* PostViewerViewController.swift in Sources */,
+				9A1FCCAC28FFB17E001B1584 /* PostViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
