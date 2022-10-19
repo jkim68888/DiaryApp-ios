@@ -18,7 +18,7 @@ class TempDataManager{
             TempPost(userID: "momo", postTitle: "행복한 하루", postScrpit: "가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사.", postImage: UIImage(named: "Dog.png"), createDate: Date()),
             TempPost(userID: "momo", postTitle: "즐거운 하루", postScrpit: "가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사.", postImage: UIImage(named: "cat.jpeg"), createDate: Date()),
             TempPost(userID: "momo", postTitle: "즐거운 하루", postScrpit: "가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사.", postImage: UIImage(named: "NoteBook.png"), createDate: Date()),
-            TempPost(userID: "momo", postTitle: "즐거운 하루", postScrpit: "가을이였다....", postImage: UIImage(named: "NoImage.png"), createDate: Date()),
+            TempPost(userID: "momo", postTitle: "즐거운 하루", postScrpit: "가을이였다....", postImage: UIImage(named: ""), createDate: Date()),
             TempPost(userID: "momo", postTitle: "즐거운 하루", postScrpit: "가을이였다....", postImage: UIImage(named: "Food.png"), createDate: Date()),
             TempPost(userID: "momo", postTitle: "즐거운 하루", postScrpit: "가을이였다....", postImage: UIImage(named: "Bear.png"), createDate: Date()),
             TempPost(userID: "momo", postTitle: "즐거운 하루", postScrpit: "가을이였다....", postImage: UIImage(named: "cat.jpeg"), createDate: Date()),
