@@ -34,10 +34,10 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Iyk-ew-bkE">
                                         <rect key="frame" x="10" y="370" width="361" height="168"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" text="2022.09.28" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICQ-yd-acB">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" text="2022.09.28" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICQ-yd-acB">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="dPX-uh-8UK"/>
+                                                    <constraint firstAttribute="height" constant="30" id="rqI-mF-PF6"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="18"/>
                                                 <color key="textColor" systemColor="systemGrayColor"/>

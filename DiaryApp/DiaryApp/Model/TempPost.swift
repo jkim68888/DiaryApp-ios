@@ -14,7 +14,7 @@ struct TempPost{
     var userID:String
     var postNumber:Int
     var postTitle:String
-    var postScript:String
+    var postDescription:String
     var postImage:UIImage?
     var createDate:Date
     var editDate:Date?
@@ -23,7 +23,7 @@ struct TempPost{
         postNumber = TempPost.postNumCount
         self.userID = userID
         self.postTitle = postTitle
-        self.postScript = postScrpit
+        self.postDescription = postScrpit
         self.postImage = postImage
         self.createDate = createDate
         TempPost.postNumCount += 1

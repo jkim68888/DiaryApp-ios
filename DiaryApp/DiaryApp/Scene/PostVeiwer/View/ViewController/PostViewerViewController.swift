@@ -56,7 +56,14 @@ class PostViewerViewController: UIViewController {
             postViewerDateLabel.text = tempPostData.createDate.toString()
             postViewerEditDate.text = "최근 수정 : " + (tempPostData.editDate?.toString() ?? tempPostData.createDate.toString())
             postViewerTitleLabel.text = tempPostData.postTitle
-            postViewerDescriptionLabel.text = tempPostData.postScript
+            postViewerDescriptionLabel.text = tempPostData.postDescription
+        }
+        if postViewerImageView.image == nil{
+            print("image가 없습니다.")
+            
+            postViewerStackView.translatesAutoresizingMaskIntoConstraints = false
+            postViewerStackView.topAnchor.constraint(equalTo: postViewerView.topAnchor,constant: 20).isActive = true
+            
         }
 
     }
