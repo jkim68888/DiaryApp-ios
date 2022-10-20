@@ -52,7 +52,7 @@ class PostViewController: UIViewController {
         postImageView.image = postData.postImage
         postDateLabel.text = postData.createDate.toString()
         postTitleTF.text = postData.postTitle
-        postScriptTV.text = postData.postScript
+        postScriptTV.text = postData.postDescription
         
     }
     func setUI(){
@@ -130,7 +130,7 @@ class PostViewController: UIViewController {
             editpostData?.postImage = postImageView.image ?? UIImage(named: "NoImage.png")
             editpostData?.createDate = postDateLabel.text!.toDate() ?? Date()
             editpostData?.postTitle = postTitleTF.text ?? ""
-            editpostData?.postScript = postScriptTV.text ?? ""
+            editpostData?.postDescription = postScriptTV.text ?? ""
             postData = editpostData
             homeVC.dataManager.addPostData(postData!)
             print(postData!)
@@ -145,7 +145,7 @@ class PostViewController: UIViewController {
             postData!.postImage = postImageView.image
             postData!.createDate = postDateLabel.text!.toDate() ?? Date()
             postData!.postTitle = postTitleTF.text ?? ""
-            postData!.postScript = postScriptTV.text ?? ""
+            postData!.postDescription = postScriptTV.text ?? ""
             
             postViewerVC.tempPostData = postData!
             homeVC.dataManager.update(index: postNumber!, postData!)
