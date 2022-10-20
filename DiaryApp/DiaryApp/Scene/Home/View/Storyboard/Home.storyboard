@@ -239,17 +239,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nUX-0t-g6I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4405.072463768116" y="48.883928571428569"/>
-        </scene>
-        <!--PostViewController-->
-        <scene sceneID="naN-On-SKe">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="PostViewController" storyboardName="Post" referencedIdentifier="PostViewController" id="9Fw-kQ-kOS" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Huw-L7-fHJ"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3sp-le-aG4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4384.7826086956529" y="97.767857142857139"/>
+            <point key="canvasLocation" x="4405" y="108"/>
         </scene>
         <!--CalendarViewController-->
         <scene sceneID="8Ym-Wm-K0w">
@@ -267,7 +257,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="PostViewerViewController" storyboardName="PostViewer" referencedIdentifier="PostViewerViewController" id="lE5-oD-lnn" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XB5-ox-Gw3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4418.115942028986" y="205.58035714285714"/>
+            <point key="canvasLocation" x="4415" y="200"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jYB-oI-ROl">
