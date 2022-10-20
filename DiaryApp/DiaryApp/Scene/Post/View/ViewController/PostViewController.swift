@@ -33,22 +33,27 @@ class PostViewController: UIViewController {
         customBackButton(self: self, target: self.navigationController!)
     }
     func setData(){
+        /// 데이터 가져왔을 때, nil인 경우는 New Post를 작성하는 경우 -> 새로운 postData를 만들어 초기화해준다.
         if postData == nil{
             print("데이터불러오기실패")
-            postScriptTVPlaceHolder = "텍스트를 입력하세요"
-        }else{
+            postData = TempPost(userID: "momo", postTitle: "", postScrpit: "텍스트를 입력해주세요", postImage: nil, createDate: Date())
+            /// 기존 PostData를 담은 Array에 새로운 게시글 내용을 추가한다.
+            let homeVC = navigationController?.viewControllers[0] as! HomeViewController
+            homeVC.dataManager.addPostData(postData)
+        }
+        /// 이미 존재하는 Post를 수정하는 경우
+        else{
             print("데이터불러오기성공")
         }
         guard let postData = postData else { return }
-        //postNumber는 해당 Post의 고유 번호이다. 수정하거나 삭제할때 필요하다.
-        postNumber = postData.postNumber
+        postNumber = postData.postNumber /// postNumber는 해당 Post의 고유 번호이다. 수정하거나 삭제할때 필요하다.
         
-        // 기본적인 Post 정보에 담길 내용을 Setting해준다.
-        print(#function)
+        /// 기본적인 Post 정보에 담길 내용을 Setting해준다.
         postImageView.image = postData.postImage
         postDateLabel.text = postData.createDate.toString()
         postTitleTF.text = postData.postTitle
         postScriptTV.text = postData.postScript
+        
     }
     func setUI(){
         postImageBtn.setTitle("", for: .normal)
@@ -142,12 +147,9 @@ class PostViewController: UIViewController {
             postData!.postTitle = postTitleTF.text ?? ""
             postData!.postScript = postScriptTV.text ?? ""
             
-            
-            
-            delegate?.update()
-            
             postViewerVC.tempPostData = postData!
             homeVC.dataManager.update(index: postNumber!, postData!)
+            delegate?.update()
             self.navigationController?.popViewController(animated: true)
         }
     }

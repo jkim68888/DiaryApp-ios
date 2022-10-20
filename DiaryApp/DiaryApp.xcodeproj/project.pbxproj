@@ -262,9 +262,8 @@
 		9A43DF5828F7E3AF004DBE82 /* PostVeiwer */ = {
 			isa = PBXGroup;
 			children = (
+				A9C8B9CC2900E88C006B7D09 /* View */,
 				9A1FCCBF28FFB3CE001B1584 /* ViewModel */,
-				9A43DF5B28F7E3DF004DBE82 /* ViewController */,
-				9A43DF5A28F7E3D8004DBE82 /* Storyboard */,
 			);
 			path = PostVeiwer;
 			sourceTree = "<group>";
@@ -396,8 +395,7 @@
 		A913FA9828F91F6B00ECA972 /* Post */ = {
 			isa = PBXGroup;
 			children = (
-				A913FA9B28F91F8300ECA972 /* Storyboard */,
-				A913FA9A28F91F7A00ECA972 /* ViewController */,
+				A9C8B9CE2900E8E9006B7D09 /* View */,
 				A913FA9928F91F7300ECA972 /* ViewModel */,
 			);
 			path = Post;
@@ -430,11 +428,37 @@
 		A919383A28F65D3500CC8B76 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A9C8B9CD2900E8C9006B7D09 /* View */,
 				9A43DF5328F7E0DF004DBE82 /* ViewModel */,
-				9A43DF5228F7E0D4004DBE82 /* ViewController */,
-				9A43DF5128F7E0CA004DBE82 /* Storyboard */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		A9C8B9CC2900E88C006B7D09 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9A43DF5B28F7E3DF004DBE82 /* ViewController */,
+				9A43DF5A28F7E3D8004DBE82 /* Storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A9C8B9CD2900E8C9006B7D09 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9A43DF5128F7E0CA004DBE82 /* Storyboard */,
+				9A43DF5228F7E0D4004DBE82 /* ViewController */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A9C8B9CE2900E8E9006B7D09 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A913FA9A28F91F7A00ECA972 /* ViewController */,
+				A913FA9B28F91F8300ECA972 /* Storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
