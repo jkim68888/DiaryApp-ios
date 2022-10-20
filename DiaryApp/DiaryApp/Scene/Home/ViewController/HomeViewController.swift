@@ -22,10 +22,10 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //navigationController?.setNavigationBarHidden(true, animated: false)
         setUI()
         dataRoad()
         setCollectionView()
+        customBackButton(self: self, target: self.navigationController!)
     }
     // 현재View(homeVC)가 보이려고할 때,
     /// 1. 네비게이션 바를 임의적으로 숨긴다.

@@ -30,7 +30,7 @@ class PostViewController: UIViewController {
         setDelegate()
         setGesture()
         setImagePickView()
-        // Do any additional setup after loading the view.
+        customBackButton(self: self, target: self.navigationController!)
     }
     func setData(){
         if postData == nil{
@@ -63,6 +63,7 @@ class PostViewController: UIViewController {
         postImageView.layer.borderColor = UIColor.black.cgColor
         
         postTitleTF.borderStyle = .none
+        self.navigationController?.navigationBar.customNavigationBar()
         
         
     }
