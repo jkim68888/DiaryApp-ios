@@ -11,15 +11,15 @@ class HomePostCollectionViewCell: UICollectionViewCell {
     
     var postData:TempPost?{
         didSet{
-            guard var postData = postData else {
+            guard let postData = postData else {
                 return
             }
             cellImageView.image = postData.postImage ?? UIImage(named: "NoImage.png")
             cellTitleLabel.text = postData.createDate.toString()
             cellView.clipsToBounds = true
-            cellView.layer.cornerRadius = 15
+            cellView.layer.cornerRadius = 10
             cellView.layer.borderWidth = 1
-            cellView.layer.borderColor = UIColor.black.cgColor
+			cellView.layer.borderColor = UIColor(hexString: "#999999").cgColor
         }
     }
     

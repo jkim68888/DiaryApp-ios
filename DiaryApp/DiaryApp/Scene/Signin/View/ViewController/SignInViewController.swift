@@ -31,6 +31,7 @@ class SignInViewController: UIViewController {
 			item.layer.cornerRadius = 5
 			item.clipsToBounds = true
 			item.layer.borderWidth = 1
+			item.layer.borderColor = UIColor(hexString: "#999999").cgColor
 		}
 		
 		// 라벨 컬러 설정

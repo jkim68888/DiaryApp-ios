@@ -8,13 +8,9 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
-    @IBOutlet weak var homeInfoView: UIView!
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var defaultStackView: UIStackView!
-    @IBOutlet weak var calendarBtn: UIButton!
     @IBOutlet weak var addPostBtn: UIButton!
-    @IBOutlet weak var settingBtn: UIButton!
     
     var haveData:Bool = false
     let flowLayout = UICollectionViewFlowLayout()
@@ -25,7 +21,6 @@ class HomeViewController: UIViewController {
         setUI()
         dataRoad()
         setCollectionView()
-        customBackButton(self: self, target: self.navigationController!)
     }
     // 현재View(homeVC)가 보이려고할 때,
     /// 1. 네비게이션 바를 임의적으로 숨긴다.
@@ -41,53 +36,58 @@ class HomeViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+	
     func setUI(){
-        homeInfoView.clipsToBounds = true
-        homeInfoView.layer.cornerRadius = 20
-        homeInfoView.backgroundColor = UIColor.mainBGColor
-        homeInfoView.layer.shadowOpacity = 0.4
-        homeInfoView.layer.shadowOffset = CGSize(width: 0, height: 5)
-        homeInfoView.layer.shadowRadius = 2
-        homeInfoView.layer.masksToBounds = false
-        settingBtn.setTitle("", for: .normal)
-        addPostBtn.setTitle("", for: .normal)
-        calendarBtn.setTitle("", for: .normal)
+		addPostBtn.setTitle("", for: .normal)
         addPostBtn.clipsToBounds = true
         addPostBtn.layer.cornerRadius = addPostBtn.frame.width / 2
-
+		addPostBtn.layer.shadowOpacity = 0.25
+		addPostBtn.layer.shadowOffset = CGSize(width: 2, height: 2)
+		addPostBtn.layer.shadowRadius = 4
+		addPostBtn.layer.masksToBounds = false
     }
     
     func setCollectionView(){
-        if haveData == true{
+        if haveData {
+			let itemsPerRow: CGFloat = 2
+			let textAreaHeight: CGFloat = 35
+			let itemSpacing: CGFloat = 16
+			let width = homeCollectionView.bounds.width
+			let widthPadding = itemSpacing * (itemsPerRow + 1)
+			let cellWidth = ((width - widthPadding) / itemsPerRow)
+			let cellHeight = cellWidth + textAreaHeight
+			
             homeCollectionView.isHidden = false
             defaultStackView.isHidden = true
+			
+			flowLayout.scrollDirection = .vertical
+			flowLayout.headerReferenceSize = CGSize(width: homeCollectionView.bounds.width, height: 136.0)
+			flowLayout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+			flowLayout.minimumLineSpacing = itemSpacing
             
             homeCollectionView.delegate = self
             homeCollectionView.dataSource = self
             homeCollectionView.backgroundColor = .white
-            flowLayout.scrollDirection = .vertical
-            
-            let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-            let width = homeCollectionView.frame.width
-            let height = homeCollectionView.frame.height
-            let itemsPerRow: CGFloat = 2
-            let itemsPerColumn: CGFloat = 3
-            
-            let widthPadding = sectionInsets.left * (itemsPerRow + 1)
-            let heightPadding = sectionInsets.top * (itemsPerColumn + 1)
-            let cellWidth = ((width - widthPadding) / itemsPerRow) - itemsPerRow
-            let cellHeight = (height - heightPadding) / itemsPerColumn
-            
-//            let cellWidth = (homeInfoView.bounds.width / 2) - 6
-//            let cellHeight = cellWidth * 0.7
-            flowLayout.itemSize = CGSize(width: cellWidth, height: cellHeight)
-//            let upDownSpacing:CGFloat = 10
-//            let leftRightSpacing:CGFloat = 1
-//            flowLayout.minimumInteritemSpacing = leftRightSpacing
-//            flowLayout.minimumLineSpacing = upDownSpacing
-            homeCollectionView.collectionViewLayout = flowLayout
-        }
+			homeCollectionView.collectionViewLayout = flowLayout
+			
+		} else {
+			homeCollectionView.isHidden = true
+			defaultStackView.isHidden = false
+		}
     }
+	
+	func setCollectionHeaderUI(header: HomePostCollectionReusableView) {
+		header.homeInfoView.clipsToBounds = true
+		header.homeInfoView.layer.cornerRadius = 15
+		header.homeInfoView.backgroundColor = UIColor.mainBGColor
+		header.homeInfoView.layer.shadowOpacity = 0.25
+		header.homeInfoView.layer.shadowOffset = CGSize(width: 4, height: 4)
+		header.homeInfoView.layer.shadowRadius = 2
+		header.homeInfoView.layer.masksToBounds = false
+		header.settingBtn.setTitle("", for: .normal)
+		header.calendarBtn.setTitle("", for: .normal)
+	}
+	
     func dataRoad(){
         dataManager.roadPostData()
         print(#function)
@@ -113,28 +113,39 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(calendarVC, animated: true)
     }
 }
-extension HomeViewController:UICollectionViewDataSource{
+extension HomeViewController: UICollectionViewDataSource{
+	
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataManager.getPostDate().count
     }
+	
+	func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+		
+		let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HomePostCollectionViewHeader", for: indexPath) as! HomePostCollectionReusableView
+		
+		setCollectionHeaderUI(header: headerView)
+		
+		return headerView
+	}
+	
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! HomePostCollectionViewCell
+		
         cell.postData = dataManager.getPostDate()[indexPath.row]
+		 
         return cell
     }
 }
-extension HomeViewController:UICollectionViewDelegate{
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
-        guard let postViewerVC = storyboard?.instantiateViewController(identifier: "PostViewerViewController") as? PostViewerViewController else { return }
-        
-        postViewerVC.tempPostData = dataManager.getPostDate()[indexPath.row]
-        
-        
-        self.navigationController?.pushViewController(postViewerVC, animated: true)
-        
-        
-    }
 
+extension HomeViewController: UICollectionViewDelegate{
+
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		
+		guard let postViewerVC = storyboard?.instantiateViewController(identifier: "PostViewerViewController") as? PostViewerViewController else { return }
+		
+		postViewerVC.tempPostData = dataManager.getPostDate()[indexPath.row]
+		
+		
+		self.navigationController?.pushViewController(postViewerVC, animated: true)
+	}
 }
