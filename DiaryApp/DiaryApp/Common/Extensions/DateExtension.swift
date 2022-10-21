@@ -13,5 +13,12 @@ extension Date {
         dateFormatter.dateFormat = "yyyy.MM.dd"
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
         return dateFormatter.string(from: self)
+        
+    }
+    func toString_Calendar() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy년 MM월"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        return dateFormatter.string(from: self)
     }
 }

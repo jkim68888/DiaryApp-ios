@@ -8,14 +8,152 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
+    let now = Date()
+    var cal = Calendar.current
+    let dateFormatter = DateFormatter()
+    var components = DateComponents()
+    var weeks: [String] = ["일","월","화","수","목","금","토"]
+    var days: [String] = []
+    var daysCountInMonth = 0 //한 달에 몇일까지 있는지
+    var weekdayAdding = 0 // 시작일
+    
+    let editYear: Int = 0
+    let editMonth: Int = 0
+    let editDay: Int = 0
+    
+    var setMonth = Calendar.current.component(.month, from: Date())
 
+    @IBOutlet weak var prevMonth: UIButton!
+    @IBOutlet weak var nowMonth: UILabel!
+    @IBOutlet weak var nextMonth: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-		setUI()
-		customBackButton(self: self, target: self.navigationController!)
+        setUI()
+        initView()
+        initMonthBtn()
+        customBackButton(self: self, target: self.navigationController!)
+    }
+    private func initView(){
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        // 초기 Date 설정, 현재 Date를 불러와 현재의 년도, 월, 일을 세팅한다.
+        components.year = cal.component(.year, from: Date()) // 2022
+        components.month = cal.component(.month, from: Date()) // 10
+        components.day = 1
+        
+        nowMonth.text = Date().toString_Calendar()
+        self.calculation()
+    }
+    func initMonthBtn(){
+        if components.month == 1{
+            prevMonth.setTitle("12월", for: .normal)
+            nextMonth.setTitle("\(components.month! + 1)월", for: .normal)
+        }else if components.month == 12{
+            prevMonth.setTitle("\(components.month! - 1)월", for: .normal)
+            nextMonth.setTitle("1월", for: .normal)
+        }else{
+            prevMonth.setTitle("\(components.month! - 1)월", for: .normal)
+            nextMonth.setTitle("\(components.month! + 1)월", for: .normal)
+        }
     }
 
-	func setUI() {
-		self.title = "캘린더"
-	}
+    func setUI() {
+        self.title = "캘린더"
+    }
+
+    private func calculation() {
+        
+        /// 위에서 세팅한 날짜를 담아준다.
+        let firstDayOfMonth = cal.date(from: DateComponents())
+        
+        /// 뭔지 잘 모르겠음
+        let firstWeekday = cal.component(.weekday, from: firstDayOfMonth!)
+        
+        /// 한 달에 몇일까지 있는지 계산
+        
+        daysCountInMonth = cal.range(of: .day, in: .month, for: firstDayOfMonth!)!.count
+        weekdayAdding = 2 - firstWeekday
+        
+        self.days.removeAll()
+        for day in weekdayAdding...daysCountInMonth {
+            if day < 1 {
+                self.days.append("")
+            } else {
+                self.days.append(String(day))
+            }
+        }
+    }
+
+
+
+    // 이전 달로 이동
+    @IBAction func didPrevButtonTapped(_ sender: UIButton) {
+        components.month! -= 1
+        if components.month == 0{
+            components.year! -= 1
+        }
+        print(Calendar.current.date(from: components)!.toString_Calendar())
+        nowMonth.text = Calendar.current.date(from: components)!.toString_Calendar()
+        self.calculation()
+        self.collectionView.reloadData()
+        initMonthBtn()
+    }
+    // 다음 달로 이동
+    @IBAction func didNextButtonTapped(_ sender: UIButton) {
+        components.month! += 1
+        if components.month == 13{
+            components.year! += 1
+        }
+        print(Calendar.current.date(from: components)!.toString_Calendar())
+        nowMonth.text = Calendar.current.date(from: components)!.toString_Calendar()
+        self.calculation()
+        self.collectionView.reloadData()
+        initMonthBtn()
+    }
+}
+
+extension CalendarViewController:UICollectionViewDelegate, UICollectionViewDataSource{
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return 7
+        default:
+            return self.days.count
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCollectionViewCell
+
+                switch indexPath.section {
+                case 0:
+                    cell.dateLabel.text = weeks[indexPath.row] // 요일
+                default:
+                    cell.dateLabel.text = days[indexPath.row] // 일
+                }
+
+                if indexPath.row % 7 == 0 { // 일요일
+                    cell.dateLabel.textColor = .red
+                } else if indexPath.row % 7 == 6 { // 토요일
+                    cell.dateLabel.textColor = .blue
+                } else { // 월요일 좋아(평일)
+                    cell.dateLabel.textColor = .black
+                }
+                return cell
+    }
+}
+//extension CalendarViewController: UICollectionViewDelegate{
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        <#code#>
+//    }
+//}
+extension CalendarViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let myBoundSize: CGFloat = UIScreen.main.bounds.size.width
+        let cellSize : CGFloat = myBoundSize / 9
+        return CGSize(width: cellSize, height: cellSize)
+    }
 }
