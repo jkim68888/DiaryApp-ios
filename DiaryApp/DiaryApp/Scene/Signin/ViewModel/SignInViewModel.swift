@@ -14,6 +14,8 @@ class SignInViewModel {
 	// 싱글톤 가져옴
 	let signInService = SignInService.shared
 	
+	var userData: User?
+	
 	func getKakaoToken(token: String?) {
 		UserApi.shared.me { [self] user, error in
 			if let error = error {
@@ -26,12 +28,17 @@ class SignInViewModel {
 					return
 				}
 				
-				print("카카오호출 >> 토큰: \(token), 이름: \(name)")
+				// 데이터 모델에 담기
+//				guard var data = userData else { return }
+//				data.token = token
+//				data.name = name
+				
+				print("🥳\(token)")
 				
 				signInService.accessToken = token
 				
 				signInService.requestPost(url: "http://localhost:4000/api/auth/callback/kakao", method: "POST", param: ["name": name]) { (success, data) in
-					print(data)
+					print("뷰모델 Post데이터: \(data)")
 				}
 			}
 		}
@@ -72,10 +79,18 @@ class SignInViewModel {
 					// 관련 메소드 추가
 					// 사용자 정보 불러옴
 					self.getKakaoToken(token: oauthToken?.accessToken)
+					self.getUserInfo()
 					
 					goHomeVC()
 				}
 			}
+		}
+	}
+	
+	// 백엔드에서 유저 가져오기
+	func getUserInfo() {
+		signInService.requestGet(url: "http://localhost:4000/api/home") { (success, data) in
+			print("뷰모델 Get데이터: \(data)")
 		}
 	}
 }
