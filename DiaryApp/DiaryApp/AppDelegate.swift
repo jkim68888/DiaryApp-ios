@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KakaoSDKCommon
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,6 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// 네비게이션바 공통 스타일
 		UINavigationBar.appearance().customNavigationBar()
+		
+		
+		// kakao init
+		KakaoSDK.initSDK(appKey: Config().kakaoAppKey)
+		
 		return true
 	}
 
