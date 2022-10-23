@@ -8,13 +8,16 @@
 import Foundation
 
 struct UserData: Codable {
-	let resultCount: Int
-	let results: [User]
+	let jwtToken: String
+	
+	enum CodingKeys: String, CodingKey {
+		case jwtToken
+	}
 }
 
 struct User: Codable {
-	let token: String
-	let name: String
+	var token: String
+	var name: String
 	
 	enum CodingKeys: String, CodingKey {
 		case token

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "56D3C0DA-E303-405B-ADA8-D68C66E9AFD0"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7E35B491-A437-4BB9-A055-6AD0A44EDD8C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "getKakaoToken(token:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "585B118B-6F3E-4D93-BE9F-239D25C03E21"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "getKakaoToken(token:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DF68C828-920E-47F5-93A0-BBE56002A32B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "getKakaoToken(token:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DF68C828-920E-47F5-93A0-BBE56002A32B - 9ec58ac5b472f066"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;KakaoSDKUser.User&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DiaryApp.SignInViewModel.getKakaoToken(token: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "340">
+               </Location>
+               <Location
+                  uuid = "DF68C828-920E-47F5-93A0-BBE56002A32B - 9ec58ac5b472f066"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;KakaoSDKUser.User&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DiaryApp.SignInViewModel.getKakaoToken(token: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "680">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3C90CFA2-EBCB-4164-8A64-B0E1AF170BC8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "getKakaoToken(token:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C8C16190-4280-4FA5-9D1D-E3754CA7E9B8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "getKakaoToken(token:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C8C16190-4280-4FA5-9D1D-E3754CA7E9B8 - 9ec58ac5b472f14d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;KakaoSDKUser.User&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DiaryApp.SignInViewModel.getKakaoToken(token: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1292">
+               </Location>
+               <Location
+                  uuid = "C8C16190-4280-4FA5-9D1D-E3754CA7E9B8 - 9ec58ac5b472f14d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;KakaoSDKUser.User&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DiaryApp.SignInViewModel.getKakaoToken(token: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1420">
+               </Location>
+               <Location
+                  uuid = "C8C16190-4280-4FA5-9D1D-E3754CA7E9B8 - 9ec58ac5b472f14d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;KakaoSDKUser.User&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DiaryApp.SignInViewModel.getKakaoToken(token: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1492">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1334ABA4-7D03-4E8C-9309-810D489B06A4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "getKakaoToken(token:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1334ABA4-7D03-4E8C-9309-810D489B06A4 - 9ec58ac5b472f14d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;KakaoSDKUser.User&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DiaryApp.SignInViewModel.getKakaoToken(token: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1292">
+               </Location>
+               <Location
+                  uuid = "1334ABA4-7D03-4E8C-9309-810D489B06A4 - 9ec58ac5b472f14d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;KakaoSDKUser.User&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DiaryApp.SignInViewModel.getKakaoToken(token: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1420">
+               </Location>
+               <Location
+                  uuid = "1334ABA4-7D03-4E8C-9309-810D489B06A4 - 9ec58ac5b472f14d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;KakaoSDKUser.User&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DiaryApp.SignInViewModel.getKakaoToken(token: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1492">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "81B6CCC7-AF51-4871-8140-DECB5A7B2532"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryApp/Service/SignInService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "requestPost(url:method:param:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
