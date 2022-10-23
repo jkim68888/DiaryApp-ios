@@ -8,11 +8,10 @@
 import UIKit
 
 class SignInViewController: UIViewController {
-	// 싱글톤 가져옴
-	let signInService = SignInService.shared
-	
 	@IBOutlet var signInButtons: [UIButton]!
 	@IBOutlet weak var titleLabel: UILabel!
+	
+	let viewModel = SignInViewModel()
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,22 +38,18 @@ class SignInViewController: UIViewController {
 	}
 	
 	@IBAction func appleButtonTapped(_ sender: UIButton) {
-		signInService.getSignIn()
-		goHomeVC()
+
 	}
 	
 	@IBAction func kakaoButtonTapped(_ sender: UIButton) {
-		signInService.getSignIn()
-		goHomeVC()
+		viewModel.getKakaoSignIn()
 	}
 	
 	@IBAction func googleButtonTapped(_ sender: UIButton) {
-		signInService.getSignIn()
-		goHomeVC()
+		
 	}
 	
 	@IBAction func naverButtonTapped(_ sender: UIButton) {
-		signInService.getSignIn()
-		goHomeVC()
+		
 	}
 }

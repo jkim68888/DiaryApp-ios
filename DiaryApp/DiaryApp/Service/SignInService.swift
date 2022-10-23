@@ -7,21 +7,50 @@
 
 import Foundation
 
-struct SignInService {
+final class SignInService {
 	// Singleton 생성
 	static let shared = SignInService()
 	
-	// 로그인 로직
-	func getSignIn() {
-		// userDefaults 에 로그인 식별하기 위한 키값 저장
-		// 앱을 껐다켜도 로그인 유지
-		UserDefaults.standard.setValue(true, forKey: "authVerificationID")
-		UserDefaults.standard.synchronize()
-	}
+	var accessToken: String = ""
 	
-	// 로그아웃 로직
-	func getLogOut() {
-		UserDefaults.standard.setValue(false, forKey: "authVerificationID")
-		UserDefaults.standard.synchronize()
+	func requestPost(url: String, method: String, param: [String: Any], completionHandler: @escaping (Bool, Any) -> Void) {
+		let sendData = try! JSONSerialization.data(withJSONObject: param, options: [])
+		
+		guard let url = URL(string: url) else {
+			print("Error: cannot create URL")
+			return
+		}
+		
+		var request = URLRequest(url: url)
+		request.httpMethod = method
+		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		request.setValue(accessToken, forHTTPHeaderField: "Access-Token")
+		request.httpBody = sendData
+		
+		URLSession.shared.dataTask(with: request) { (data, response, error) in
+			guard error == nil else {
+				print("Error: error calling GET")
+				print(error!)
+				return
+			}
+			guard let data = data else {
+				print("Error: Did not receive data")
+				return
+			}
+			guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
+				print("Error: HTTP request failed")
+				return
+			}
+			guard let output = try? JSONDecoder().decode(Response.self, from: data) else {
+				print("Error: JSON Data Parsing failed")
+				return
+			}
+			
+			print("데이터: ", data)
+			print("응답: ", response)
+			print("아웃풋: ", output)
+			
+			completionHandler(true, output.result)
+		}.resume()
 	}
 }

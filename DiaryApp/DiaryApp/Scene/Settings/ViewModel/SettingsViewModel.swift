@@ -6,3 +6,21 @@
 //
 
 import Foundation
+import KakaoSDKCommon
+import KakaoSDKUser
+import KakaoSDKAuth
+
+class SettingsViewModel {
+	// 로그아웃 로직
+	func getLogOut() {
+		UserApi.shared.logout {(error) in
+			if let error = error {
+				print(error)
+			}
+			else {
+				print("logout() success.")
+				goSingInVC()
+			}
+		}
+	}
+}

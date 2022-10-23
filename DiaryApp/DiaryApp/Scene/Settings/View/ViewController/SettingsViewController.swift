@@ -11,6 +11,8 @@ class SettingsViewController: UIViewController {
 	// 싱글톤 가져옴
 	let signInService = SignInService.shared
 	
+	let viewModel = SettingsViewModel()
+	
 	@IBOutlet weak var myNameLabel: UILabel!
 	@IBOutlet weak var snsImageView: UIImageView!
 	@IBOutlet weak var snsTitleLabel: UILabel!
@@ -44,8 +46,7 @@ class SettingsViewController: UIViewController {
 	}
 	
 	@IBAction func logoutButtonTapped(_ sender: UIButton) {
-		signInService.getLogOut()
-		goSingInVC()
+		viewModel.getLogOut()
 	}
 	
 }
