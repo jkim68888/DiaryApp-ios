@@ -6,12 +6,19 @@
 //
 
 import UIKit
+import KakaoSDKAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	
 	var window: UIWindow?
 	
-	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+	func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+		if let url = URLContexts.first?.url {
+			if (AuthApi.isKakaoTalkLoginUrl(url)) {
+				_ = AuthController.handleOpenUrl(url: url)
+			}
+		}
+		
 		manageSignInSession()
 		guard let _ = (scene as? UIWindowScene) else { return }
 	}
