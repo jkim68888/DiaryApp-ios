@@ -6,84 +6,51 @@
 //
 
 import Foundation
-import KakaoSDKCommon
-import KakaoSDKUser
-import KakaoSDKAuth
 
-struct SignInService {
+final class SignInService {
 	// Singleton 생성
 	static let shared = SignInService()
 	
-	func getToken(token: String?) {
-		UserApi.shared.me { [self] user, error in
-			if let error = error {
-				print(error)
-			} else {
-				
-				guard let token = token,
-					  let name = user?.kakaoAccount?.profile?.nickname else{
-					print("token/name is nil")
-					return
-				}
-				
-					// 서버에 이메일/토큰/이름 보내주기
-					//							self.email = email
-					//							self.accessToken = token
-					//							self.name = name
-				
-				print("로그인 완료🌟 토큰: \(token), 이름: \(name)")
-			}
-		}
-	}
+	var accessToken: String = ""
 	
-	// 로그인 로직
-	func getSignIn() {
-		// isKakaoTalkLoginAvailable() : 카톡 설치 되어있으면 true
+	func requestPost(url: String, method: String, param: [String: Any], completionHandler: @escaping (Bool, Any) -> Void) {
+		let sendData = try! JSONSerialization.data(withJSONObject: param, options: [])
 		
-		print(UserApi.isKakaoTalkLoginAvailable())
+		guard let url = URL(string: url) else {
+			print("Error: cannot create URL")
+			return
+		}
 		
-		if (UserApi.isKakaoTalkLoginAvailable()) {
-			//카톡 설치되어있으면 -> 카톡으로 로그인
-			UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-				if let error = error {
-					print(error)
-				} else {
-					print("카카오 톡으로 로그인 성공")
-					
-					_ = oauthToken
-					
-					// 로그인 관련 메소드 추가
-					// 사용자 정보 불러옴
-					getToken(token: oauthToken?.accessToken)
-				}
+		var request = URLRequest(url: url)
+		request.httpMethod = method
+		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		request.setValue(accessToken, forHTTPHeaderField: "Access-Token")
+		request.httpBody = sendData
+		
+		URLSession.shared.dataTask(with: request) { (data, response, error) in
+			guard error == nil else {
+				print("Error: error calling GET")
+				print(error!)
+				return
 			}
-		} else {
-			// 카톡 없으면 -> 계정으로 로그인
-			UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
-				if let error = error {
-					print(error)
-				} else {
-					print("카카오 계정으로 로그인 성공")
-					
-					_ = oauthToken
-					
-					// 관련 메소드 추가
-					// 사용자 정보 불러옴
-					getToken(token: oauthToken?.accessToken)
-				}
+			guard let data = data else {
+				print("Error: Did not receive data")
+				return
 			}
-		}
-	}
-	
-	// 로그아웃 로직
-	func getLogOut() {
-		UserApi.shared.logout {(error) in
-			if let error = error {
-				print(error)
+			guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
+				print("Error: HTTP request failed")
+				return
 			}
-			else {
-				print("logout() success.")
+			guard let output = try? JSONDecoder().decode(Response.self, from: data) else {
+				print("Error: JSON Data Parsing failed")
+				return
 			}
-		}
+			
+			print("데이터: ", data)
+			print("응답: ", response)
+			print("아웃풋: ", output)
+			
+			completionHandler(true, output.result)
+		}.resume()
 	}
 }
