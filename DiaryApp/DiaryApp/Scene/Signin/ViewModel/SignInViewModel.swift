@@ -14,8 +14,8 @@ class SignInViewModel {
 	// 싱글톤 가져옴
 	let signInService = SignInService.shared
 
-	var userData: UserData?
-	var user: User?
+	var account: Account?
+	var snsUser: SnsUser?
 	
 	// 로그인 로직
 	func getKakaoSignIn() {
@@ -70,18 +70,19 @@ class SignInViewModel {
 					return
 				}
 				
-				self.user?.token = token
-				self.user?.name = name
+				self.snsUser = SnsUser.init(token: token, name: name)
 				
 				signInService.requestKakao(name: name, accessToken: token) { (success, data) in
-					print("카카오리퀘스트 성공")
+					self.account = data
+					print("(카카오리퀘스트 성공) jwtToken - \(data.token)")
+					
+					NotificationCenter.default.post(name: NSNotification.Name("getKakaoSignIn"), object: self.snsUser, userInfo: nil)
+					
+//					signInService.requestSignInToken(accessToken: data.token) { (success, data) in
+//						
+//						print("성공🌟\(data)")
+//					}
 				}
-				
-//				signInService.requestSignInToken(accessToken: token) { (success, data) in
-//					self.userData = data
-//
-//					print("성공🌟\(data.nickname)")
-//				}
 			}
 		}
 	}

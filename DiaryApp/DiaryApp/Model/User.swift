@@ -7,17 +7,15 @@
 
 import Foundation
 
-struct UserData: Codable {
-	let snsid: String
-	let nickname: String
+struct Account: Codable {
+	var token: String
 	
 	enum CodingKeys: String, CodingKey {
-		case snsid = "snsid"
-		case nickname = "nickname"
+		case token = "token"
 	}
 }
 
-struct User: Codable {
+struct SnsUser: Codable {
 	var token: String
 	var name: String
 	

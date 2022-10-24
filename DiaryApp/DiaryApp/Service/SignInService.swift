@@ -22,7 +22,7 @@ struct SignInService {
 	private let loginPath = "/api/home"
 	
 	// MARK: - 카카오 로그인
-	func requestKakao(name: String, accessToken: String, completionHandler: @escaping (Bool, Any) -> Void) {
+	func requestKakao(name: String, accessToken: String, completionHandler: @escaping (Bool, Account) -> Void) {
 		let param = ["name": name]
 		let sendData = try! JSONSerialization.data(withJSONObject: param, options: [])
 		let urlComponents = "\(baseUrl)\(kakaoPath)"
@@ -52,17 +52,20 @@ struct SignInService {
 				print("Error: HTTP request failed - requestKakao")
 				return
 			}
-//			guard let output = try? JSONDecoder().decode(UserData.self, from: data) else {
-//				print("Error: JSON Data Parsing failed")
-//				return
-//			}
+			guard let output = try? JSONDecoder().decode(Account.self, from: data) else {
+				print("Error: JSON Data Parsing failed - requestKakao")
+				return
+			}
+			
+			print("requestKakao - \(response)")
+			print("requestKakao - \(String(decoding: data, as: UTF8.self))")
 
-			completionHandler(true, data)
+			completionHandler(true, output)
 		}.resume()
 	}
 	
 	// MARK: - jwt 토큰 요청
-	func requestSignInToken(accessToken: String, completionHandler: @escaping (Bool, UserData) -> Void) {
+	func requestSignInToken(accessToken: String, completionHandler: @escaping (Bool, Any) -> Void) {
 		let urlComponents = "\(baseUrl)\(loginPath)"
 		
 		guard let url = URL(string: urlComponents) else {
@@ -73,7 +76,7 @@ struct SignInService {
 		var request = URLRequest(url: url)
 		request.httpMethod = "POST"
 		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-		request.addValue("Bearer\(accessToken)", forHTTPHeaderField: "Authorization")
+		request.addValue("Bearer\(accessToken)", forHTTPHeaderField: "authorization")
 		
 		URLSession.shared.dataTask(with: request) { (data, response, error) in
 			guard error == nil else {
@@ -89,12 +92,11 @@ struct SignInService {
 				print("Error: HTTP request failed \(response) - requestSignInToken")
 				return
 			}
-			guard let output = try? JSONDecoder().decode(UserData.self, from: data) else {
-				print("Error: JSON Data Parsing failed - requestSignInToken")
-				return
-			}
 			
-			completionHandler(true, output)
+			print("requestSignInToken - \(response)")
+			print("requestSignInToken - \(String(decoding: data, as: UTF8.self))")
+			
+			completionHandler(true, data)
 		}.resume()
 	}
 }

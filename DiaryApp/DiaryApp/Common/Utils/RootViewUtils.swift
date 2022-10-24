@@ -22,14 +22,14 @@ func manageSignInSession() {
 	let signInViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
 	let homeNavigationController = UINavigationController(rootViewController: homeViewController)
 	
-	var userData: UserData?
-	var user: User?
-
-	if user?.token != nil {
-		window.rootViewController = homeNavigationController
-	} else {
-		window.rootViewController = signInViewController
-	}
+//	var userData: UserData?
+//	var user: User?
+//
+//	if user?.token != nil {
+//		window.rootViewController = homeNavigationController
+//	} else {
+//		window.rootViewController = signInViewController
+//	}
 }
 
 // 로그인 완료시 홈으로 루트뷰 바꿔줌
