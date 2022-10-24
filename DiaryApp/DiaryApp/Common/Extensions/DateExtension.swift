@@ -20,4 +20,10 @@ extension Date {
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
         return dateFormatter.string(from: self)
     }
+    func toString_Calendar_NowDay() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko")
+        dateFormatter.dateFormat = "E"
+        return dateFormatter.string(from: self)
+    }
 }

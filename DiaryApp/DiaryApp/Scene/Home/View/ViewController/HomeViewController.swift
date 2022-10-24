@@ -114,6 +114,7 @@ class HomeViewController: UIViewController {
     }
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
         guard let calendarVC = storyboard?.instantiateViewController(identifier: "CalendarViewController") as? CalendarViewController else { return }
+        calendarVC.postData = dataManager.getPostDate()
         self.navigationController?.pushViewController(calendarVC, animated: true)
     }
 }

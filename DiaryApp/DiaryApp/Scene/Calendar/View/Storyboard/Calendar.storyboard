@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -96,7 +97,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="44" height="46"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GN7-wl-mPw">
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GN7-wl-mPw">
                                                     <rect key="frame" x="2" y="2" width="40" height="28"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 </view>
@@ -106,20 +107,29 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6rL-9H-98J">
+                                                    <rect key="frame" x="16" y="32" width="12" height="12"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="6rL-9H-98J" firstAttribute="top" secondItem="GN7-wl-mPw" secondAttribute="bottom" constant="2" id="3y1-Z9-oxS"/>
                                                 <constraint firstItem="GN7-wl-mPw" firstAttribute="leading" secondItem="Mj1-87-UEE" secondAttribute="leading" constant="2" id="EPE-Cq-Z2w"/>
                                                 <constraint firstAttribute="trailing" secondItem="GN7-wl-mPw" secondAttribute="trailing" constant="2" id="N0J-PD-JFE"/>
                                                 <constraint firstItem="GN7-wl-mPw" firstAttribute="leading" secondItem="Mj1-87-UEE" secondAttribute="leading" constant="2" id="P4p-v7-wIu"/>
+                                                <constraint firstAttribute="trailing" secondItem="6rL-9H-98J" secondAttribute="trailing" constant="16" id="aOF-NV-ivN"/>
                                                 <constraint firstItem="Jaj-2Y-DRT" firstAttribute="centerX" secondItem="Mj1-87-UEE" secondAttribute="centerX" id="hoZ-JJ-3rN"/>
                                                 <constraint firstAttribute="trailing" secondItem="GN7-wl-mPw" secondAttribute="trailing" constant="2" id="mFx-rj-bk1"/>
+                                                <constraint firstItem="6rL-9H-98J" firstAttribute="leading" secondItem="Mj1-87-UEE" secondAttribute="leading" constant="16" id="mKN-tS-KYA"/>
                                                 <constraint firstItem="Jaj-2Y-DRT" firstAttribute="top" secondItem="Mj1-87-UEE" secondAttribute="top" constant="6" id="mvS-p2-TqG"/>
                                                 <constraint firstAttribute="bottom" secondItem="GN7-wl-mPw" secondAttribute="bottom" constant="16" id="oUD-Fn-2AO"/>
+                                                <constraint firstAttribute="bottom" secondItem="6rL-9H-98J" secondAttribute="bottom" constant="2" id="t0S-XB-8V0"/>
                                                 <constraint firstItem="GN7-wl-mPw" firstAttribute="top" secondItem="Mj1-87-UEE" secondAttribute="top" constant="2" id="utW-kV-1Xi"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="44" height="46"/>
                                         <connections>
+                                            <outlet property="checkPoint" destination="6rL-9H-98J" id="g78-UB-0Om"/>
                                             <outlet property="dateLabel" destination="Jaj-2Y-DRT" id="h4c-Md-7vn"/>
                                             <outlet property="mainView" destination="Mj1-87-UEE" id="f43-R6-Jhx"/>
                                             <outlet property="nowDay" destination="GN7-wl-mPw" id="1EL-Vr-ggE"/>
@@ -131,59 +141,85 @@
                                 <rect key="frame" x="0.0" y="516" width="414" height="380"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28. 수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etP-dt-VLu">
-                                        <rect key="frame" x="16" y="20" width="59" height="26"/>
+                                        <rect key="frame" x="16" y="20" width="59" height="31"/>
                                         <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n1X-Av-eS5">
-                                        <rect key="frame" x="16" y="56" width="120" height="120"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="8t9-r9-NgE"/>
-                                            <constraint firstAttribute="width" constant="120" id="NUK-gC-Ft9"/>
-                                        </constraints>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="QaD-xn-WWv">
-                                        <rect key="frame" x="144" y="56" width="262" height="120"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="맛있는 저녁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iY7-D3-tfm">
-                                                <rect key="frame" x="0.0" y="0.0" width="262" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="VyY-rY-gBB"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="18"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글본문글본문글본문글본문글본문글본문글본문글본문글본문글본문" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QP9-j6-ons">
-                                                <rect key="frame" x="0.0" y="32" width="262" height="88"/>
-                                                <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="14"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="T1j-Ir-Yxy">
-                                        <rect key="frame" x="337" y="304.5" width="60" height="59"/>
-                                        <color key="tintColor" systemColor="systemPurpleColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="d2K-Qa-X0P"/>
-                                            <constraint firstAttribute="height" constant="60" id="v8N-ob-qg8"/>
-                                        </constraints>
-                                    </imageView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hl5-O7-hnb">
+                                        <rect key="frame" x="0.0" y="56" width="414" height="324"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarTableCell" rowHeight="110" id="ESa-YG-hvO" customClass="CalendarTableViewCell" customModule="DiaryApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="110"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ESa-YG-hvO" id="8PM-Pd-Gom">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n1X-Av-eS5">
+                                                            <rect key="frame" x="10" y="15" width="80" height="80"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="80" id="8t9-r9-NgE"/>
+                                                                <constraint firstAttribute="width" constant="80" id="NUK-gC-Ft9"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="QaD-xn-WWv">
+                                                            <rect key="frame" x="100" y="15" width="304" height="80"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="맛있는 저녁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iY7-D3-tfm">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="25"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="25" id="VyY-rY-gBB"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="18"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글본문글본문글본문글본문글본문글본문글본문글본문글본문글본문" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QP9-j6-ons">
+                                                                    <rect key="frame" x="0.0" y="32" width="304" height="48"/>
+                                                                    <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="14"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="QaD-xn-WWv" firstAttribute="leading" secondItem="n1X-Av-eS5" secondAttribute="trailing" constant="10" id="4jC-w7-R6Y"/>
+                                                        <constraint firstItem="n1X-Av-eS5" firstAttribute="centerY" secondItem="8PM-Pd-Gom" secondAttribute="centerY" id="6H4-Um-I8l"/>
+                                                        <constraint firstAttribute="trailing" secondItem="QaD-xn-WWv" secondAttribute="trailing" constant="10" id="Imh-5u-2hG"/>
+                                                        <constraint firstItem="n1X-Av-eS5" firstAttribute="bottom" secondItem="QaD-xn-WWv" secondAttribute="bottom" id="RNp-R7-RuF"/>
+                                                        <constraint firstItem="QaD-xn-WWv" firstAttribute="top" secondItem="n1X-Av-eS5" secondAttribute="top" id="drM-dg-h1K"/>
+                                                        <constraint firstItem="n1X-Av-eS5" firstAttribute="leading" secondItem="8PM-Pd-Gom" secondAttribute="leading" constant="10" id="zJC-cB-EzT"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="calendarDescriptionLabel" destination="QP9-j6-ons" id="4po-A9-kPD"/>
+                                                    <outlet property="calendarImageView" destination="n1X-Av-eS5" id="q4A-DB-UZN"/>
+                                                    <outlet property="calendarTitleLabel" destination="QP9-j6-ons" id="zi6-aQ-QgF"/>
+                                                    <outlet property="mainView" destination="8PM-Pd-Gom" id="qgd-mw-v3j"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOA-A4-SL2">
+                                        <rect key="frame" x="315" y="20" width="89" height="31"/>
+                                        <color key="tintColor" name="mainFontColor"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=" 글 쓰기"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96802827810000003" green="0.89756695139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="n1X-Av-eS5" firstAttribute="top" secondItem="etP-dt-VLu" secondAttribute="bottom" constant="10" id="2KX-hv-up7"/>
-                                    <constraint firstItem="etP-dt-VLu" firstAttribute="top" secondItem="hyu-YS-igI" secondAttribute="top" constant="20" id="2uk-qM-Xet"/>
-                                    <constraint firstItem="QaD-xn-WWv" firstAttribute="top" secondItem="n1X-Av-eS5" secondAttribute="top" id="BdX-09-QN6"/>
-                                    <constraint firstAttribute="trailing" secondItem="T1j-Ir-Yxy" secondAttribute="trailing" constant="17" id="LJ7-aO-8Vl"/>
-                                    <constraint firstAttribute="bottom" secondItem="T1j-Ir-Yxy" secondAttribute="bottom" constant="16" id="MlD-VZ-azy"/>
-                                    <constraint firstAttribute="trailing" secondItem="QaD-xn-WWv" secondAttribute="trailing" constant="8" id="VcC-GW-kqX"/>
-                                    <constraint firstItem="etP-dt-VLu" firstAttribute="leading" secondItem="hyu-YS-igI" secondAttribute="leading" constant="16" id="duY-sw-w3t"/>
-                                    <constraint firstItem="n1X-Av-eS5" firstAttribute="bottom" secondItem="QaD-xn-WWv" secondAttribute="bottom" id="eoR-my-ZPO"/>
-                                    <constraint firstItem="n1X-Av-eS5" firstAttribute="leading" secondItem="hyu-YS-igI" secondAttribute="leading" constant="16" id="nZt-Z5-Kbu"/>
-                                    <constraint firstItem="QaD-xn-WWv" firstAttribute="leading" secondItem="n1X-Av-eS5" secondAttribute="trailing" constant="8" id="pQZ-ak-kjd"/>
+                                    <constraint firstItem="etP-dt-VLu" firstAttribute="top" secondItem="hyu-YS-igI" secondAttribute="top" constant="20" id="14y-nU-IQd"/>
+                                    <constraint firstItem="hl5-O7-hnb" firstAttribute="top" secondItem="etP-dt-VLu" secondAttribute="bottom" constant="5" id="CqK-Rq-5TG"/>
+                                    <constraint firstAttribute="trailing" secondItem="VOA-A4-SL2" secondAttribute="trailing" constant="10" id="HuC-Zw-Nns"/>
+                                    <constraint firstAttribute="trailing" secondItem="hl5-O7-hnb" secondAttribute="trailing" id="IQA-MG-xjR"/>
+                                    <constraint firstAttribute="bottom" secondItem="hl5-O7-hnb" secondAttribute="bottom" id="IxQ-gn-W0m"/>
+                                    <constraint firstItem="etP-dt-VLu" firstAttribute="bottom" secondItem="VOA-A4-SL2" secondAttribute="bottom" id="KgN-Mr-Mip"/>
+                                    <constraint firstItem="VOA-A4-SL2" firstAttribute="top" secondItem="etP-dt-VLu" secondAttribute="top" id="LD6-Qf-qyL"/>
+                                    <constraint firstItem="hl5-O7-hnb" firstAttribute="leading" secondItem="hyu-YS-igI" secondAttribute="leading" id="QWB-Rd-nZU"/>
+                                    <constraint firstItem="etP-dt-VLu" firstAttribute="leading" secondItem="hyu-YS-igI" secondAttribute="leading" constant="16" id="Zgm-yn-Uef"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -205,9 +241,12 @@
                     <navigationItem key="navigationItem" id="hZ6-rQ-tYg"/>
                     <connections>
                         <outlet property="collectionView" destination="oKn-u6-ewb" id="FBB-JA-80b"/>
+                        <outlet property="descriptionView" destination="hyu-YS-igI" id="waZ-v5-cqs"/>
                         <outlet property="nextMonth" destination="zre-rM-jh9" id="bS9-ZQ-PDa"/>
                         <outlet property="nowMonth" destination="aGB-lj-l7W" id="9sS-i0-DZz"/>
+                        <outlet property="nowdayLabel" destination="etP-dt-VLu" id="fZC-fM-tnt"/>
                         <outlet property="prevMonth" destination="jwz-Cb-sEH" id="e2D-Wf-jI1"/>
+                        <outlet property="tableView" destination="hl5-O7-hnb" id="Jx0-6q-Dfd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -234,12 +273,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="mainFontColor">
+            <color red="0.49411764705882355" green="0.46274509803921571" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
