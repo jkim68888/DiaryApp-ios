@@ -7,83 +7,94 @@
 
 import Foundation
 
-final class SignInService {
+struct SignInService {
 	// Singleton 생성
 	static let shared = SignInService()
 	
-	var accessToken: String = ""
+	// baseUrl
+	private let baseUrl = "http://localhost:4000"
 	
-	// Get
-	func requestGet(url: String, completionHandler: @escaping (Bool, Any) -> Void) {
-		guard let url = URL(string: url) else {
-			print("Error: cannot create URL")
-			return
-		}
-		
-		var request = URLRequest(url: url)
-		request.httpMethod = "GET"
-		
-		URLSession.shared.dataTask(with: request) { data, response, error in
-			guard error == nil else {
-				print("Error: error calling GET")
-				print(error!)
-				return
-			}
-			guard let data = data else {
-				print("Error: Did not receive data")
-				return
-			}
-			guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
-				print("Error: HTTP request failed")
-				return
-			}
-			guard let output = try? JSONDecoder().decode(UserData.self, from: data) else {
-				print("Error: JSON Data Parsing failed")
-				return
-			}
-			
-			print("Get 데이터: \(data)")
-			print("Get 응답: \(response)")
-			print("Get 응답: \(output)")
-			
-			completionHandler(true, output.jwtToken)
-		}.resume()
-	}
+	// pathUrl
+	private let kakaoPath = "/api/auth/callback/kakao"
+	private let googlePath = "/api/auth/callback/google"
+	private let applePath = "/api/auth/callback/apple"
+	private let naverPath = "/api/auth/callback/naver"
+	private let loginPath = "/api/home"
 	
-	// Post
-	func requestPost(url: String, method: String, param: [String: Any], completionHandler: @escaping (Bool, Any) -> Void) {
+	// MARK: - 카카오 로그인
+	func requestKakao(name: String, accessToken: String, completionHandler: @escaping (Bool, Any) -> Void) {
+		let param = ["name": name]
 		let sendData = try! JSONSerialization.data(withJSONObject: param, options: [])
+		let urlComponents = "\(baseUrl)\(kakaoPath)"
 		
-		guard let url = URL(string: url) else {
+		guard let url = URL(string: urlComponents) else {
 			print("Error: cannot create URL")
 			return
 		}
 		
 		var request = URLRequest(url: url)
-		request.httpMethod = method
+		request.httpMethod = "POST"
 		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-		request.setValue("Bearer\(accessToken)", forHTTPHeaderField: "authorization")
+		request.addValue(accessToken, forHTTPHeaderField: "access-token")
 		request.httpBody = sendData
 		
 		URLSession.shared.dataTask(with: request) { (data, response, error) in
 			guard error == nil else {
-				print("Error: error calling GET")
+				print("Error: error calling - requestKakao")
 				print(error!)
 				return
 			}
 			guard let data = data else {
-				print("Error: Did not receive data")
+				print("Error: Did not receive data - requestKakao")
 				return
 			}
 			guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
-				print("Error: HTTP request failed")
+				print("Error: HTTP request failed - requestKakao")
+				return
+			}
+//			guard let output = try? JSONDecoder().decode(UserData.self, from: data) else {
+//				print("Error: JSON Data Parsing failed")
+//				return
+//			}
+
+			completionHandler(true, data)
+		}.resume()
+	}
+	
+	// MARK: - jwt 토큰 요청
+	func requestSignInToken(accessToken: String, completionHandler: @escaping (Bool, UserData) -> Void) {
+		let urlComponents = "\(baseUrl)\(loginPath)"
+		
+		guard let url = URL(string: urlComponents) else {
+			print("Error: cannot create URL")
+			return
+		}
+		
+		var request = URLRequest(url: url)
+		request.httpMethod = "POST"
+		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		request.addValue("Bearer\(accessToken)", forHTTPHeaderField: "Authorization")
+		
+		URLSession.shared.dataTask(with: request) { (data, response, error) in
+			guard error == nil else {
+				print("Error: error calling - requestSignInToken")
+				print(error!)
+				return
+			}
+			guard let data = data else {
+				print("Error: Did not receive data - requestSignInToken")
+				return
+			}
+			guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
+				print("Error: HTTP request failed \(response) - requestSignInToken")
+				return
+			}
+			guard let output = try? JSONDecoder().decode(UserData.self, from: data) else {
+				print("Error: JSON Data Parsing failed - requestSignInToken")
 				return
 			}
 			
-			print("Post 데이터: \(data.description)")
-			print("Post 응답: \(response)")
-			
-			completionHandler(true, data)
+			completionHandler(true, output)
 		}.resume()
 	}
 }

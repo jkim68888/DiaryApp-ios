@@ -11,5 +11,5 @@ class HomePostCollectionReusableView: UICollectionReusableView {
 	@IBOutlet weak var homeInfoView: UIView!
 	@IBOutlet weak var calendarBtn: UIButton!
 	@IBOutlet weak var settingBtn: UIButton!
-	
+	@IBOutlet weak var userNameLabel: UILabel!
 }

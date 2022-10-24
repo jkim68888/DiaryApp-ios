@@ -38,7 +38,7 @@ class SignInViewController: UIViewController {
 	}
 	
 	@IBAction func appleButtonTapped(_ sender: UIButton) {
-
+		
 	}
 	
 	@IBAction func kakaoButtonTapped(_ sender: UIButton) {
