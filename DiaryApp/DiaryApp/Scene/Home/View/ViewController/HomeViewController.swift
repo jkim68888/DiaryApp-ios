@@ -11,7 +11,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var defaultStackView: UIStackView!
     @IBOutlet weak var addPostBtn: UIButton!
-    
+	
+	let signInVM = SignInViewModel()
+	var userData: UserData?
+	var user: User?
+	
     var haveData:Bool = false
     let flowLayout = UICollectionViewFlowLayout()
     let dataManager = TempDataManager()
@@ -19,7 +23,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        dataRoad()
+		bindData()
         setCollectionView()
     }
     // 현재View(homeVC)가 보이려고할 때,
@@ -88,7 +92,7 @@ class HomeViewController: UIViewController {
 		header.calendarBtn.setTitle("", for: .normal)
 	}
 	
-    func dataRoad(){
+    func bindData(){
         dataManager.roadPostData()
         print(#function)
         
@@ -124,6 +128,12 @@ extension HomeViewController: UICollectionViewDataSource{
 		let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HomePostCollectionViewHeader", for: indexPath) as! HomePostCollectionReusableView
 		
 		setCollectionHeaderUI(header: headerView)
+		
+		self.userData = self.signInVM.userData
+		
+		headerView.userNameLabel.text = user?.name
+		print("🔥\(user?.name)")
+		
 		
 		return headerView
 	}

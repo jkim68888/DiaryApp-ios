@@ -22,7 +22,10 @@ func manageSignInSession() {
 	let signInViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
 	let homeNavigationController = UINavigationController(rootViewController: homeViewController)
 	
-	if UserDefaults.standard.bool(forKey: "authVerificationID") {
+	var userData: UserData?
+	var user: User?
+
+	if user?.token != nil {
 		window.rootViewController = homeNavigationController
 	} else {
 		window.rootViewController = signInViewController

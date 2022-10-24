@@ -195,6 +195,7 @@
                                         <outlet property="calendarBtn" destination="lm5-2j-HOI" id="wnE-ih-xkV"/>
                                         <outlet property="homeInfoView" destination="98m-AZ-wCZ" id="5UR-ci-PWZ"/>
                                         <outlet property="settingBtn" destination="Djh-cd-07n" id="Jd5-00-Xpw"/>
+                                        <outlet property="userNameLabel" destination="MZt-gN-aP2" id="3KZ-b3-G83"/>
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
