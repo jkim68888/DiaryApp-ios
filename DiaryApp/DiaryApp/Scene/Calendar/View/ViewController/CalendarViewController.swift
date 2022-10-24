@@ -8,6 +8,11 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
+    
+    var postData: [TempPost] = []
+    var todayPostData: [TempPost] = []
+    
+    
     let now = Date()
     var cal = Calendar.current
     let dateFormatter = DateFormatter()
@@ -17,9 +22,11 @@ class CalendarViewController: UIViewController {
     var daysCountInMonth = 0 //한 달에 몇일까지 있는지
     var weekdayAdding = 0 // 시작일
     
+    
+    
     let editYear: Int = 0
     let editMonth: Int = 0
-    let editDay: Int = 0
+    let editDay = Calendar.current.component(.day, from: Date())
     
     var setMonth = Calendar.current.component(.month, from: Date())
 
@@ -27,13 +34,20 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var nowMonth: UILabel!
     @IBOutlet weak var nextMonth: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var nowdayLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var descriptionView: UIView!
     /// 화면 불러오기
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         calendarInit()
+        tableViewInit()
         initMonthBtn()
         customBackButton(self: self, target: self.navigationController!)
+    }
+    func tableViewInit(){
+        self.tableView.dataSource = self
     }
     /// 달력 초기화
     private func calendarInit(){
@@ -48,9 +62,12 @@ class CalendarViewController: UIViewController {
         
         // 달력에서 현재 년도와 월을 설정해준다.
         nowMonth.text = "\(components.year!)년 \(components.month!)월" // "yyyy년 MM월"
-
+        nowdayLabel.text = String(editDay) + ". " + Date().toString_Calendar_NowDay()
+        
         // calculation() 함수를 실행한다.
         calculation()
+        
+        
     }
     /// 달력계산
     private func calculation() {
@@ -94,7 +111,10 @@ class CalendarViewController: UIViewController {
 
     func setUI() {
         self.title = "캘린더"
+        tableView.backgroundColor = UIColor.mainBGColor
+        descriptionView.backgroundColor = UIColor.mainBGColor
     }
+    
 
 
 
@@ -128,7 +148,7 @@ class CalendarViewController: UIViewController {
     }
 }
 
-extension CalendarViewController:UICollectionViewDelegate, UICollectionViewDataSource{
+extension CalendarViewController:UICollectionViewDataSource{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
@@ -140,35 +160,66 @@ extension CalendarViewController:UICollectionViewDelegate, UICollectionViewDataS
             return self.days.count
         }
     }
+    /// Cell에 대한 init을 설정하는 부분
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCollectionViewCell
-
-                switch indexPath.section {
-                case 0:
-                    cell.dateLabel.text = weeks[indexPath.row] // 요일
-                default:
-                    cell.dateLabel.text = days[indexPath.row] // 일
-                }
-
-                if indexPath.row % 7 == 0 { // 일요일
-                    cell.dateLabel.textColor = .red
-                } else if indexPath.row % 7 == 6 { // 토요일
-                    cell.dateLabel.textColor = .blue
-                } else { // 월요일 좋아(평일)
-                    cell.dateLabel.textColor = .black
-                }
-                return cell
+        
+        
+        switch indexPath.section {
+        case 0:
+            cell.dateLabel.text = weeks[indexPath.row] // 요일
+        default:
+            cell.dateLabel.text = days[indexPath.row] // 일
+        }
+        
+        if indexPath.row % 7 == 0 { // 일요일
+            cell.dateLabel.textColor = .red
+        } else if indexPath.row % 7 == 6 { // 토요일
+            cell.dateLabel.textColor = .blue
+        } else { // 월요일 좋아(평일)
+            cell.dateLabel.textColor = .black
+        }
+        
+        // 특정 순서의 Cell(day,특정 일)의 값과 postData의 day값이 같으면..
+        for item in postData{
+            if String(Calendar.current.component(.day, from: item.createDate)) == cell.dateLabel.text{
+                // 달력에 Post가 있었음을 알리는 CheckPoint를 활성화 시킨다.
+                cell.checkPoint.isHidden = false
+                // 여기 수정해야함
+                todayPostData.append(item)
+                tableView.reloadData()
+            }
+            print(item.createDate)
+        }
+        return cell
     }
+    
 }
-//extension CalendarViewController: UICollectionViewDelegate{
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        <#code#>
-//    }
-//}
+extension CalendarViewController: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // 1. 선택했을 때, 해당 Cell에 해당하는 날짜에 작성한 글이 있는지 검색하고, 게시글(Post)를 TableView에 출력한다.
+        // 2. 선택한 Cell에 게시글이 있으면, Cell측에서 글이 있음을 알려주는 포인트(점)을 표시한다.
+        // 3. 현재 선택된 Cell을 표시한다.
+        let cell = collectionView.cellForItem(at: indexPath) as! CalendarCollectionViewCell
+        
+         
+    }
+    
+}
 extension CalendarViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let myBoundSize: CGFloat = UIScreen.main.bounds.size.width
         let cellSize : CGFloat = myBoundSize / 9
         return CGSize(width: cellSize, height: cellSize)
+    }
+}
+extension CalendarViewController:UITableViewDataSource,UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return todayPostData.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarTableCell", for: indexPath) as! CalendarTableViewCell
+        cell.postData = todayPostData[indexPath.row]
+        return cell
     }
 }

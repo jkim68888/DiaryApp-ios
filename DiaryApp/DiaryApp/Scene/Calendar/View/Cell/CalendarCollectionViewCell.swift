@@ -8,10 +8,25 @@
 import UIKit
 
 class CalendarCollectionViewCell: UICollectionViewCell {
+    
+    var today:Bool = false
+    var postData: TempPost?
+    
+    override var isSelected: Bool{
+        didSet{
+            if isSelected{
+                nowDay.isHidden = false
+            }else{
+                nowDay.isHidden = true
+            }
+        }
+    }
+    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nowDay: UIView!
     @IBOutlet weak var mainView: UIView!
-
+    @IBOutlet weak var checkPoint: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         nowDay.translatesAutoresizingMaskIntoConstraints = false
@@ -20,6 +35,10 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         nowDay.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: -2).isActive = true
         nowDay.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -2).isActive = true
         nowDay.alpha = 0.7
+        nowDay.backgroundColor = UIColor.yellow
+        checkPoint.backgroundColor = UIColor.mainFontColor
+        checkPoint.clipsToBounds = true
+        checkPoint.layer.cornerRadius = checkPoint.frame.width / 2
 
     }
 
