@@ -26,6 +26,8 @@ class PostViewController: UIViewController {
     @IBOutlet weak var postDateLabel: UILabel!
     @IBOutlet weak var postTitleTF: UITextField!
     @IBOutlet weak var postScriptTV: UITextView!
+	@IBOutlet weak var doneButton: UIBarButtonItem!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         setData()
@@ -35,6 +37,7 @@ class PostViewController: UIViewController {
         setImagePickView()
         customBackButton(self: self, target: self.navigationController!)
     }
+	
     func setData(){
         //  사실 상 이 부분은, 서버쪽이 구현이되면, 굳이 homeVC에 접근하는 것이 아니라, 서버에 있는 PostArray에 추가해주어야한다.
 
@@ -60,33 +63,40 @@ class PostViewController: UIViewController {
         postScriptTV.text = postData.postDescription
         
     }
+	
     func setUI(){
         // 사진선택 버튼에 테두리 넣기
         postImageBtn.setTitle("", for: .normal)
         postImageBtn.clipsToBounds = true
-        postImageBtn.layer.cornerRadius = 10
+        postImageBtn.layer.cornerRadius = 5
         postImageBtn.layer.borderWidth = 1
-        postImageBtn.layer.borderColor = UIColor.black.cgColor
+		postImageBtn.layer.borderColor = UIColor(hexString: "#666666").cgColor
         
         // 선택된 사진에 테두리 넣기
         postImageView.clipsToBounds = true
-        postImageView.layer.cornerRadius = 10
+        postImageView.layer.cornerRadius = 5
         postImageView.layer.borderWidth = 1
-        postImageView.layer.borderColor = UIColor.black.cgColor
+        postImageView.layer.borderColor = UIColor(hexString: "#cccccc").cgColor
         
+		doneButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "EF_Diary", size: 18)!], for: .normal)
+		
         // TextField에 얇은 테두리 안보이게 설정
         postTitleTF.borderStyle = .none
+		
         // 공통 네비게이션바 사용
         self.navigationController?.navigationBar.customNavigationBar()
-        ///MARK: - 1. TextView의 디폴트 내용(ex. 내용을 입력해주세요) 추가
+		
+        // MARK: - 1. TextView의 디폴트 내용(ex. 내용을 입력해주세요) 추가
         
         
     }
+	
     // TextField와 TextView에대한 Delegate 선언
     func setDelegate(){
         postTitleTF.delegate = self
         //postScriptTV.delegate = self
     }
+	
     // 불러온 PostData에 이미지에 따라 ImageView를 세팅
     func setImagePickView(){
         print(#function)
@@ -100,7 +110,8 @@ class PostViewController: UIViewController {
             print("기존 글 수정")
         }
     }
-    ///MARK: - 2. Date Picker를 호출하여 날짜를 입력할 수 있도록 설정
+	
+    // MARK: - 2. Date Picker를 호출하여 날짜를 입력할 수 있도록 설정
     // DateLabel을 눌렀을 때, 수정 가능하도록 변경 -> 아직 미구현
     func setGesture(){
         let tapGestureDateLabel = UITapGestureRecognizer(target: self, action: #selector(달력을눌렀을때))
@@ -111,7 +122,8 @@ class PostViewController: UIViewController {
     @objc func 달력을눌렀을때(){
         // 아직 미구현
     }
-    ///MARK: - 3. 뒤로가기 버튼을 눌렀을 때
+	
+    // MARK: - 3. 뒤로가기 버튼을 눌렀을 때
     // 특정 항목들이 저장되어있지 않으면, 뒤로가지 못하게 막아야함
     
     @IBAction func postImagePickButtonTapped(_ sender: UIButton) {
@@ -133,6 +145,7 @@ class PostViewController: UIViewController {
         postImageView.isHidden = true
         cancleImgBtn.isHidden = true
     }
+	
     // 완료 버튼을 눌렀을 때
     @IBAction func doneButtonTapped(_ sender: Any) {
         print(#function)
@@ -173,7 +186,8 @@ class PostViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }
     }
-    ///MARK: - 4. 삭제 시에, 해당된 Post의 index에 해당하는 값을 지우고, 다시 배열을 정렬해야함
+	
+    // MARK: - 4. 삭제 시에, 해당된 Post의 index에 해당하는 값을 지우고, 다시 배열을 정렬해야함
     // 삭제 기능은 아직 불완전함. 삭제할 index를 능동적으로 변화시켜야함.
     @IBAction func postDeleteButtonTapped(_ sender: UIButton) {
         let homeVCindex = navigationController!.viewControllers.count - 3
@@ -181,11 +195,13 @@ class PostViewController: UIViewController {
         homeVC.dataManager.delete(index: postNumber!)
         self.navigationController?.popToViewController(homeVC, animated: true)
     }
+	
     /// 다른 곳을 누르면 키보드가 내려가게 설정
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
 }
+
 extension PostViewController: PHPickerViewControllerDelegate{
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
@@ -205,6 +221,7 @@ extension PostViewController: PHPickerViewControllerDelegate{
     
     
 }
+
 extension PostViewController:UITextViewDelegate{
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == postScriptTVPlaceHolder {
@@ -213,6 +230,7 @@ extension PostViewController:UITextViewDelegate{
             }
     }
 }
+
 extension PostViewController:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.isFirstResponder
