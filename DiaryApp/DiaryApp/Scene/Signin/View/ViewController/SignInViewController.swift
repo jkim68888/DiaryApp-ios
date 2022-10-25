@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class SignInViewController: UIViewController {
 	@IBOutlet var signInButtons: [UIButton]!
-	@IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var googleSignButton: GIDSignInButton!
+    @IBOutlet weak var titleLabel: UILabel!
 	
+    let signInConfig = GIDConfiguration.init(clientID: "26123316352-qog5eiia1daeme2ohk62dgm9erms73u7.apps.googleusercontent.com")
+    
 	let viewModel = SignInViewModel()
 	
 	override func viewDidLoad() {
@@ -36,6 +40,36 @@ class SignInViewController: UIViewController {
 		// 라벨 컬러 설정
 		titleLabel.textColor = UIColor(hexString: "#7E76DE")
 	}
+    
+    func getGoogleSignIn() {
+        GIDSignIn.sharedInstance.signIn(with: self.signInConfig, presenting: self) { user, error in
+            guard error == nil else { return }
+            guard let user = user else { return }
+            user.authentication.do { [self] authentication, error in
+                guard error == nil else { print(error); return }
+                guard let authentication = authentication else { return }
+                let idToken = authentication.idToken
+                // Send ID token to backend (example below)
+                // 서버에 보낼 함수
+                tokenSign(idToken: idToken!)
+                
+            }
+        }
+    }
+    func tokenSign(idToken:String){
+        guard let authData = try? JSONEncoder().encode(["idToken": idToken]) else{ return }
+        let url = URL(string: "http://localhost:4000/api/auth/callback/google")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.uploadTask(with: request, from: authData) { data, response, error in
+            //Handle response from your backend.
+            print(response)
+        }
+        task.resume()
+        goHomeVC()
+    }
 	
 	@IBAction func appleButtonTapped(_ sender: UIButton) {
 		
@@ -46,10 +80,11 @@ class SignInViewController: UIViewController {
 	}
 	
 	@IBAction func googleButtonTapped(_ sender: UIButton) {
-		
+        getGoogleSignIn()
 	}
 	
 	@IBAction func naverButtonTapped(_ sender: UIButton) {
 		
 	}
 }
+
