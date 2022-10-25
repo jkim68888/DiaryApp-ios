@@ -15,10 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// 네비게이션바 공통 스타일
 		UINavigationBar.appearance().customNavigationBar()
-		
-		
+	
 		// kakao init
 		KakaoSDK.initSDK(appKey: Config().kakaoAppKey)
+		
         // google init - OAuth 2.0 클라이언트 ID
         GoogleSignIn.GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
             if error != nil || user == nil{
@@ -29,7 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 		return true
 	}
-    
+	
+	// 구글 handleUrl
+	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+			// add this function for Google Sign in to handle the url
+		return GIDSignIn.sharedInstance.handle(url)
+	}
 
 	// MARK: UISceneSession Lifecycle
 
