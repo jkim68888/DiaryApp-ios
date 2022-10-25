@@ -13,8 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var addPostBtn: UIButton!
 	
 	let signInVM = SignInViewModel()
-	var userData: UserData?
-	var user: User?
+	var snsUser: SnsUser?
 	
     var haveData:Bool = false
     let flowLayout = UICollectionViewFlowLayout()
@@ -22,10 +21,12 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveNotification(_:)), name: NSNotification.Name("getKakaoSignIn"), object: nil)
         setUI()
 		bindData()
         setCollectionView()
     }
+	
     // 현재View(homeVC)가 보이려고할 때,
     /// 1. 네비게이션 바를 임의적으로 숨긴다.
     /// 2. CollectionView를 초기화(reload)
@@ -56,9 +57,9 @@ class HomeViewController: UIViewController {
 			let itemsPerRow: CGFloat = 2
 			let textAreaHeight: CGFloat = 35
 			let itemSpacing: CGFloat = 16
-			let width = homeCollectionView.bounds.width
-			let widthPadding = itemSpacing * (itemsPerRow + 1)
-			let cellWidth = ((width - widthPadding) / itemsPerRow)
+			let collectionViewInsets: CGFloat = 32
+			let width = self.view.frame.width - collectionViewInsets
+			let cellWidth = ((width - itemSpacing) / itemsPerRow)
 			let cellHeight = cellWidth + textAreaHeight
 			
             homeCollectionView.isHidden = false
@@ -102,6 +103,15 @@ class HomeViewController: UIViewController {
             print("값을 정상적으로 불러왔습니다.")
         }
     }
+	
+	@objc func didRecieveNotification(_ notification: Notification) {
+		guard let data = notification.object as? SnsUser else { return }
+		self.snsUser = data
+		
+		DispatchQueue.main.async {
+			self.homeCollectionView.reloadData()
+		}
+	}
 
     @IBAction func addPostButtonTapped(_ sender: UIButton) {
         guard let postViewerVC = storyboard?.instantiateViewController(identifier: "PostViewerViewController") as? PostViewerViewController else { return }
@@ -130,12 +140,8 @@ extension HomeViewController: UICollectionViewDataSource{
 		
 		setCollectionHeaderUI(header: headerView)
 		
-		self.userData = self.signInVM.userData
-		
-		headerView.userNameLabel.text = user?.name
-		print("🔥\(user?.name)")
-		
-		
+		headerView.userNameLabel.text = "\(snsUser?.name ?? "홍길동")님"
+	
 		return headerView
 	}
 	
