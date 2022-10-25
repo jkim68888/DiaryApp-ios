@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C81-Ni-xCn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C81-Ni-xCn">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="EF_Diary.ttf">
+            <string>EF_Diary</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Post View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -18,11 +24,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iIx-Xo-aYz">
-                                <rect key="frame" x="16" y="239" width="382" height="602"/>
+                                <rect key="frame" x="16" y="237" width="382" height="570"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TcO-mo-Rsk">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="1"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="7Jc-Lr-9DA"/>
                                         </constraints>
@@ -32,13 +38,13 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="Feo-dw-BpI"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="17"/>
+                                        <color key="textColor" name="grayLabelColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGG-5F-RQc">
                                         <rect key="frame" x="0.0" y="63" width="382" height="1"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="82z-3e-x1c"/>
                                         </constraints>
@@ -48,29 +54,29 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="QSf-8E-Sx6"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vho-sM-ZuS">
                                         <rect key="frame" x="0.0" y="126" width="382" height="1"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="yXL-lF-A2N"/>
                                         </constraints>
                                     </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hkd-bI-mcD">
-                                        <rect key="frame" x="0.0" y="147" width="382" height="434"/>
+                                        <rect key="frame" x="0.0" y="147" width="382" height="402"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="p2l-tL-6aR"/>
                                         </constraints>
                                         <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yDS-AE-uSs">
-                                        <rect key="frame" x="0.0" y="601" width="382" height="1"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="569" width="382" height="1"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="AJN-mO-que"/>
                                         </constraints>
@@ -78,7 +84,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69x-Ey-2j0">
-                                <rect key="frame" x="17" y="119" width="100" height="100"/>
+                                <rect key="frame" x="16" y="117" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="4j1-f3-NSJ"/>
                                     <constraint firstAttribute="width" constant="100" id="gkL-fy-hQQ"/>
@@ -90,14 +96,14 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Fo-N4-rLV">
-                                <rect key="frame" x="133" y="119" width="100" height="100"/>
+                                <rect key="frame" x="132" y="117" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="HOr-GW-oLi"/>
                                     <constraint firstAttribute="height" constant="100" id="RbC-Mq-xiz"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Neq-S9-g5W">
-                                <rect key="frame" x="221" y="113" width="18" height="18"/>
+                                <rect key="frame" x="220" y="111" width="18" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="5Fv-Yk-c8K"/>
                                     <constraint firstAttribute="width" constant="18" id="xuy-s1-hPb"/>
@@ -109,13 +115,17 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AnI-ul-kza">
-                                <rect key="frame" x="327" y="853" width="68" height="35"/>
+                                <rect key="frame" x="313" y="819" width="82" height="37"/>
                                 <color key="tintColor" red="0.91372549020000005" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="삭제" image="Delete"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Delete">
+                                <buttonConfiguration key="configuration" style="plain" image="Delete" imagePadding="4">
                                     <attributedString key="attributedTitle">
-                                        <fragment content="삭제"/>
+                                        <fragment content="삭제">
+                                            <attributes>
+                                                <font key="NSFont" size="18" name="EF_Diary"/>
+                                            </attributes>
+                                        </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
@@ -129,13 +139,13 @@
                             <constraint firstItem="iIx-Xo-aYz" firstAttribute="top" secondItem="69x-Ey-2j0" secondAttribute="bottom" constant="20" id="1gm-kc-aKa"/>
                             <constraint firstItem="5J3-N6-xNF" firstAttribute="trailing" secondItem="AnI-ul-kza" secondAttribute="trailing" constant="19" id="76I-yZ-Hqn"/>
                             <constraint firstItem="AnI-ul-kza" firstAttribute="top" secondItem="iIx-Xo-aYz" secondAttribute="bottom" constant="12" id="QGv-LO-LGa"/>
-                            <constraint firstItem="69x-Ey-2j0" firstAttribute="leading" secondItem="5J3-N6-xNF" secondAttribute="leading" constant="17" id="RUr-OX-BmR"/>
+                            <constraint firstItem="69x-Ey-2j0" firstAttribute="leading" secondItem="5J3-N6-xNF" secondAttribute="leading" constant="16" id="RUr-OX-BmR"/>
                             <constraint firstItem="5J3-N6-xNF" firstAttribute="trailing" secondItem="iIx-Xo-aYz" secondAttribute="trailing" constant="16" id="UxH-Uj-oPL"/>
                             <constraint firstItem="Neq-S9-g5W" firstAttribute="leading" secondItem="8Fo-N4-rLV" secondAttribute="trailing" constant="-12" id="WoT-3G-02g"/>
-                            <constraint firstAttribute="bottom" secondItem="iIx-Xo-aYz" secondAttribute="bottom" constant="55" id="gqS-nO-ewS"/>
-                            <constraint firstItem="8Fo-N4-rLV" firstAttribute="top" secondItem="zVG-2c-oHK" secondAttribute="top" constant="119" id="kZT-ST-7Sr"/>
+                            <constraint firstItem="5J3-N6-xNF" firstAttribute="bottom" secondItem="iIx-Xo-aYz" secondAttribute="bottom" constant="55" id="gqS-nO-ewS"/>
+                            <constraint firstItem="8Fo-N4-rLV" firstAttribute="top" secondItem="5J3-N6-xNF" secondAttribute="top" constant="25" id="kZT-ST-7Sr"/>
                             <constraint firstItem="8Fo-N4-rLV" firstAttribute="top" secondItem="Neq-S9-g5W" secondAttribute="bottom" constant="-12" id="qpj-1Q-mrY"/>
-                            <constraint firstItem="69x-Ey-2j0" firstAttribute="top" secondItem="zVG-2c-oHK" secondAttribute="top" constant="119" id="slj-Ba-49l"/>
+                            <constraint firstItem="69x-Ey-2j0" firstAttribute="top" secondItem="5J3-N6-xNF" secondAttribute="top" constant="25" id="slj-Ba-49l"/>
                             <constraint firstItem="8Fo-N4-rLV" firstAttribute="leading" secondItem="69x-Ey-2j0" secondAttribute="trailing" constant="16" id="w5v-Wk-WxE"/>
                             <constraint firstItem="iIx-Xo-aYz" firstAttribute="leading" secondItem="5J3-N6-xNF" secondAttribute="leading" constant="16" id="x6M-mg-Ebt"/>
                         </constraints>
@@ -149,6 +159,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancleImgBtn" destination="Neq-S9-g5W" id="nqd-9z-l3O"/>
+                        <outlet property="doneButton" destination="V7W-hM-GnG" id="3nd-MP-CDf"/>
                         <outlet property="postDateLabel" destination="i2I-nJ-x4E" id="fev-lQ-Dip"/>
                         <outlet property="postImageBtn" destination="69x-Ey-2j0" id="jct-10-oog"/>
                         <outlet property="postImageView" destination="8Fo-N4-rLV" id="Mmg-yc-vVq"/>
@@ -167,7 +178,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C81-Ni-xCn" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wzv-4r-Mdl">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -184,8 +195,14 @@
         <image name="Cancle" width="24" height="24"/>
         <image name="ChoiceImg" width="51" height="47.5"/>
         <image name="Delete" width="19.5" height="21"/>
+        <namedColor name="grayLabelColor">
+            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

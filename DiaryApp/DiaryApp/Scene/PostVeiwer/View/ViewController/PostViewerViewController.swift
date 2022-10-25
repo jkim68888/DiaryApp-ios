@@ -21,7 +21,8 @@ class PostViewerViewController: UIViewController {
     @IBOutlet weak var postViewerDescriptionLabel: UILabel!
     @IBOutlet weak var postViewerStackView: UIStackView!
     @IBOutlet weak var postViewerEditDate: UILabel!
-    
+	@IBOutlet weak var editButton: UIBarButtonItem!
+	
     /// View가 Load된 후에 실행되는 부분
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +34,11 @@ class PostViewerViewController: UIViewController {
     /// setUI: 해당 View에서의 UI를 Setting
     func setUI(){
         postViewerView.clipsToBounds = true
-        postViewerView.layer.cornerRadius = 20
-        postViewerView.layer.borderWidth = 0.5
-        postViewerView.layer.borderColor = UIColor.black.cgColor /// Type이 달라서 공통 Color를 적용할 수 없었음.
+        postViewerView.layer.cornerRadius = 15
+        postViewerView.layer.borderWidth = 1
+		postViewerView.layer.borderColor = UIColor(hexString: "#999999").cgColor
+		
+		editButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "EF_Diary", size: 18)!], for: .normal)
         
         self.view.backgroundColor = UIColor.mainBGColor
         self.navigationController?.navigationBar.customNavigationBar()

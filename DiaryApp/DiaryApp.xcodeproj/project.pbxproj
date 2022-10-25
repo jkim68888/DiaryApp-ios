@@ -818,7 +818,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = URTJJ24R4X;
+				DEVELOPMENT_TEAM = 6RZ3FF956G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "하루끝";
@@ -851,7 +851,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = URTJJ24R4X;
+				DEVELOPMENT_TEAM = 6RZ3FF956G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "하루끝";
