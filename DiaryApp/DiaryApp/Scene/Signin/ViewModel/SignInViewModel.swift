@@ -9,6 +9,7 @@ import Foundation
 import KakaoSDKCommon
 import KakaoSDKUser
 import KakaoSDKAuth
+import GoogleSignIn
 
 class SignInViewModel {
 	// 싱글톤 가져옴
@@ -86,4 +87,5 @@ class SignInViewModel {
 			}
 		}
 	}
+    
 }
