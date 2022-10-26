@@ -11,6 +11,8 @@ class PostViewController: UIViewController {
     
     // Post에 대한 정보를 담고있는 변수
     var postData: TempPost?
+    
+    var dataManager = TempDataManager.shared
     // 현재 Post의 index번호를 담는 변수 -> 삭제나 업데이트 시에 사용
     var postNumber:Int? = 0
     // Post 수정 시에, delegate를 통해 다른 View를 reload하는데 사용
@@ -29,8 +31,8 @@ class PostViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        setData()
         setUI()
+        setData()
         setDatePicker()
         setDelegate()
         setImagePickView()
@@ -44,8 +46,10 @@ class PostViewController: UIViewController {
             print("데이터불러오기실패")
             postData = TempPost(userID: "momo", postTitle: "", postScrpit: "", postImage: nil, createDate: Date())
             /// 기존 PostData를 담은 Array에 새로운 게시글 내용을 추가한다.
-            let homeVC = navigationController?.viewControllers[0] as! HomeViewController
-            homeVC.dataManager.addPostData(postData)
+            dataManager.addPostData(postData)
+            // 게시글 추가일때만 설정되는 UIset
+            postScriptTV.text = postScriptTVPlaceHolder
+            postScriptTV.textColor = .lightGray
         }
         /// 이미 존재하는 Post를 수정하는 경우
         else{
@@ -86,9 +90,6 @@ class PostViewController: UIViewController {
         // 공통 네비게이션바 사용
         self.navigationController?.navigationBar.customNavigationBar()
 		
-        
-        postScriptTV.text = postScriptTVPlaceHolder
-        postScriptTV.textColor = .lightGray
         
     }
     // MARK: - 1. Date Picker를 호출하여 날짜를 입력할 수 있도록 설정
@@ -156,10 +157,8 @@ class PostViewController: UIViewController {
         print(#function)
         print(postData)
         let postViewerVCindex = navigationController!.viewControllers.count - 2
-        let homeVCindex = navigationController!.viewControllers.count - 3
-        
         let postViewerVC = navigationController?.viewControllers[postViewerVCindex] as! PostViewerViewController
-        let homeVC = navigationController?.viewControllers[homeVCindex] as! HomeViewController
+
                         
         // 글쓰기를 통해서 해당  View에 접근한 경우
         if postData == nil{
@@ -169,12 +168,11 @@ class PostViewController: UIViewController {
             editpostData?.postTitle = postTitleTF.text ?? ""
             editpostData?.postDescription = postScriptTV.text ?? ""
             postData = editpostData
-            homeVC.dataManager.addPostData(postData!)
             print(postData!)
             delegate?.update()
             
             postViewerVC.tempPostData = postData!
-            homeVC.dataManager.addPostData(postData!)
+            dataManager.addPostData(postData!)
             self.navigationController?.popViewController(animated: true)
         }
         // 기존 게시물을 수정하여 접근하는 경우
@@ -186,7 +184,7 @@ class PostViewController: UIViewController {
             postData!.postDescription = postScriptTV.text ?? ""
             
             postViewerVC.tempPostData = postData!
-            homeVC.dataManager.update(index: postNumber!, postData!)
+            dataManager.update(uniqueNum: postNumber!, postData!)
             delegate?.update()
             self.navigationController?.popViewController(animated: true)
         }
@@ -197,8 +195,9 @@ class PostViewController: UIViewController {
     @IBAction func postDeleteButtonTapped(_ sender: UIButton) {
         let homeVCindex = navigationController!.viewControllers.count - 3
         let homeVC = navigationController?.viewControllers[homeVCindex] as! HomeViewController
-        homeVC.dataManager.delete(index: postNumber!)
+        dataManager.delete(uniqueNum: postNumber!)
         self.navigationController?.popToViewController(homeVC, animated: true)
+        print(dataManager.getPostDate())
     }
 	
     /// 다른 곳을 누르면 키보드가 내려가게 설정
