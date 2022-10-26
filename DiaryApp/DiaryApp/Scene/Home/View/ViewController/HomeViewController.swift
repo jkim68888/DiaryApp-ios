@@ -11,8 +11,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var defaultStackView: UIStackView!
     @IBOutlet weak var addPostBtn: UIButton!
-
-	var snsUser: SnsUser?
+	
+	let viewModel = HomeViewModel()
 	
     var haveData:Bool = false
     let flowLayout = UICollectionViewFlowLayout()
@@ -20,10 +20,12 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveNotification(_:)), name: NSNotification.Name("getKakaoSignIn"), object: nil)
+		setNotification()
         setUI()
 		bindData()
         setCollectionView()
+		// 로그인 되있는 경우에 home 진입하자마자 api 요청해서 데이터 가져옴
+		viewModel.fetchHomeData()
     }
 	
     // 현재View(homeVC)가 보이려고할 때,
@@ -50,6 +52,11 @@ class HomeViewController: UIViewController {
 		addPostBtn.layer.shadowRadius = 4
 		addPostBtn.layer.masksToBounds = false
     }
+	
+	func setNotification() {
+		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveLoginSuccess(_:)), name: NSNotification.Name("loginSuccess"), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveFetchHomeSuccess(_:)), name: NSNotification.Name("fetchHomeSuccess"), object: nil)
+	}
     
     func setCollectionView(){
         if haveData {
@@ -103,10 +110,14 @@ class HomeViewController: UIViewController {
         }
     }
 	
-	@objc func didRecieveNotification(_ notification: Notification) {
-		guard let data = notification.object as? SnsUser else { return }
-		self.snsUser = data
-		
+	// 로그인 안되어있는경우,
+	// 로그인 완료 후에 home api 요청함
+	@objc func didRecieveLoginSuccess(_ notification: Notification) {
+		viewModel.fetchHomeData()
+	}
+	
+	// home api요청이 success면 콜렉션뷰 다시 그림 (바인딩된 데이터로 그리기 위함)
+	@objc func didRecieveFetchHomeSuccess(_ notification: Notification) {
 		DispatchQueue.main.async {
 			self.homeCollectionView.reloadData()
 		}
@@ -139,7 +150,10 @@ extension HomeViewController: UICollectionViewDataSource{
 		
 		setCollectionHeaderUI(header: headerView)
 		
-		headerView.userNameLabel.text = "\(snsUser?.name ?? "홍길동")님"
+		// 로그인된 사람은 로그인 api 요청 없이 바로 home으로 진입하기 때문에, userdefaults에 있는 name값을 씀
+		if let nickname = UserDefaults.standard.value(forKey: "userName") as? String {
+			headerView.userNameLabel.text = "\(nickname)님"
+		}
 	
 		return headerView
 	}

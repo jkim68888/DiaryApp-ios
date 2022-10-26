@@ -8,23 +8,22 @@
 import Foundation
 
 class HomeViewModel {
-	// 싱글톤 가져옴
-//	let signInService = SignInService.shared
-//
-//	var userData: UserData?
-//	var user: User?
-//
-//	var didFinishFetch: (() -> ())?
-//
-//	func getUserData() {
-//		guard let token = user?.token else { return }
-//
-//		signInService.requestSignInToken(accessToken: token) { (success, data) in
-//			self.userData = data
-//
-//			print("성공🌟\(data.nickname)")
-//		}
-//
-//		self.didFinishFetch?()
-//	}
+	let postService = PostService.shared
+	
+	var user: User?
+	
+	func fetchHomeData() {
+		guard let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String else { return }
+		
+		self.postService.requestHome(accessToken: token) { (success, data) in
+			print("성공🌟\(data.name)")
+			self.user = User.init(name: data.name)
+			
+			UserDefaults.standard.setValue(data.name , forKey: "userName")
+			UserDefaults.standard.synchronize()
+			
+			// 홈뷰컨으로 데이터 전달하기 위한 notification
+			NotificationCenter.default.post(name: NSNotification.Name("fetchHomeSuccess"), object: nil, userInfo: nil)
+		}
+	}
 }

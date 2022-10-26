@@ -19,7 +19,6 @@ struct SignInService {
 	let googlePath = "/api/auth/callback/google"
 	let applePath = "/api/auth/callback/apple"
 	let naverPath = "/api/auth/callback/naver"
-	let loginPath = "/api/home"
 	
 	// MARK: - 카카오,구글,애플,네이버 요청
 	func requestSnsSignIn(url: String, name: String, accessToken: String, completionHandler: @escaping (Bool, Account) -> Void) {
@@ -58,44 +57,8 @@ struct SignInService {
 			
 			print("requestSnsSignIn - \(response)")
 			print("requestSnsSignIn - \(String(decoding: data, as: UTF8.self))")
-
+			
 			completionHandler(true, output)
-		}.resume()
-	}
-	
-	// MARK: - jwt 토큰 요청
-	func requestSignInToken(accessToken: String, completionHandler: @escaping (Bool, Any) -> Void) {
-		let urlComponents = "\(baseUrl)\(loginPath)"
-		
-		guard let url = URL(string: urlComponents) else {
-			print("Error: cannot create URL")
-			return
-		}
-		
-		var request = URLRequest(url: url)
-		request.httpMethod = "POST"
-		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-		request.addValue("Bearer\(accessToken)", forHTTPHeaderField: "authorization")
-		
-		URLSession.shared.dataTask(with: request) { (data, response, error) in
-			guard error == nil else {
-				print("Error: error calling - requestSignInToken")
-				print(error!)
-				return
-			}
-			guard let data = data else {
-				print("Error: Did not receive data - requestSignInToken")
-				return
-			}
-			guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
-				print("Error: HTTP request failed \(response) - requestSignInToken")
-				return
-			}
-			
-			print("requestSignInToken - \(response)")
-			print("requestSignInToken - \(String(decoding: data, as: UTF8.self))")
-			
-			completionHandler(true, data)
 		}.resume()
 	}
 }

@@ -19,7 +19,9 @@ class SettingsViewModel {
 			}
 			else {
 				print("logout() success.")
-				goSingInVC()
+				UserDefaults.standard.setValue(nil, forKey: "authVerificationID")
+				UserDefaults.standard.synchronize()
+				changeRootVC()
 			}
 		}
 	}
