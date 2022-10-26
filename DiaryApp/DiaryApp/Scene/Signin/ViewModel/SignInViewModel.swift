@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 import KakaoSDKCommon
 import KakaoSDKUser
 import KakaoSDKAuth
@@ -16,9 +17,30 @@ class SignInViewModel {
 	let signInService = SignInService.shared
 
 	var account: Account?
-	var snsUser: SnsUser?
 	
 	let googleSignInConfig = GIDConfiguration.init(clientID: Config().googleId)
+	
+	// 백엔드 서버 통신
+	func fetchData(url: String, name: String, token: String) {
+		signInService.requestSnsSignIn(url: url, name: name, accessToken: token) { [self] (success, data) in
+			self.account = data
+			print("(카카오리퀘스트 성공) jwtToken - \(data.token)")
+			
+			UserDefaults.standard.setValue(data.token , forKey: "authVerificationID")
+			UserDefaults.standard.synchronize()
+			
+			// view를 바꿔주는건 main 디스패치큐에서 실행
+			DispatchQueue.main.async {
+				changeRootVC()
+			}
+			
+			// 홈뷰컨으로 home api 요청 시점을 알려주기 위한 notification
+			// root view가 홈으로 바뀐뒤, 알려줘야 하므로, 시간차를 둠
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+				NotificationCenter.default.post(name: NSNotification.Name("loginSuccess"), object: nil, userInfo: nil)
+			}
+		}
+	}
 	
 	// 카카오 로그인
 	func getKakaoSignIn() {
@@ -38,7 +60,6 @@ class SignInViewModel {
 					// 로그인 관련 메소드 추가
 					// 사용자 정보 불러옴
 					self.getKakaoToken(token: oauthToken?.accessToken)
-					goHomeVC()
 				}
 			}
 		} else {
@@ -54,7 +75,6 @@ class SignInViewModel {
 					// 관련 메소드 추가
 					// 사용자 정보 불러옴
 					self.getKakaoToken(token: oauthToken?.accessToken)
-					goHomeVC()
 				}
 			}
 		}
@@ -73,21 +93,10 @@ class SignInViewModel {
 					return
 				}
 				
-				self.snsUser = SnsUser.init(token: token, name: name)
-				
 				print("token: \(token)")
 				
-				// 백엔드 서버 통신
-				signInService.requestSnsSignIn(url: "\(signInService.baseUrl)\(signInService.kakaoPath)", name: name, accessToken: token) { (success, data) in
-					self.account = data
-					print("(카카오리퀘스트 성공) jwtToken - \(data.token)")
-					
-					NotificationCenter.default.post(name: NSNotification.Name("getKakaoSignIn"), object: self.snsUser, userInfo: nil)
-					
-					self.signInService.requestSignInToken(accessToken: data.token) { (success, data) in
-						print("성공🌟\(data)")
-					}
-				}
+				// 서버에 보낼 함수
+				fetchData(url: "\(signInService.baseUrl)\(signInService.kakaoPath)", name: name, token: token)
 			}
 		}
 	}
@@ -108,22 +117,9 @@ class SignInViewModel {
 				guard let idToken = authentication.idToken else { return }
 				
 				print("idToken: \(idToken)")
-				
-				self.snsUser = SnsUser.init(token: idToken, name: name)
 			
 				// 서버에 보낼 함수
-				signInService.requestSnsSignIn(url: "\(signInService.baseUrl)\(signInService.googlePath)", name: name, accessToken: idToken) { (success, data) in
-					self.account = data
-					print("(구글리퀘스트 성공) jwtToken - \(data.token)")
-					
-					NotificationCenter.default.post(name: NSNotification.Name("getGoogleSignIn"), object: self.snsUser, userInfo: nil)
-					
-					self.signInService.requestSignInToken(accessToken: data.token) { (success, data) in
-						print("성공🌟\(data)")
-					}
-				}
-				
-				goHomeVC()
+				fetchData(url: "\(signInService.baseUrl)\(signInService.googlePath)", name: name, token: idToken)
 			}
 		}
 	}

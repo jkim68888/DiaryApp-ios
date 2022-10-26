@@ -7,6 +7,7 @@
 
 import Foundation
 
+// requestSnsSignIn()에서 주는 jwtToken
 struct Account: Codable {
 	var token: String
 	
@@ -15,12 +16,11 @@ struct Account: Codable {
 	}
 }
 
-struct SnsUser: Codable {
-	var token: String
+// requestHome()에서 주는 유저네임
+struct User: Codable {
 	var name: String
 	
 	enum CodingKeys: String, CodingKey {
-		case token
-		case name
+		case name = "nickname"
 	}
 }
