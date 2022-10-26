@@ -8,22 +8,21 @@ import UIKit
 import PhotosUI
 
 class PostViewController: UIViewController {
+    
     // Post에 대한 정보를 담고있는 변수
     var postData: TempPost?
     // 현재 Post의 index번호를 담는 변수 -> 삭제나 업데이트 시에 사용
     var postNumber:Int? = 0
-    // 게시글을 수정한 시간을 담고있는 변수 -> 앞으로 사용할지 미정
-    var editFormatter_time = DateFormatter()
     // Post 수정 시에, delegate를 통해 다른 View를 reload하는데 사용
     var delegate:TempPostDelegate?
     // 게시글 내부에 들어갈 Placeholedr 담는 변수
-    var postScriptTVPlaceHolder:String?
+    var postScriptTVPlaceHolder:String = "텍스트를 여기에 입력하세요"
     
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var cancleImgBtn: UIButton!
     @IBOutlet weak var postImageBtn: UIButton!
     @IBOutlet weak var postStackView: UIStackView!
-    @IBOutlet weak var postDateLabel: UILabel!
+    @IBOutlet weak var postDateTF: UITextField!
     @IBOutlet weak var postTitleTF: UITextField!
     @IBOutlet weak var postScriptTV: UITextView!
 	@IBOutlet weak var doneButton: UIBarButtonItem!
@@ -32,19 +31,18 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
         setData()
         setUI()
+        setDatePicker()
         setDelegate()
-        setGesture()
         setImagePickView()
         customBackButton(self: self, target: self.navigationController!)
     }
 	
     func setData(){
-        //  사실 상 이 부분은, 서버쪽이 구현이되면, 굳이 homeVC에 접근하는 것이 아니라, 서버에 있는 PostArray에 추가해주어야한다.
 
         /// 데이터 가져왔을 때, nil인 경우는 New Post를 작성하는 경우 -> 새로운 postData를 만들어 기존 PostArray에 추가해준다.
         if postData == nil{
             print("데이터불러오기실패")
-            postData = TempPost(userID: "momo", postTitle: "", postScrpit: "텍스트를 입력해주세요", postImage: nil, createDate: Date())
+            postData = TempPost(userID: "momo", postTitle: "", postScrpit: "", postImage: nil, createDate: Date())
             /// 기존 PostData를 담은 Array에 새로운 게시글 내용을 추가한다.
             let homeVC = navigationController?.viewControllers[0] as! HomeViewController
             homeVC.dataManager.addPostData(postData)
@@ -58,13 +56,14 @@ class PostViewController: UIViewController {
         
         /// 기본적인 Post 정보에 담길 내용을 Setting해준다.
         postImageView.image = postData.postImage
-        postDateLabel.text = postData.createDate.toString()
+        postDateTF.text = postData.createDate.toString()
         postTitleTF.text = postData.postTitle
         postScriptTV.text = postData.postDescription
         
     }
 	
     func setUI(){
+        
         // 사진선택 버튼에 테두리 넣기
         postImageBtn.setTitle("", for: .normal)
         postImageBtn.clipsToBounds = true
@@ -82,19 +81,34 @@ class PostViewController: UIViewController {
 		
         // TextField에 얇은 테두리 안보이게 설정
         postTitleTF.borderStyle = .none
+        postDateTF.borderStyle = .none
 		
         // 공통 네비게이션바 사용
         self.navigationController?.navigationBar.customNavigationBar()
 		
-        // MARK: - 1. TextView의 디폴트 내용(ex. 내용을 입력해주세요) 추가
         
+        postScriptTV.text = postScriptTVPlaceHolder
+        postScriptTV.textColor = .lightGray
         
+    }
+    // MARK: - 1. Date Picker를 호출하여 날짜를 입력할 수 있도록 설정
+    func setDatePicker(){
+        let locale = NSLocale(localeIdentifier: "ko_KO")
+        let datepicker = UIDatePicker()
+        datepicker.locale = locale as Locale
+        datepicker.preferredDatePickerStyle = .wheels
+        datepicker.datePickerMode = UIDatePicker.Mode.date
+        datepicker.addTarget(self, action: #selector(DatepickerCh(sender:)), for: UIControl.Event.valueChanged)
+        postDateTF.inputView = datepicker
+    }
+    @objc func DatepickerCh(sender:UIDatePicker){
+        postDateTF.text = sender.date.toString()
     }
 	
     // TextField와 TextView에대한 Delegate 선언
     func setDelegate(){
         postTitleTF.delegate = self
-        //postScriptTV.delegate = self
+        postScriptTV.delegate = self
     }
 	
     // 불러온 PostData에 이미지에 따라 ImageView를 세팅
@@ -111,19 +125,10 @@ class PostViewController: UIViewController {
         }
     }
 	
-    // MARK: - 2. Date Picker를 호출하여 날짜를 입력할 수 있도록 설정
-    // DateLabel을 눌렀을 때, 수정 가능하도록 변경 -> 아직 미구현
-    func setGesture(){
-        let tapGestureDateLabel = UITapGestureRecognizer(target: self, action: #selector(달력을눌렀을때))
-        postDateLabel.addGestureRecognizer(tapGestureDateLabel) // 제스처를 추가....
-        postDateLabel.isUserInteractionEnabled = true // 유저와의 소통을 가능하게...
-    }
 
-    @objc func 달력을눌렀을때(){
-        // 아직 미구현
-    }
+
 	
-    // MARK: - 3. 뒤로가기 버튼을 눌렀을 때
+    // MARK: - 2. 뒤로가기 버튼을 눌렀을 때
     // 특정 항목들이 저장되어있지 않으면, 뒤로가지 못하게 막아야함
     
     @IBAction func postImagePickButtonTapped(_ sender: UIButton) {
@@ -160,7 +165,7 @@ class PostViewController: UIViewController {
         if postData == nil{
             var editpostData:TempPost?
             editpostData?.postImage = postImageView.image ?? UIImage(named: "NoImage.png")
-            editpostData?.createDate = postDateLabel.text!.toDate() ?? Date()
+            editpostData?.createDate = postDateTF.text!.toDate() ?? Date()
             editpostData?.postTitle = postTitleTF.text ?? ""
             editpostData?.postDescription = postScriptTV.text ?? ""
             postData = editpostData
@@ -176,7 +181,7 @@ class PostViewController: UIViewController {
         else{
             print(postData!)
             postData!.postImage = postImageView.image
-            postData!.createDate = postDateLabel.text!.toDate() ?? Date()
+            postData!.createDate = postDateTF.text!.toDate() ?? Date()
             postData!.postTitle = postTitleTF.text ?? ""
             postData!.postDescription = postScriptTV.text ?? ""
             
@@ -187,7 +192,7 @@ class PostViewController: UIViewController {
         }
     }
 	
-    // MARK: - 4. 삭제 시에, 해당된 Post의 index에 해당하는 값을 지우고, 다시 배열을 정렬해야함
+    // MARK: - 3. 삭제 시에, 해당된 Post의 index에 해당하는 값을 지우고, 다시 배열을 정렬해야함
     // 삭제 기능은 아직 불완전함. 삭제할 index를 능동적으로 변화시켜야함.
     @IBAction func postDeleteButtonTapped(_ sender: UIButton) {
         let homeVCindex = navigationController!.viewControllers.count - 3
@@ -222,12 +227,28 @@ extension PostViewController: PHPickerViewControllerDelegate{
     
 }
 
+// MARK: - 4. TextView의 디폴트 내용(ex. 내용을 입력해주세요) 추가
 extension PostViewController:UITextViewDelegate{
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == postScriptTVPlaceHolder {
-                textView.text = nil
-                textView.textColor = .black
-            }
+    //textView에 입력을 시작할 때
+//    func textViewDidBeginEditing(_ textView: UITextView){
+//        if textView.text == "텍스트를 여기에 입력하세요"{
+//            textView.text = nil
+//            textView.textColor = .black
+//        }
+//    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if textView.text == postScriptTVPlaceHolder{
+            textView.text = nil
+            textView.textColor = .black
+        }
+        return true
+    }
+    //textView에 입력을 끝났을 때,
+    func textViewDidEndEditing(_ textView: UITextView){
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty{
+            textView.text = postScriptTVPlaceHolder
+            textView.textColor = .lightGray
+        }
     }
 }
 
