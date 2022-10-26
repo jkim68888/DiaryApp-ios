@@ -18,7 +18,7 @@ class SignInViewModel {
 
 	var account: Account?
 	
-	let googleSignInConfig = GIDConfiguration.init(clientID: Config().googleId)
+    let googleSignInConfig = GIDConfiguration.init(clientID: Config().googleId)
 	
 	// 백엔드 서버 통신
 	func fetchData(url: String, name: String, token: String) {

@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
 	
     var haveData:Bool = false
     let flowLayout = UICollectionViewFlowLayout()
-    let dataManager = TempDataManager()
+    let dataManager = TempDataManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()

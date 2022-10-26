@@ -7,6 +7,7 @@
 
 import UIKit
 class TempDataManager{
+    static let shared = TempDataManager()
     var postArray:[TempPost]? = []
     
     func getPostDate() -> [TempPost]{
@@ -28,10 +29,11 @@ class TempDataManager{
     func addPostData(_ post: TempPost?){
         postArray?.append(post!)
     }
-    func update(index:Int,_ post:TempPost){
-        postArray?[index] = post
+    func update(uniqueNum:Int,_ post:TempPost){
+        postArray = postArray?.map{ return $0.postNumber == uniqueNum ? post : $0}
+
     }
-    func delete(index:Int){
-        postArray?.remove(at: index)
+    func delete(uniqueNum:Int){
+        postArray = postArray?.filter{$0.postNumber != uniqueNum}
     }
 }
