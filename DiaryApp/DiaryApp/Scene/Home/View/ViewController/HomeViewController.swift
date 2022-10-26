@@ -11,8 +11,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var defaultStackView: UIStackView!
     @IBOutlet weak var addPostBtn: UIButton!
-	
-	let signInVM = SignInViewModel()
+
 	var snsUser: SnsUser?
 	
     var haveData:Bool = false

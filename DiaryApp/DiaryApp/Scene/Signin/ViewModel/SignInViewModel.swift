@@ -18,7 +18,9 @@ class SignInViewModel {
 	var account: Account?
 	var snsUser: SnsUser?
 	
-	// 로그인 로직
+	let googleSignInConfig = GIDConfiguration.init(clientID: Config().googleId)
+	
+	// 카카오 로그인
 	func getKakaoSignIn() {
 		print(UserApi.isKakaoTalkLoginAvailable())
 		
@@ -73,19 +75,56 @@ class SignInViewModel {
 				
 				self.snsUser = SnsUser.init(token: token, name: name)
 				
-				signInService.requestKakao(name: name, accessToken: token) { (success, data) in
+				print("token: \(token)")
+				
+				// 백엔드 서버 통신
+				signInService.requestSnsSignIn(url: "\(signInService.baseUrl)\(signInService.kakaoPath)", name: name, accessToken: token) { (success, data) in
 					self.account = data
 					print("(카카오리퀘스트 성공) jwtToken - \(data.token)")
 					
 					NotificationCenter.default.post(name: NSNotification.Name("getKakaoSignIn"), object: self.snsUser, userInfo: nil)
 					
-//					signInService.requestSignInToken(accessToken: data.token) { (success, data) in
-//						
-//						print("성공🌟\(data)")
-//					}
+					self.signInService.requestSignInToken(accessToken: data.token) { (success, data) in
+						print("성공🌟\(data)")
+					}
 				}
 			}
 		}
 	}
-    
+	
+	// 구글 로그인
+	func getGoogleSignIn() {
+		GIDSignIn.sharedInstance.signIn(with: self.googleSignInConfig, presenting: (UIApplication.shared.windows.first?.rootViewController)!) { user, error in
+			guard error == nil else { return }
+			guard let user = user else { return }
+			
+			// 유저정보 가져오는 부분 구글에서 설정하기
+			guard let name = user.profile?.name else { return }
+			
+			user.authentication.do { [self] authentication, error in
+				guard error == nil else { return }
+				guard let authentication = authentication else { return }
+				
+				guard let idToken = authentication.idToken else { return }
+				
+				print("idToken: \(idToken)")
+				
+				self.snsUser = SnsUser.init(token: idToken, name: name)
+			
+				// 서버에 보낼 함수
+				signInService.requestSnsSignIn(url: "\(signInService.baseUrl)\(signInService.googlePath)", name: name, accessToken: idToken) { (success, data) in
+					self.account = data
+					print("(구글리퀘스트 성공) jwtToken - \(data.token)")
+					
+					NotificationCenter.default.post(name: NSNotification.Name("getGoogleSignIn"), object: self.snsUser, userInfo: nil)
+					
+					self.signInService.requestSignInToken(accessToken: data.token) { (success, data) in
+						print("성공🌟\(data)")
+					}
+				}
+				
+				goHomeVC()
+			}
+		}
+	}
 }

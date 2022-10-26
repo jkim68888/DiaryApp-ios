@@ -12,22 +12,21 @@ struct SignInService {
 	static let shared = SignInService()
 	
 	// baseUrl
-	private let baseUrl = "http://localhost:4000"
+	let baseUrl = "http://localhost:4000"
 	
 	// pathUrl
-	private let kakaoPath = "/api/auth/callback/kakao"
-	private let googlePath = "/api/auth/callback/google"
-	private let applePath = "/api/auth/callback/apple"
-	private let naverPath = "/api/auth/callback/naver"
-	private let loginPath = "/api/home"
+	let kakaoPath = "/api/auth/callback/kakao"
+	let googlePath = "/api/auth/callback/google"
+	let applePath = "/api/auth/callback/apple"
+	let naverPath = "/api/auth/callback/naver"
+	let loginPath = "/api/home"
 	
-	// MARK: - 카카오 로그인
-	func requestKakao(name: String, accessToken: String, completionHandler: @escaping (Bool, Account) -> Void) {
+	// MARK: - 카카오,구글,애플,네이버 요청
+	func requestSnsSignIn(url: String, name: String, accessToken: String, completionHandler: @escaping (Bool, Account) -> Void) {
 		let param = ["name": name]
 		let sendData = try! JSONSerialization.data(withJSONObject: param, options: [])
-		let urlComponents = "\(baseUrl)\(kakaoPath)"
 		
-		guard let url = URL(string: urlComponents) else {
+		guard let url = URL(string: url) else {
 			print("Error: cannot create URL")
 			return
 		}
@@ -40,25 +39,25 @@ struct SignInService {
 		
 		URLSession.shared.dataTask(with: request) { (data, response, error) in
 			guard error == nil else {
-				print("Error: error calling - requestKakao")
+				print("Error: error calling - requestSnsSignIn")
 				print(error!)
 				return
 			}
 			guard let data = data else {
-				print("Error: Did not receive data - requestKakao")
+				print("Error: Did not receive data - requestSnsSignIn")
 				return
 			}
 			guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
-				print("Error: HTTP request failed - requestKakao")
+				print("Error: HTTP request failed - requestSnsSignIn")
 				return
 			}
 			guard let output = try? JSONDecoder().decode(Account.self, from: data) else {
-				print("Error: JSON Data Parsing failed - requestKakao")
+				print("Error: JSON Data Parsing failed - requestSnsSignIn")
 				return
 			}
 			
-			print("requestKakao - \(response)")
-			print("requestKakao - \(String(decoding: data, as: UTF8.self))")
+			print("requestSnsSignIn - \(response)")
+			print("requestSnsSignIn - \(String(decoding: data, as: UTF8.self))")
 
 			completionHandler(true, output)
 		}.resume()
