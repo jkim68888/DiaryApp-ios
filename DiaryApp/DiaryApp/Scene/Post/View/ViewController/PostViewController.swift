@@ -36,20 +36,16 @@ class PostViewController: UIViewController {
         setDatePicker()
         setDelegate()
         setImagePickView()
-        customBackButton(self: self, target: self.navigationController!)
     }
-	
-    func setData(){
 
+
+    func setData(){
         /// 데이터 가져왔을 때, nil인 경우는 New Post를 작성하는 경우 -> 새로운 postData를 만들어 기존 PostArray에 추가해준다.
         if postData == nil{
             print("데이터불러오기실패")
-            postData = TempPost(userID: "momo", postTitle: "", postScrpit: "", postImage: nil, createDate: Date())
+            postData = TempPost(userID: "momo", postTitle: nil, postDescription: nil, postImage: nil, createDate: Date())
             /// 기존 PostData를 담은 Array에 새로운 게시글 내용을 추가한다.
             dataManager.addPostData(postData)
-            // 게시글 추가일때만 설정되는 UIset
-            postScriptTV.text = postScriptTVPlaceHolder
-            postScriptTV.textColor = .lightGray
         }
         /// 이미 존재하는 Post를 수정하는 경우
         else{
@@ -62,8 +58,9 @@ class PostViewController: UIViewController {
         postImageView.image = postData.postImage
         postDateTF.text = postData.createDate.toString()
         postTitleTF.text = postData.postTitle
-        postScriptTV.text = postData.postDescription
         
+        if postScriptTV.text! == ""{postScriptTV.textColor = .lightGray}
+        postScriptTV.text = postData.postDescription ?? postScriptTVPlaceHolder
     }
 	
     func setUI(){
@@ -90,6 +87,7 @@ class PostViewController: UIViewController {
         // 공통 네비게이션바 사용
         self.navigationController?.navigationBar.customNavigationBar()
 		
+        
         
     }
     // MARK: - 1. Date Picker를 호출하여 날짜를 입력할 수 있도록 설정
@@ -125,12 +123,14 @@ class PostViewController: UIViewController {
             print("기존 글 수정")
         }
     }
-	
-
-
-	
     // MARK: - 2. 뒤로가기 버튼을 눌렀을 때
-    // 특정 항목들이 저장되어있지 않으면, 뒤로가지 못하게 막아야함
+    
+    @objc func didTapBackButton(){
+        showPopUp(title: "타이틀", message: "메세지")
+    }
+	
+    
+     //특정 항목들이 저장되어있지 않으면, 뒤로가지 못하게 막아야함
     
     @IBAction func postImagePickButtonTapped(_ sender: UIButton) {
         // 피커뷰를 사용하기 위해서 configuration을 먼저 설정해준다.
@@ -152,31 +152,28 @@ class PostViewController: UIViewController {
         cancleImgBtn.isHidden = true
     }
 	
+    @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
+        if postTitleTF.text! == ""{
+            showPopUp(title: "알림", message: "입력한 정보가 없습니다.\n기록을 삭제하시겠습니까?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "확인", rightActionCompletion:  {
+                self.navigationController?.popToRootViewController(animated: true)
+                self.dataManager.delete(uniqueNum: self.postNumber!)
+            })
+        }
+        showPopUp(title: "알림", message: "편집을 중단하시겠습니까?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "확인", rightActionCompletion:  {
+            self.navigationController?.popViewController(animated: true)
+        })
+    }
     // 완료 버튼을 눌렀을 때
     @IBAction func doneButtonTapped(_ sender: Any) {
         print(#function)
         print(postData)
         let postViewerVCindex = navigationController!.viewControllers.count - 2
         let postViewerVC = navigationController?.viewControllers[postViewerVCindex] as! PostViewerViewController
-
-                        
-        // 글쓰기를 통해서 해당  View에 접근한 경우
-        if postData == nil{
-            var editpostData:TempPost?
-            editpostData?.postImage = postImageView.image ?? UIImage(named: "NoImage.png")
-            editpostData?.createDate = postDateTF.text!.toDate() ?? Date()
-            editpostData?.postTitle = postTitleTF.text ?? ""
-            editpostData?.postDescription = postScriptTV.text ?? ""
-            postData = editpostData
-            print(postData!)
-            delegate?.update()
-            
-            postViewerVC.tempPostData = postData!
-            dataManager.addPostData(postData!)
-            self.navigationController?.popViewController(animated: true)
-        }
-        // 기존 게시물을 수정하여 접근하는 경우
-        else{
+        if postTitleTF.text! == ""{
+            showPopUp(title: "알림", message: "저장할 내용이 없습니다\n저장하시겠습니까?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "저장", rightActionCompletion:  {
+                self.navigationController?.popViewController(animated: true)
+            })
+        }else{
             print(postData!)
             postData!.postImage = postImageView.image
             postData!.createDate = postDateTF.text!.toDate() ?? Date()
@@ -222,26 +219,18 @@ extension PostViewController: PHPickerViewControllerDelegate{
             print("이미지를 불러올 수 없습니다.")
         }
     }
-    
-    
 }
 
 // MARK: - 4. TextView의 디폴트 내용(ex. 내용을 입력해주세요) 추가
 extension PostViewController:UITextViewDelegate{
     //textView에 입력을 시작할 때
-//    func textViewDidBeginEditing(_ textView: UITextView){
-//        if textView.text == "텍스트를 여기에 입력하세요"{
-//            textView.text = nil
-//            textView.textColor = .black
-//        }
-//    }
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    func textViewDidBeginEditing(_ textView: UITextView){
         if textView.text == postScriptTVPlaceHolder{
             textView.text = nil
             textView.textColor = .black
         }
-        return true
     }
+
     //textView에 입력을 끝났을 때,
     func textViewDidEndEditing(_ textView: UITextView){
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty{

@@ -44,6 +44,7 @@
 		A919384228F65DDD00CC8B76 /* PostViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919384128F65DDD00CC8B76 /* PostViewerViewController.swift */; };
 		A95E03CD290665B800F73A33 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E03CC290665B800F73A33 /* CalendarCollectionViewCell.swift */; };
 		A95E03CF2906B3C400F73A33 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E03CE2906B3C400F73A33 /* CalendarTableViewCell.swift */; };
+		A95E03D1290A148600F73A33 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E03D0290A148600F73A33 /* PopUpViewController.swift */; };
 		A9C2A6DA28FD5C0A000EB06D /* TempPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2A6D928FD5C0A000EB06D /* TempPost.swift */; };
 		A9C2A6DC28FD6A9D000EB06D /* TempDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2A6DB28FD6A9D000EB06D /* TempDataManager.swift */; };
 		A9C2A6DE28FD7F95000EB06D /* HomePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2A6DD28FD7F95000EB06D /* HomePostCollectionViewCell.swift */; };
@@ -92,6 +93,7 @@
 		A919384128F65DDD00CC8B76 /* PostViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewerViewController.swift; sourceTree = "<group>"; };
 		A95E03CC290665B800F73A33 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		A95E03CE2906B3C400F73A33 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		A95E03D0290A148600F73A33 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		A9C2A6D928FD5C0A000EB06D /* TempPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempPost.swift; sourceTree = "<group>"; };
 		A9C2A6DB28FD6A9D000EB06D /* TempDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempDataManager.swift; sourceTree = "<group>"; };
 		A9C2A6DD28FD7F95000EB06D /* HomePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			children = (
 				9A1FCCA728FEA102001B1584 /* NavigationBarUtils.swift */,
 				9A1FCCC628FFB9B4001B1584 /* RootViewUtils.swift */,
+				A95E03D0290A148600F73A33 /* PopUpViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				A913FA4128F7D09F00ECA972 /* CalendarViewController.swift in Sources */,
 				A9C2A6DA28FD5C0A000EB06D /* TempPost.swift in Sources */,
 				9A1FCCAE28FFB1BB001B1584 /* SettingsViewModel.swift in Sources */,
+				A95E03D1290A148600F73A33 /* PopUpViewController.swift in Sources */,
 				9AAB90D02904CDC7004141A4 /* Config.swift in Sources */,
 				9A1FCCA528FE81C2001B1584 /* UINavigationExtension.swift in Sources */,
 				9A1FCCC528FFB40A001B1584 /* HomeViewModel.swift in Sources */,

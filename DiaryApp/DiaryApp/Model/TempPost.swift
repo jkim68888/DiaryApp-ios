@@ -13,17 +13,17 @@ struct TempPost{
     static var postNumCount:Int = 0
     var userID:String
     var postNumber:Int
-    var postTitle:String
-    var postDescription:String
+    var postTitle:String?
+    var postDescription:String?
     var postImage:UIImage?
     var createDate:Date
     var editDate:Date?
     
-    init(userID:String,postTitle:String,postScrpit:String,postImage:UIImage?,createDate:Date){
+    init(userID:String,postTitle:String?,postDescription:String?,postImage:UIImage?,createDate:Date){
         postNumber = TempPost.postNumCount
         self.userID = userID
         self.postTitle = postTitle
-        self.postDescription = postScrpit
+        self.postDescription = postDescription
         self.postImage = postImage
         self.createDate = createDate
         TempPost.postNumCount += 1
