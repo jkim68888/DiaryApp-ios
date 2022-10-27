@@ -149,6 +149,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1QX-kE-eB2">
+                        <barButtonItem key="leftBarButtonItem" image="back" style="plain" id="ZWn-Uv-UqA">
+                            <connections>
+                                <action selector="backButtonTapped:" destination="Y6W-OH-hqX" id="Bjb-xn-l8e"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="완료" id="V7W-hM-GnG">
                             <connections>
                                 <action selector="doneButtonTapped:" destination="Y6W-OH-hqX" id="P3z-8D-Ygu"/>
@@ -193,6 +198,7 @@
         <image name="Cancle" width="24" height="24"/>
         <image name="ChoiceImg" width="51" height="47.5"/>
         <image name="Delete" width="19.5" height="21"/>
+        <image name="back" width="13" height="22"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

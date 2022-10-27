@@ -31,6 +31,7 @@ class PostViewerViewController: UIViewController {
         customBackButton(self: self, target: self.navigationController!)
     }
     
+    
     /// setUI: 해당 View에서의 UI를 Setting
     func setUI(){
         postViewerView.clipsToBounds = true
@@ -62,11 +63,10 @@ class PostViewerViewController: UIViewController {
             postViewerDescriptionLabel.text = tempPostData.postDescription
         }
         if postViewerImageView.image == nil{
-            print("image가 없습니다.")
-            
+            print("💄💄💄\nimage가 없습니다.")
             postViewerStackView.translatesAutoresizingMaskIntoConstraints = false
-            postViewerStackView.topAnchor.constraint(equalTo: postViewerView.topAnchor,constant: 20).isActive = true
-            
+            postViewerStackView.topAnchor.constraint(equalTo: postViewerView.topAnchor,constant: 0).isActive = true
+
         }
 
     }
@@ -81,6 +81,7 @@ class PostViewerViewController: UIViewController {
 /// 커스텀 Delegate를 사용하는 부분
 extension PostViewerViewController: TempPostDelegate{
     func update(){
+        
         setData()
     }
 }
