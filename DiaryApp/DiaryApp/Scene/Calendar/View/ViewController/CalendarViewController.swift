@@ -9,9 +9,8 @@ import UIKit
 
 class CalendarViewController: UIViewController {
     
-    var postData: [TempPost] = []
+    var postArray: [TempPost] = []
     var todayPostData: [TempPost] = []
-    
     
     let now = Date()
     var cal = Calendar.current
@@ -163,7 +162,7 @@ extension CalendarViewController:UICollectionViewDataSource{
     /// Cell에 대한 init을 설정하는 부분
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCollectionViewCell
-        
+        //만약 이전, 또는 다음 버튼을 눌렀을 경우 각 cell의 값을 초기화한다.
         
         switch indexPath.section {
         case 0:
@@ -179,19 +178,43 @@ extension CalendarViewController:UICollectionViewDataSource{
         } else { // 월요일 좋아(평일)
             cell.dateLabel.textColor = .black
         }
-        
-        // 특정 순서의 Cell(day,특정 일)의 값과 postData의 day값이 같으면..
-        for item in postData{
-            if String(Calendar.current.component(.day, from: item.createDate)) == cell.dateLabel.text{
-                // 달력에 Post가 있었음을 알리는 CheckPoint를 활성화 시킨다.
-                cell.checkPoint.isHidden = false
-                // 여기 수정해야함
-                todayPostData.append(item)
-                tableView.reloadData()
-            }
-            print(item.createDate)
+        // 초기화 시, 오늘 날짜를 선택하도록
+        if getStringTodayDate() == "\(components.year!).\(components.month!).\(cell.dateLabel.text!)"{
+            cell.isSelected = true
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
         }
+        cell.tempDate = "\(components.year!).\(components.month!).\(cell.dateLabel.text!)"
+        cell.postArray = postArray
+        
+        
+//        // 특정 순서의 Cell(day,특정 일)의 값과 postData의 day값이 같으면..
+//        for item in postArray{
+//
+//            if getStringPostDate(item) == "\(components.year!).\(components.month!).\(cell.dateLabel.text!)"{
+//                // 달력에 Post가 있었음을 알리는 CheckPoint를 활성화 시킨다.
+//                print("💄💄💄💄💄💄찾았다")
+//
+//
+//                cell.tempDate = getStringPostDate(item)
+//
+//                print("💄💄💄💄💄💄")
+//
+//            }
+//        }
+        
         return cell
+    }
+    func getStringPostDate(_ post:TempPost) -> String {
+        let strDate = String(Calendar.current.component(.year, from: post.createDate)) + "." +
+                        String(Calendar.current.component(.month, from: post.createDate)) + "." +
+                        String(Calendar.current.component(.day, from: post.createDate))
+        return strDate
+    }
+    func getStringTodayDate() -> String {
+        let strDate = String(Calendar.current.component(.year, from: Date())) + "." +
+                        String(Calendar.current.component(.month, from: Date())) + "." +
+                        String(Calendar.current.component(.day, from: Date()))
+        return strDate
     }
     
 }

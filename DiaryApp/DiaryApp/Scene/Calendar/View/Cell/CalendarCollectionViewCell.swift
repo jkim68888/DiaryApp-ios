@@ -8,16 +8,44 @@
 import UIKit
 
 class CalendarCollectionViewCell: UICollectionViewCell {
-    
-    var today:Bool = false
+    var nowDate:String?
+    var tempDate:String?
+    var count = 0
     var postData: TempPost?
+    var postArray: [TempPost] = []{
+        didSet{
+            for item in postArray{
+                print(item.createDate)
+                print(tempDate!.toDate())
+                if item.createDate == tempDate!.toDate(){
+                    count += 1
+                    print("실행됨")
+                }
+                print(count)
+                //            if postArray.count != 0{
+                //                checkPoint.isHidden = false
+                //                print("실행됨")
+                //            }else{
+                //                checkPoint.isHidden = true
+                //            }
+            }
+            if count != 0{
+                checkPoint.isHidden = false
+            }else{
+                checkPoint.isHidden = true
+            }
+        }
+    }
+    
     
     override var isSelected: Bool{
         didSet{
             if isSelected{
-                nowDay.isHidden = false
+                //nowDay.isHidden = false
+                mainView.backgroundColor = UIColor.yellow
             }else{
-                nowDay.isHidden = true
+                //nowDay.isHidden = true
+                mainView.backgroundColor = UIColor.white
             }
         }
     }
@@ -36,10 +64,15 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         nowDay.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -2).isActive = true
         nowDay.alpha = 0.7
         nowDay.backgroundColor = UIColor.yellow
+        
         checkPoint.backgroundColor = UIColor.mainFontColor
         checkPoint.clipsToBounds = true
         checkPoint.layer.cornerRadius = checkPoint.frame.width / 2
-
+        
     }
-
+    func clear(_ tappedBtn:Bool){
+        if tappedBtn{
+            checkPoint.isHidden = true
+        }
+    }
 }
