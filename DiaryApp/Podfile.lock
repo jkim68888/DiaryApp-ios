@@ -25,12 +25,14 @@ PODS:
     - KakaoSDKCommon/Common (= 2.11.1)
   - KakaoSDKUser (2.11.1):
     - KakaoSDKAuth (= 2.11.1)
+  - naveridlogin-sdk-ios (4.1.5)
 
 DEPENDENCIES:
   - GoogleSignIn
   - KakaoSDKAuth
   - KakaoSDKCommon
   - KakaoSDKUser
+  - naveridlogin-sdk-ios
 
 SPEC REPOS:
   trunk:
@@ -42,6 +44,7 @@ SPEC REPOS:
     - KakaoSDKAuth
     - KakaoSDKCommon
     - KakaoSDKUser
+    - naveridlogin-sdk-ios
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
@@ -52,7 +55,8 @@ SPEC CHECKSUMS:
   KakaoSDKAuth: bb2dfa7be30daa8403c9cfc8001aa6fde7a5b779
   KakaoSDKCommon: 555e1bb46595b842ded01cf7888cc17bbae4e113
   KakaoSDKUser: 08c0a4f40bebdebdf948a9e3d0e44ed5c2754f99
+  naveridlogin-sdk-ios: 4351fe7162cd6b8b6dbb37bd7cc205304fa1d889
 
-PODFILE CHECKSUM: af19f0999b228da98d81283bb5618b220dd79feb
+PODFILE CHECKSUM: 3db796bd81dc6e74d4c713b52b02a5d6ac61f2f0
 
 COCOAPODS: 1.11.3

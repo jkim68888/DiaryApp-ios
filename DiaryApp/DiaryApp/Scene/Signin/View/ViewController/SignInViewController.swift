@@ -53,8 +53,9 @@ class SignInViewController: UIViewController {
 	}
 	
 	@IBAction func naverButtonTapped(_ sender: UIButton) {
-		
+		viewModel.getNaverSignIn()
 	}
+	
     func goHomeVC() {
         let sceneDelegate = UIApplication.shared.connectedScenes.first!.delegate as! SceneDelegate
         
@@ -62,10 +63,8 @@ class SignInViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-        let signInViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
         
-            // 로그인시 userDefaults에 저장되있는 토큰값에 따라 루트뷰 변경
         window.rootViewController = homeNavigationController
     }
 }

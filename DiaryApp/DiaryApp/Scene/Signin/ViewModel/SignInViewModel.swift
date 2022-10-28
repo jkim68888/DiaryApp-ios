@@ -11,6 +11,8 @@ import KakaoSDKCommon
 import KakaoSDKUser
 import KakaoSDKAuth
 import GoogleSignIn
+import NaverThirdPartyLogin
+import Alamofire
 
 class SignInViewModel {
 	// 싱글톤 가져옴
@@ -23,7 +25,7 @@ class SignInViewModel {
 	
 	// 백엔드 서버 통신
 	func fetchData(url: String, name: String, token: String) {
-		signInService.requestSnsSignIn(url: url, name: name, accessToken: token) { [self] (success, data) in
+		signInService.requestSignIn(url: url, name: name, accessToken: token) { [self] (success, data) in
 			self.account = data
 			print("(카카오리퀘스트 성공) jwtToken - \(data.token)")
 			
@@ -47,6 +49,8 @@ class SignInViewModel {
 	// 카카오 로그인
 	func getKakaoSignIn() {
 		print(UserApi.isKakaoTalkLoginAvailable())
+		
+		UserDefaults.standard.setValue("kakao" , forKey: "snsUserType")
 		
 		// isKakaoTalkLoginAvailable() : 카톡 설치 되어있으면 true
 		if (UserApi.isKakaoTalkLoginAvailable()) {
@@ -105,12 +109,16 @@ class SignInViewModel {
 	
 	// 구글 로그인
 	func getGoogleSignIn() {
+		UserDefaults.standard.setValue("google" , forKey: "snsUserType")
+		
 		GIDSignIn.sharedInstance.signIn(with: self.googleSignInConfig, presenting: (UIApplication.shared.windows.first?.rootViewController)!) { user, error in
 			guard error == nil else { return }
 			guard let user = user else { return }
 			
 			// 유저정보 가져오는 부분 구글에서 설정하기
 			guard let name = user.profile?.name else { return }
+			
+			print("구글 유저네임 \(name)")
 			
 			user.authentication.do { [self] authentication, error in
 				guard error == nil else { return }
@@ -123,6 +131,35 @@ class SignInViewModel {
 				// 서버에 보낼 함수
 				fetchData(url: "\(signInService.baseUrl)\(signInService.googlePath)", name: name, token: idToken)
 			}
+		}
+	}
+	
+	// 네이버 로그인
+	func getNaverSignIn() {
+		UserDefaults.standard.setValue("naver" , forKey: "snsUserType")
+		
+		let instance = NaverThirdPartyLoginConnection.getSharedInstance()
+	
+		instance?.requestThirdPartyLogin()
+		
+		guard let tokenType = instance?.tokenType else { return }
+		guard let accessToken = instance?.accessToken else { return }
+		let url = "https://openapi.naver.com/v1/nid/me"
+		
+		AF.request(url,
+				   method: .get,
+				   encoding: JSONEncoding.default,
+				   headers: ["Authorization": "\(tokenType) \(accessToken)"]
+		).responseJSON { response in
+			guard let result = response.value as? [String: Any] else { return }
+			guard let object = result["response"] as? [String: Any] else { return }
+			
+			guard let name = object["name"] as? String else { return }
+	
+			print("네이버 유저네임 \(name)")
+				
+			// 서버에 보낼 함수
+			self.fetchData(url: "\(self.signInService.baseUrl)\(self.signInService.naverPath)", name: name, token: accessToken)
 		}
 	}
 }

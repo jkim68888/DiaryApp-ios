@@ -8,6 +8,7 @@
 import UIKit
 import KakaoSDKCommon
 import GoogleSignIn
+import NaverThirdPartyLogin
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,13 +28,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // Show the app's signed-in state.
             }
         }
+		
+		// Naver init
+		let instance = NaverThirdPartyLoginConnection.getSharedInstance()
+		// 네이버 앱으로 인증하는 방식을 활성화
+		instance?.isNaverAppOauthEnable = true
+		// SafariViewController에서 인증하는 방식을 활성화
+		instance?.isInAppOauthEnable = true
+		// 애플리케이션을 등록할 때 입력한 URL Scheme
+		instance?.serviceUrlScheme = Config().naverServiceAppUrlScheme
+		// 애플리케이션 등록 후 발급받은 클라이언트 아이디
+		instance?.consumerKey = Config().naverConsumerKey
+		// 애플리케이션 등록 후 발급받은 클라이언트 시크릿
+		instance?.consumerSecret = Config().naverConsumerSecret
+		// 애플리케이션 이름
+		instance?.appName = Config().naverServiceAppName
+		
 		return true
 	}
 	
 	// 구글 handleUrl
 	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-			// add this function for Google Sign in to handle the url
-		return GIDSignIn.sharedInstance.handle(url)
+		GIDSignIn.sharedInstance.handle(url)
+		NaverThirdPartyLoginConnection.getSharedInstance()?.application(app, open: url, options: options)
+		
+		return true
 	}
 
 	// MARK: UISceneSession Lifecycle
