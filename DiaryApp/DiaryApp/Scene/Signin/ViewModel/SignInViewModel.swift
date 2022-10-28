@@ -17,6 +17,7 @@ class SignInViewModel {
 	let signInService = SignInService.shared
 
 	var account: Account?
+	var user: User?
 	
     let googleSignInConfig = GIDConfiguration.init(clientID: Config().googleId)
 	
@@ -27,6 +28,7 @@ class SignInViewModel {
 			print("(카카오리퀘스트 성공) jwtToken - \(data.token)")
 			
 			UserDefaults.standard.setValue(data.token , forKey: "authVerificationID")
+			UserDefaults.standard.setValue(name , forKey: "userName")
 			UserDefaults.standard.synchronize()
 			
 			// view를 바꿔주는건 main 디스패치큐에서 실행

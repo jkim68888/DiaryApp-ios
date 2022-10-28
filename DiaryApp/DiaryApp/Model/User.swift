@@ -16,7 +16,7 @@ struct Account: Codable {
 	}
 }
 
-// requestHome()에서 주는 유저네임
+// sns에서 주는 유저네임
 struct User: Codable {
 	var name: String
 	

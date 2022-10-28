@@ -24,8 +24,6 @@ class HomeViewController: UIViewController {
         setUI()
 		bindData()
         setCollectionView()
-		// 로그인 되있는 경우에 home 진입하자마자 api 요청해서 데이터 가져옴
-		viewModel.fetchHomeData()
     }
 	
     // 현재View(homeVC)가 보이려고할 때,
@@ -55,7 +53,7 @@ class HomeViewController: UIViewController {
 	
 	func setNotification() {
 		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveLoginSuccess(_:)), name: NSNotification.Name("loginSuccess"), object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveFetchHomeSuccess(_:)), name: NSNotification.Name("fetchHomeSuccess"), object: nil)
+//		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveFetchHomeSuccess(_:)), name: NSNotification.Name("fetchHomeSuccess"), object: nil)
 	}
     
     func setCollectionView(){
@@ -110,14 +108,8 @@ class HomeViewController: UIViewController {
         }
     }
 	
-	// 로그인 안되어있는경우,
-	// 로그인 완료 후에 home api 요청함
+	// 로그인이 success면 콜렉션뷰 다시 그림 (바인딩된 데이터로 그리기 위함)
 	@objc func didRecieveLoginSuccess(_ notification: Notification) {
-		viewModel.fetchHomeData()
-	}
-	
-	// home api요청이 success면 콜렉션뷰 다시 그림 (바인딩된 데이터로 그리기 위함)
-	@objc func didRecieveFetchHomeSuccess(_ notification: Notification) {
 		DispatchQueue.main.async {
 			self.homeCollectionView.reloadData()
 		}
