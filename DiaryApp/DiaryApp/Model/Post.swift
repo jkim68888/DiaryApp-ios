@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol PostDelegate {
+	func updatePost(id: String)
+}
+
 struct PostsList: Codable {
 	let list: [Post]
 	

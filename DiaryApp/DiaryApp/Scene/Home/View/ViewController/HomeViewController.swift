@@ -14,6 +14,10 @@ class HomeViewController: UIViewController {
 	
 	let viewModel = HomeViewModel()
 	
+	// MARK: - 백엔드 연동
+	let postService = PostService.shared
+	var post: Post?
+	
     var haveData:Bool = false
     let flowLayout = UICollectionViewFlowLayout()
     let dataManager = TempDataManager.shared
@@ -97,16 +101,25 @@ class HomeViewController: UIViewController {
 		header.calendarBtn.setTitle("", for: .normal)
 	}
 	
-    func bindData(){
-        dataManager.roadPostData()
-        print(#function)
-        
-        // 만약 데이터를 가져왔을때 nil이 아니라면, haveData를 True로 변경한다.
-        if dataManager.getPostDate() != nil{
-            haveData = true
-            print("값을 정상적으로 불러왔습니다.")
-        }
-    }
+//    func bindData(){
+//        dataManager.roadPostData()
+//        print(#function)
+//
+//        // 만약 데이터를 가져왔을때 nil이 아니라면, haveData를 True로 변경한다.
+//        if dataManager.getPostDate() != nil{
+//            haveData = true
+//            print("값을 정상적으로 불러왔습니다.")
+//        }
+//    }
+	
+	// MARK: - 백엔드 통신
+	func bindData(){
+		guard let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String else { return }
+		
+		postService.getPostsListData(accessToken: token) { (success, data) in
+			print(data)
+		}
+	}
 	
 	// 로그인이 success면 콜렉션뷰 다시 그림 (바인딩된 데이터로 그리기 위함)
 	@objc func didRecieveLoginSuccess(_ notification: Notification) {

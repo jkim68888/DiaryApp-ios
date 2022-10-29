@@ -8,6 +8,9 @@ import UIKit
 import PhotosUI
 
 class PostViewController: UIViewController {
+	// MARK: - 백엔드 연동
+	let postService = PostService.shared
+	var post: Post?
     
     // Post에 대한 정보를 담고있는 변수
     var postData: TempPost?
@@ -17,6 +20,8 @@ class PostViewController: UIViewController {
     var postNumber:Int? = 0
     // Post 수정 시에, delegate를 통해 다른 View를 reload하는데 사용
     var delegate:TempPostDelegate?
+	
+	
     // 게시글 내부에 들어갈 Placeholedr 담는 변수
     var postScriptTVPlaceHolder:String = "텍스트를 여기에 입력하세요"
     
@@ -39,29 +44,41 @@ class PostViewController: UIViewController {
     }
 
 
-    func setData(){
-        /// 데이터 가져왔을 때, nil인 경우는 New Post를 작성하는 경우 -> 새로운 postData를 만들어 기존 PostArray에 추가해준다.
-        if postData == nil{
-            print("데이터불러오기실패")
-            postData = TempPost(userID: "momo", postTitle: nil, postDescription: nil, postImage: nil, createDate: Date())
-            /// 기존 PostData를 담은 Array에 새로운 게시글 내용을 추가한다.
-            dataManager.addPostData(postData)
-        }
-        /// 이미 존재하는 Post를 수정하는 경우
-        else{
-            print("데이터불러오기성공")
-        }
-        guard let postData = postData else { return }
-        postNumber = postData.postNumber /// postNumber는 해당 Post의 고유 번호이다. 수정하거나 삭제할때 필요하다.
-        
-        /// 기본적인 Post 정보에 담길 내용을 Setting해준다.
-        postImageView.image = postData.postImage
-        postDateTF.text = postData.createDate.toString()
-        postTitleTF.text = postData.postTitle
-        
-        if postScriptTV.text! == ""{postScriptTV.textColor = .lightGray}
-        postScriptTV.text = postData.postDescription ?? postScriptTVPlaceHolder
-    }
+//    func setData(){
+//        /// 데이터 가져왔을 때, nil인 경우는 New Post를 작성하는 경우 -> 새로운 postData를 만들어 기존 PostArray에 추가해준다.
+//        if postData == nil{
+//            print("데이터불러오기실패")
+//            postData = TempPost(userID: "momo", postTitle: nil, postDescription: nil, postImage: nil, createDate: Date())
+//            /// 기존 PostData를 담은 Array에 새로운 게시글 내용을 추가한다.
+//            dataManager.addPostData(postData)
+//        }
+//        /// 이미 존재하는 Post를 수정하는 경우
+//        else{
+//            print("데이터불러오기성공")
+//        }
+//        guard let postData = postData else { return }
+//        postNumber = postData.postNumber /// postNumber는 해당 Post의 고유 번호이다. 수정하거나 삭제할때 필요하다.
+//
+//        /// 기본적인 Post 정보에 담길 내용을 Setting해준다.
+//        postImageView.image = postData.postImage
+//        postDateTF.text = postData.createDate.toString()
+//        postTitleTF.text = postData.postTitle
+//
+//        if postScriptTV.text! == ""{postScriptTV.textColor = .lightGray}
+//        postScriptTV.text = postData.postDescription ?? postScriptTVPlaceHolder
+//    }
+	
+	// MARK: - 백엔드 연동
+	func setData() {
+		guard let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String else { return }
+		guard let image = postImageView.image else { return }
+		
+		postService.addPostData(accessToken: token, image: image) { (success, data) in
+			self.postTitleTF.text = data.title
+			print("타이틀: \(self.postTitleTF.text)")
+			print(image)
+		}
+	}
 	
     func setUI(){
         
@@ -136,7 +153,7 @@ class PostViewController: UIViewController {
         // 피커뷰를 사용하기 위해서 configuration을 먼저 설정해준다.
         var configuration = PHPickerConfiguration()
         configuration.selectionLimit = 1 //사진을 무한대로 가지고 올 수 있는... 1이면 1개만, 2는 2개만 가져온다.
-        configuration.filter = .any(of: [.images, .videos]) // 지금은 사진과 비디오를 가져올 수 있게 설정하였다.
+		configuration.filter = .any(of: [.images, .videos]) // 지금은 사진과 비디오를 가져올 수 있게 설정하였다.
         // 기본 설정을 가지고, 피커뷰컨트롤러 생성
         let picker = PHPickerViewController(configuration: configuration)
         // 피커뷰 컨트롤러의 대리자 설정
@@ -166,25 +183,28 @@ class PostViewController: UIViewController {
     // 완료 버튼을 눌렀을 때
     @IBAction func doneButtonTapped(_ sender: Any) {
         print(#function)
-        print(postData)
-        let postViewerVCindex = navigationController!.viewControllers.count - 2
-        let postViewerVC = navigationController?.viewControllers[postViewerVCindex] as! PostViewerViewController
-        if postTitleTF.text! == ""{
-            showPopUp(title: "알림", message: "저장할 내용이 없습니다\n저장하시겠습니까?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "저장", rightActionCompletion:  {
-                self.navigationController?.popViewController(animated: true)
-            })
-        }else{
-            print(postData!)
-            postData!.postImage = postImageView.image
-            postData!.createDate = postDateTF.text!.toDate() ?? Date()
-            postData!.postTitle = postTitleTF.text ?? ""
-            postData!.postDescription = postScriptTV.text ?? ""
-            
-            postViewerVC.tempPostData = postData!
-            dataManager.update(uniqueNum: postNumber!, postData!)
-            delegate?.update()
-            self.navigationController?.popViewController(animated: true)
-        }
+//        print(postData)
+//        let postViewerVCindex = navigationController!.viewControllers.count - 2
+//        let postViewerVC = navigationController?.viewControllers[postViewerVCindex] as! PostViewerViewController
+//        if postTitleTF.text! == ""{
+//            showPopUp(title: "알림", message: "저장할 내용이 없습니다\n저장하시겠습니까?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "저장", rightActionCompletion:  {
+//                self.navigationController?.popViewController(animated: true)
+//            })
+//        }else{
+//            print(postData!)
+//            postData!.postImage = postImageView.image
+//            postData!.createDate = postDateTF.text!.toDate() ?? Date()
+//            postData!.postTitle = postTitleTF.text ?? ""
+//            postData!.postDescription = postScriptTV.text ?? ""
+//
+//            postViewerVC.tempPostData = postData!
+//            dataManager.update(uniqueNum: postNumber!, postData!)
+//            delegate?.update()
+//            self.navigationController?.popViewController(animated: true)
+//        }
+		
+		setData()
+		self.navigationController?.popViewController(animated: true)
     }
 	
     // MARK: - 3. 삭제 시에, 해당된 Post의 index에 해당하는 값을 지우고, 다시 배열을 정렬해야함

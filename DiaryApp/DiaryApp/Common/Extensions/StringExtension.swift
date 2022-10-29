@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     func toDate() -> Date? { //"yyyy-MM-dd HH:mm:ss"
@@ -18,4 +19,11 @@ extension String {
             return nil
         }
     }
+	
+	func toImage() -> UIImage? {
+		if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters){
+			return UIImage(data: data)
+		}
+		return nil
+	}
 }
