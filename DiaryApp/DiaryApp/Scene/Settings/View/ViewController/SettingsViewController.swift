@@ -30,12 +30,30 @@ class SettingsViewController: UIViewController {
 		
 		view.backgroundColor = UIColor(hexString: "#FFDCDC")
 		
-		myNameLabel.text = "홍길동"
+		if let nickname = UserDefaults.standard.value(forKey: "userName") as? String {
+			myNameLabel.text = "\(nickname)님"
+		}
 		
-		snsImageView.image = UIImage(named: "signInIcon1")
-		
-		snsTitleLabel.text = "카카오 계정 사용중"
-		
+		if let snsUserType = UserDefaults.standard.value(forKey: "snsUserType") as? String {
+			
+			switch snsUserType {
+			case "apple":
+				snsImageView.image = UIImage(named: "signInIcon0")
+				snsTitleLabel.text = "애플 계정 사용중"
+			case "kakao":
+				snsImageView.image = UIImage(named: "signInIcon1")
+				snsTitleLabel.text = "카카오 계정 사용중"
+			case "google":
+				snsImageView.image = UIImage(named: "signInIcon2")
+				snsTitleLabel.text = "구글 계정 사용중"
+			case "naver":
+				snsImageView.image = UIImage(named: "signInIcon3")
+				snsTitleLabel.text = "네이버 계정 사용중"
+			default:
+				break
+			}
+		}
+	
 		containerViews.forEach {
 			$0.layer.cornerRadius = 10
 			$0.layer.masksToBounds = true

@@ -10,4 +10,5 @@ target 'DiaryApp' do
   pod 'KakaoSDKUser'
   pod 'KakaoSDKCommon'
   pod 'GoogleSignIn'
+	pod 'naveridlogin-sdk-ios'
 end
