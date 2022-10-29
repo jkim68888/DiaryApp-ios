@@ -26,7 +26,7 @@ struct SignInService {
 	let applePath = "/api/auth/callback/apple"
 	let naverPath = "/api/auth/callback/naver"
 	
-	// MARK: - 카카오,구글,애플,네이버 요청
+	// MARK: - 백엔드서버에 로그인 요청
 	func requestSignIn(url: String, name: String, accessToken: String, completionHandler: @escaping (Bool, Account) -> Void) {
 		let param = ["name": name]
 		let sendData = try! JSONSerialization.data(withJSONObject: param, options: [])

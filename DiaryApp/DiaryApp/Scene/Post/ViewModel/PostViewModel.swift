@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+class PostViewModel {
+	// 싱글톤 가져옴
+	let postService = PostService.shared
+	
+	var post: Post?
+}
