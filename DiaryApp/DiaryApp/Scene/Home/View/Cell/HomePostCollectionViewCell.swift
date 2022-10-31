@@ -8,20 +8,22 @@
 import UIKit
 
 class HomePostCollectionViewCell: UICollectionViewCell {
-    
-    var postData:TempPost?{
-        didSet{
-            guard let postData = postData else {
-                return
-            }
-            cellImageView.image = postData.postImage ?? UIImage(named: "NoImage.png")
-            cellTitleLabel.text = postData.createDate.toString()
-            cellView.clipsToBounds = true
-            cellView.layer.cornerRadius = 10
-            cellView.layer.borderWidth = 1
+	
+	var post: Post? {
+		didSet {
+			guard let post = post else {
+				return
+			}
+			// MARK: - 아직 서버에서 이미지를 내려주지 않고 있음
+//			cellImageView.image = post.postImage ?? UIImage(named: "NoImage.png")
+			cellImageView.image = UIImage(named: "NoImage.png")
+			cellTitleLabel.text = post.createdAt.toString()
+			cellView.clipsToBounds = true
+			cellView.layer.cornerRadius = 10
+			cellView.layer.borderWidth = 1
 			cellView.layer.borderColor = UIColor(hexString: "#999999").cgColor
-        }
-    }
+		}
+	}
     
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var cellImageView: UIImageView!

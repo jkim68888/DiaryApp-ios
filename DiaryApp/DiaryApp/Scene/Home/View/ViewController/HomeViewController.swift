@@ -16,9 +16,8 @@ class HomeViewController: UIViewController {
 	
 	// MARK: - 백엔드 연동
 	let postService = PostService.shared
-	var post: Post?
+	var postsList: [Post]?
 	
-    var haveData:Bool = false
     let flowLayout = UICollectionViewFlowLayout()
     let dataManager = TempDataManager.shared
     
@@ -26,7 +25,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 		setNotification()
         setUI()
-		bindData()
+		setData()
         setCollectionView()
     }
 	
@@ -57,11 +56,9 @@ class HomeViewController: UIViewController {
 	
 	func setNotification() {
 		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveLoginSuccess(_:)), name: NSNotification.Name("loginSuccess"), object: nil)
-//		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveFetchHomeSuccess(_:)), name: NSNotification.Name("fetchHomeSuccess"), object: nil)
 	}
     
     func setCollectionView(){
-        
         let itemsPerRow: CGFloat = 2
         let textAreaHeight: CGFloat = 35
         let itemSpacing: CGFloat = 16
@@ -79,7 +76,6 @@ class HomeViewController: UIViewController {
         homeCollectionView.dataSource = self
         homeCollectionView.backgroundColor = .white
         homeCollectionView.collectionViewLayout = flowLayout
-        
     }
 	
 	func setCollectionHeaderUI(header: HomePostCollectionReusableView) {
@@ -94,23 +90,13 @@ class HomeViewController: UIViewController {
 		header.calendarBtn.setTitle("", for: .normal)
 	}
 	
-//    func bindData(){
-//        dataManager.roadPostData()
-//        print(#function)
-//
-//        // 만약 데이터를 가져왔을때 nil이 아니라면, haveData를 True로 변경한다.
-//        if dataManager.getPostDate() != nil{
-//            haveData = true
-//            print("값을 정상적으로 불러왔습니다.")
-//        }
-//    }
-	
 	// MARK: - 백엔드 통신
-	func bindData(){
+	func setData(){
 		guard let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String else { return }
 
 		postService.getPostsListData(accessToken: token) { (success, data) in
 			print(data)
+			self.postsList = data
 		}
 	}
 	
@@ -136,10 +122,11 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(calendarVC, animated: true)
     }
 }
+
 extension HomeViewController: UICollectionViewDataSource{
 	
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if haveData == false{
+		if postsList?.count != 0 {
             collectionView.setEmptyMessage("게시글이 없습니다\n하루를 기록해주세요")
         }else{
             collectionView.restore()
@@ -164,7 +151,7 @@ extension HomeViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! HomePostCollectionViewCell
 		
-        cell.postData = dataManager.getPostDate()[indexPath.row]
+        cell.post = postsList?[indexPath.row]
 		 
         return cell
     }
@@ -182,12 +169,13 @@ extension HomeViewController: UICollectionViewDelegate{
 		self.navigationController?.pushViewController(postViewerVC, animated: true)
 	}
 }
+
 extension UICollectionView{
     func setEmptyMessage(_ message: String){
         let messageLabel: UILabel = {
             let label = UILabel()
             label.text = message
-            label.textColor = .black
+            label.textColor = UIColor(hexString: "#C4C4C4")
             label.numberOfLines = 2
             label.textAlignment = .center
             label.font = UIFont(name: "EF_Diary", size: 22)
