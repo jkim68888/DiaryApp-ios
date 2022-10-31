@@ -14,6 +14,12 @@ struct PostService {
 	
 	// baseUrl
 	let baseUrl = "http://localhost:4000"
+
+	// Bell
+//	let baseUrl = "http://192.168.35.167:4000"
+
+	// Ethan
+//	let baseUrl = "http://10.4.10.109:4000"
 	
 	// pathUrl
 	let postReadPath = "/api/post/read"
