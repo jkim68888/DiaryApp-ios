@@ -7,9 +7,9 @@
 
 import UIKit
 
+
 class HomeViewController: UIViewController {
     @IBOutlet weak var homeCollectionView: UICollectionView!
-    @IBOutlet weak var defaultStackView: UIStackView!
     @IBOutlet weak var addPostBtn: UIButton!
 	
 	let viewModel = HomeViewModel()
@@ -61,32 +61,25 @@ class HomeViewController: UIViewController {
 	}
     
     func setCollectionView(){
-        if haveData {
-			let itemsPerRow: CGFloat = 2
-			let textAreaHeight: CGFloat = 35
-			let itemSpacing: CGFloat = 16
-			let collectionViewInsets: CGFloat = 32
-			let width = self.view.frame.width - collectionViewInsets
-			let cellWidth = ((width - itemSpacing) / itemsPerRow)
-			let cellHeight = cellWidth + textAreaHeight
-			
-            homeCollectionView.isHidden = false
-            defaultStackView.isHidden = true
-			
-			flowLayout.scrollDirection = .vertical
-			flowLayout.headerReferenceSize = CGSize(width: homeCollectionView.bounds.width, height: 136.0)
-			flowLayout.itemSize = CGSize(width: cellWidth, height: cellHeight)
-			flowLayout.minimumLineSpacing = itemSpacing
-            
-            homeCollectionView.delegate = self
-            homeCollectionView.dataSource = self
-            homeCollectionView.backgroundColor = .white
-			homeCollectionView.collectionViewLayout = flowLayout
-			
-		} else {
-			homeCollectionView.isHidden = true
-			defaultStackView.isHidden = false
-		}
+        
+        let itemsPerRow: CGFloat = 2
+        let textAreaHeight: CGFloat = 35
+        let itemSpacing: CGFloat = 16
+        let collectionViewInsets: CGFloat = 32
+        let width = self.view.frame.width - collectionViewInsets
+        let cellWidth = ((width - itemSpacing) / itemsPerRow)
+        let cellHeight = cellWidth + textAreaHeight
+        
+        flowLayout.scrollDirection = .vertical
+        flowLayout.headerReferenceSize = CGSize(width: homeCollectionView.bounds.width, height: 136.0)
+        flowLayout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+        flowLayout.minimumLineSpacing = itemSpacing
+        
+        homeCollectionView.delegate = self
+        homeCollectionView.dataSource = self
+        homeCollectionView.backgroundColor = .white
+        homeCollectionView.collectionViewLayout = flowLayout
+        
     }
 	
 	func setCollectionHeaderUI(header: HomePostCollectionReusableView) {
@@ -115,7 +108,7 @@ class HomeViewController: UIViewController {
 	// MARK: - 백엔드 통신
 	func bindData(){
 		guard let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String else { return }
-		
+
 		postService.getPostsListData(accessToken: token) { (success, data) in
 			print(data)
 		}
@@ -146,6 +139,11 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDataSource{
 	
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if haveData == false{
+            collectionView.setEmptyMessage("게시글이 없습니다\n하루를 기록해주세요")
+        }else{
+            collectionView.restore()
+        }
         return dataManager.getPostDate().count
     }
 	
@@ -183,4 +181,44 @@ extension HomeViewController: UICollectionViewDelegate{
 		
 		self.navigationController?.pushViewController(postViewerVC, animated: true)
 	}
+}
+extension UICollectionView{
+    func setEmptyMessage(_ message: String){
+        let messageLabel: UILabel = {
+            let label = UILabel()
+            label.text = message
+            label.textColor = .black
+            label.numberOfLines = 2
+            label.textAlignment = .center
+            label.font = UIFont(name: "EF_Diary", size: 22)
+            label.sizeToFit()
+            return label
+        }()
+        let defaultImage: UIImageView = {
+            let imageView = UIImageView()
+            imageView.image = UIImage(named: "NoPost.png")
+            
+            return imageView
+        }()
+        let emptyView: UIView = {
+            let view = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: 300, height: 400))
+            return view
+        }()
+        emptyView.addSubview(messageLabel)
+        emptyView.addSubview(defaultImage)
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        defaultImage.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
+        messageLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
+        defaultImage.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
+        defaultImage.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 10).isActive = true
+        
+        
+        self.backgroundView = emptyView
+        
+        
+    }
+    func restore(){
+        self.backgroundView = nil
+    }
 }

@@ -140,12 +140,6 @@ class PostViewController: UIViewController {
             print("기존 글 수정")
         }
     }
-    // MARK: - 2. 뒤로가기 버튼을 눌렀을 때
-    
-    @objc func didTapBackButton(){
-        showPopUp(title: "타이틀", message: "메세지")
-    }
-	
     
      //특정 항목들이 저장되어있지 않으면, 뒤로가지 못하게 막아야함
     
@@ -171,7 +165,7 @@ class PostViewController: UIViewController {
 	
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
         if postTitleTF.text! == ""{
-            showPopUp(title: "알림", message: "입력한 정보가 없습니다.\n기록을 삭제하시겠습니까?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "확인", rightActionCompletion:  {
+            showPopUp(title: "알림", message: "작성을 취소하시겠습니까?\n[확인]을 누르시면\n이전 화면으로 되돌아갑니다.?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "확인", rightActionCompletion:  {
                 self.navigationController?.popToRootViewController(animated: true)
                 self.dataManager.delete(uniqueNum: self.postNumber!)
             })
@@ -208,7 +202,6 @@ class PostViewController: UIViewController {
     }
 	
     // MARK: - 3. 삭제 시에, 해당된 Post의 index에 해당하는 값을 지우고, 다시 배열을 정렬해야함
-    // 삭제 기능은 아직 불완전함. 삭제할 index를 능동적으로 변화시켜야함.
     @IBAction func postDeleteButtonTapped(_ sender: UIButton) {
         let homeVCindex = navigationController!.viewControllers.count - 3
         let homeVC = navigationController?.viewControllers[homeVCindex] as! HomeViewController

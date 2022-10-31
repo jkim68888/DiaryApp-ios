@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -24,29 +24,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="fS3-WH-taV">
-                                <rect key="frame" x="97" y="366" width="220.5" height="164.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6RC-cb-aHH">
-                                        <rect key="frame" x="0.0" y="0.0" width="220.5" height="66.5"/>
-                                        <string key="text">게시글이 없습니다
-하루를 기록해주세요</string>
-                                        <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="26"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoPost" translatesAutoresizingMaskIntoConstraints="NO" id="EqH-xL-iMB">
-                                        <rect key="frame" x="70" y="84.5" width="80" height="80"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="1bB-Sr-Wd8"/>
-                                            <constraint firstAttribute="height" constant="80" id="wqD-Zf-XX2"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                            </stackView>
-                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zhi-R8-8gS">
-                                <rect key="frame" x="16" y="92" width="382" height="770"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zhi-R8-8gS">
+                                <rect key="frame" x="16" y="88" width="382" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="bWU-1M-MAB"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="d7Y-zf-sNz">
                                     <size key="itemSize" width="177" height="195"/>
                                     <size key="headerReferenceSize" width="50" height="99"/>
@@ -230,10 +213,8 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="qIZ-sc-Sya" secondAttribute="bottom" constant="10" id="bAu-IF-qTQ"/>
                             <constraint firstItem="zhi-R8-8gS" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="bOf-xY-OQm"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zhi-R8-8gS" secondAttribute="trailing" constant="16" id="bdK-xM-joB"/>
-                            <constraint firstItem="fS3-WH-taV" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="c2d-es-Uv1"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="zhi-R8-8gS" secondAttribute="bottom" id="i3g-ma-5cp"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qIZ-sc-Sya" secondAttribute="trailing" constant="16" id="qzZ-jK-cjh"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="zhi-R8-8gS" secondAttribute="bottom" id="tOJ-Yh-Soe"/>
-                            <constraint firstItem="fS3-WH-taV" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="tPe-ht-UT0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZsA-8M-m0f">
@@ -241,7 +222,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addPostBtn" destination="qIZ-sc-Sya" id="0Ja-no-SJb"/>
-                        <outlet property="defaultStackView" destination="fS3-WH-taV" id="1Rx-GG-Me2"/>
                         <outlet property="homeCollectionView" destination="zhi-R8-8gS" id="sit-nu-L0s"/>
                     </connections>
                 </viewController>
@@ -283,7 +263,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="avp-fb-7QT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cKq-88-XHS">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.4941176471" green="0.46274509800000002" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -306,7 +286,6 @@
     <resources>
         <image name="AddPost" width="20" height="20"/>
         <image name="Calendar" width="43" height="43"/>
-        <image name="NoPost" width="66" height="66"/>
         <image name="Setting" width="19" height="21"/>
         <namedColor name="grayLabelColor">
             <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
