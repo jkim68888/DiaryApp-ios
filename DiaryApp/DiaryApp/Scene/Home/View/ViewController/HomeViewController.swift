@@ -97,6 +97,10 @@ class HomeViewController: UIViewController {
 		postService.getPostsListData(accessToken: token) { (success, data) in
 			print(data)
 			self.postsList = data
+			
+			DispatchQueue.main.async {
+				self.homeCollectionView.reloadData()
+			}
 		}
 	}
 	
@@ -126,7 +130,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDataSource{
 	
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		if postsList?.count != 0 {
+		if postsList?.count == 0 {
             collectionView.setEmptyMessage("게시글이 없습니다\n하루를 기록해주세요")
         }else{
             collectionView.restore()
