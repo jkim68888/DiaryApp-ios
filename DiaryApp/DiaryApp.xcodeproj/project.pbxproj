@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2EA29942F5D4EFB7084A02CC /* Pods_DiaryApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FB099387021976D626A33B /* Pods_DiaryApp.framework */; };
+		9A1EB5C2290D140C00C1CB2E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1EB5C1290D140C00C1CB2E /* Post.swift */; };
+		9A1EB5C4290D482C00C1CB2E /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1EB5C3290D482C00C1CB2E /* UIImageExtension.swift */; };
 		9A1FCCA128FA9A73001B1584 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA028FA9A73001B1584 /* UIButtonExtension.swift */; };
 		9A1FCCA528FE81C2001B1584 /* UINavigationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA428FE81C2001B1584 /* UINavigationExtension.swift */; };
 		9A1FCCA828FEA102001B1584 /* NavigationBarUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA728FEA102001B1584 /* NavigationBarUtils.swift */; };
@@ -55,6 +57,8 @@
 /* Begin PBXFileReference section */
 		03FB099387021976D626A33B /* Pods_DiaryApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiaryApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AC108EDBC9F6D415C63FB7A /* Pods-DiaryApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryApp.release.xcconfig"; path = "Target Support Files/Pods-DiaryApp/Pods-DiaryApp.release.xcconfig"; sourceTree = "<group>"; };
+		9A1EB5C1290D140C00C1CB2E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		9A1EB5C3290D482C00C1CB2E /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		9A1FCCA028FA9A73001B1584 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		9A1FCCA428FE81C2001B1584 /* UINavigationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationExtension.swift; sourceTree = "<group>"; };
 		9A1FCCA728FEA102001B1584 /* NavigationBarUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarUtils.swift; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 				9A1FCCA428FE81C2001B1584 /* UINavigationExtension.swift */,
 				A9C8B9C628FF90CC006B7D09 /* DateExtension.swift */,
 				A9C8B9C828FF90F5006B7D09 /* StringExtension.swift */,
+				9A1EB5C3290D482C00C1CB2E /* UIImageExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -335,6 +340,7 @@
 				A9C2A6D928FD5C0A000EB06D /* TempPost.swift */,
 				A9C2A6DB28FD6A9D000EB06D /* TempDataManager.swift */,
 				9AAB90D12904E746004141A4 /* User.swift */,
+				9A1EB5C1290D140C00C1CB2E /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -661,7 +667,9 @@
 				A9C8B9C728FF90CC006B7D09 /* DateExtension.swift in Sources */,
 				A95E03CF2906B3C400F73A33 /* CalendarTableViewCell.swift in Sources */,
 				A95E03CD290665B800F73A33 /* CalendarCollectionViewCell.swift in Sources */,
+				9A1EB5C2290D140C00C1CB2E /* Post.swift in Sources */,
 				A9C2A6DE28FD7F95000EB06D /* HomePostCollectionViewCell.swift in Sources */,
+				9A1EB5C4290D482C00C1CB2E /* UIImageExtension.swift in Sources */,
 				A913FA4128F7D09F00ECA972 /* CalendarViewController.swift in Sources */,
 				A9C2A6DA28FD5C0A000EB06D /* TempPost.swift in Sources */,
 				9A1FCCAE28FFB1BB001B1584 /* SettingsViewModel.swift in Sources */,

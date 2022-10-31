@@ -8,6 +8,9 @@
 import UIKit
 
 class PostViewerViewController: UIViewController {
+	// MARK: - 백엔드 연동
+	let postService = PostService.shared
+	var post: Post?
     
     /// [글보기]View에서 post Data를 담고있는 변수
     var tempPostData: TempPost?
@@ -27,7 +30,7 @@ class PostViewerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        setData()
+//        setData()
         customBackButton(self: self, target: self.navigationController!)
     }
     
@@ -46,30 +49,38 @@ class PostViewerViewController: UIViewController {
     }
     
     /// 해당 View에서 사용하는 Data에 대한 Setting
-    func setData(){
-        /// Post에 대한 데이터가 없는 경우 -> Home에서 New Post Button을 누른 경우
-        if tempPostData == nil{
-            guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
-            postVC.delegate = self
-            self.navigationController?.pushViewController(postVC, animated: false)
-        }
-        /// Post에 대한 데이터가 있는 경우 -> Home에서 CollectionView의 Cell 누르고 접근하는 경우
-        else{
-        guard var tempPostData = tempPostData else {return}
-            postViewerImageView.image = tempPostData.postImage
-            postViewerDateLabel.text = tempPostData.createDate.toString()
-            postViewerEditDate.text = "최근 수정 : " + (tempPostData.editDate?.toString() ?? tempPostData.createDate.toString())
-            postViewerTitleLabel.text = tempPostData.postTitle
-            postViewerDescriptionLabel.text = tempPostData.postDescription
-        }
-        if postViewerImageView.image == nil{
-            print("💄💄💄\nimage가 없습니다.")
-            postViewerStackView.translatesAutoresizingMaskIntoConstraints = false
-            postViewerStackView.topAnchor.constraint(equalTo: postViewerView.topAnchor,constant: 0).isActive = true
-
-        }
-
-    }
+//    func setData(){
+//        /// Post에 대한 데이터가 없는 경우 -> Home에서 New Post Button을 누른 경우
+//        if tempPostData == nil{
+//            guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
+//            postVC.delegate = self
+//            self.navigationController?.pushViewController(postVC, animated: false)
+//        }
+//        /// Post에 대한 데이터가 있는 경우 -> Home에서 CollectionView의 Cell 누르고 접근하는 경우
+//        else{
+//        guard var tempPostData = tempPostData else {return}
+//            postViewerImageView.image = tempPostData.postImage
+//            postViewerDateLabel.text = tempPostData.createDate.toString()
+//            postViewerEditDate.text = "최근 수정 : " + (tempPostData.editDate?.toString() ?? tempPostData.createDate.toString())
+//            postViewerTitleLabel.text = tempPostData.postTitle
+//            postViewerDescriptionLabel.text = tempPostData.postDescription
+//        }
+//        if postViewerImageView.image == nil{
+//            print("💄💄💄\nimage가 없습니다.")
+//            postViewerStackView.translatesAutoresizingMaskIntoConstraints = false
+//            postViewerStackView.topAnchor.constraint(equalTo: postViewerView.topAnchor,constant: 0).isActive = true
+//        }
+//    }
+	
+	// MARK: - 백엔드 연동
+	func setData(id: String) {
+		postService.getPostData(id: id) { [self] (success, data) in
+			self.post = data
+			print("getPost 성공 - \(data)")
+		}
+	}
+	
+	
     /// 수정 버튼을 눌렀을 때
     @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
         guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
@@ -81,7 +92,14 @@ class PostViewerViewController: UIViewController {
 /// 커스텀 Delegate를 사용하는 부분
 extension PostViewerViewController: TempPostDelegate{
     func update(){
-        
-        setData()
+
+//        setData()
     }
+}
+
+// MARK: - 백엔드 연동
+extension PostViewerViewController: PostDelegate {
+	func updatePost(id: String) {
+		setData(id: id)
+	}
 }

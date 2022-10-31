@@ -27,7 +27,7 @@ class SignInViewModel {
 	func fetchData(url: String, name: String, token: String) {
 		signInService.requestSignIn(url: url, name: name, accessToken: token) { [self] (success, data) in
 			self.account = data
-			print("(카카오리퀘스트 성공) jwtToken - \(data.token)")
+			print("(리퀘스트 성공) jwtToken - \(data.token)")
 			
 			UserDefaults.standard.setValue(data.token , forKey: "authVerificationID")
 			UserDefaults.standard.setValue(name , forKey: "userName")
@@ -115,7 +115,6 @@ class SignInViewModel {
 			guard error == nil else { return }
 			guard let user = user else { return }
 			
-			// 유저정보 가져오는 부분 구글에서 설정하기
 			guard let name = user.profile?.name else { return }
 			
 			print("구글 유저네임 \(name)")
