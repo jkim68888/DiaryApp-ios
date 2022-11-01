@@ -10,6 +10,7 @@ import PhotosUI
 class PostViewController: UIViewController {
 	// MARK: - 백엔드 연동
 	let postService = PostService.shared
+    //Post 고유 번호도 가져와서 수정할때 사용해야한다.
 	var post: Post?
     
     // Post에 대한 정보를 담고있는 변수
@@ -44,41 +45,41 @@ class PostViewController: UIViewController {
     }
 
 
-//    func setData(){
-//        /// 데이터 가져왔을 때, nil인 경우는 New Post를 작성하는 경우 -> 새로운 postData를 만들어 기존 PostArray에 추가해준다.
-//        if postData == nil{
-//            print("데이터불러오기실패")
-//            postData = TempPost(userID: "momo", postTitle: nil, postDescription: nil, postImage: nil, createDate: Date())
-//            /// 기존 PostData를 담은 Array에 새로운 게시글 내용을 추가한다.
-//            dataManager.addPostData(postData)
-//        }
-//        /// 이미 존재하는 Post를 수정하는 경우
-//        else{
-//            print("데이터불러오기성공")
-//        }
-//        guard let postData = postData else { return }
-//        postNumber = postData.postNumber /// postNumber는 해당 Post의 고유 번호이다. 수정하거나 삭제할때 필요하다.
-//
-//        /// 기본적인 Post 정보에 담길 내용을 Setting해준다.
-//        postImageView.image = postData.postImage
-//        postDateTF.text = postData.createDate.toString()
-//        postTitleTF.text = postData.postTitle
-//
-//        if postScriptTV.text! == ""{postScriptTV.textColor = .lightGray}
-//        postScriptTV.text = postData.postDescription ?? postScriptTVPlaceHolder
-//    }
+    func setData(){
+        /// 데이터 가져왔을 때, nil인 경우는 New Post를 작성하는 경우 -> 새로운 postData를 만들어 기존 PostArray에 추가해준다.
+        if post == nil{
+            print("데이터불러오기실패")
+            postData = TempPost(userID: "momo", postTitle: nil, postDescription: nil, postImage: nil, createDate: Date())
+            /// 기존 PostData를 담은 Array에 새로운 게시글 내용을 추가한다.
+            dataManager.addPostData(postData)
+        }
+        /// 이미 존재하는 Post를 수정하는 경우
+        else{
+            print("데이터불러오기성공")
+        }
+        guard let post = post else { return }
+        //postNumber = post.postId /// postNumber는 해당 Post의 고유 번호이다. 수정하거나 삭제할때 필요하다.
+
+        /// 기본적인 Post 정보에 담길 내용을 Setting해준다.
+        postImageView.image = UIImage(named: "NoPost.png")
+        postDateTF.text = post.createdAt.toString()
+        postTitleTF.text = post.title
+
+        if postScriptTV.text! == ""{postScriptTV.textColor = .lightGray}
+        postScriptTV.text = post.body ?? postScriptTVPlaceHolder
+    }
 	
 	// MARK: - 백엔드 연동
-	func setData() {
-		guard let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String else { return }
-		guard let image = postImageView.image else { return }
-		
-		postService.addPostData(accessToken: token, image: image) { (success, data) in
-			self.postTitleTF.text = data.title
-			print("타이틀: \(self.postTitleTF.text)")
-			print(image)
-		}
-	}
+//	func setData() {
+//		guard let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String else { return }
+//		guard let image = postImageView.image else { return }
+//
+//		postService.addPostData(accessToken: token, image: image) { (success, data) in
+//			self.postTitleTF.text = data.title
+//			print("타이틀: \(self.postTitleTF.text)")
+//			print(image)
+//		}
+//	}
 	
     func setUI(){
         
