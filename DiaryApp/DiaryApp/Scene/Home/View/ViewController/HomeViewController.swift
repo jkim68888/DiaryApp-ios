@@ -167,8 +167,10 @@ extension HomeViewController: UICollectionViewDelegate{
 		
 		guard let postViewerVC = storyboard?.instantiateViewController(identifier: "PostViewerViewController") as? PostViewerViewController else { return }
 		
-		postViewerVC.tempPostData = dataManager.getPostDate()[indexPath.row]
-		
+        
+		//postViewerVC.tempPostData = dataManager.getPostDate()[indexPath.row]
+        //postViewerVC.id = postsList?[indexPath.row].userId
+        postViewerVC.post = postsList?[indexPath.row]
 		
 		self.navigationController?.pushViewController(postViewerVC, animated: true)
 	}
