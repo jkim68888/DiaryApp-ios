@@ -155,7 +155,7 @@ extension HomeViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! HomePostCollectionViewCell
 		
-        cell.post = postsList?[indexPath.row]
+		cell.post = postsList?[indexPath.row]
 		 
         return cell
     }

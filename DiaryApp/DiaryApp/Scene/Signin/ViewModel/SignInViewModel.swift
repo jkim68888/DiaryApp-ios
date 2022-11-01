@@ -29,7 +29,7 @@ class SignInViewModel {
 			self.account = data
 			print("(리퀘스트 성공) jwtToken - \(data.token)")
 			
-			UserDefaults.standard.setValue(data.token , forKey: "authVerificationID")
+			UserDefaults.standard.setValue(data.token, forKey: "authVerificationID")
 			UserDefaults.standard.setValue(name , forKey: "userName")
 			UserDefaults.standard.synchronize()
 			
