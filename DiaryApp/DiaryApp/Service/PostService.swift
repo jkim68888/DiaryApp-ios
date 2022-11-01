@@ -86,25 +86,32 @@ struct PostService {
 		
 		URLSession.shared.dataTask(with: request) { (data, response, error) in
 			guard error == nil else {
-				print("Error: error calling - getPostData")
+				print("Error: error calling - getPostsListData")
 				print(error!)
 				return
 			}
 			guard let data = data else {
-				print("Error: Did not receive data - getPostData")
+				print("Error: Did not receive data - getPostsListData")
 				return
 			}
 			guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
-				print("Error: HTTP request failed - getPostData")
-				return
-			}
-			guard let output = try? JSONDecoder().decode([Post].self, from: data) else {
-				print("Error: JSON Data Parsing failed - getPostData")
+				print("Error: HTTP request failed - getPostsListData")
 				return
 			}
 			
-			print("getPostData - \(response.statusCode)")
-			print("getPostData - \(String(decoding: data, as: UTF8.self))")
+			let dateFormatter = DateFormatter()
+			dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+			
+			let decoder = JSONDecoder()
+			decoder.dateDecodingStrategy = .formatted(dateFormatter)
+			
+			guard let output = try? decoder.decode([Post].self, from: data) else {
+				print("Error: JSON Data Parsing failed - getPostsListData")
+				return
+			}
+		
+			print("getPostsListData - \(response.statusCode)")
+			print("getPostsListData - \(output)")
 			
 			completionHandler(true, output)
 		}.resume()
