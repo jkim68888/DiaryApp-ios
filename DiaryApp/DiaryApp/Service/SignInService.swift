@@ -12,13 +12,7 @@ struct SignInService {
 	static let shared = SignInService()
 	
 	// baseUrl
-	let baseUrl = "http://localhost:4000"
-	
-	// Bell
-//	let baseUrl = "http://192.168.35.167:4000"
-
-	// Ethan
-//	let baseUrl = "http://10.4.10.109:4000"
+	let baseUrl = Config().baseUrl
 	
 	// pathUrl
 	let kakaoPath = "/api/auth/callback/kakao"

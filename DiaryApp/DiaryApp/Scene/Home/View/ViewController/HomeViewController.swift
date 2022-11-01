@@ -135,7 +135,7 @@ extension HomeViewController: UICollectionViewDataSource{
         }else{
             collectionView.restore()
         }
-        return dataManager.getPostDate().count
+		return postsList?.count ?? 0
     }
 	
 	func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -156,7 +156,7 @@ extension HomeViewController: UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! HomePostCollectionViewCell
 		
 		cell.post = postsList?[indexPath.row]
-		 
+
         return cell
     }
 }

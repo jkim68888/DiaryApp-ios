@@ -13,13 +13,7 @@ struct PostService {
 	static let shared = PostService()
 	
 	// baseUrl
-	let baseUrl = "http://localhost:4000"
-
-	// Bell
-//	let baseUrl = "http://192.168.35.167:4000"
-
-	// Ethan
-//	let baseUrl = "http://10.4.10.109:4000"
+	let baseUrl = Config().baseUrl
 	
 	// pathUrl
 	let postReadPath = "/api/post/read"
@@ -94,13 +88,18 @@ struct PostService {
 				print("Error: Did not receive data - getPostsListData")
 				return
 			}
+			
+			print("getPostsListData.data - \(String(decoding: data, as: UTF8.self))")
+			
 			guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
 				print("Error: HTTP request failed - getPostsListData")
 				return
 			}
 			
+			print("getPostsListData.response - \(response.statusCode)")
+			
 			let dateFormatter = DateFormatter()
-			dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+			dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 			
 			let decoder = JSONDecoder()
 			decoder.dateDecodingStrategy = .formatted(dateFormatter)
@@ -109,9 +108,7 @@ struct PostService {
 				print("Error: JSON Data Parsing failed - getPostsListData")
 				return
 			}
-		
-			print("getPostsListData - \(response.statusCode)")
-			print("getPostsListData - \(output)")
+			print("getPostsListData.output - \(output)")
 			
 			completionHandler(true, output)
 		}.resume()
