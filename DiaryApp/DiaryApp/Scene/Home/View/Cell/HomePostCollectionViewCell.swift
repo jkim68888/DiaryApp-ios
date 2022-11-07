@@ -12,13 +12,16 @@ class HomePostCollectionViewCell: UICollectionViewCell {
 	var post: Post? {
 		didSet {
 			// MARK: - 아직 서버에서 이미지를 내려주지 않고 있음
-//			cellImageView.image = post.postImage ?? UIImage(named: "NoImage.png")
-			cellImageView.image = UIImage(named: "NoImage.png")
-			cellTitleLabel.text = post?.createdAt.toString()
+            guard let post = post else {
+                return
+            }
+            cellImageView.image = UIImage(named: post.image.path) ?? UIImage(named: "NoImage.png")
+			cellTitleLabel.text = post.createdAt.toString()
 			cellView.clipsToBounds = true
 			cellView.layer.cornerRadius = 10
 			cellView.layer.borderWidth = 1
 			cellView.layer.borderColor = UIColor(hexString: "#999999").cgColor
+            
 		}
 	}
     
