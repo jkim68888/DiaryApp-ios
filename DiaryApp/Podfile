@@ -11,4 +11,6 @@ target 'DiaryApp' do
   pod 'KakaoSDKCommon'
   pod 'GoogleSignIn'
 	pod 'naveridlogin-sdk-ios'
+  pod 'Alamofire', '~> 5.2'
+  pod 'SwiftyJSON', '~> 4.0'
 end

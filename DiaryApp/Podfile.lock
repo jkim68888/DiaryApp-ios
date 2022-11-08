@@ -26,13 +26,16 @@ PODS:
   - KakaoSDKUser (2.11.1):
     - KakaoSDKAuth (= 2.11.1)
   - naveridlogin-sdk-ios (4.1.5)
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.2)
   - GoogleSignIn
   - KakaoSDKAuth
   - KakaoSDKCommon
   - KakaoSDKUser
   - naveridlogin-sdk-ios
+  - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
@@ -45,6 +48,7 @@ SPEC REPOS:
     - KakaoSDKCommon
     - KakaoSDKUser
     - naveridlogin-sdk-ios
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
@@ -56,7 +60,8 @@ SPEC CHECKSUMS:
   KakaoSDKCommon: 555e1bb46595b842ded01cf7888cc17bbae4e113
   KakaoSDKUser: 08c0a4f40bebdebdf948a9e3d0e44ed5c2754f99
   naveridlogin-sdk-ios: 4351fe7162cd6b8b6dbb37bd7cc205304fa1d889
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 3db796bd81dc6e74d4c713b52b02a5d6ac61f2f0
+PODFILE CHECKSUM: 3f864184532e45ac19134a14097fe173071ca1e9
 
 COCOAPODS: 1.11.3
