@@ -49,9 +49,12 @@ class PostViewController: UIViewController {
         /// 데이터 가져왔을 때, nil인 경우는 New Post를 작성하는 경우 -> 새로운 postData를 만들어 기존 PostArray에 추가해준다.
         if post == nil{
             print("데이터불러오기실패")
-            postData = TempPost(userID: "momo", postTitle: nil, postDescription: nil, postImage: nil, createDate: Date())
+            // 1. DB에 저장되어있는 Post들과 다른 id를 어떻게 넣을것인가
+            // 2. userID는 앱 실행 한 후에는, 고유하게 존재하는데, 어떻게 세팅을 할 것인가?
+            // 3. createdAt은 어떻게 세팅?
+            // post = Post(id: <#T##Int#>, title: "", body: "", userId: <#T##String#>, createdAt: <#T##Date#>)
             /// 기존 PostData를 담은 Array에 새로운 게시글 내용을 추가한다.
-            dataManager.addPostData(postData)
+            // dataManager.addPostData(postData)
         }
         /// 이미 존재하는 Post를 수정하는 경우
         else{
@@ -198,7 +201,9 @@ class PostViewController: UIViewController {
 //            self.navigationController?.popViewController(animated: true)
 //        }
 		
-		setData()
+        guard let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String else { return }
+
+        
 		self.navigationController?.popViewController(animated: true)
     }
 	

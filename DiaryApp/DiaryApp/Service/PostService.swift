@@ -27,7 +27,7 @@ struct PostService {
 		let urlComponents = "\(baseUrl)\(postReadPath)?id=\(id)"
 		let param = ["id": id]
 		let sendData = try! JSONSerialization.data(withJSONObject: param, options: [])
-		
+		print("💄💄💄\(String(decoding: sendData, as: UTF8.self))")
 		guard let url = URL(string: urlComponents) else {
 			print("Error: cannot create URL - getPostData")
 			return
@@ -36,7 +36,7 @@ struct PostService {
 		var request = URLRequest(url: url)
 		request.httpMethod = "GET"
 		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-		request.httpBody = sendData
+		//request.httpBody = sendData
 		
 		URLSession.shared.dataTask(with: request) { (data, response, error) in
 			guard error == nil else {
@@ -92,6 +92,7 @@ struct PostService {
 			print("getPostsListData.data - \(String(decoding: data, as: UTF8.self))")
 			
 			guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
+                print(response)
 				print("Error: HTTP request failed - getPostsListData")
 				return
 			}
