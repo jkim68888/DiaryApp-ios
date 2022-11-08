@@ -162,14 +162,31 @@ struct PostService {
                    encoding: URLEncoding.default,
                    headers: ["Content-Type":"application/json","Accept":"application/json","Authorization":"Bearer \(accessToken)"])
         .validate(statusCode: 200..<300)
-        .responseJSON{ json in
-            print("🎨🎨🎨🎨\(json)짜잔🎨🎨🎨🎨")
-            switch json.result{
+        .responseData{ data in
+            print("🎨🎨🎨🎨\(data)짜잔🎨🎨🎨🎨")
+            
+            switch data.result{
             case .success(let response):
                 print(response)
+                let json = JSON(response)
+                print(json)
+                // 이제 서버에서 정상적으로 응답을 받아왔으니, 해당 응답내용을 우리들이 볼 수 있도록 재정의한다.
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .formatted(dateFormatter)
+
+                guard let output = try? decoder.decode([Post].self, from: response) else {
+                    print("Error: JSON Data Parsing failed - getPostsListData")
+                    return
+                }
+                print(output)
+                print("성공했습니다.")
+                
             case .failure(let error):
                 print("\(error)입니다.")
-            }           
+            }
             
         }
     }

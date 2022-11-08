@@ -15,7 +15,7 @@ class HomePostCollectionViewCell: UICollectionViewCell {
             guard let post = post else {
                 return
             }
-            cellImageView.image = UIImage(named: post.image.path) ?? UIImage(named: "NoImage.png")
+            cellImageView.image = UIImage(named: post.image!.path) ?? UIImage(named: "NoImage.png")
 			cellTitleLabel.text = post.createdAt.toString()
 			cellView.clipsToBounds = true
 			cellView.layer.cornerRadius = 10
