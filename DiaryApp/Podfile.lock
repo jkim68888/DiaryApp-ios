@@ -27,6 +27,7 @@ PODS:
     - KakaoSDKAuth (= 2.11.1)
   - naveridlogin-sdk-ios (4.1.5)
   - SwiftyJSON (4.3.0)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - KakaoSDKUser
   - naveridlogin-sdk-ios
   - SwiftyJSON (~> 4.0)
+  - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
@@ -49,6 +51,7 @@ SPEC REPOS:
     - KakaoSDKUser
     - naveridlogin-sdk-ios
     - SwiftyJSON
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
@@ -61,7 +64,8 @@ SPEC CHECKSUMS:
   KakaoSDKUser: 08c0a4f40bebdebdf948a9e3d0e44ed5c2754f99
   naveridlogin-sdk-ios: 4351fe7162cd6b8b6dbb37bd7cc205304fa1d889
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 3f864184532e45ac19134a14097fe173071ca1e9
+PODFILE CHECKSUM: c1dd364b30ef34e8cf55afe711458762ee548db5
 
 COCOAPODS: 1.11.3

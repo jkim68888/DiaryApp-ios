@@ -8,7 +8,7 @@
 import UIKit
 
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var addPostBtn: UIButton!
 	
@@ -92,17 +92,13 @@ class HomeViewController: UIViewController {
 	
 	// MARK: - 백엔드 통신
     func setData(){
-        guard let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String else { return }
-        // Alamofire Test를 위해서 임시로 변형했음, 아래 주석부분 풀고, postService내부 메서드 이름 변경하면, 기존 URLSession방식으로 네트워킹 가능
-        postService.getPostListData_Alamofire(accessToken: token)
-//        { (success, data) in
-//            print(data)
-//            self.postsList = data
-//
-//            DispatchQueue.main.async {
-//                self.homeCollectionView.reloadData()
-//            }
-//        }
+        postService.PostListData_Alamofire(){ (success, data) in
+            self.postsList = data
+
+            DispatchQueue.main.async {
+                self.homeCollectionView.reloadData()
+            }
+        }
     }
     
 	
@@ -156,7 +152,7 @@ extension HomeViewController: UICollectionViewDataSource{
 	
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! HomePostCollectionViewCell
-		
+        
 		cell.post = postsList?[indexPath.row]
 
         return cell

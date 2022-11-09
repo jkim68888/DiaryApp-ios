@@ -12,6 +12,7 @@ class PostViewController: UIViewController {
 	let postService = PostService.shared
     //Post 고유 번호도 가져와서 수정할때 사용해야한다.
 	var post: Post?
+    var imageData = Data()
     
     // Post에 대한 정보를 담고있는 변수
     var postData: TempPost?
@@ -181,6 +182,7 @@ class PostViewController: UIViewController {
     // 완료 버튼을 눌렀을 때
     @IBAction func doneButtonTapped(_ sender: Any) {
         print(#function)
+        
 //        print(postData)
 //        let postViewerVCindex = navigationController!.viewControllers.count - 2
 //        let postViewerVC = navigationController?.viewControllers[postViewerVCindex] as! PostViewerViewController
@@ -201,7 +203,6 @@ class PostViewController: UIViewController {
 //            self.navigationController?.popViewController(animated: true)
 //        }
 		
-        guard let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String else { return }
 
         
 		self.navigationController?.popViewController(animated: true)

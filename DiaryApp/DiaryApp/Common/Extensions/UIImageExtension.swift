@@ -19,3 +19,24 @@ extension UIImage {
 		return data?.base64EncodedString(options: .endLineWithLineFeed)
 	}
 }
+extension UIImageView{
+    func load(url: URL?){
+        if url == nil{
+            DispatchQueue.main.async {
+                self.image = UIImage(named: "NoImage.png")
+            }
+        }
+        else{
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: url!){
+                    if let image = UIImage(data: data){
+                        DispatchQueue.main.async {
+                            self.image = image
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+}
