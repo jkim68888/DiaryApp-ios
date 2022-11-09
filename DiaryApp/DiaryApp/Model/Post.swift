@@ -18,7 +18,7 @@ struct Post: Codable {
     var datetime: Date
 	var userId: String
 	var createdAt: Date
-    var image: Image?
+    var image: Image
 	
 	enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -27,9 +27,9 @@ struct Post: Codable {
         case datetime = "datetime"
 		case userId = "userid"
 		case createdAt = "created_at"
-        case image = "image"
+        case image = "path"
 	}
 }
 struct Image: Codable{
-    let path: String
+    let path: String?
 }
