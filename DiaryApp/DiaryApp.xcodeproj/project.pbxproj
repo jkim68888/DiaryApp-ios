@@ -47,6 +47,14 @@
 		A95E03CD290665B800F73A33 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E03CC290665B800F73A33 /* CalendarCollectionViewCell.swift */; };
 		A95E03CF2906B3C400F73A33 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E03CE2906B3C400F73A33 /* CalendarTableViewCell.swift */; };
 		A95E03D1290A148600F73A33 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E03D0290A148600F73A33 /* PopUpViewController.swift */; };
+		A9958587291B459500B33502 /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9958586291B459500B33502 /* BaseInterceptor.swift */; };
+		A9958589291B46DB00B33502 /* MyAlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9958588291B46DB00B33502 /* MyAlamofireManager.swift */; };
+		A995858B291B4B9100B33502 /* MyLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A995858A291B4B9100B33502 /* MyLogger.swift */; };
+		A995858D291B4CE100B33502 /* MyLoggerStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A995858C291B4CE100B33502 /* MyLoggerStatusCode.swift */; };
+		A995858F291B4D9B00B33502 /* MySearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A995858E291B4D9B00B33502 /* MySearchRouter.swift */; };
+		A9958591291B6EC500B33502 /* MyEditRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9958590291B6EC500B33502 /* MyEditRouter.swift */; };
+		A9958593291B797A00B33502 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9958592291B797A00B33502 /* Notification.swift */; };
+		A9958597291B7AD900B33502 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9958596291B7AD900B33502 /* BaseViewController.swift */; };
 		A9C2A6DA28FD5C0A000EB06D /* TempPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2A6D928FD5C0A000EB06D /* TempPost.swift */; };
 		A9C2A6DC28FD6A9D000EB06D /* TempDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2A6DB28FD6A9D000EB06D /* TempDataManager.swift */; };
 		A9C2A6DE28FD7F95000EB06D /* HomePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C2A6DD28FD7F95000EB06D /* HomePostCollectionViewCell.swift */; };
@@ -98,6 +106,14 @@
 		A95E03CC290665B800F73A33 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		A95E03CE2906B3C400F73A33 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		A95E03D0290A148600F73A33 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		A9958586291B459500B33502 /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
+		A9958588291B46DB00B33502 /* MyAlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlamofireManager.swift; sourceTree = "<group>"; };
+		A995858A291B4B9100B33502 /* MyLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLogger.swift; sourceTree = "<group>"; };
+		A995858C291B4CE100B33502 /* MyLoggerStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoggerStatusCode.swift; sourceTree = "<group>"; };
+		A995858E291B4D9B00B33502 /* MySearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySearchRouter.swift; sourceTree = "<group>"; };
+		A9958590291B6EC500B33502 /* MyEditRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEditRouter.swift; sourceTree = "<group>"; };
+		A9958592291B797A00B33502 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		A9958596291B7AD900B33502 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A9C2A6D928FD5C0A000EB06D /* TempPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempPost.swift; sourceTree = "<group>"; };
 		A9C2A6DB28FD6A9D000EB06D /* TempDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempDataManager.swift; sourceTree = "<group>"; };
 		A9C2A6DD28FD7F95000EB06D /* HomePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -133,6 +149,7 @@
 				9A1FCCA728FEA102001B1584 /* NavigationBarUtils.swift */,
 				9A1FCCC628FFB9B4001B1584 /* RootViewUtils.swift */,
 				A95E03D0290A148600F73A33 /* PopUpViewController.swift */,
+				A9958592291B797A00B33502 /* Notification.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -201,6 +218,7 @@
 		9A43DF4D28F7E006004DBE82 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				A9958594291B7AB500B33502 /* Base */,
 				A913FA9828F91F6B00ECA972 /* Post */,
 				9A43DF6428F7E537004DBE82 /* Settings */,
 				9A43DF6328F7E52D004DBE82 /* Signin */,
@@ -406,6 +424,7 @@
 		9A6C77AB28F229E400E1092D /* DiaryApp */ = {
 			isa = PBXGroup;
 			children = (
+				A9958585291B456D00B33502 /* API */,
 				9A6C77AC28F229E400E1092D /* AppDelegate.swift */,
 				9A6C77AE28F229E400E1092D /* SceneDelegate.swift */,
 				9A6C77B728F229E500E1092D /* LaunchScreen.storyboard */,
@@ -487,6 +506,27 @@
 				A95E03CE2906B3C400F73A33 /* CalendarTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		A9958585291B456D00B33502 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A9958586291B459500B33502 /* BaseInterceptor.swift */,
+				A9958588291B46DB00B33502 /* MyAlamofireManager.swift */,
+				A995858A291B4B9100B33502 /* MyLogger.swift */,
+				A995858C291B4CE100B33502 /* MyLoggerStatusCode.swift */,
+				A995858E291B4D9B00B33502 /* MySearchRouter.swift */,
+				A9958590291B6EC500B33502 /* MyEditRouter.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		A9958594291B7AB500B33502 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				A9958596291B7AD900B33502 /* BaseViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		A9C8B9CC2900E88C006B7D09 /* View */ = {
@@ -648,20 +688,27 @@
 			files = (
 				9A1FCCC128FFB3DF001B1584 /* PostViewerViewModel.swift in Sources */,
 				A919384028F65D9E00CC8B76 /* SignInViewController.swift in Sources */,
+				A9958587291B459500B33502 /* BaseInterceptor.swift in Sources */,
 				9A1FCCA128FA9A73001B1584 /* UIButtonExtension.swift in Sources */,
 				9A6C77AD28F229E400E1092D /* AppDelegate.swift in Sources */,
 				9A1FCCC328FFB3F3001B1584 /* CalendarViewModel.swift in Sources */,
 				A9C2A6DC28FD6A9D000EB06D /* TempDataManager.swift in Sources */,
 				9A6C77AF28F229E400E1092D /* SceneDelegate.swift in Sources */,
+				A9958591291B6EC500B33502 /* MyEditRouter.swift in Sources */,
 				A913FA9D28F91FF500ECA972 /* PostViewController.swift in Sources */,
 				9AAB90D22904E746004141A4 /* User.swift in Sources */,
 				9AAB90C729010F34004141A4 /* HomePostCollectionReusableView.swift in Sources */,
 				9A1FCCB028FFB1CE001B1584 /* SignInService.swift in Sources */,
+				A995858F291B4D9B00B33502 /* MySearchRouter.swift in Sources */,
+				A995858D291B4CE100B33502 /* MyLoggerStatusCode.swift in Sources */,
+				A9958597291B7AD900B33502 /* BaseViewController.swift in Sources */,
 				9A1FCCC728FFB9B4001B1584 /* RootViewUtils.swift in Sources */,
 				9A1FCCA828FEA102001B1584 /* NavigationBarUtils.swift in Sources */,
 				9A1FCCB428FFB24E001B1584 /* SignInViewModel.swift in Sources */,
 				9A1FCCAA28FFB162001B1584 /* PostService.swift in Sources */,
 				A919383E28F65D8A00CC8B76 /* SettingsViewController.swift in Sources */,
+				A995858B291B4B9100B33502 /* MyLogger.swift in Sources */,
+				A9958589291B46DB00B33502 /* MyAlamofireManager.swift in Sources */,
 				A9C8B9C928FF90F5006B7D09 /* StringExtension.swift in Sources */,
 				9A6C534428F7FBC900B13BF7 /* UIColorExtension.swift in Sources */,
 				A9C8B9C728FF90CC006B7D09 /* DateExtension.swift in Sources */,
@@ -678,6 +725,7 @@
 				9A1FCCA528FE81C2001B1584 /* UINavigationExtension.swift in Sources */,
 				9A1FCCC528FFB40A001B1584 /* HomeViewModel.swift in Sources */,
 				A919382628F64E9900CC8B76 /* HomeViewController.swift in Sources */,
+				A9958593291B797A00B33502 /* Notification.swift in Sources */,
 				9A1FCCBA28FFB302001B1584 /* SettingsTableViewCell.swift in Sources */,
 				A919384228F65DDD00CC8B76 /* PostViewerViewController.swift in Sources */,
 				9A1FCCAC28FFB17E001B1584 /* PostViewModel.swift in Sources */,
@@ -830,7 +878,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6RZ3FF956G;
+				DEVELOPMENT_TEAM = URTJJ24R4X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "하루끝";
@@ -862,7 +910,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6RZ3FF956G;
+				DEVELOPMENT_TEAM = URTJJ24R4X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "하루끝";
