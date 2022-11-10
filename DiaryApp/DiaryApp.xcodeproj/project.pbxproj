@@ -10,6 +10,9 @@
 		2EA29942F5D4EFB7084A02CC /* Pods_DiaryApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FB099387021976D626A33B /* Pods_DiaryApp.framework */; };
 		9A1EB5C2290D140C00C1CB2E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1EB5C1290D140C00C1CB2E /* Post.swift */; };
 		9A1EB5C4290D482C00C1CB2E /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1EB5C3290D482C00C1CB2E /* UIImageExtension.swift */; };
+		9A1EB6BD291C948600C1CB2E /* Nickname.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A1EB6BC291C948600C1CB2E /* Nickname.storyboard */; };
+		9A1EB6BF291C949400C1CB2E /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1EB6BE291C949400C1CB2E /* NicknameViewController.swift */; };
+		9A1EB6C2291D0A9100C1CB2E /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1EB6C1291D0A9100C1CB2E /* LoadingIndicator.swift */; };
 		9A1FCCA128FA9A73001B1584 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA028FA9A73001B1584 /* UIButtonExtension.swift */; };
 		9A1FCCA528FE81C2001B1584 /* UINavigationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA428FE81C2001B1584 /* UINavigationExtension.swift */; };
 		9A1FCCA828FEA102001B1584 /* NavigationBarUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA728FEA102001B1584 /* NavigationBarUtils.swift */; };
@@ -67,6 +70,9 @@
 		5AC108EDBC9F6D415C63FB7A /* Pods-DiaryApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryApp.release.xcconfig"; path = "Target Support Files/Pods-DiaryApp/Pods-DiaryApp.release.xcconfig"; sourceTree = "<group>"; };
 		9A1EB5C1290D140C00C1CB2E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		9A1EB5C3290D482C00C1CB2E /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		9A1EB6BC291C948600C1CB2E /* Nickname.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Nickname.storyboard; sourceTree = "<group>"; };
+		9A1EB6BE291C949400C1CB2E /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
+		9A1EB6C1291D0A9100C1CB2E /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		9A1FCCA028FA9A73001B1584 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		9A1FCCA428FE81C2001B1584 /* UINavigationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationExtension.swift; sourceTree = "<group>"; };
 		9A1FCCA728FEA102001B1584 /* NavigationBarUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarUtils.swift; sourceTree = "<group>"; };
@@ -143,6 +149,31 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		9A1EB6B9291C945900C1CB2E /* Nickname */ = {
+			isa = PBXGroup;
+			children = (
+				9A1EB6BB291C946B00C1CB2E /* ViewController */,
+				9A1EB6BA291C946100C1CB2E /* Storyboard */,
+			);
+			path = Nickname;
+			sourceTree = "<group>";
+		};
+		9A1EB6BA291C946100C1CB2E /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				9A1EB6BC291C948600C1CB2E /* Nickname.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		9A1EB6BB291C946B00C1CB2E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9A1EB6BE291C949400C1CB2E /* NicknameViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		9A1FCCA628FEA0DB001B1584 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +181,7 @@
 				9A1FCCC628FFB9B4001B1584 /* RootViewUtils.swift */,
 				A95E03D0290A148600F73A33 /* PopUpViewController.swift */,
 				A9958592291B797A00B33502 /* Notification.swift */,
+				9A1EB6C1291D0A9100C1CB2E /* LoadingIndicator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -218,6 +250,7 @@
 		9A43DF4D28F7E006004DBE82 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				9A1EB6B9291C945900C1CB2E /* Nickname */,
 				A9958594291B7AB500B33502 /* Base */,
 				A913FA9828F91F6B00ECA972 /* Post */,
 				9A43DF6428F7E537004DBE82 /* Settings */,
@@ -627,6 +660,7 @@
 			files = (
 				A919382F28F6597500CC8B76 /* PostViewer.storyboard in Resources */,
 				9A6C537728FA631C00B13BF7 /* EF_Diary.ttf in Resources */,
+				9A1EB6BD291C948600C1CB2E /* Nickname.storyboard in Resources */,
 				9A6C77B928F229E500E1092D /* LaunchScreen.storyboard in Resources */,
 				A913FA3F28F7CC2800ECA972 /* Calendar.storyboard in Resources */,
 				9A6C77B628F229E500E1092D /* Assets.xcassets in Resources */,
@@ -713,7 +747,9 @@
 				9A6C534428F7FBC900B13BF7 /* UIColorExtension.swift in Sources */,
 				A9C8B9C728FF90CC006B7D09 /* DateExtension.swift in Sources */,
 				A95E03CF2906B3C400F73A33 /* CalendarTableViewCell.swift in Sources */,
+				9A1EB6C2291D0A9100C1CB2E /* LoadingIndicator.swift in Sources */,
 				A95E03CD290665B800F73A33 /* CalendarCollectionViewCell.swift in Sources */,
+				9A1EB6BF291C949400C1CB2E /* NicknameViewController.swift in Sources */,
 				9A1EB5C2290D140C00C1CB2E /* Post.swift in Sources */,
 				A9C2A6DE28FD7F95000EB06D /* HomePostCollectionViewCell.swift in Sources */,
 				9A1EB5C4290D482C00C1CB2E /* UIImageExtension.swift in Sources */,
@@ -878,7 +914,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = URTJJ24R4X;
+				DEVELOPMENT_TEAM = 6RZ3FF956G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "하루끝";
@@ -910,7 +946,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = URTJJ24R4X;
+				DEVELOPMENT_TEAM = 6RZ3FF956G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "하루끝";

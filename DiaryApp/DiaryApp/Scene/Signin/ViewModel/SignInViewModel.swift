@@ -24,25 +24,15 @@ class SignInViewModel {
     let googleSignInConfig = GIDConfiguration.init(clientID: Config().googleId)
 	
 	// 백엔드 서버 통신
-	func fetchData(url: String, name: String, token: String) {
+	func fetchData(url: String, name: String, token: String, completion: @escaping () -> Void) {
+		LoadingIndicator.showLoading()
 		signInService.requestSignIn(url: url, name: name, accessToken: token) { [self] (success, data) in
 			self.account = data
 			print("(리퀘스트 성공) jwtToken - \(data.token)")
 			
-			UserDefaults.standard.setValue(data.token, forKey: "authVerificationID")
-			UserDefaults.standard.setValue(name , forKey: "userName")
-			UserDefaults.standard.synchronize()
+			UserDefaults.standard.setValue(true, forKey: "loginStatus")
 			
-			// view를 바꿔주는건 main 디스패치큐에서 실행
-			DispatchQueue.main.async {
-				changeRootVC()
-			}
-			
-			// 홈뷰컨으로 home api 요청 시점을 알려주기 위한 notification
-			// root view가 홈으로 바뀐뒤, 알려줘야 하므로, 시간차를 둠
-			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-				NotificationCenter.default.post(name: NSNotification.Name("loginSuccess"), object: nil, userInfo: nil)
-			}
+			completion()
 		}
 	}
 	
@@ -102,7 +92,12 @@ class SignInViewModel {
 				print("token: \(token)")
 				
 				// 서버에 보낼 함수
-				fetchData(url: "\(signInService.baseUrl)\(signInService.kakaoPath)", name: name, token: token)
+				fetchData(url: "\(signInService.baseUrl)\(signInService.kakaoPath)", name: name, token: token) {
+					DispatchQueue.main.async {
+						NotificationCenter.default.post(name: NSNotification.Name("loginSuccess"), object: nil, userInfo: nil)
+						LoadingIndicator.hideLoading()
+					}
+				}
 			}
 		}
 	}
@@ -128,7 +123,12 @@ class SignInViewModel {
 				print("idToken: \(idToken)")
 			
 				// 서버에 보낼 함수
-				fetchData(url: "\(signInService.baseUrl)\(signInService.googlePath)", name: name, token: idToken)
+				fetchData(url: "\(signInService.baseUrl)\(signInService.googlePath)", name: name, token: idToken) {
+					DispatchQueue.main.async {
+						NotificationCenter.default.post(name: NSNotification.Name("loginSuccess"), object: nil, userInfo: nil)
+						LoadingIndicator.hideLoading()
+					}
+				}
 			}
 		}
 	}
@@ -158,7 +158,13 @@ class SignInViewModel {
 			print("네이버 유저네임 \(name)")
 				
 			// 서버에 보낼 함수
-			self.fetchData(url: "\(self.signInService.baseUrl)\(self.signInService.naverPath)", name: name, token: accessToken)
+			self.fetchData(url: "\(self.signInService.baseUrl)\(self.signInService.naverPath)", name: name, token: accessToken) {
+				DispatchQueue.main.async {
+					NotificationCenter.default.post(name: NSNotification.Name("loginSuccess"), object: nil, userInfo: nil)
+					LoadingIndicator.hideLoading()
+				}
+			}
 		}
 	}
+	
 }

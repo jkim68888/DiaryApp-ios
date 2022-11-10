@@ -55,7 +55,7 @@ class HomeViewController: BaseViewController {
     }
 	
 	func setNotification() {
-		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveLoginSuccess(_:)), name: NSNotification.Name("loginSuccess"), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveGoHomeSuccess(_:)), name: NSNotification.Name("goHomeSuccess"), object: nil)
 	}
     
     func setCollectionView(){
@@ -103,7 +103,7 @@ class HomeViewController: BaseViewController {
     
 	
 	// 로그인이 success면 콜렉션뷰 다시 그림 (바인딩된 데이터로 그리기 위함)
-	@objc func didRecieveLoginSuccess(_ notification: Notification) {
+	@objc func didRecieveGoHomeSuccess(_ notification: Notification) {
 		DispatchQueue.main.async {
 			self.homeCollectionView.reloadData()
 		}
@@ -141,9 +141,8 @@ extension HomeViewController: UICollectionViewDataSource{
 		let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HomePostCollectionViewHeader", for: indexPath) as! HomePostCollectionReusableView
 		
 		setCollectionHeaderUI(header: headerView)
-		
-		// 로그인된 사람은 로그인 api 요청 없이 바로 home으로 진입하기 때문에, userdefaults에 있는 name값을 씀
-		if let nickname = UserDefaults.standard.value(forKey: "userName") as? String {
+	
+		if let nickname = UserDefaults.standard.value(forKey: "nickname") as? String {
 			headerView.userNameLabel.text = "\(nickname)님"
 		}
 	

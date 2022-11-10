@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="EF_Diary.ttf">
+            <string>EF_Diary</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Nickname View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="NicknameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="NicknameViewController" customModule="DiaryApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="atf-YM-i84">
+                                <rect key="frame" x="16" y="346.33333333333331" width="358" height="151.33333333333331"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용하실 닉네임을 설정해주세요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jto-Pb-evR">
+                                        <rect key="frame" x="102" y="0.0" width="154" height="51.333333333333336"/>
+                                        <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="20"/>
+                                        <color key="textColor" name="mainFontColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="닉네임 입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b6j-j8-zQY">
+                                        <rect key="frame" x="0.0" y="106.33333333333337" width="358" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="avH-Vc-q8n"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="b6j-j8-zQY" secondAttribute="trailing" id="Sq5-Hg-u60"/>
+                                    <constraint firstItem="b6j-j8-zQY" firstAttribute="leading" secondItem="atf-YM-i84" secondAttribute="leading" id="oTo-oe-lZa"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="atf-YM-i84" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="A7s-RC-6P5"/>
+                            <constraint firstItem="atf-YM-i84" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="S5G-4C-TJ3"/>
+                            <constraint firstItem="atf-YM-i84" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="dIF-gu-3mg"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="atf-YM-i84" secondAttribute="trailing" constant="16" id="vDX-uU-Fsd"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="nicknameTF" destination="b6j-j8-zQY" id="rj1-XK-n5U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="-34"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="mainFontColor">
+            <color red="0.49411764705882355" green="0.46274509803921571" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
