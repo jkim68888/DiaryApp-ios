@@ -20,11 +20,14 @@ func changeRootVC() {
 	let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
 	let signInViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
 	let homeNavigationController = UINavigationController(rootViewController: homeViewController)
+	let signInNavigationController = UINavigationController(rootViewController: signInViewController)
 	
-	// 로그인시 userDefaults에 저장되있는 토큰값에 따라 루트뷰 변경
-	if UserDefaults.standard.value(forKey: "authVerificationID") != nil {
-		window.rootViewController = homeNavigationController
-	} else {
-		window.rootViewController = signInViewController
+	if let loginStatus = UserDefaults.standard.value(forKey: "loginStatus") as? Bool {
+		if loginStatus {
+			window.rootViewController = homeNavigationController
+			NotificationCenter.default.post(name: NSNotification.Name("goHomeSuccess"), object: nil, userInfo: nil)
+		} else {
+			window.rootViewController = signInNavigationController
+		}
 	}
 }

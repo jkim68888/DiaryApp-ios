@@ -39,10 +39,7 @@ class SettingsViewModel {
 			}
 		}
 		
-		UserDefaults.standard.setValue(nil, forKey: "authVerificationID")
-		UserDefaults.standard.setValue(nil, forKey: "userName")
-		UserDefaults.standard.setValue(nil, forKey: "snsUserType")
-		UserDefaults.standard.synchronize()
+		UserDefaults.standard.setValue(false, forKey: "loginStatus")
 		
 		changeRootVC()
 	}

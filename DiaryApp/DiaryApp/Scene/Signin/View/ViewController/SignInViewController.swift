@@ -10,14 +10,13 @@ import GoogleSignIn
 
 class SignInViewController: UIViewController {
 	@IBOutlet var signInButtons: [UIButton]!
-    @IBOutlet weak var googleSignButton: GIDSignInButton!
-    @IBOutlet weak var titleLabel: UILabel!
     
 	let viewModel = SignInViewModel()
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		setUI()
+		setNotification()
     }
 	
 	// 왼쪽이미지 가운데타이틀 설정 (extension 사용)
@@ -34,13 +33,25 @@ class SignInViewController: UIViewController {
 			item.layer.borderWidth = 1
 			item.layer.borderColor = UIColor(hexString: "#999999").cgColor
 		}
-		
-		// 라벨 컬러 설정
-		titleLabel.textColor = UIColor(hexString: "#7E76DE")
+	}
+	
+	func setNotification() {
+		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveLoginSuccess(_:)), name: NSNotification.Name("loginSuccess"), object: nil)
+	}
+	
+	func goNicknameVC() {
+		guard let nicknameVC = storyboard?.instantiateViewController(identifier: "NicknameViewController") as? NicknameViewController else { return }
+		self.navigationController?.pushViewController(nicknameVC, animated: false)
+	}
+	
+	// 로그인이 success면 콜렉션뷰 다시 그림 (바인딩된 데이터로 그리기 위함)
+	@objc func didRecieveLoginSuccess(_ notification: Notification) {
+		DispatchQueue.main.async {
+			self.goNicknameVC()
+		}
 	}
 	
 	@IBAction func appleButtonTapped(_ sender: UIButton) {
-        
         goHomeVC()
 	}
 	
@@ -68,4 +79,3 @@ class SignInViewController: UIViewController {
         window.rootViewController = homeNavigationController
     }
 }
-

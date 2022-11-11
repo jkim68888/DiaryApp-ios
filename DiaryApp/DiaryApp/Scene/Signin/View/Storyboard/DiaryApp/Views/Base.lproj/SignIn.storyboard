@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Eoh-i1-6rD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Eoh-i1-6rD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -31,7 +31,7 @@
                                         <string key="text">반가워요!
 계정을 선택해주세요.</string>
                                         <fontDescription key="fontDescription" name="EF_Diary" family="EF_다이어리" pointSize="20"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="mainFontColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bNk-Gv-EGa">
@@ -117,8 +117,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="gfU-Eb-t8f"/>
                     <connections>
-                        <outlet property="googleSignButton" destination="fvf-LX-Rcp" id="RaV-ae-REE"/>
-                        <outlet property="titleLabel" destination="Z4b-Nr-bJW" id="g3s-xc-s0a"/>
                         <outletCollection property="signInButtons" destination="UN5-De-Uop" collectionClass="NSMutableArray" id="DhH-eL-1vl"/>
                         <outletCollection property="signInButtons" destination="J4s-gP-C64" collectionClass="NSMutableArray" id="wvj-3T-iyh"/>
                         <outletCollection property="signInButtons" destination="fvf-LX-Rcp" collectionClass="NSMutableArray" id="JTa-du-ZhJ"/>
@@ -137,13 +135,21 @@
             </objects>
             <point key="canvasLocation" x="4319" y="-646"/>
         </scene>
+        <!--NicknameViewController-->
+        <scene sceneID="JC0-gj-xkf">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="NicknameViewController" storyboardName="Nickname" referencedIdentifier="NicknameViewController" id="hZW-nD-6um" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="caA-eJ-k01" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4422" y="-552"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="I8e-g7-nuJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Eoh-i1-6rD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DhY-EY-u8h">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -159,6 +165,9 @@
     <resources>
         <namedColor name="grayLabelColor">
             <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="mainFontColor">
+            <color red="0.49411764705882355" green="0.46274509803921571" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

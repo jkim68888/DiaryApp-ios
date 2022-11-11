@@ -22,15 +22,15 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		setUI()
-		customBackButton(self: self, target: self.navigationController!)
     }
     
 	func setUI() {
 		self.title = "개인정보"
+		customBackButton(self: self, target: self.navigationController!)
 		
 		view.backgroundColor = UIColor(hexString: "#FFDCDC")
 		
-		if let nickname = UserDefaults.standard.value(forKey: "userName") as? String {
+		if let nickname = UserDefaults.standard.value(forKey: "nickname") as? String {
 			myNameLabel.text = "\(nickname)님"
 		}
 		
