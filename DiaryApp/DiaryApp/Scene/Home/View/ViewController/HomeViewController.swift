@@ -128,11 +128,14 @@ class HomeViewController: BaseViewController {
 extension HomeViewController: UICollectionViewDataSource{
 	
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		if postsList?.count == nil {
-            collectionView.setEmptyMessage("게시글이 없습니다\n하루를 기록해주세요")
-        }else{
-            collectionView.restore()
-        }
+		if let postsList = postsList {
+			if postsList.count == 0 {
+				collectionView.setEmptyMessage("게시글이 없습니다\n하루를 기록해주세요")
+			}else{
+				collectionView.restore()
+			}
+		}
+		
 		return postsList?.count ?? 0
     }
 	

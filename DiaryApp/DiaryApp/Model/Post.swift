@@ -27,9 +27,13 @@ struct Post: Codable {
         case datetime = "datetime"
 		case userId = "userid"
 		case createdAt = "created_at"
-        case image = "path"
+        case image = "image"
 	}
 }
 struct Image: Codable{
-    let path: String?
+    var path: String?
+	
+	enum CodingKeys: String, CodingKey {
+		case path = "path"
+	}
 }

@@ -31,6 +31,7 @@ class SignInViewModel {
 			print("(리퀘스트 성공) jwtToken - \(data.token)")
 			
 			UserDefaults.standard.setValue(true, forKey: "loginStatus")
+			UserDefaults.standard.setValue(data.token, forKey: "authVerificationID")
 			
 			completion()
 		}
