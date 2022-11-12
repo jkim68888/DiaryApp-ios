@@ -146,7 +146,8 @@ struct PostService {
 	// MARK: - Create Post
 	func addPostData_Alamofire(accessToken: String, title: String, body: String, image: UIImage ,completionHandler: @escaping (Bool, Post) -> Void){
 //        guard let url = URL(string: "http://10.4.10.109:4000/api/post/write") else{
-        guard let url = URL(string: "http://192.168.35.167:4000/api/post/write") else{
+//        guard let url = URL(string: "http://192.168.35.167:4000/api/post/write") else{
+        guard let url = URL(string: "http://localhost:4000/api/post/write") else{
             print("Error: cannot create URL")
             return
         }
