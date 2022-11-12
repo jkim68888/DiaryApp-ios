@@ -205,11 +205,14 @@ class PostViewController: UIViewController {
 			print(postScriptTV.text)
 			print(postImageView?.image)
 			
-			postService.addPostData_Alamofire(accessToken: token, title: postTitleTF.text ?? "", body: postScriptTV.text ?? "", image: (postImageView?.image)!) { (success, data) in
-				print("addPost 성공!!!")
+			if let image = postImageView.image {
 				
-				DispatchQueue.main.async {
-					self.navigationController?.popViewController(animated: true)
+				postService.addPostData_Alamofire(accessToken: token, title: postTitleTF.text ?? "", body: postScriptTV.text ?? "", image: image) { (success, data) in
+					print("addPost 성공!!!")
+					
+					DispatchQueue.main.async {
+						self.navigationController?.popViewController(animated: true)
+					}
 				}
 			}
 		}
