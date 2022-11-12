@@ -14,7 +14,7 @@ struct PostService {
 	// Singleton 생성
 	static let shared = PostService()
 
-	// MARK: - Read Posts
+	// MARK: - Read Post
     func getPostData(id : Int, completionHandler: @escaping (Bool, Post) -> Void){
         MyAlamofireManager
             .shared
@@ -47,6 +47,7 @@ struct PostService {
                 }
             }
     }
+	
     // MARK: - Read PostsList
     func PostListData_Alamofire(completionHandler: @escaping (Bool, [Post]) -> Void) {
 
@@ -141,8 +142,11 @@ struct PostService {
 			completionHandler(true, output)
 		}.resume()
 	}
-    func addPostData_Alamofire(accessToken: String, postData: Post, image: UIImage ,completionHandler: @escaping (Bool, Post) -> Void){
-        guard let url = URL(string: "http://10.4.10.109:4000/api/post/write") else{
+	
+	// MARK: - Create Post
+	func addPostData_Alamofire(accessToken: String, title: String, body: String, image: UIImage ,completionHandler: @escaping (Bool, Post) -> Void){
+//        guard let url = URL(string: "http://10.4.10.109:4000/api/post/write") else{
+        guard let url = URL(string: "http://192.168.35.167:4000/api/post/write") else{
             print("Error: cannot create URL")
             return
         }
@@ -151,20 +155,15 @@ struct PostService {
             "Authorization" : "Bearer \(accessToken)"
         ]
         let body : Parameters = [
-            "id" : postData.id,
-            "title" : postData.title,
-            "body" : postData.body,
-            "datetime" : postData.datetime,
-            "userid" : postData.userId,
-            "created_at" : postData.createdAt,
-            "path" : postData.image.path
+            "title" : title,
+            "body" : body,
         ]
         AF.upload(multipartFormData: { (multipart) in
             if let imageData = image.jpegData(compressionQuality: 1){
-                multipart.append(imageData, withName: "photo",fileName: "photo.jpg",mimeType: "image.jpeg")
+                multipart.append(imageData, withName: "image", fileName: "image.png", mimeType: "image/png")
             }
             for (key, value) in body {
-                multipart.append("\(value)".data(using: .utf8, allowLossyConversion: false)!,withName: "\(key)")
+				multipart.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
             }
         }, to: url,
             method: .post,

@@ -30,8 +30,8 @@
             filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "getKakaoSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "getKakaoSignIn()"
             landmarkType = "7">
             <Locations>
@@ -94,8 +94,8 @@
             filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "getKakaoSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "getKakaoSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -127,9 +127,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "requestSignIn(url:name:accessToken:completionHandler:)"
-            landmarkType = "7">
+            endingLineNumber = "65">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -143,9 +141,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "requestSignIn(url:name:accessToken:completionHandler:)"
-            landmarkType = "7">
+            endingLineNumber = "66">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -224,8 +220,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
             endingLineNumber = "116"
-            landmarkName = "addPostButtonTapped(_:)"
-            landmarkType = "7">
+            landmarkName = "HomeViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -351,9 +347,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "getLogOut()"
-            landmarkType = "7">
+            endingLineNumber = "48">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -366,8 +360,8 @@
             filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "getGoogleSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -382,8 +376,8 @@
             filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "getGoogleSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -398,10 +392,10 @@
             filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "SignInViewModel"
-            landmarkType = "3">
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "getNaverSignIn()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -414,8 +408,8 @@
             filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "getNaverSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -430,8 +424,8 @@
             filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "getNaverSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -446,8 +440,8 @@
             filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "getNaverSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -462,8 +456,8 @@
             filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "getNaverSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -472,22 +466,6 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "2BC31496-3F2F-4E0D-A132-52677AFC1B20"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "getNaverSignIn()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F6086F68-72F0-499D-9FFB-F36721A5C2CB"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -503,15 +481,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E955BA3F-C5FF-471A-8DF7-B381F6A40F3F"
+            uuid = "F6086F68-72F0-499D-9FFB-F36721A5C2CB"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "getNaverSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -519,7 +497,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "013A80D0-E5E4-4073-8818-3915FA4341EB"
+            uuid = "E955BA3F-C5FF-471A-8DF7-B381F6A40F3F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -535,6 +513,22 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "013A80D0-E5E4-4073-8818-3915FA4341EB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "getNaverSignIn()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             uuid = "0975A394-6043-42C9-BBB0-DD83B42CE873"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -542,8 +536,8 @@
             filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "getNaverSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -558,8 +552,8 @@
             filePath = "DiaryApp/Scene/Signin/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "getNaverSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -594,70 +588,6 @@
             endingLineNumber = "8"
             landmarkName = "unknown"
             landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "064E6333-01AA-42A6-8FCA-061FBF5CFEEF"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "setData()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "064E6333-01AA-42A6-8FCA-061FBF5CFEEF - da15d3ac64dceaca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DiaryApp.PostViewController.setData() -&gt; ()"
-                  moduleName = "DiaryApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "732">
-               </Location>
-               <Location
-                  uuid = "064E6333-01AA-42A6-8FCA-061FBF5CFEEF - 65889d84bcae0b0f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, DiaryApp.Post) -&gt; () in DiaryApp.PostViewController.setData() -&gt; ()"
-                  moduleName = "DiaryApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "136">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0D242675-9176-409A-824D-31F817374719"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "setData()"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -765,8 +695,8 @@
             filePath = "DiaryApp/Service/PostService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "addPostData(accessToken:image:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -775,6 +705,54 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "19C0EF9E-7D09-4F46-8E15-91D43BE69497"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryApp/Service/PostService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "addPostData(accessToken:image:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C9AD8096-06B7-4773-A6A3-7E6BDC9BC03E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryApp/Service/PostService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "addPostData(accessToken:image:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "62994D6C-6C1F-4010-A100-3A2197A525FE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "setDefaultDataUI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ACDA15D7-539F-44D0-ABC1-41C708A44C31"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -790,54 +768,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C9AD8096-06B7-4773-A6A3-7E6BDC9BC03E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DiaryApp/Service/PostService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "addPostData(accessToken:image:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "62994D6C-6C1F-4010-A100-3A2197A525FE"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "setData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "ACDA15D7-539F-44D0-ABC1-41C708A44C31"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DiaryApp/Service/PostService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "addPostData(accessToken:image:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "EAB7C96F-398D-48BA-A7CC-F5A90F594722"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -845,8 +775,8 @@
             filePath = "DiaryApp/Service/PostService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "addPostData(accessToken:image:completionHandler:)"
             landmarkType = "7">
             <Locations>
@@ -886,38 +816,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8F7699F2-787E-4F1A-89E0-EAE4AB618761"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "setData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "564862E9-3EAC-43D6-AF41-70C9D949678F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "setData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "12C3EF53-4409-4F4C-8FD2-F87E34BE4D51"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -925,8 +823,8 @@
             filePath = "DiaryApp/Service/PostService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "addPostData(accessToken:image:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -941,8 +839,8 @@
             filePath = "DiaryApp/Service/PostService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "addPostData(accessToken:image:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -957,10 +855,42 @@
             filePath = "DiaryApp/Service/PostService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "addPostData(accessToken:image:completionHandler:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "89C6A4BE-383A-40EC-A544-0488119F47AB - 3fd87a6712cd4924"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DiaryApp.PostService.addPostData(accessToken: Swift.String, image: __C.UIImage, completionHandler: (Swift.Bool, DiaryApp.Post) -&gt; ()) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Service/PostService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "143"
+                  endingLineNumber = "143"
+                  offsetFromSymbolStart = "3552">
+               </Location>
+               <Location
+                  uuid = "89C6A4BE-383A-40EC-A544-0488119F47AB - ea39fc68e1f12147"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DiaryApp.PostService.addPostData(accessToken: Swift.String, image: __C.UIImage, completionHandler: (Swift.Bool, DiaryApp.Post) -&gt; ()) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Service/PostService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "143"
+                  endingLineNumber = "143"
+                  offsetFromSymbolStart = "2252">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -973,89 +903,9 @@
             filePath = "DiaryApp/Service/PostService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "addPostData(accessToken:image:completionHandler:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6BA98CAF-AE41-429D-AB56-C6D3680359F9 - 3fd87a6712cd461d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DiaryApp.PostService.addPostData(accessToken: Swift.String, image: __C.UIImage, completionHandler: (Swift.Bool, DiaryApp.Post) -&gt; ()) -&gt; ()"
-                  moduleName = "DiaryApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Service/PostService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "134"
-                  endingLineNumber = "134"
-                  offsetFromSymbolStart = "2836">
-               </Location>
-               <Location
-                  uuid = "6BA98CAF-AE41-429D-AB56-C6D3680359F9 - 3fd87a6712cd461d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DiaryApp.PostService.addPostData(accessToken: Swift.String, image: __C.UIImage, completionHandler: (Swift.Bool, DiaryApp.Post) -&gt; ()) -&gt; ()"
-                  moduleName = "DiaryApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Service/PostService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "134"
-                  endingLineNumber = "134"
-                  offsetFromSymbolStart = "2896">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3F4AC3ED-661E-4A32-AF41-7B9525A76A18"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DiaryApp/Scene/Home/View/ViewController/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "collectionView(_:numberOfItemsInSection:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "35DD6E8F-9816-44A0-9A5D-F478D6F5C97A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DiaryApp/Scene/Home/View/ViewController/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "collectionView(_:numberOfItemsInSection:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7F8F3646-E655-4F1B-9583-5353FFE22205"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DiaryApp/Scene/Home/View/ViewController/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "collectionView(_:numberOfItemsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1063,7 +913,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "BAADE57D-5405-4478-85EA-0436C863150F"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DiaryApp/Scene/Home/View/ViewController/HomeViewController.swift"
@@ -1071,8 +921,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
             endingLineNumber = "130"
-            landmarkName = "HomeViewController"
-            landmarkType = "21">
+            landmarkName = "collectionView(_:numberOfItemsInSection:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1085,10 +935,185 @@
             filePath = "DiaryApp/Scene/Home/View/ViewController/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "HomeViewController"
-            landmarkType = "21">
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "collectionView(_:numberOfItemsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6ABC8754-3E25-436E-8186-3A128F32051E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "doneButtonTapped(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6ABC8754-3E25-436E-8186-3A128F32051E - f210fc4fdf9a190a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DiaryApp.PostViewController.doneButtonTapped(Any) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "202"
+                  endingLineNumber = "202"
+                  offsetFromSymbolStart = "820">
+               </Location>
+               <Location
+                  uuid = "6ABC8754-3E25-436E-8186-3A128F32051E - f210fc4fdf9a190a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DiaryApp.PostViewController.doneButtonTapped(Any) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "202"
+                  endingLineNumber = "202"
+                  offsetFromSymbolStart = "1212">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "745A83F0-C436-4CB2-B90F-382A37F52847"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "doneButtonTapped(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "745A83F0-C436-4CB2-B90F-382A37F52847 - f210fc4fdf9a19d0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DiaryApp.PostViewController.doneButtonTapped(Any) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "208"
+                  endingLineNumber = "208"
+                  offsetFromSymbolStart = "2352">
+               </Location>
+               <Location
+                  uuid = "745A83F0-C436-4CB2-B90F-382A37F52847 - f210fc4fdf9a19d0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DiaryApp.PostViewController.doneButtonTapped(Any) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "208"
+                  endingLineNumber = "208"
+                  offsetFromSymbolStart = "3652">
+               </Location>
+               <Location
+                  uuid = "745A83F0-C436-4CB2-B90F-382A37F52847 - b1eb7c0c33fc6ac9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, DiaryApp.Post) -&gt; () in DiaryApp.PostViewController.doneButtonTapped(Any) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "209"
+                  endingLineNumber = "209"
+                  offsetFromSymbolStart = "256">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2A3920CA-6270-429C-AD59-7DE612E1DFB0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "doneButtonTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FB9BD28A-88A6-4811-A650-F5A96297A71A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "doneButtonTapped(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FB9BD28A-88A6-4811-A650-F5A96297A71A - b1eb7c0c33fc6a87"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, DiaryApp.Post) -&gt; () in DiaryApp.PostViewController.doneButtonTapped(Any) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "211"
+                  endingLineNumber = "211"
+                  offsetFromSymbolStart = "416">
+               </Location>
+               <Location
+                  uuid = "FB9BD28A-88A6-4811-A650-F5A96297A71A - 31122d9ba96081c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Bool, DiaryApp.Post) -&gt; () in DiaryApp.PostViewController.doneButtonTapped(Any) -&gt; ()"
+                  moduleName = "DiaryApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimjihyun/Documents/git/DiaryApp-ios/DiaryApp/DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "212"
+                  endingLineNumber = "212"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
