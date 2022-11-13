@@ -188,26 +188,16 @@ class PostViewController: UIViewController {
 //            self.navigationController?.popViewController(animated: true)
 //        }
 		
-//		post?.datetime = postDateTF.text?.toDate() ?? Date()
-//		post?.title = postTitleTF.text ?? ""
-//		post?.body = postScriptTV.text ?? ""
-//
-//		postViewerVC.post = post
-//		dataManager.update(uniqueNum: postNumber!, postData!)
-//		delegate?.update()
-//
-//		print(post?.title)
-		
 		// MARK: - 백엔드 연동
 		if let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String {
 			
-			print(postTitleTF.text)
-			print(postScriptTV.text)
-			print(postImageView?.image)
-			
 			if let image = postImageView.image {
 				
-				postService.addPostData_Alamofire(accessToken: token, title: postTitleTF.text ?? "", body: postScriptTV.text ?? "", image: image) { (success, data) in
+				postService.addPostData_Alamofire(accessToken: token,
+												  title: postTitleTF.text ?? "",
+												  body: postScriptTV.text ?? "",
+												  datetime: postDateTF.text?.toDate() ?? Date(),
+												  image: image) {
 					print("addPost 성공!!!")
 					
 					DispatchQueue.main.async {

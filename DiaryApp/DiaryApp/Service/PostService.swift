@@ -86,79 +86,23 @@ struct PostService {
     }
 	
 	// MARK: - Create Post
-	func addPostData(accessToken: String, image: UIImage, completionHandler: @escaping (Bool, Post) -> Void) {
-		var imageData = Data()
-		// generate boundary string using a unique per-app string
-		let boundary = UUID().uuidString
-
-		// Add the image data to the raw http request data
-		imageData.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-		imageData.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
-		imageData.append(image.pngData()!)
-
-//		let imageJsonData = try? JSONSerialization.jsonObject(with: imageData, options: .allowFragments)
-
-//		let imageJson = imageData as? [String: Any]
-
-		print(imageData)
-
-		let urlComponents = ""
-		let param = ["image": imageData]
-		let sendData = try! JSONSerialization.data(withJSONObject: param, options: [])
-
-		guard let url = URL(string: urlComponents) else {
-			print("Error: cannot create URL - addPostData")
-			return
-		}
-
-		var request = URLRequest(url: url)
-		request.httpMethod = "POST"
-		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-		request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-		request.httpBody = sendData
-
-		URLSession.shared.dataTask(with: request) { (data, response, error) in
-			guard error == nil else {
-				print("Error: error calling - addPostData")
-				print(error!)
-				return
-			}
-			guard let data = data else {
-				print("Error: Did not receive data - addPostData")
-				return
-			}
-			guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
-				print("Error: HTTP request failed - addPostData")
-				return
-			}
-			guard let output = try? JSONDecoder().decode(Post.self, from: data) else {
-				print("Error: JSON Data Parsing failed - addPostData")
-				return
-			}
-
-			print("addPostData - \(response.statusCode)")
-			print("addPostData - \(String(decoding: data, as: UTF8.self))")
-
-			completionHandler(true, output)
-		}.resume()
-	}
-	
-	// MARK: - Create Post
-	func addPostData_Alamofire(accessToken: String, title: String, body: String, image: UIImage ,completionHandler: @escaping (Bool, Post) -> Void){
-//        guard let url = URL(string: "http://10.4.10.109:4000/api/post/write") else{
-//        guard let url = URL(string: "http://192.168.35.167:4000/api/post/write") else{
-        guard let url = URL(string: "http://localhost:4000/api/post/write") else{
+	func addPostData_Alamofire(accessToken: String, title: String, body: String, datetime: Date, image: UIImage ,completionHandler: @escaping () -> Void){
+		guard let url = URL(string: "\(Config().baseUrl)/api/post/write") else{
             print("Error: cannot create URL")
             return
         }
+		
         let headers: HTTPHeaders = [
             "Content-type" : "multipart/form-data",
             "Authorization" : "Bearer \(accessToken)"
         ]
+		
         let body : Parameters = [
             "title" : title,
             "body" : body,
+			"datetime" : datetime,
         ]
+		
         AF.upload(multipartFormData: { (multipart) in
             if let imageData = image.jpegData(compressionQuality: 1){
                 multipart.append(imageData, withName: "image", fileName: "image.png", mimeType: "image/png")
@@ -180,6 +124,8 @@ struct PostService {
             if (json != nil){
                 print(json)
             }
+			
+			completionHandler()
         }
     }
 
