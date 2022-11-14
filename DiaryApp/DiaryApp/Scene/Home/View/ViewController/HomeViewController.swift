@@ -36,7 +36,7 @@ class HomeViewController: BaseViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
-        homeCollectionView.reloadData()
+        setData()
     }
     // View가 사라지려고 할 때, 네비게이션 바를 임의적으로 보이게한다.
     override func viewWillDisappear(_ animated: Bool) {
