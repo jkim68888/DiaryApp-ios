@@ -130,7 +130,7 @@ struct PostService {
     }
 
 	// MARK: - Update Post
-    func updatePostData(_ id: Int,accessToken: String, title: String, body: String, datetime: Date, image: UIImage ,completionHandler: @escaping () -> Void) {
+    func updatePostData(_ id: Int, accessToken: String, title: String, body: String, datetime: Date, image: UIImage ,completionHandler: @escaping () -> Void) {
         
         guard let url = URL(string: "\(Config().baseUrl)/api/post/update?id=\(id)") else{
             print("Error: cannot create URL")
@@ -141,7 +141,6 @@ struct PostService {
             "Content-type" : "multipart/form-data",
             "Authorization" : "Bearer \(accessToken)"
         ]
-        
         let body : Parameters = [
             "title" : title,
             "body" : body,
@@ -155,7 +154,7 @@ struct PostService {
                 multipart.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
             }
         }, to: url,
-            method: .post,
+            method: .patch,
                   headers: headers).responseJSON { (response) in
             print(response)
             
