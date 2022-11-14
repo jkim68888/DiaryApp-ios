@@ -58,8 +58,11 @@ class PostViewerViewController: UIViewController {
         }
         /// Post에 대한 데이터가 있는 경우 -> Home에서 CollectionView의 Cell 누르고 접근하는 경우
         else{
-        guard var post = post else {return}
-            postViewerImageView.image = UIImage(named: "NoImage.png")
+            guard var post = post else {return}
+            if let image = post.image.path{
+                postViewerImageView.load(url: URL(string: "http://" + image))
+            }
+            
             postViewerDateLabel.text = post.createdAt.toString()
             postViewerTitleLabel.text = post.title
             postViewerDescriptionLabel.text = post.body
@@ -89,6 +92,7 @@ class PostViewerViewController: UIViewController {
     @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
         guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
         postVC.post = post
+        postVC.image = postViewerImageView.image
         postVC.delegate = self
         self.navigationController?.pushViewController(postVC, animated: true)
     }

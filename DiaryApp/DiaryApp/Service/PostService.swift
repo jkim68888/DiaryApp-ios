@@ -87,6 +87,7 @@ struct PostService {
 	
 	// MARK: - Create Post
 	func addPostData_Alamofire(accessToken: String, title: String, body: String, datetime: Date, image: UIImage ,completionHandler: @escaping () -> Void){
+        
 		guard let url = URL(string: "\(Config().baseUrl)/api/post/write") else{
             print("Error: cannot create URL")
             return
@@ -102,13 +103,12 @@ struct PostService {
             "body" : body,
 			"datetime" : datetime,
         ]
-		
         AF.upload(multipartFormData: { (multipart) in
-            if let imageData = image.jpegData(compressionQuality: 1){
+            if let imageData = image.pngData(){
                 multipart.append(imageData, withName: "image", fileName: "image.png", mimeType: "image/png")
             }
             for (key, value) in body {
-				multipart.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
+                multipart.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
             }
         }, to: url,
             method: .post,
@@ -124,50 +124,54 @@ struct PostService {
             if (json != nil){
                 print(json)
             }
-			
-			completionHandler()
+            
+            completionHandler()
         }
     }
 
 	// MARK: - Update Post
-	func updatePostData(accessToken: String, image: UIImage, completionHandler: @escaping (Bool, Any) -> Void) {
-		let urlComponents = ""
-		let param = ["image": image]
-		let sendData = try! JSONSerialization.data(withJSONObject: param, options: [])
-
-		guard let url = URL(string: urlComponents) else {
-			print("Error: cannot create URL - updatePostData")
-			return
-		}
-
-		var request = URLRequest(url: url)
-		request.httpMethod = "POST"
-		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-		request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-		request.httpBody = sendData
-
-		URLSession.shared.dataTask(with: request) { (data, response, error) in
-			guard error == nil else {
-				print("Error: error calling - updatePostData")
-				print(error!)
-				return
-			}
-			guard let data = data else {
-				print("Error: Did not receive data - updatePostData")
-				return
-			}
-			guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
-				print("Error: HTTP request failed - updatePostData")
-				return
-			}
-			let output = String(decoding: data, as: UTF8.self)
-
-			print("updatePostData - \(response.statusCode)")
-			print("updatePostData - \(output)")
-
-			completionHandler(true, output)
-		}.resume()
-	}
+    func updatePostData(_ id: Int,accessToken: String, title: String, body: String, datetime: Date, image: UIImage ,completionHandler: @escaping () -> Void) {
+        
+        guard let url = URL(string: "\(Config().baseUrl)/api/post/update?id=\(id)") else{
+            print("Error: cannot create URL")
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "Content-type" : "multipart/form-data",
+            "Authorization" : "Bearer \(accessToken)"
+        ]
+        
+        let body : Parameters = [
+            "title" : title,
+            "body" : body,
+            "datetime" : datetime,
+        ]
+        AF.upload(multipartFormData: { (multipart) in
+            if let imageData = image.pngData(){
+                multipart.append(imageData, withName: "image", fileName: "image.png", mimeType: "image/png")
+            }
+            for (key, value) in body {
+                multipart.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
+            }
+        }, to: url,
+            method: .post,
+                  headers: headers).responseJSON { (response) in
+            print(response)
+            
+            if let err = response.error{
+                print(err)
+                return
+            }
+            print("성공")
+            let json = response.data
+            if (json != nil){
+                print(json)
+            }
+            
+            completionHandler()
+        }
+    }
 
 	// MARK: - Delete Post
 	func deletePostData(id: String, accessToken: String, completionHandler: @escaping (Bool, Any) -> Void) {

@@ -16,11 +16,8 @@ class HomePostCollectionViewCell: UICollectionViewCell {
             }
 			
 			if let image = post.image.path {
-				cellImageView.load(url: URL(string: image))
-			} else {
-				cellImageView.image = UIImage(named: "NoImage.png")
-			}
-            
+				cellImageView.load(url: URL(string: "http://" + image))
+			}            
 			cellTitleLabel.text = post.createdAt.toString()
 			cellView.clipsToBounds = true
 			cellView.layer.cornerRadius = 10

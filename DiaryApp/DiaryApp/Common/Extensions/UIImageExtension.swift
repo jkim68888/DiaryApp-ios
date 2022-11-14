@@ -21,22 +21,21 @@ extension UIImage {
 }
 extension UIImageView{
     func load(url: URL?){
-        if url == nil{
-            DispatchQueue.main.async {
-                self.image = UIImage(named: "NoImage.png")
-            }
-        }
-        else{
-            DispatchQueue.global().async {
-                if let data = try? Data(contentsOf: url!){
-                    if let image = UIImage(data: data){
-                        DispatchQueue.main.async {
-                            self.image = image
-                        }
+        
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url!){
+                if let image = UIImage(data: data){
+                    DispatchQueue.main.async {
+                        print("이미지 설정 성공")
+                        self?.image = image
                     }
                 }
+            }else{
+                DispatchQueue.main.async{
+                    print("이미지 설정 실패")
+                    self?.image = UIImage(named: "NoImage.png")
+                }
             }
-            
         }
     }
 }
