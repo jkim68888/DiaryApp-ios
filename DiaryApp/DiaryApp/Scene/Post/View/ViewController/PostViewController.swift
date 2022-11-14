@@ -11,6 +11,7 @@ class PostViewController: UIViewController {
 	let postService = PostService.shared
     //Post 고유 번호도 가져와서 수정할때 사용해야한다.
 	var post: Post?
+    var image: UIImage? // 이전 화면인 postViewer에서 가져온 image
     var imageData = Data()
     
     // Post에 대한 정보를 담고있는 변수
@@ -46,31 +47,24 @@ class PostViewController: UIViewController {
 
 
     func setDefaultDataUI(){
-        /// 데이터 가져왔을 때, nil인 경우는 New Post를 작성하는 경우 -> 새로운 postData를 만들어 기존 PostArray에 추가해준다.
-        if post == nil{
-            print("데이터불러오기실패")
-            // 1. DB에 저장되어있는 Post들과 다른 id를 어떻게 넣을것인가
-            // 2. userID는 앱 실행 한 후에는, 고유하게 존재하는데, 어떻게 세팅을 할 것인가?
-            // 3. createdAt은 어떻게 세팅?
-            // post = Post(id: <#T##Int#>, title: "", body: "", userId: <#T##String#>, createdAt: <#T##Date#>)
-            /// 기존 PostData를 담은 Array에 새로운 게시글 내용을 추가한다.
-            // dataManager.addPostData(postData)
+        guard var post = post else {
+            print("데이터불러오기실패 또는 데이터 추가")
+            postDateTF.text = Date().toString()
+            postTitleTF.text = ""
+            postScriptTV.text = postScriptTVPlaceHolder
+            return
         }
-        /// 이미 존재하는 Post를 수정하는 경우
-        else{
-            print("데이터불러오기성공")
-        }
-		
-        //postNumber = post.postId /// postNumber는 해당 Post의 고유 번호이다. 수정하거나 삭제할때 필요하다.
-
-        /// 기본적인 Post 정보에 담길 내용을 Setting해준다.
-        postImageView.image = UIImage(named: "NoPost.png")
-		postDateTF.text = post?.createdAt.toString()
-		postTitleTF.text = post?.title
-
+        
+        print("데이터불러오기성공")
+        postImageView.image = image
+        postDateTF.text = post.datetime.toString()
+        postTitleTF.text = post.title
         if postScriptTV.text! == ""{postScriptTV.textColor = .lightGray}
-		postScriptTV.text = post?.body ?? postScriptTVPlaceHolder
-    }
+        postScriptTV.text = post.body ?? postScriptTVPlaceHolder
+        
+        // 삭제 및 수정을 위해
+        postNumber = post.id
+        }
 	
     func setUI(){
         
@@ -168,44 +162,44 @@ class PostViewController: UIViewController {
     // 완료 버튼을 눌렀을 때
     @IBAction func doneButtonTapped(_ sender: Any) {
         print(#function)
-	
+        
         let postViewerVCindex = navigationController!.viewControllers.count - 2
         let postViewerVC = navigationController?.viewControllers[postViewerVCindex] as! PostViewerViewController
-		
-//        if postTitleTF.text! == "" {
-//            showPopUp(title: "알림", message: "저장할 내용이 없습니다\n저장하시겠습니까?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "저장", rightActionCompletion:  {
-//                self.navigationController?.popViewController(animated: true)
-//            })
-//        }else{
-//            print(post)
-//			post?.datetime = postDateTF.text!.toDate() ?? Date()
-//			post?.title = postTitleTF.text ?? ""
-//			post?.body = postScriptTV.text ?? ""
-//
-//            postViewerVC.post = post
-//            dataManager.update(uniqueNum: postNumber!, postData!)
-//            delegate?.update()
-//            self.navigationController?.popViewController(animated: true)
-//        }
-		
-		// MARK: - 백엔드 연동
-		if let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String {
-			
-			if let image = postImageView.image {
-				
-				postService.addPostData_Alamofire(accessToken: token,
-												  title: postTitleTF.text ?? "",
-												  body: postScriptTV.text ?? "",
-												  datetime: postDateTF.text?.toDate() ?? Date(),
-												  image: image) {
-					print("addPost 성공!!!")
-					
-					DispatchQueue.main.async {
-						self.navigationController?.popViewController(animated: true)
-					}
-				}
-			}
-		}
+        print("확인절차")
+        print(post)
+        print("확인절차끝")
+        // MARK: - 백엔드 연동
+        if let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String {
+            guard var post = post else {
+            // Post가 없는 경우
+                postService.addPostData_Alamofire(accessToken: token,
+                                                  title: postTitleTF.text ?? "",
+                                                  body: postScriptTV.text ?? "",
+                                                  datetime: postDateTF.text?.toDate() ?? Date(),
+                                                  image: postImageView.image ?? UIImage(named: "NoImage.png")!) {
+                    print("addPost 성공!!!")
+                    DispatchQueue.main.async {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+                return
+            }
+            // post가 있었을 경우
+            print("UpdatePost")
+            postService.updatePostData(post.id,
+                                       accessToken: token,
+                                       title: postTitleTF.text ?? "",
+                                       body: postScriptTV.text ?? "",
+                                       datetime: postDateTF.text?.toDate() ?? Date(),
+                                       image: postImageView.image ?? UIImage(named: "NoImage.png")!) {
+                print("UpdatePost 성공!!!")
+                
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+            return
+        }
     }
 	
     // MARK: - 3. 삭제 시에, 해당된 Post의 index에 해당하는 값을 지우고, 다시 배열을 정렬해야함
