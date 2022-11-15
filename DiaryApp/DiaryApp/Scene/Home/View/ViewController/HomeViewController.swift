@@ -94,10 +94,10 @@ class HomeViewController: BaseViewController {
     func setData(){
         postService.PostListData_Alamofire(){ (success, data) in
             self.postsList = data
-
             DispatchQueue.main.async {
                 self.homeCollectionView.reloadData()
             }
+            
         }
     }
     
@@ -166,12 +166,13 @@ extension HomeViewController: UICollectionViewDelegate{
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		
 		guard let postViewerVC = storyboard?.instantiateViewController(identifier: "PostViewerViewController") as? PostViewerViewController else { return }
-		
+        guard let currentCell = collectionView.cellForItem(at: indexPath) as? HomePostCollectionViewCell else { return }
+        
         
 		//postViewerVC.tempPostData = dataManager.getPostDate()[indexPath.row]
         //postViewerVC.id = postsList?[indexPath.row].userId
         postViewerVC.post = postsList?[indexPath.row]
-		
+        postViewerVC.image = currentCell.cellImageView.image
 		self.navigationController?.pushViewController(postViewerVC, animated: true)
 	}
 }
