@@ -8,7 +8,11 @@
 import UIKit
 
 class HomePostCollectionViewCell: UICollectionViewCell {
-	
+    
+    @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var cellImageView: UIImageView!
+    @IBOutlet weak var cellTitleLabel: UILabel!
+
 	var post: Post? {
 		didSet {
             guard let post = post else {
@@ -18,17 +22,18 @@ class HomePostCollectionViewCell: UICollectionViewCell {
 			if let image = post.image.path {
 				cellImageView.load(url: URL(string: "http://" + image))
 			}            
-			cellTitleLabel.text = post.createdAt.toString()
+			cellTitleLabel.text = post.title
 			cellView.clipsToBounds = true
 			cellView.layer.cornerRadius = 10
 			cellView.layer.borderWidth = 1
 			cellView.layer.borderColor = UIColor(hexString: "#999999").cgColor
-            
 		}
 	}
+    override func prepareForReuse() {
+        cellImageView.image = nil
+        cellTitleLabel.text = nil
+    }
     
-    @IBOutlet weak var cellView: UIView!
-    @IBOutlet weak var cellImageView: UIImageView!
-    @IBOutlet weak var cellTitleLabel: UILabel!
+
 }
 

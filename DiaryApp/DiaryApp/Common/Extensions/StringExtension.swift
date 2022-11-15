@@ -19,6 +19,16 @@ extension String {
             return nil
         }
     }
+    func toDate_Calendar() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        if let date = dateFormatter.date(from: self) {
+            return date
+        } else {
+            return nil
+        }
+    }
 	
 	func toImage() -> UIImage? {
 		if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters){

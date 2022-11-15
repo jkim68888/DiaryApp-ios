@@ -120,7 +120,7 @@ class HomeViewController: BaseViewController {
     }
     @IBAction func calendarButtonTapped(_ sender: UIButton) {
         guard let calendarVC = storyboard?.instantiateViewController(identifier: "CalendarViewController") as? CalendarViewController else { return }
-        calendarVC.postArray = dataManager.getPostDate()
+        calendarVC.postArray = postsList ?? []
         self.navigationController?.pushViewController(calendarVC, animated: true)
     }
 }

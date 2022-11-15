@@ -9,8 +9,9 @@ import UIKit
 
 class CalendarViewController: UIViewController {
     
-    var postArray: [TempPost] = []
-    var todayPostData: [TempPost] = []
+    var emptyPostArray: [Post] = []
+    var postArray: [Post] = []
+    let postService = PostService.shared
     
     let now = Date()
     var cal = Calendar.current
@@ -183,25 +184,20 @@ extension CalendarViewController:UICollectionViewDataSource{
             cell.isSelected = true
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
         }
-        cell.tempDate = "\(components.year!).\(components.month!).\(cell.dateLabel.text!)"
+        var dateStr = "\(components.year!)-\(components.month!)-\(cell.dateLabel.text!)"
+        cell.tempDate = dateStr.toDate_Calendar()
+ 
+        for item in postArray{
+            if cell.tempDate == item.createdAt.toString().toDate_Calendar(){
+                cell.postArray.append(item)
+            }
+        }
+        
+        // 선택한 날짜의 postList만 가져와야한다.
+        /// 전체 postList중에서 post의 createdAt날짜가 Cell 고유의 날짜와 같은 새로만든 newPostList를 cell로 지정한다.
+        
         cell.postArray = postArray
-        
-        
-//        // 특정 순서의 Cell(day,특정 일)의 값과 postData의 day값이 같으면..
-//        for item in postArray{
-//
-//            if getStringPostDate(item) == "\(components.year!).\(components.month!).\(cell.dateLabel.text!)"{
-//                // 달력에 Post가 있었음을 알리는 CheckPoint를 활성화 시킨다.
-//                print("💄💄💄💄💄💄찾았다")
-//
-//
-//                cell.tempDate = getStringPostDate(item)
-//
-//                print("💄💄💄💄💄💄")
-//
-//            }
-//        }
-        
+                
         return cell
     }
     func getStringPostDate(_ post:TempPost) -> String {
@@ -225,6 +221,7 @@ extension CalendarViewController: UICollectionViewDelegate{
         // 3. 현재 선택된 Cell을 표시한다.
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarCollectionViewCell
         
+        
          
     }
     
@@ -238,11 +235,11 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
 }
 extension CalendarViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todayPostData.count
+        return postArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarTableCell", for: indexPath) as! CalendarTableViewCell
-        cell.postData = todayPostData[indexPath.row]
+        cell.postData = postArray[indexPath.row]
         return cell
     }
 }

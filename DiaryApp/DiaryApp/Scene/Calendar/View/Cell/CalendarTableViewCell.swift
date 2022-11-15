@@ -10,14 +10,17 @@ import UIKit
 class CalendarTableViewCell: UITableViewCell {
     @IBOutlet weak var mainView: UIView!
     
-    var postData: TempPost?{
+    var postData: Post?{
         didSet{
             guard var postData = postData else {
                 return
             }
-            calendarImageView.image = postData.postImage
-            calendarTitleLabel.text = postData.postTitle
-            calendarDescriptionLabel.text = postData.postDescription
+            if let image = postData.image.path {
+                calendarImageView.load(url: URL(string: "http://" + image))
+            }
+            
+            calendarTitleLabel.text = postData.title
+            calendarDescriptionLabel.text = postData.body
         }
     }
     
@@ -33,6 +36,9 @@ class CalendarTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    override func prepareForReuse() {
+        calendarImageView.image = nil
     }
 
 }

@@ -9,25 +9,24 @@ import UIKit
 
 class CalendarCollectionViewCell: UICollectionViewCell {
     var nowDate:String?
-    var tempDate:String?
+    var tempDate:Date?
     var count = 0
-    var postData: TempPost?
-    var postArray: [TempPost] = []{
+    var postData: Post?
+    var postArray: [Post] = []{
         didSet{
+            var formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            
             for item in postArray{
-                print(item.createDate)
-                print(tempDate!.toDate())
-                if item.createDate == tempDate!.toDate(){
+                var item_date_string = formatter.string(from: item.createdAt)
+                guard var tempDate = tempDate else {return}
+                var nowCell_date_string = formatter.string(from: tempDate)
+  
+                if item_date_string == nowCell_date_string{
                     count += 1
                     print("실행됨")
                 }
-                print(count)
-                //            if postArray.count != 0{
-                //                checkPoint.isHidden = false
-                //                print("실행됨")
-                //            }else{
-                //                checkPoint.isHidden = true
-                //            }
+
             }
             if count != 0{
                 checkPoint.isHidden = false
@@ -70,9 +69,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         checkPoint.layer.cornerRadius = checkPoint.frame.width / 2
         
     }
-    func clear(_ tappedBtn:Bool){
-        if tappedBtn{
-            checkPoint.isHidden = true
-        }
+    override func prepareForReuse() {
+        checkPoint.isHidden = true
     }
 }
