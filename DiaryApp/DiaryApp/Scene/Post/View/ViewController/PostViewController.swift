@@ -7,7 +7,7 @@
 import UIKit
 import PhotosUI
 
-class PostViewController: UIViewController {
+class PostViewController: BaseViewController {
 	let postService = PostService.shared
     //Post 고유 번호도 가져와서 수정할때 사용해야한다.
 	var post: Post?
@@ -148,8 +148,8 @@ class PostViewController: UIViewController {
     }
 	
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
-        if postTitleTF.text! == ""{
-            showPopUp(title: "알림", message: "작성을 취소하시겠습니까?\n[확인]을 누르시면\n이전 화면으로 되돌아갑니다.?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "확인", rightActionCompletion:  {
+        if post == nil{
+            showPopUp(title: "알림", message: "작성을 취소하시겠습니까?\n[확인]을 누르시면\n초기 화면으로 되돌아갑니다.", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "확인", rightActionCompletion:  {
                 self.navigationController?.popToRootViewController(animated: true)
                 self.dataManager.delete(uniqueNum: self.postNumber!)
             })
@@ -165,9 +165,6 @@ class PostViewController: UIViewController {
         
         let postViewerVCindex = navigationController!.viewControllers.count - 2
         let postViewerVC = navigationController?.viewControllers[postViewerVCindex] as! PostViewerViewController
-        print("확인절차")
-        print(post)
-        print("확인절차끝")
         // MARK: - 백엔드 연동
         if let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String {
             guard var post = post else {
@@ -176,12 +173,13 @@ class PostViewController: UIViewController {
                                                   title: postTitleTF.text ?? "",
                                                   body: postScriptTV.text ?? "",
                                                   datetime: postDateTF.text?.toDate() ?? Date(),
-                                                  image: postImageView.image ?? UIImage(named: "NoImage.png")!) {
+                                                  image: postImageView.image ?? UIImage(named: "NoImage.png")!) {(success, code) in
                     print("addPost 성공!!!")
-                    DispatchQueue.main.async {
-                        self.navigationController?.popViewController(animated: true)
-                    }
+                    print("네트워크통신 결과:\(code)")
+                    self.navigationController?.popToRootViewController(animated: true)
                 }
+
+                
                 return
             }
             // post가 있었을 경우
@@ -193,22 +191,32 @@ class PostViewController: UIViewController {
                                        datetime: postDateTF.text?.toDate() ?? Date(),
                                        image: postImageView.image ?? UIImage(named: "NoImage.png")!) {
                 print("UpdatePost 성공!!!")
-                
-                DispatchQueue.main.async {
-                    self.navigationController?.popViewController(animated: true)
-                }
+                self.navigationController?.popViewController(animated: true)
             }
+            postViewerVC.post?.title = postTitleTF.text ?? ""
+            postViewerVC.post?.body = postScriptTV.text ?? ""
+            postViewerVC.post?.createdAt = postDateTF.text!.toDate() ?? Date()
+            print("\(postViewerVC.post)📡")
             return
         }
     }
 	
     // MARK: - 3. 삭제 시에, 해당된 Post의 index에 해당하는 값을 지우고, 다시 배열을 정렬해야함
     @IBAction func postDeleteButtonTapped(_ sender: UIButton) {
-        let homeVCindex = navigationController!.viewControllers.count - 3
-        let homeVC = navigationController?.viewControllers[homeVCindex] as! HomeViewController
-        dataManager.delete(uniqueNum: postNumber!)
-        self.navigationController?.popToViewController(homeVC, animated: true)
-        print(dataManager.getPostDate())
+        if let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String {
+            guard var post = post else {
+                showPopUp(title: "게시글 작성 중단", message: "편집된 내용은 저장되지 않습니다.", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "삭제") {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+                return
+            }
+            showPopUp(title: "게시글 삭제", message: "정말로 게시글을 삭제하시겠습니까?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "삭제") {
+                self.postService.deletePostData(post.id, accessToken: token) {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }
+        }
+        
     }
 	
     /// 다른 곳을 누르면 키보드가 내려가게 설정

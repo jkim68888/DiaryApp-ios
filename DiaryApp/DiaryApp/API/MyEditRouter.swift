@@ -21,8 +21,10 @@ enum MyEditRouter: URLRequestConvertible{
             switch self {
             case .getPostData:
                 return .get
-            case  .deletePost, .updatePost:
-                return .post
+            case  .updatePost:
+                return .patch
+            case . deletePost:
+                return .delete
             }
         }
         

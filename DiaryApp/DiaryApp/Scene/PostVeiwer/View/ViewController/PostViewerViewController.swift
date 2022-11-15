@@ -7,10 +7,11 @@
 
 import UIKit
 
-class PostViewerViewController: UIViewController {
+class PostViewerViewController: BaseViewController {
 	// MARK: - 백엔드 연동
 	let postService = PostService.shared
 	var post: Post?
+    var image: UIImage? // 이전 화면인 postViewer에서 가져온 image
     
     /// [글보기]View에서 post Data를 담고있는 변수
     var tempPostData: TempPost?
@@ -33,7 +34,10 @@ class PostViewerViewController: UIViewController {
         setData()
         customBackButton(self: self, target: self.navigationController!)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setData()
+    }
     
     /// setUI: 해당 View에서의 UI를 Setting
     func setUI(){
@@ -58,11 +62,11 @@ class PostViewerViewController: UIViewController {
         }
         /// Post에 대한 데이터가 있는 경우 -> Home에서 CollectionView의 Cell 누르고 접근하는 경우
         else{
-            guard var post = post else {return}
-            if let image = post.image.path{
-                postViewerImageView.load(url: URL(string: "http://" + image))
-            }
+            // image는 오고갈때마다 post와는 독립적으로 보내주어야한다.
+            postViewerImageView.image = image
             
+            // post는 보내줄 때, post를 확인해주고 보내야한다.
+            guard var post = post else {return}
             postViewerDateLabel.text = post.createdAt.toString()
             postViewerTitleLabel.text = post.title
             postViewerDescriptionLabel.text = post.body

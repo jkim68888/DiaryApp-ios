@@ -49,6 +49,7 @@ struct PostService {
     }
 	
     // MARK: - Read PostsList
+    /// 현재 와이파이를 켜지 않았을경우, 네트워크에 문제가 있을경우 어떻게 처리할 것인지 정해지지않음. (2022-11-15)
     func PostListData_Alamofire(completionHandler: @escaping (Bool, [Post]) -> Void) {
 
         MyAlamofireManager
@@ -69,7 +70,6 @@ struct PostService {
 
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .formatted(dateFormatter)
-
                 guard let output = try? decoder.decode([Post].self, from: response) else {
                     print("Error: JSON Data Parsing failed - getPostsListData")
                     return
@@ -86,7 +86,7 @@ struct PostService {
     }
 	
 	// MARK: - Create Post
-	func addPostData_Alamofire(accessToken: String, title: String, body: String, datetime: Date, image: UIImage ,completionHandler: @escaping () -> Void){
+	func addPostData_Alamofire(accessToken: String, title: String, body: String, datetime: Date, image: UIImage ,completionHandler: @escaping (Bool,Int) -> Void){
         
 		guard let url = URL(string: "\(Config().baseUrl)/api/post/write") else{
             print("Error: cannot create URL")
@@ -114,18 +114,25 @@ struct PostService {
             method: .post,
                   headers: headers).responseJSON { (response) in
             print(response)
-            
-            if let err = response.error{
-                print(err)
+            switch response.result{
+            case .success(let result):
+                
+                if let err = response.error{
+                    print(err)
+                    return
+                }
+                print("성공")
+                let json = response.data
+                if (json != nil){
+                    print(json)
+                }
+                
+                completionHandler(true,response.response!.statusCode)
+            case .failure(let error):
+                print("\(error)입니다")
+                completionHandler(false,response.response!.statusCode)
                 return
             }
-            print("성공")
-            let json = response.data
-            if (json != nil){
-                print(json)
-            }
-            
-            completionHandler()
         }
     }
 
@@ -143,8 +150,7 @@ struct PostService {
         ]
         let body : Parameters = [
             "title" : title,
-            "body" : body,
-            "datetime" : datetime,
+            "body" : body
         ]
         AF.upload(multipartFormData: { (multipart) in
             if let imageData = image.pngData(){
@@ -155,57 +161,33 @@ struct PostService {
             }
         }, to: url,
             method: .patch,
-                  headers: headers).responseJSON { (response) in
+                  headers: headers).response { (response) in
             print(response)
             
             if let err = response.error{
                 print(err)
                 return
             }
-            print("성공")
-            let json = response.data
-            if (json != nil){
-                print(json)
-            }
-            
             completionHandler()
         }
     }
 
 	// MARK: - Delete Post
-	func deletePostData(id: String, accessToken: String, completionHandler: @escaping (Bool, Any) -> Void) {
-		let urlComponents = ""
-
-		guard let url = URL(string: urlComponents) else {
-			print("Error: cannot create URL - deletePostData")
-			return
-		}
-
-		var request = URLRequest(url: url)
-		request.httpMethod = "POST"
-		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-		request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-
-		URLSession.shared.dataTask(with: request) { (data, response, error) in
-			guard error == nil else {
-				print("Error: error calling - deletePostData")
-				print(error!)
-				return
-			}
-			guard let data = data else {
-				print("Error: Did not receive data - deletePostData")
-				return
-			}
-			guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
-				print("Error: HTTP request failed - deletePostData")
-				return
-			}
-			let output = String(decoding: data, as: UTF8.self)
-
-			print("deletePostData - \(response.statusCode)")
-			print("deletePostData - \(output)")
-
-			completionHandler(true, output)
-		}.resume()
-	}
+    func deletePostData(_ id: Int, accessToken: String ,completionHandler: @escaping () -> Void) {
+        
+        MyAlamofireManager
+            .shared
+            .session
+            .request(MyEditRouter.deletePost(term: id))
+            .validate(statusCode: 200..<300)
+            .response { (response) in
+                print(response)
+                
+                if let err = response.error{
+                    print(err)
+                    return
+                }
+                completionHandler()
+            }
+    }
 }
