@@ -67,4 +67,18 @@ class SettingsViewController: UIViewController {
 		viewModel.getLogOut()
 	}
 	
+	@IBAction func changeNicknameButtonTapped(_ sender: UIButton) {
+		guard let nicknameVC = storyboard?.instantiateViewController(identifier: "NicknameViewController") as? NicknameViewController else { return }
+		self.navigationController?.pushViewController(nicknameVC, animated: true)
+	}
+	
+	@IBAction func appPolicyButtonTapped(_ sender: UIButton) {
+		guard let appPolicyVC = storyboard?.instantiateViewController(withIdentifier: "AppPolicyViewController") as? AppPolicyViewController else { return }
+		self.present(appPolicyVC, animated: true, completion: nil)
+	}
+	
+	@IBAction func privacyButtonTapped(_ sender: UIButton) {
+		guard let privacyVC = storyboard?.instantiateViewController(withIdentifier: "PrivacyViewController") as? PrivacyViewController else { return }
+		self.present(privacyVC, animated: true, completion: nil)
+	}
 }
