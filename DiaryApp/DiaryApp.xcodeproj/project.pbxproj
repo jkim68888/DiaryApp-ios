@@ -13,6 +13,8 @@
 		9A1EB6BD291C948600C1CB2E /* Nickname.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A1EB6BC291C948600C1CB2E /* Nickname.storyboard */; };
 		9A1EB6BF291C949400C1CB2E /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1EB6BE291C949400C1CB2E /* NicknameViewController.swift */; };
 		9A1EB6C2291D0A9100C1CB2E /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1EB6C1291D0A9100C1CB2E /* LoadingIndicator.swift */; };
+		9A1EB6C62924F44400C1CB2E /* AppPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1EB6C52924F44400C1CB2E /* AppPolicyViewController.swift */; };
+		9A1EB6C829250CCF00C1CB2E /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1EB6C729250CCF00C1CB2E /* PrivacyViewController.swift */; };
 		9A1FCCA128FA9A73001B1584 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA028FA9A73001B1584 /* UIButtonExtension.swift */; };
 		9A1FCCA528FE81C2001B1584 /* UINavigationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA428FE81C2001B1584 /* UINavigationExtension.swift */; };
 		9A1FCCA828FEA102001B1584 /* NavigationBarUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCA728FEA102001B1584 /* NavigationBarUtils.swift */; };
@@ -73,6 +75,8 @@
 		9A1EB6BC291C948600C1CB2E /* Nickname.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Nickname.storyboard; sourceTree = "<group>"; };
 		9A1EB6BE291C949400C1CB2E /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		9A1EB6C1291D0A9100C1CB2E /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		9A1EB6C52924F44400C1CB2E /* AppPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPolicyViewController.swift; sourceTree = "<group>"; };
+		9A1EB6C729250CCF00C1CB2E /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		9A1FCCA028FA9A73001B1584 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		9A1FCCA428FE81C2001B1584 /* UINavigationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationExtension.swift; sourceTree = "<group>"; };
 		9A1FCCA728FEA102001B1584 /* NavigationBarUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarUtils.swift; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 			isa = PBXGroup;
 			children = (
 				A919383D28F65D8A00CC8B76 /* SettingsViewController.swift */,
+				9A1EB6C52924F44400C1CB2E /* AppPolicyViewController.swift */,
+				9A1EB6C729250CCF00C1CB2E /* PrivacyViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -744,6 +750,7 @@
 				A995858B291B4B9100B33502 /* MyLogger.swift in Sources */,
 				A9958589291B46DB00B33502 /* MyAlamofireManager.swift in Sources */,
 				A9C8B9C928FF90F5006B7D09 /* StringExtension.swift in Sources */,
+				9A1EB6C62924F44400C1CB2E /* AppPolicyViewController.swift in Sources */,
 				9A6C534428F7FBC900B13BF7 /* UIColorExtension.swift in Sources */,
 				A9C8B9C728FF90CC006B7D09 /* DateExtension.swift in Sources */,
 				A95E03CF2906B3C400F73A33 /* CalendarTableViewCell.swift in Sources */,
@@ -754,6 +761,7 @@
 				A9C2A6DE28FD7F95000EB06D /* HomePostCollectionViewCell.swift in Sources */,
 				9A1EB5C4290D482C00C1CB2E /* UIImageExtension.swift in Sources */,
 				A913FA4128F7D09F00ECA972 /* CalendarViewController.swift in Sources */,
+				9A1EB6C829250CCF00C1CB2E /* PrivacyViewController.swift in Sources */,
 				A9C2A6DA28FD5C0A000EB06D /* TempPost.swift in Sources */,
 				9A1FCCAE28FFB1BB001B1584 /* SettingsViewModel.swift in Sources */,
 				A95E03D1290A148600F73A33 /* PopUpViewController.swift in Sources */,
@@ -914,7 +922,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = URTJJ24R4X;
+				DEVELOPMENT_TEAM = 6RZ3FF956G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "하루끝";
@@ -946,7 +954,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = URTJJ24R4X;
+				DEVELOPMENT_TEAM = 6RZ3FF956G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "하루끝";
