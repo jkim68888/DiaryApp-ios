@@ -632,8 +632,8 @@
             filePath = "DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "setUI()"
             landmarkType = "7">
          </BreakpointContent>
@@ -664,8 +664,8 @@
             filePath = "DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "doneButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -680,8 +680,8 @@
             filePath = "DiaryApp/Service/API/AFRouter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "asURLRequest()"
             landmarkType = "7">
          </BreakpointContent>
@@ -696,8 +696,8 @@
             filePath = "DiaryApp/Service/API/AFRouter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "asURLRequest()"
             landmarkType = "7">
          </BreakpointContent>
@@ -712,8 +712,8 @@
             filePath = "DiaryApp/Service/API/AFRouter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "multipartFormData"
             landmarkType = "24">
          </BreakpointContent>
@@ -728,8 +728,8 @@
             filePath = "DiaryApp/Service/API/AFRouter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "multipartFormData"
             landmarkType = "24">
          </BreakpointContent>
@@ -744,8 +744,8 @@
             filePath = "DiaryApp/Service/API/AFRouter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "multipartFormData"
             landmarkType = "24">
          </BreakpointContent>
@@ -760,8 +760,8 @@
             filePath = "DiaryApp/Service/API/AFRouter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "multipartFormData"
             landmarkType = "24">
          </BreakpointContent>
@@ -776,8 +776,8 @@
             filePath = "DiaryApp/Service/API/AFRouter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "multipartFormData"
             landmarkType = "24">
          </BreakpointContent>
@@ -792,8 +792,8 @@
             filePath = "DiaryApp/Service/API/AFRouter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "asURLRequest()"
             landmarkType = "7">
          </BreakpointContent>
@@ -808,25 +808,9 @@
             filePath = "DiaryApp/Service/API/AFRouter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "asURLRequest()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "07E39935-6469-4146-984D-02CDBBD0F7FB"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DiaryApp/Scene/Post/View/ViewController/PostViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "doneButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

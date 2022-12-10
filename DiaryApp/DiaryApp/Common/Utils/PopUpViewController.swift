@@ -277,6 +277,7 @@ extension UIViewController {
         }
         present(popUpViewController, animated: false, completion: nil)
     }
+	
     func showToast(message : String) {
             let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
             toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)

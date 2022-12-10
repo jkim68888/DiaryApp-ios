@@ -8,17 +8,17 @@ import UIKit
 import PhotosUI
 
 class PostViewController: BaseViewController {
-	let postService = PostService.shared
+	let viewModel = PostViewModel()
+	
     //Post 고유 번호도 가져와서 수정할때 사용해야한다.
-	var post: Post?
     var image: UIImage? // 이전 화면인 postViewer에서 가져온 image
     var imageData = Data()
 	
     // 현재 Post의 index번호를 담는 변수 -> 삭제나 업데이트 시에 사용
-    var postNumber:Int? = 0
+    var postNumber: Int? = 0
 	
     // 게시글 내부에 들어갈 Placeholedr 담는 변수
-    var postScriptTVPlaceHolder:String = "텍스트를 여기에 입력하세요"
+    var postScriptTVPlaceHolder: String = "나의 하루 기록하기"
     
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var cancleImgBtn: UIButton!
@@ -31,36 +31,41 @@ class PostViewController: BaseViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
+		setDelegate()
 		setDefaultDataUI()
+        setUI()
         setDatePicker()
-        setDelegate()
         setImagePickView()
+		setNotification()
     }
 
+	func setDelegate() {
+		postTitleTF.delegate = self
+		postScriptTV.delegate = self
+	}
 
+	// MARK: - UI 세팅
     func setDefaultDataUI(){
-        guard var post = post else {
-            print("데이터불러오기실패 또는 데이터 추가")
-            postDateTF.text = Date().toString()
-            postTitleTF.text = ""
-            postScriptTV.text = postScriptTVPlaceHolder
-            return
-        }
-        
-        print("데이터불러오기성공")
-        postImageView.image = image
-        postDateTF.text = post.datetime.toString()
-        postTitleTF.text = post.title
-        if postScriptTV.text! == ""{postScriptTV.textColor = .lightGray}
-        postScriptTV.text = post.body ?? postScriptTVPlaceHolder
-        
-        // 삭제 및 수정을 위해
-        postNumber = post.id
-        }
+		guard let post = viewModel.post else {
+			print("데이터 추가")
+			postDateTF.text = Date().toString()
+			postTitleTF.text = ""
+			postScriptTV.text = postScriptTVPlaceHolder
+			postScriptTV.textColor = UIColor(hexString: "#C4C4C4")
+			return
+		}
+		
+		print("데이터불러오기성공")
+		postImageView.image = image
+		postDateTF.text = post.datetime.toString()
+		postTitleTF.text = post.title
+		postScriptTV.text = post.body
+		
+		// 삭제 및 수정을 위해
+		postNumber = post.id
+	}
 	
     func setUI(){
-        
         // 사진선택 버튼에 테두리 넣기
         postImageBtn.setTitle("", for: .normal)
         postImageBtn.clipsToBounds = true
@@ -84,42 +89,66 @@ class PostViewController: BaseViewController {
         self.navigationController?.navigationBar.customNavigationBar()
     }
 	
-    // MARK: - 1. Date Picker를 호출하여 날짜를 입력할 수 있도록 설정
+    // MARK: - Date Picker (날짜 입력)
     func setDatePicker(){
         let locale = NSLocale(localeIdentifier: "ko_KO")
         let datepicker = UIDatePicker()
+		
         datepicker.locale = locale as Locale
         datepicker.preferredDatePickerStyle = .wheels
         datepicker.datePickerMode = UIDatePicker.Mode.date
         datepicker.addTarget(self, action: #selector(DatepickerCh(sender:)), for: UIControl.Event.valueChanged)
+		
         postDateTF.inputView = datepicker
     }
+	
     @objc func DatepickerCh(sender:UIDatePicker){
         postDateTF.text = sender.date.toString()
     }
 	
-    // TextField와 TextView에대한 Delegate 선언
-    func setDelegate(){
-        postTitleTF.delegate = self
-        postScriptTV.delegate = self
-    }
-	
-    // 불러온 PostData에 이미지에 따라 ImageView를 세팅
+    // MARK: - 이미지 선택 뷰 설정
     func setImagePickView(){
         print(#function)
+		
         if postImageView.image == nil{
             postImageView.isHidden = true
             cancleImgBtn.isHidden = true
             print("새 게시글")
-        }else{
+        } else{
             postImageView.isHidden = false
             cancleImgBtn.isHidden = false
             print("기존 글 수정")
         }
     }
     
-     //특정 항목들이 저장되어있지 않으면, 뒤로가지 못하게 막아야함
+	//특정 항목들이 저장되어있지 않으면, 뒤로가지 못하게 막아야함
+	
+	// MARK: - Notification
+	func setNotification() {
+		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveAddPostSuccess(_:)), name: NSNotification.Name("addPostSuccess"), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(didReceiveUpdatePostSuccess(_:)), name: NSNotification.Name("updatePostSuccess"), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(didReceiveDeletePostSuccess(_:)), name: NSNotification.Name("deletePostSuccess"), object: nil)
+	}
+	
+	@objc func didRecieveAddPostSuccess(_ notification: Notification) {
+		DispatchQueue.main.async {
+			self.navigationController?.popToRootViewController(animated: true)
+		}
+	}
+	
+	@objc func didReceiveUpdatePostSuccess(_ notification: Notification) {
+		DispatchQueue.main.async {
+			self.navigationController?.popViewController(animated: true)
+		}
+	}
+	
+	@objc func didReceiveDeletePostSuccess(_ notification: Notification) {
+		DispatchQueue.main.async {
+			self.navigationController?.popToRootViewController(animated: true)
+		}
+	}
     
+	// MARK: - 버튼 클릭
     @IBAction func postImagePickButtonTapped(_ sender: UIButton) {
         // 피커뷰를 사용하기 위해서 configuration을 먼저 설정해준다.
         var configuration = PHPickerConfiguration()
@@ -141,75 +170,65 @@ class PostViewController: BaseViewController {
     }
 	
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
-        if post == nil{
-            showPopUp(title: "알림", message: "작성을 취소하시겠습니까?\n[확인]을 누르시면\n초기 화면으로 되돌아갑니다.", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "확인", rightActionCompletion:  {
+		if viewModel.post == nil {
+            showPopUp(title: "알림", message: "작성을 취소하시겠습니까?\n[확인]을 누르시면\n홈 화면으로 되돌아갑니다.", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "확인", rightActionCompletion:  {
                 self.navigationController?.popToRootViewController(animated: true)
-//                self.dataManager.delete(uniqueNum: self.postNumber!)
             })
-        }
-        showPopUp(title: "알림", message: "편집을 중단하시겠습니까?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "확인", rightActionCompletion:  {
-            self.navigationController?.popViewController(animated: true)
-        })
+		}
+		
+		showPopUp(title: "알림", message: "편집을 중단하시겠습니까?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "확인", rightActionCompletion:  {
+			self.navigationController?.popViewController(animated: true)
+		})
     }
 	
     // 완료 버튼을 눌렀을 때
-    @IBAction func doneButtonTapped(_ sender: Any) {
-        print(#function)
-        
-        let postViewerVCindex = navigationController!.viewControllers.count - 2
-        let postViewerVC = navigationController?.viewControllers[postViewerVCindex] as! PostViewerViewController
-        // MARK: - 백엔드 연동
-        if let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String {
-			guard let post = post else {
-				// Post가 없는 경우
-				postService.addPost(
-					title: postTitleTF.text ?? "",
-					body: postScriptTV.text ?? "",
-					datetime: postDateTF.text?.toDate() ?? Date(),
-					image: postImageView.image ?? UIImage(named: "NoImage.png")!) {(success, code) in
-						print("addPost 성공!!!")
-						print("네트워크통신 결과:\(code)")
-						self.navigationController?.popToRootViewController(animated: true)
-					}
-				
-				
-				return
-            }
-            // post가 있었을 경우
-            print("UpdatePost")
-            postService.updatePostData(post.id,
-                                       accessToken: token,
-                                       title: postTitleTF.text ?? "",
-                                       body: postScriptTV.text ?? "",
-                                       datetime: postDateTF.text?.toDate() ?? Date(),
-                                       image: postImageView.image ?? UIImage(named: "NoImage.png")!) {
-                print("UpdatePost 성공!!!")
-                self.navigationController?.popViewController(animated: true)
-            }
-            postViewerVC.post?.title = postTitleTF.text ?? ""
-            postViewerVC.post?.body = postScriptTV.text ?? ""
-            postViewerVC.post?.createdAt = postDateTF.text!.toDate() ?? Date()
-            print("\(postViewerVC.post)📡")
-            return
-        }
-    }
+	@IBAction func doneButtonTapped(_ sender: Any) {
+		print(#function)
+		
+		let postViewerVCindex = navigationController!.viewControllers.count - 2
+		let postViewerVC = navigationController?.viewControllers[postViewerVCindex] as! PostViewerViewController
+		
+		if viewModel.post != nil {
+			// Post가 있는 경우
+			print("UpdatePost")
+			viewModel.updatePost(title: postTitleTF.text ?? "",
+								 body: postScriptTV.text ?? "",
+								 datetime: postDateTF.text?.toDate() ?? Date(),
+								 image: (postImageView.image ?? UIImage(named: "NoImage.png"))!)
+		} else {
+			// Post가 없는 경우
+			print("AddPost")
+			viewModel.addPost(title: postTitleTF.text ?? "",
+							  body: postScriptTV.text ?? "",
+							  datetime: postDateTF.text?.toDate() ?? Date(),
+							  image: (postImageView.image ?? UIImage(named: "NoImage.png"))!)
+		}
+	
+		postViewerVC.post?.title = postTitleTF.text ?? ""
+		postViewerVC.post?.body = postScriptTV.text ?? ""
+		postViewerVC.post?.createdAt = postDateTF.text!.toDate() ?? Date()
+		print("\(postViewerVC.post)📡")
+		
+		return
+		
+	}
 	
     // MARK: - 3. 삭제 시에, 해당된 Post의 index에 해당하는 값을 지우고, 다시 배열을 정렬해야함
     @IBAction func postDeleteButtonTapped(_ sender: UIButton) {
-        if let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String {
-            guard var post = post else {
-                showPopUp(title: "게시글 작성 중단", message: "편집된 내용은 저장되지 않습니다.", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "삭제") {
-                    self.navigationController?.popToRootViewController(animated: true)
-                }
-                return
-            }
-            showPopUp(title: "게시글 삭제", message: "정말로 게시글을 삭제하시겠습니까?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "삭제") {
-                self.postService.deletePostData(post.id, accessToken: token) {
-                    self.navigationController?.popToRootViewController(animated: true)
-                }
-            }
-        }
-        
+		if viewModel.post != nil {
+			showPopUp(title: "게시글 삭제", message: "정말로 게시글을 삭제하시겠습니까?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "삭제") {
+				
+			} rightActionCompletion: {
+				self.viewModel.deletePost()
+			}
+		} else {
+			showPopUp(title: "게시글 작성 중단", message: "편집된 내용은 저장되지 않습니다.", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "삭제") {
+				
+			} rightActionCompletion: {
+				self.navigationController?.popToRootViewController(animated: true)
+			}
+
+		}
     }
 	
     /// 다른 곳을 누르면 키보드가 내려가게 설정
@@ -255,9 +274,9 @@ extension PostViewController:UITextViewDelegate{
     }
 }
 
-extension PostViewController:UITextFieldDelegate{
+extension PostViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.isFirstResponder
+		textField.resignFirstResponder()
         return true
     }
 }

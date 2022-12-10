@@ -93,7 +93,7 @@ class PostViewerViewController: BaseViewController {
     /// 수정 버튼을 눌렀을 때
     @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
         guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
-        postVC.post = post
+//        postVC.post = post
         postVC.image = postViewerImageView.image
 //        postVC.delegate = self
         self.navigationController?.pushViewController(postVC, animated: true)

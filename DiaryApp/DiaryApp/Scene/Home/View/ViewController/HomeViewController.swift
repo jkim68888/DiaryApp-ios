@@ -125,6 +125,7 @@ class HomeViewController: BaseViewController {
     }
 }
 
+// MARK: - collectionView
 extension HomeViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		if let postsList = viewModel.postsList {
@@ -161,7 +162,6 @@ extension HomeViewController: UICollectionViewDataSource{
 }
 
 extension HomeViewController: UICollectionViewDelegate{
-
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		
 		guard let postViewerVC = storyboard?.instantiateViewController(identifier: "PostViewerViewController") as? PostViewerViewController else { return }

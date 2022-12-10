@@ -110,24 +110,13 @@ struct PostService {
     }
 
 	// MARK: - Update Post
-    func updatePostData(_ id: Int, accessToken: String, title: String, body: String, datetime: Date, image: UIImage, completionHandler: @escaping () -> Void) {
-        let body : Parameters = [
-            "title" : title,
-            "body" : body,
-			"datetime" : datetime,
-        ]
+    func updatePostData(_ id: Int, title: String, body: String, datetime: Date, image: UIImage, completionHandler: @escaping () -> Void) {
+		let route = AFRouter.updatePost(id: id, title: title, body: body, datetime: datetime, image: image)
 		
 		AFManager
 			.shared
 			.session
-			.upload(multipartFormData: { (multipart) in
-				if let imageData = image.pngData(){
-					multipart.append(imageData, withName: "image", fileName: "image.png", mimeType: "image/png")
-				}
-				for (key, value) in body {
-					multipart.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
-				}
-			}, with: AFRouter.updatePost)
+			.upload(multipartFormData: route.multipartFormData, with: route)
 			.validate(statusCode: 200..<300)
 			.responseData { data in
 				completionHandler()
@@ -135,7 +124,7 @@ struct PostService {
     }
 
 	// MARK: - Delete Post
-	func deletePostData(_ id: Int, accessToken: String ,completionHandler: @escaping () -> Void) {
+	func deletePostData(_ id: Int, completionHandler: @escaping () -> Void) {
 		AFManager
 			.shared
 			.session
