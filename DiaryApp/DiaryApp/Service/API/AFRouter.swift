@@ -10,7 +10,7 @@ import Alamofire
 enum AFRouter: URLRequestConvertible{
 	case loadPostList
 	case getPostData(id: Int)
-	case addPost
+	case addPost(title: String, body: String, datetime: Date, image: UIImage)
 	case updatePost
 	case deletePost(id: Int)
 	
@@ -64,9 +64,45 @@ enum AFRouter: URLRequestConvertible{
 		var request = URLRequest(url: url)
 		request.method = method
 		
-		request = try URLEncodedFormParameterEncoder().encode(parameters, into: request)
+		switch self {
+		case .addPost, .updatePost:
+			request.setValue("multipart/form-data", forHTTPHeaderField: "Content-type")
+		default:
+			break
+		}
+		
+		// multipart 아닌것만 여기로 들어옴
+		switch self {
+		case .loadPostList, .getPostData, .deletePost:
+			request = try URLEncodedFormParameterEncoder().encode(parameters, into: request)
+		default:
+			break
+		}
 		
 		return request
+	}
+	
+	// MARK: - MultipartFormData
+	var multipartFormData: MultipartFormData {
+		let multipartFormData = MultipartFormData()
+		
+		switch self {
+		case .addPost(let title, let body, let datetime, let image):
+			let titleData = title.data(using: .utf8) ?? Data()
+			let bodyData = body.data(using: .utf8) ?? Data()
+			let datetimeData = datetime.toString().data(using: .utf8) ?? Data()
+			let imageData = image.pngData() ?? Data()
+			
+			multipartFormData.append(titleData, withName: "title")
+			multipartFormData.append(bodyData, withName: "body")
+			multipartFormData.append(datetimeData, withName: "datetime")
+			multipartFormData.append(imageData, withName: "image", fileName: "Image.png", mimeType: "image/png")
+			
+			return multipartFormData
+		default: ()
+		}
+		
+		return multipartFormData
 	}
 }
 

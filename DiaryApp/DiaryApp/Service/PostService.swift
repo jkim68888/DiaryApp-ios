@@ -79,6 +79,7 @@ struct PostService {
                 
             case .failure(let error):
                 print("\(error)입니다.")
+				completionHandler(false,[])
                 return
             }
         }
@@ -86,23 +87,12 @@ struct PostService {
 	
 	// MARK: - Create Post
 	func addPost(title: String, body: String, datetime: Date, image: UIImage, completionHandler: @escaping (Bool, Int) -> Void){
-		let body : Parameters = [
-			"title" : title,
-			"body" : body,
-			"datetime" : datetime,
-		]
+		let route = AFRouter.addPost(title: title, body: body, datetime: datetime, image: image)
 		
 		AFManager
 			.shared
 			.session
-			.upload(multipartFormData: { (multipart) in
-				if let imageData = image.pngData(){
-					multipart.append(imageData, withName: "image", fileName: "image.png", mimeType: "image/png")
-				}
-				for (key, value) in body {
-					multipart.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
-				}
-			}, with: AFRouter.addPost)
+			.upload(multipartFormData: route.multipartFormData, with: route)
 			.validate(statusCode: 200..<300)
 			.responseData { data in
 				switch data.result{

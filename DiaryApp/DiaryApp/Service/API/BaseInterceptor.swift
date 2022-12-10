@@ -14,8 +14,6 @@ class BaseInterceptor: RequestInterceptor{
         print("BaseInterceptor - adapt() called")
         
         var request = urlRequest
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
 		
 		if let authVerificationID = UserDefaults.standard.value(forKey: "authVerificationID") {
 			request.addValue("Bearer \(authVerificationID)", forHTTPHeaderField: "Authorization")
