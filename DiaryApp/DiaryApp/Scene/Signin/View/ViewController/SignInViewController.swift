@@ -40,19 +40,22 @@ class SignInViewController: UIViewController {
 	}
 	
 	func goNextVC() {
+		guard let window = sceneDelegate.window else { return }
+		
 		guard let nicknameVC = storyboard?.instantiateViewController(identifier: "NicknameViewController") as? NicknameViewController else { return }
 		guard let homeVC = storyboard?.instantiateViewController(identifier: "Home") as? HomeViewController else { return }
+		let homeNavigationController = UINavigationController(rootViewController: homeVC)
 		
 		let authVerificationID = UserDefaults.standard.value(forKey: "nickname") as? String
 		
 		if authVerificationID == nil || authVerificationID == "" {
 			self.navigationController?.pushViewController(nicknameVC, animated: false)
 		} else {
-			self.navigationController?.pushViewController(homeVC, animated: false)
+			window.rootViewController = homeNavigationController
 		}
 	}
 	
-	// 로그인이 success면 콜렉션뷰 다시 그림 (바인딩된 데이터로 그리기 위함)
+	// 로그인 완료시 다음 화면 이동
 	@objc func didRecieveLoginSuccess(_ notification: Notification) {
 		DispatchQueue.main.async {
 			self.goNextVC()
