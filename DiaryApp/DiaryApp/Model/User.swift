@@ -7,7 +7,7 @@
 
 import Foundation
 
-// requestSnsSignIn()에서 주는 jwtToken
+// jwtToken
 struct Account: Codable {
 	var token: String
 	
@@ -16,7 +16,7 @@ struct Account: Codable {
 	}
 }
 
-// sns에서 주는 유저네임
+// 유저네임
 struct User: Codable {
 	var name: String
 	

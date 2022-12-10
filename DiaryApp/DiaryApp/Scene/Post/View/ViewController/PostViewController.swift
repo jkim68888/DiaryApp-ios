@@ -215,10 +215,6 @@ class PostViewController: BaseViewController {
 		postViewerVC.post?.title = postTitleTF.text ?? ""
 		postViewerVC.post?.body = postScriptTV.text ?? ""
 		postViewerVC.post?.createdAt = postDateTF.text!.toDate() ?? Date()
-		print("\(postViewerVC.post)📡")
-		
-		return
-		
 	}
 	
     // MARK: - 3. 삭제 시에, 해당된 Post의 index에 해당하는 값을 지우고, 다시 배열을 정렬해야함

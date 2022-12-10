@@ -11,14 +11,13 @@ class HomePostCollectionViewCell: UICollectionViewCell {
 	
 	var post: Post? {
 		didSet {
-            guard let post = post else {
-                return
-            }
+            guard let post = post else { return }
 			
 			if let image = post.image.path {
 				cellImageView.load(url: URL(string: "http://" + image))
-			}            
-			cellTitleLabel.text = post.createdAt.toString()
+			}
+			
+			cellTitleLabel.text = post.datetime.toString()
 			cellView.clipsToBounds = true
 			cellView.layer.cornerRadius = 10
 			cellView.layer.borderWidth = 1
