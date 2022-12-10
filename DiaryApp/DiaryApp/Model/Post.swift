@@ -21,19 +21,19 @@ struct Post: Codable {
     var image: Image
 	
 	enum CodingKeys: String, CodingKey {
-        case id = "id"
-		case title = "title"
-		case body = "body"
-        case datetime = "datetime"
+        case id
+		case title
+		case body
+        case datetime
 		case userId = "userid"
 		case createdAt = "created_at"
-        case image = "image"
+        case image
 	}
 }
 struct Image: Codable{
     var path: String?
 	
 	enum CodingKeys: String, CodingKey {
-		case path = "path"
+		case path
 	}
 }

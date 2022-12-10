@@ -12,9 +12,7 @@ class PostViewerViewController: BaseViewController {
 	let postService = PostService.shared
 	var post: Post?
     var image: UIImage? // 이전 화면인 postViewer에서 가져온 image
-    
-    /// [글보기]View에서 post Data를 담고있는 변수
-    var tempPostData: TempPost?
+
     /// 수정한 시간을 담고있는 변수
     var formatter_time = DateFormatter()
     
@@ -57,7 +55,7 @@ class PostViewerViewController: BaseViewController {
         /// Post에 대한 데이터가 없는 경우 -> Home에서 New Post Button을 누른 경우
         if post == nil{
             guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
-            postVC.delegate = self
+//            postVC.delegate = self
             self.navigationController?.pushViewController(postVC, animated: false)
         }
         /// Post에 대한 데이터가 있는 경우 -> Home에서 CollectionView의 Cell 누르고 접근하는 경우
@@ -97,19 +95,12 @@ class PostViewerViewController: BaseViewController {
         guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
         postVC.post = post
         postVC.image = postViewerImageView.image
-        postVC.delegate = self
+//        postVC.delegate = self
         self.navigationController?.pushViewController(postVC, animated: true)
     }
 }
-/// 커스텀 Delegate를 사용하는 부분
-extension PostViewerViewController: TempPostDelegate{
-    func update(){
 
-//        setData()
-    }
-}
-
-// MARK: - 백엔드 연동
+// MARK: - 커스텀델리게이트 사용
 extension PostViewerViewController: PostDelegate {
 	func updatePost(id: String) {
 		setData()

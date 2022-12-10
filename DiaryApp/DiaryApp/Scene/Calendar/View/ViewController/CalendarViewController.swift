@@ -8,10 +8,6 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
-    
-    var postArray: [TempPost] = []
-    var todayPostData: [TempPost] = []
-    
     let now = Date()
     var cal = Calendar.current
     let dateFormatter = DateFormatter()
@@ -20,8 +16,6 @@ class CalendarViewController: UIViewController {
     var days: [String] = []
     var daysCountInMonth = 0 //한 달에 몇일까지 있는지
     var weekdayAdding = 0 // 시작일
-    
-    
     
     let editYear: Int = 0
     let editMonth: Int = 0
@@ -184,7 +178,7 @@ extension CalendarViewController:UICollectionViewDataSource{
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
         }
         cell.tempDate = "\(components.year!).\(components.month!).\(cell.dateLabel.text!)"
-        cell.postArray = postArray
+//        cell.postArray = postArray
         
         
 //        // 특정 순서의 Cell(day,특정 일)의 값과 postData의 day값이 같으면..
@@ -204,12 +198,12 @@ extension CalendarViewController:UICollectionViewDataSource{
         
         return cell
     }
-    func getStringPostDate(_ post:TempPost) -> String {
-        let strDate = String(Calendar.current.component(.year, from: post.createDate)) + "." +
-                        String(Calendar.current.component(.month, from: post.createDate)) + "." +
-                        String(Calendar.current.component(.day, from: post.createDate))
-        return strDate
-    }
+//    func getStringPostDate(_ post:TempPost) -> String {
+//        let strDate = String(Calendar.current.component(.year, from: post.createDate)) + "." +
+//                        String(Calendar.current.component(.month, from: post.createDate)) + "." +
+//                        String(Calendar.current.component(.day, from: post.createDate))
+//        return strDate
+//    }
     func getStringTodayDate() -> String {
         let strDate = String(Calendar.current.component(.year, from: Date())) + "." +
                         String(Calendar.current.component(.month, from: Date())) + "." +
@@ -238,11 +232,12 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
 }
 extension CalendarViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todayPostData.count
+//        return todayPostData.count
+		return 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarTableCell", for: indexPath) as! CalendarTableViewCell
-        cell.postData = todayPostData[indexPath.row]
+//        cell.postData = todayPostData[indexPath.row]
         return cell
     }
 }

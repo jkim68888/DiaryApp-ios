@@ -11,32 +11,6 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     var nowDate:String?
     var tempDate:String?
     var count = 0
-    var postData: TempPost?
-    var postArray: [TempPost] = []{
-        didSet{
-            for item in postArray{
-                print(item.createDate)
-                print(tempDate!.toDate())
-                if item.createDate == tempDate!.toDate(){
-                    count += 1
-                    print("실행됨")
-                }
-                print(count)
-                //            if postArray.count != 0{
-                //                checkPoint.isHidden = false
-                //                print("실행됨")
-                //            }else{
-                //                checkPoint.isHidden = true
-                //            }
-            }
-            if count != 0{
-                checkPoint.isHidden = false
-            }else{
-                checkPoint.isHidden = true
-            }
-        }
-    }
-    
     
     override var isSelected: Bool{
         didSet{

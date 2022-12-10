@@ -12,7 +12,7 @@ struct Account: Codable {
 	var token: String
 	
 	enum CodingKeys: String, CodingKey {
-		case token = "token"
+		case token
 	}
 }
 

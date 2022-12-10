@@ -13,16 +13,9 @@ class PostViewController: BaseViewController {
 	var post: Post?
     var image: UIImage? // 이전 화면인 postViewer에서 가져온 image
     var imageData = Data()
-    
-    // Post에 대한 정보를 담고있는 변수
-    var postData: TempPost?
-    
-    var dataManager = TempDataManager.shared
+	
     // 현재 Post의 index번호를 담는 변수 -> 삭제나 업데이트 시에 사용
     var postNumber:Int? = 0
-    // Post 수정 시에, delegate를 통해 다른 View를 reload하는데 사용
-    var delegate:TempPostDelegate?
-	
 	
     // 게시글 내부에 들어갈 Placeholedr 담는 변수
     var postScriptTVPlaceHolder:String = "텍스트를 여기에 입력하세요"
@@ -151,7 +144,7 @@ class PostViewController: BaseViewController {
         if post == nil{
             showPopUp(title: "알림", message: "작성을 취소하시겠습니까?\n[확인]을 누르시면\n초기 화면으로 되돌아갑니다.", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "확인", rightActionCompletion:  {
                 self.navigationController?.popToRootViewController(animated: true)
-                self.dataManager.delete(uniqueNum: self.postNumber!)
+//                self.dataManager.delete(uniqueNum: self.postNumber!)
             })
         }
         showPopUp(title: "알림", message: "편집을 중단하시겠습니까?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "확인", rightActionCompletion:  {

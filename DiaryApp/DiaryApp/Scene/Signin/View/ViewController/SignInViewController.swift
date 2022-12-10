@@ -19,6 +19,7 @@ class SignInViewController: UIViewController {
 		setNotification()
     }
 	
+	// MARK: - UI 세팅
 	// 왼쪽이미지 가운데타이틀 설정 (extension 사용)
 	func setButtonsStyle(index: Int, item: UIButton) {
 		return item.setLeftImageCenterTitle(imageName: "signInIcon\(index)", padding: 10)
@@ -35,10 +36,8 @@ class SignInViewController: UIViewController {
 		}
 	}
 	
-	func setNotification() {
-		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveLoginSuccess(_:)), name: NSNotification.Name("loginSuccess"), object: nil)
-	}
-	
+	// MARK: - 다음화면 설정
+	// 로그인 후 닉네임 존재 여부에 따라 다음 화면 설정
 	func goNextVC() {
 		guard let window = sceneDelegate.window else { return }
 		
@@ -55,13 +54,18 @@ class SignInViewController: UIViewController {
 		}
 	}
 	
-	// 로그인 완료시 다음 화면 이동
+	func setNotification() {
+		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveLoginSuccess(_:)), name: NSNotification.Name("loginSuccess"), object: nil)
+	}
+	
+	// 로그인 완료 노티피케이션 받으면, 다음 화면으로 이동
 	@objc func didRecieveLoginSuccess(_ notification: Notification) {
 		DispatchQueue.main.async {
 			self.goNextVC()
 		}
 	}
 	
+	// MARK: - 로그인 버튼 클릭
 	@IBAction func appleButtonTapped(_ sender: UIButton) {
 		// viewModel.getAppleSignIn()
 	}
