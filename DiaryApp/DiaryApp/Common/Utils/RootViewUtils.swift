@@ -22,12 +22,12 @@ func changeRootVC() {
 	let homeNavigationController = UINavigationController(rootViewController: homeViewController)
 	let signInNavigationController = UINavigationController(rootViewController: signInViewController)
 	
-	if let loginStatus = UserDefaults.standard.value(forKey: "loginStatus") as? Bool {
-		if loginStatus {
-			window.rootViewController = homeNavigationController
-			NotificationCenter.default.post(name: NSNotification.Name("goHomeSuccess"), object: nil, userInfo: nil)
-		} else {
-			window.rootViewController = signInNavigationController
-		}
+	let authVerificationID = UserDefaults.standard.value(forKey: "authVerificationID") as? String
+	
+	if authVerificationID == nil || authVerificationID == "" {
+		window.rootViewController = signInNavigationController
+	} else {
+		window.rootViewController = homeNavigationController
+		NotificationCenter.default.post(name: NSNotification.Name("goHomeSuccess"), object: nil, userInfo: nil)
 	}
 }

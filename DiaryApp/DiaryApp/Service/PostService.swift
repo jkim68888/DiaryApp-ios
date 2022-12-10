@@ -79,6 +79,7 @@ struct PostService {
                 
             case .failure(let error):
                 print("\(error)입니다.")
+				completionHandler(false,[])
                 return
             }
             

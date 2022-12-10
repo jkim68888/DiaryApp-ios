@@ -39,20 +39,28 @@ class SignInViewController: UIViewController {
 		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveLoginSuccess(_:)), name: NSNotification.Name("loginSuccess"), object: nil)
 	}
 	
-	func goNicknameVC() {
+	func goNextVC() {
 		guard let nicknameVC = storyboard?.instantiateViewController(identifier: "NicknameViewController") as? NicknameViewController else { return }
-		self.navigationController?.pushViewController(nicknameVC, animated: false)
+		guard let homeVC = storyboard?.instantiateViewController(identifier: "Home") as? HomeViewController else { return }
+		
+		let authVerificationID = UserDefaults.standard.value(forKey: "nickname") as? String
+		
+		if authVerificationID == nil || authVerificationID == "" {
+			self.navigationController?.pushViewController(nicknameVC, animated: false)
+		} else {
+			self.navigationController?.pushViewController(homeVC, animated: false)
+		}
 	}
 	
 	// 로그인이 success면 콜렉션뷰 다시 그림 (바인딩된 데이터로 그리기 위함)
 	@objc func didRecieveLoginSuccess(_ notification: Notification) {
 		DispatchQueue.main.async {
-			self.goNicknameVC()
+			self.goNextVC()
 		}
 	}
 	
 	@IBAction func appleButtonTapped(_ sender: UIButton) {
-        goHomeVC()
+		// viewModel.getAppleSignIn()
 	}
 	
 	@IBAction func kakaoButtonTapped(_ sender: UIButton) {
@@ -66,16 +74,4 @@ class SignInViewController: UIViewController {
 	@IBAction func naverButtonTapped(_ sender: UIButton) {
 		viewModel.getNaverSignIn()
 	}
-	
-    func goHomeVC() {
-        let sceneDelegate = UIApplication.shared.connectedScenes.first!.delegate as! SceneDelegate
-        
-        guard let window = sceneDelegate.window else { return }
-        
-        let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
-        let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-        let homeNavigationController = UINavigationController(rootViewController: homeViewController)
-        
-        window.rootViewController = homeNavigationController
-    }
 }

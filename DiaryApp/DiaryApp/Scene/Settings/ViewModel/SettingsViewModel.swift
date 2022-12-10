@@ -38,8 +38,8 @@ class SettingsViewModel {
 				break
 			}
 		}
-		
-		UserDefaults.standard.setValue(false, forKey: "loginStatus")
+	
+		UserDefaults.standard.setValue("", forKey: "authVerificationID")
 		
 		changeRootVC()
 	}

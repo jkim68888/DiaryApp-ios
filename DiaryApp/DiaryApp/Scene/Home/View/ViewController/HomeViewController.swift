@@ -93,11 +93,17 @@ class HomeViewController: BaseViewController {
 	// MARK: - 백엔드 통신
     func setData(){
         postService.PostListData_Alamofire(){ (success, data) in
-            self.postsList = data
-            DispatchQueue.main.async {
-                self.homeCollectionView.reloadData()
-            }
-            
+			if success {
+				self.postsList = data
+				DispatchQueue.main.async {
+					self.homeCollectionView.reloadData()
+				}
+			}
+			// 로그인 토큰이 만료되었을때, post api를 요청하면 bearer 토큰을 백엔드에 보낼 수 없어서 응답이 failure(false)로 들어옴
+			else {
+				UserDefaults.standard.setValue("", forKey: "authVerificationID")
+				changeRootVC()
+			}
         }
     }
     

@@ -167,7 +167,7 @@ class PostViewController: BaseViewController {
         let postViewerVC = navigationController?.viewControllers[postViewerVCindex] as! PostViewerViewController
         // MARK: - 백엔드 연동
         if let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String {
-            guard var post = post else {
+            guard let post = post else {
             // Post가 없는 경우
                 postService.addPostData_Alamofire(accessToken: token,
                                                   title: postTitleTF.text ?? "",
@@ -178,7 +178,6 @@ class PostViewController: BaseViewController {
                     print("네트워크통신 결과:\(code)")
                     self.navigationController?.popToRootViewController(animated: true)
                 }
-
                 
                 return
             }
