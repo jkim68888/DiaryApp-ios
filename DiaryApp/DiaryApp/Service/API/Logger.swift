@@ -8,8 +8,7 @@
 import Foundation
 import Alamofire
 
-final class MyLogger : EventMonitor{
-    let queue = DispatchQueue(label: "MyLogger")
+final class Logger: EventMonitor{
     func requestDidResume(_ request: Request) {
         print("MyLogger - requestDidResume()")
         debugPrint(request)

@@ -16,10 +16,10 @@ struct PostService {
 
 	// MARK: - Read Post
     func getPostData(id : Int, completionHandler: @escaping (Bool, Post) -> Void){
-        MyAlamofireManager
+        AFManager
             .shared
             .session
-            .request(MyEditRouter.getPostData(term: id))
+			.request(AFRouter.getPostData(id: id))
             .validate(statusCode: 200..<300)
             .responseData{ data in
                 switch data.result{
@@ -50,12 +50,12 @@ struct PostService {
 	
     // MARK: - Read PostsList
     /// 현재 와이파이를 켜지 않았을경우, 네트워크에 문제가 있을경우 어떻게 처리할 것인지 정해지지않음. (2022-11-15)
-    func PostListData_Alamofire(completionHandler: @escaping (Bool, [Post]) -> Void) {
-
-        MyAlamofireManager
+	/// -> signin으로 뷰를 바꿔줌
+    func getPostList(completionHandler: @escaping (Bool, [Post]) -> Void) {
+        AFManager
             .shared
             .session
-            .request(MySearchRouter.loadPostList)
+            .request(AFRouter.loadPostList)
             .validate(statusCode: 200..<300)
             .responseData{ data in
             
@@ -81,113 +81,84 @@ struct PostService {
                 print("\(error)입니다.")
                 return
             }
-            
         }
     }
 	
 	// MARK: - Create Post
-	func addPostData_Alamofire(accessToken: String, title: String, body: String, datetime: Date, image: UIImage ,completionHandler: @escaping (Bool,Int) -> Void){
-        
-		guard let url = URL(string: "\(Config().baseUrl)/api/post/write") else{
-            print("Error: cannot create URL")
-            return
-        }
+	func addPost(title: String, body: String, datetime: Date, image: UIImage, completionHandler: @escaping (Bool, Int) -> Void){
+		let body : Parameters = [
+			"title" : title,
+			"body" : body,
+			"datetime" : datetime,
+		]
 		
-        let headers: HTTPHeaders = [
-            "Content-type" : "multipart/form-data",
-            "Authorization" : "Bearer \(accessToken)"
-        ]
-		
+		AFManager
+			.shared
+			.session
+			.upload(multipartFormData: { (multipart) in
+				if let imageData = image.pngData(){
+					multipart.append(imageData, withName: "image", fileName: "image.png", mimeType: "image/png")
+				}
+				for (key, value) in body {
+					multipart.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
+				}
+			}, with: AFRouter.addPost)
+			.validate(statusCode: 200..<300)
+			.responseData { data in
+				switch data.result{
+				case .success(_):
+					if let statusCode = data.response?.statusCode {
+						completionHandler(true, statusCode)
+					}
+				case .failure(let error):
+					print("\(error)입니다")
+					if let statusCode = data.response?.statusCode {
+						completionHandler(false, statusCode)
+					}
+				}
+			}
+    }
+
+	// MARK: - Update Post
+    func updatePostData(_ id: Int, accessToken: String, title: String, body: String, datetime: Date, image: UIImage, completionHandler: @escaping () -> Void) {
         let body : Parameters = [
             "title" : title,
             "body" : body,
 			"datetime" : datetime,
         ]
-        AF.upload(multipartFormData: { (multipart) in
-            if let imageData = image.pngData(){
-                multipart.append(imageData, withName: "image", fileName: "image.png", mimeType: "image/png")
-            }
-            for (key, value) in body {
-                multipart.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
-            }
-        }, to: url,
-            method: .post,
-                  headers: headers).responseJSON { (response) in
-            print(response)
-            switch response.result{
-            case .success(let result):
-                
-                if let err = response.error{
-                    print(err)
-                    return
-                }
-                print("성공")
-                let json = response.data
-                if (json != nil){
-                    print(json)
-                }
-                
-                completionHandler(true,response.response!.statusCode)
-            case .failure(let error):
-                print("\(error)입니다")
-                completionHandler(false,response.response!.statusCode)
-                return
-            }
-        }
-    }
-
-	// MARK: - Update Post
-    func updatePostData(_ id: Int, accessToken: String, title: String, body: String, datetime: Date, image: UIImage ,completionHandler: @escaping () -> Void) {
-        
-        guard let url = URL(string: "\(Config().baseUrl)/api/post/update?id=\(id)") else{
-            print("Error: cannot create URL")
-            return
-        }
-        
-        let headers: HTTPHeaders = [
-            "Content-type" : "multipart/form-data",
-            "Authorization" : "Bearer \(accessToken)"
-        ]
-        let body : Parameters = [
-            "title" : title,
-            "body" : body
-        ]
-        AF.upload(multipartFormData: { (multipart) in
-            if let imageData = image.pngData(){
-                multipart.append(imageData, withName: "image", fileName: "image.png", mimeType: "image/png")
-            }
-            for (key, value) in body {
-                multipart.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
-            }
-        }, to: url,
-            method: .patch,
-                  headers: headers).response { (response) in
-            print(response)
-            
-            if let err = response.error{
-                print(err)
-                return
-            }
-            completionHandler()
-        }
+		
+		AFManager
+			.shared
+			.session
+			.upload(multipartFormData: { (multipart) in
+				if let imageData = image.pngData(){
+					multipart.append(imageData, withName: "image", fileName: "image.png", mimeType: "image/png")
+				}
+				for (key, value) in body {
+					multipart.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
+				}
+			}, with: AFRouter.updatePost)
+			.validate(statusCode: 200..<300)
+			.responseData { data in
+				completionHandler()
+			}
     }
 
 	// MARK: - Delete Post
-    func deletePostData(_ id: Int, accessToken: String ,completionHandler: @escaping () -> Void) {
-        
-        MyAlamofireManager
-            .shared
-            .session
-            .request(MyEditRouter.deletePost(term: id))
-            .validate(statusCode: 200..<300)
-            .response { (response) in
-                print(response)
-                
-                if let err = response.error{
-                    print(err)
-                    return
-                }
-                completionHandler()
-            }
-    }
+	func deletePostData(_ id: Int, accessToken: String ,completionHandler: @escaping () -> Void) {
+		AFManager
+			.shared
+			.session
+			.request(AFRouter.deletePost(id: id))
+			.validate(statusCode: 200..<300)
+			.response { (response) in
+				print(response)
+				
+				if let err = response.error{
+					print(err)
+					return
+				}
+				completionHandler()
+			}
+	}
 }

@@ -92,7 +92,7 @@ class HomeViewController: BaseViewController {
 	
 	// MARK: - 백엔드 통신
     func setData(){
-        postService.PostListData_Alamofire(){ (success, data) in
+        postService.getPostList(){ (success, data) in
             self.postsList = data
             DispatchQueue.main.async {
                 self.homeCollectionView.reloadData()

@@ -167,20 +167,20 @@ class PostViewController: BaseViewController {
         let postViewerVC = navigationController?.viewControllers[postViewerVCindex] as! PostViewerViewController
         // MARK: - 백엔드 연동
         if let token = UserDefaults.standard.value(forKey: "authVerificationID") as? String {
-            guard var post = post else {
-            // Post가 없는 경우
-                postService.addPostData_Alamofire(accessToken: token,
-                                                  title: postTitleTF.text ?? "",
-                                                  body: postScriptTV.text ?? "",
-                                                  datetime: postDateTF.text?.toDate() ?? Date(),
-                                                  image: postImageView.image ?? UIImage(named: "NoImage.png")!) {(success, code) in
-                    print("addPost 성공!!!")
-                    print("네트워크통신 결과:\(code)")
-                    self.navigationController?.popToRootViewController(animated: true)
-                }
-
-                
-                return
+			guard let post = post else {
+				// Post가 없는 경우
+				postService.addPost(
+					title: postTitleTF.text ?? "",
+					body: postScriptTV.text ?? "",
+					datetime: postDateTF.text?.toDate() ?? Date(),
+					image: postImageView.image ?? UIImage(named: "NoImage.png")!) {(success, code) in
+						print("addPost 성공!!!")
+						print("네트워크통신 결과:\(code)")
+						self.navigationController?.popToRootViewController(animated: true)
+					}
+				
+				
+				return
             }
             // post가 있었을 경우
             print("UpdatePost")
