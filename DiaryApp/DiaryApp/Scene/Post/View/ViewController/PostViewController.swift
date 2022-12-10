@@ -7,12 +7,19 @@
 import UIKit
 import PhotosUI
 
+protocol PostDelegate {
+	func updatePost()
+}
+
 class PostViewController: BaseViewController {
 	let viewModel = PostViewModel()
 	
     //Post 고유 번호도 가져와서 수정할때 사용해야한다.
     var image: UIImage? // 이전 화면인 postViewer에서 가져온 image
     var imageData = Data()
+	
+	// Post 수정 시에, delegate를 통해 Viewer를 reload하는데 사용
+	var delegate: PostDelegate?
 	
     // 현재 Post의 index번호를 담는 변수 -> 삭제나 업데이트 시에 사용
     var postNumber: Int? = 0
@@ -138,6 +145,7 @@ class PostViewController: BaseViewController {
 	
 	@objc func didReceiveUpdatePostSuccess(_ notification: Notification) {
 		DispatchQueue.main.async {
+			self.delegate?.updatePost()
 			self.navigationController?.popViewController(animated: true)
 		}
 	}
@@ -256,7 +264,7 @@ extension PostViewController: PHPickerViewControllerDelegate{
 }
 
 // MARK: - 4. TextView의 디폴트 내용(ex. 내용을 입력해주세요) 추가
-extension PostViewController:UITextViewDelegate{
+extension PostViewController: UITextViewDelegate{
     //textView에 입력을 시작할 때
     func textViewDidBeginEditing(_ textView: UITextView){
         if textView.text == postScriptTVPlaceHolder{

@@ -7,16 +7,12 @@
 
 import Alamofire
 
-enum AFRouter: URLRequestConvertible{
+enum AFRouter: URLRequestConvertible {
 	case loadPostList
 	case getPostData(id: Int)
 	case addPost(title: String, body: String, datetime: Date, image: UIImage)
 	case updatePost(id: Int, title: String, body: String, datetime: Date, image: UIImage)
 	case deletePost(id: Int)
-	
-	var baseURL: URL {
-		return URL(string: Config().baseUrl)!
-	}
 	
 	var method: HTTPMethod {
 		switch self {
@@ -26,7 +22,7 @@ enum AFRouter: URLRequestConvertible{
 			return .get
 		case .addPost:
 			return .post
-		case  .updatePost:
+		case .updatePost:
 			return .patch
 		case . deletePost:
 			return .delete
@@ -48,8 +44,8 @@ enum AFRouter: URLRequestConvertible{
 		}
 	}
 	
-	var parameters: [String:Int]?{
-		switch self{
+	var parameters: [String: Int]? {
+		switch self {
 		case let .getPostData(id), let .deletePost(id):
 			return ["id": id]
 		case .loadPostList, .addPost, .updatePost:
@@ -58,11 +54,20 @@ enum AFRouter: URLRequestConvertible{
 	}
 	
 	func asURLRequest() throws -> URLRequest {
+		var urlComponents = URLComponents(string: Config().baseUrl)!
+		urlComponents.path = path
 		
-		let url = baseURL.appendingPathComponent(path)
-		print("AF called url : \(url)")
+		switch self {
+		case .updatePost(let id, _, _, _, _):
+			urlComponents.queryItems = [URLQueryItem(name: "id", value: String(id))]
+		default:
+			break
+		}
+	
+		print("UrlComponents : \(urlComponents)")
 		
-		var request = URLRequest(url: url)
+		var request = URLRequest(url: urlComponents.url!)
+		
 		request.method = method
 		
 		// addPost와 updatePost만 헤더에 content-type을 multipart/form-data로 넣어줌

@@ -38,11 +38,19 @@ class PostViewerViewController: BaseViewController {
         self.view.backgroundColor = UIColor.mainBGColor
         self.navigationController?.navigationBar.customNavigationBar()
 		
-		postViewerImageView.image = image
-		guard let post = post else { return }
-		postViewerDateLabel.text = post.createdAt.toString()
-		postViewerTitleLabel.text = post.title
-		postViewerDescriptionLabel.text = post.body
+		if post == nil {
+			// Post에 대한 데이터가 없는 경우 -> Home에서 New Post Button을 누른 경우
+			guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
+			postVC.delegate = self
+			self.navigationController?.pushViewController(postVC, animated: false)
+		} else {
+			// Post에 대한 데이터가 있는 경우 -> Home에서 CollectionView의 Cell 누르고 접근하는 경우
+			postViewerImageView.image = image
+			guard let post = post else { return }
+			postViewerDateLabel.text = post.createdAt.toString()
+			postViewerTitleLabel.text = post.title
+			postViewerDescriptionLabel.text = post.body
+		}
 		
 		if postViewerImageView.image == nil {
 			print("image가 없습니다!!")
@@ -56,6 +64,15 @@ class PostViewerViewController: BaseViewController {
         guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
 		postVC.viewModel.post = post
         postVC.image = postViewerImageView.image
+		postVC.delegate = self
         self.navigationController?.pushViewController(postVC, animated: true)
     }
+}
+
+// MARK: - 커스텀 Delegate를 사용하는 부분
+extension PostViewerViewController: PostDelegate {
+	func updatePost() {
+		print("포스트 업데이트됨")
+		setUI()
+	}
 }
