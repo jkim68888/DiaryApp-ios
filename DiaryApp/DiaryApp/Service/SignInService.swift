@@ -21,7 +21,7 @@ struct SignInService {
 	let naverPath = "/api/auth/callback/naver"
 	
 	// MARK: - 백엔드서버에 로그인 요청
-	func requestSignIn(url: String, name: String, accessToken: String, completionHandler: @escaping (Bool, Account) -> Void) {
+	func requestSignIn(url: String, name: String, accessToken: String, completionHandler: @escaping (Bool, Account?) -> Void) {
 		let param = ["name": name]
 		let sendData = try! JSONSerialization.data(withJSONObject: param, options: [])
 		
@@ -48,6 +48,9 @@ struct SignInService {
 			}
 			guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
 				print("Error: HTTP request failed - requestSignIn")
+				
+				completionHandler(false, nil)
+				
 				return
 			}
 			guard let output = try? JSONDecoder().decode(Account.self, from: data) else {

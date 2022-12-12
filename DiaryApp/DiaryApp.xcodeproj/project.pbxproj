@@ -23,7 +23,6 @@
 		9A1FCCAE28FFB1BB001B1584 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCAD28FFB1BB001B1584 /* SettingsViewModel.swift */; };
 		9A1FCCB028FFB1CE001B1584 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCAF28FFB1CE001B1584 /* SignInService.swift */; };
 		9A1FCCB428FFB24E001B1584 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCB328FFB24E001B1584 /* SignInViewModel.swift */; };
-		9A1FCCBA28FFB302001B1584 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCB928FFB302001B1584 /* SettingsTableViewCell.swift */; };
 		9A1FCCC128FFB3DF001B1584 /* PostViewerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCC028FFB3DF001B1584 /* PostViewerViewModel.swift */; };
 		9A1FCCC328FFB3F3001B1584 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCC228FFB3F3001B1584 /* CalendarViewModel.swift */; };
 		9A1FCCC528FFB40A001B1584 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FCCC428FFB40A001B1584 /* HomeViewModel.swift */; };
@@ -82,11 +81,11 @@
 		9A1FCCAD28FFB1BB001B1584 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		9A1FCCAF28FFB1CE001B1584 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
 		9A1FCCB328FFB24E001B1584 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
-		9A1FCCB928FFB302001B1584 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		9A1FCCC028FFB3DF001B1584 /* PostViewerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewerViewModel.swift; sourceTree = "<group>"; };
 		9A1FCCC228FFB3F3001B1584 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		9A1FCCC428FFB40A001B1584 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9A1FCCC628FFB9B4001B1584 /* RootViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewUtils.swift; sourceTree = "<group>"; };
+		9A3250412946E7420034E016 /* DiaryApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DiaryApp.entitlements; sourceTree = "<group>"; };
 		9A6C534328F7FBC900B13BF7 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9A6C537628FA631C00B13BF7 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
 		9A6C77A928F229E400E1092D /* DiaryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiaryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,7 +186,6 @@
 		9A1FCCB528FFB265001B1584 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9A1FCCB828FFB2D4001B1584 /* Cell */,
 				9A1FCCB728FFB2C7001B1584 /* ViewController */,
 				9A1FCCB628FFB2BE001B1584 /* Storyboard */,
 			);
@@ -210,14 +208,6 @@
 				9A1EB6C729250CCF00C1CB2E /* PrivacyViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		9A1FCCB828FFB2D4001B1584 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				9A1FCCB928FFB302001B1584 /* SettingsTableViewCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		9A1FCCBB28FFB319001B1584 /* View */ = {
@@ -456,6 +446,7 @@
 		9A6C77AB28F229E400E1092D /* DiaryApp */ = {
 			isa = PBXGroup;
 			children = (
+				9A3250412946E7420034E016 /* DiaryApp.entitlements */,
 				9A6C77AC28F229E400E1092D /* AppDelegate.swift */,
 				9A6C77AE28F229E400E1092D /* SceneDelegate.swift */,
 				9A6C77B728F229E500E1092D /* LaunchScreen.storyboard */,
@@ -758,7 +749,6 @@
 				9A1FCCC528FFB40A001B1584 /* HomeViewModel.swift in Sources */,
 				A919382628F64E9900CC8B76 /* HomeViewController.swift in Sources */,
 				A9958593291B797A00B33502 /* Notification.swift in Sources */,
-				9A1FCCBA28FFB302001B1584 /* SettingsTableViewCell.swift in Sources */,
 				A919384228F65DDD00CC8B76 /* PostViewerViewController.swift in Sources */,
 				9A1FCCAC28FFB17E001B1584 /* PostViewModel.swift in Sources */,
 			);
@@ -906,6 +896,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DiaryApp/DiaryApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -939,6 +930,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DiaryApp/DiaryApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
