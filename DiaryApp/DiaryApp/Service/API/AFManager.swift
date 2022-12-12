@@ -8,9 +8,9 @@
 import Foundation
 import Alamofire
 
-final class MyAlamofireManager{
+final class AFManager{
     // 싱글 턴 적용
-    static let shared = MyAlamofireManager()
+    static let shared = AFManager()
     
     // 인터셉터
     let interceptors = Interceptor(interceptors:
@@ -19,10 +19,10 @@ final class MyAlamofireManager{
                         ])
     
     // 로거 설정
-    let monitors = [MyLogger(),MyLoggerStatusCode()] as [EventMonitor]
+    let monitors = [Logger(), LoggerStatusCode()] as [EventMonitor]
     
     // 세션 설정
-    let session:Session
+    let session: Session
     
     private init(){
         session = Session(interceptor: interceptors, eventMonitors: monitors)

@@ -9,18 +9,6 @@ import UIKit
 
 class CalendarTableViewCell: UITableViewCell {
     @IBOutlet weak var mainView: UIView!
-    
-    var postData: TempPost?{
-        didSet{
-            guard var postData = postData else {
-                return
-            }
-            calendarImageView.image = postData.postImage
-            calendarTitleLabel.text = postData.postTitle
-            calendarDescriptionLabel.text = postData.postDescription
-        }
-    }
-    
     @IBOutlet weak var calendarImageView: UIImageView!
     @IBOutlet weak var calendarTitleLabel: UILabel!
     @IBOutlet weak var calendarDescriptionLabel: UILabel!

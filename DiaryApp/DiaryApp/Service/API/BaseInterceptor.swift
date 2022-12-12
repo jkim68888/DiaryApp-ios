@@ -14,23 +14,14 @@ class BaseInterceptor: RequestInterceptor{
         print("BaseInterceptor - adapt() called")
         
         var request = urlRequest
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("Bearer \(UserDefaults.standard.value(forKey: "authVerificationID")!)", forHTTPHeaderField: "Authorization")
-        
-        // 공통 파라매터 추가
-//        var dictionary = [String:String]()
-//        dictionary.updateValue(<#T##value: String##String#>, forKey: <#T##String#>)
-//
-//        do{
-//            request = try URLEncodedFormParameterEncoder().encode(dictionary, into: request)
-//        }catch{
-//            print(error)
-//        }
-               
-        
+		
+		if let authVerificationID = UserDefaults.standard.value(forKey: "authVerificationID") {
+			request.addValue("Bearer \(authVerificationID)", forHTTPHeaderField: "Authorization")
+		}
+			
         completion(.success(request))
     }
+	
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
         print("BaseInterceptor - retry() called")
         

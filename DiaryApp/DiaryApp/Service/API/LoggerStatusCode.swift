@@ -8,9 +8,7 @@
 import Foundation
 import Alamofire
 
-final class MyLoggerStatusCode : EventMonitor{
-    let queue = DispatchQueue(label: "MyLoggerStatusCode")
-    
+final class LoggerStatusCode: EventMonitor{
     func request(_ request: DataRequest, didParseResponse response: DataResponse<Data?, AFError>) {
         guard let statusCode = request.response?.statusCode else { return }
         print("MyLoggerStatusCode - statusCode : \(statusCode)")
