@@ -64,7 +64,9 @@ class SettingsViewController: UIViewController {
 	}
 	
 	@IBAction func logoutButtonTapped(_ sender: UIButton) {
-		viewModel.getLogOut()
+		showPopUp(title: "로그아웃", message: "정말로 로그아웃 하시겠습니까?", attributedMessage: nil, leftActionTitle: "취소", rightActionTitle: "확인", rightActionCompletion:  {
+			self.viewModel.getLogOut()
+		})
 	}
 	
 	@IBAction func changeNicknameButtonTapped(_ sender: UIButton) {

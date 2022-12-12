@@ -13,6 +13,8 @@ import KakaoSDKAuth
 import GoogleSignIn
 import NaverThirdPartyLogin
 import Alamofire
+import AuthenticationServices
+import Toast_Swift
 
 class SignInViewModel {
 	// 싱글톤 가져옴
@@ -23,20 +25,45 @@ class SignInViewModel {
 	
     let googleSignInConfig = GIDConfiguration.init(clientID: Config().googleId)
 	
-	// 백엔드 서버 통신
+	// MARK: - 백엔드 서버 통신
 	func fetchData(url: String, name: String, token: String, completion: @escaping () -> Void) {
 		LoadingIndicator.showLoading()
-		signInService.requestSignIn(url: url, name: name, accessToken: token) { [self] (success, data) in
+		
+		signInService.requestSignIn(url: url, name: name, accessToken: token) { (success, data) in
+			LoadingIndicator.showLoading()
+			
 			self.account = data
-			print("(리퀘스트 성공) jwtToken - \(data.token)")
 			
-			UserDefaults.standard.setValue(data.token, forKey: "authVerificationID")
+			if let data = data {
+				print("(리퀘스트 성공) jwtToken - \(data.token)")
+				UserDefaults.standard.setValue(data.token, forKey: "authVerificationID")
+			}
 			
-			completion()
+			print(success)
+			
+			if success {
+				// 네트워크 통신 성공
+				completion()
+			} else {
+				// 네트워크 통신 실패
+				NotificationCenter.default.post(name: NSNotification.Name("loginFail"), object: nil, userInfo: nil)
+				LoadingIndicator.hideLoading()
+			}
+			
 		}
 	}
 	
-	// 카카오 로그인
+	// MARK: - 애플 로그인
+	func getAppleSignIn(name: String, token: String) {
+		fetchData(url: "\(signInService.baseUrl)\(signInService.applePath)", name: name, token: token) {
+			DispatchQueue.main.async {
+				NotificationCenter.default.post(name: NSNotification.Name("loginSuccess"), object: nil, userInfo: nil)
+				LoadingIndicator.hideLoading()
+			}
+		}
+	}
+	
+	// MARK: - 카카오 로그인
 	func getKakaoSignIn() {
 		print(UserApi.isKakaoTalkLoginAvailable())
 		
@@ -102,7 +129,7 @@ class SignInViewModel {
 		}
 	}
 	
-	// 구글 로그인
+	// MARK: - 구글 로그인
 	func getGoogleSignIn() {
 		UserDefaults.standard.setValue("google" , forKey: "snsUserType")
 		
@@ -133,7 +160,7 @@ class SignInViewModel {
 		}
 	}
 	
-	// 네이버 로그인
+	// MARK: - 네이버 로그인
 	func getNaverSignIn() {
 		UserDefaults.standard.setValue("naver" , forKey: "snsUserType")
 		

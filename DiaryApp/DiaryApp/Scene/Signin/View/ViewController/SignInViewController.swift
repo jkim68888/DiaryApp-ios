@@ -6,9 +6,13 @@
 //
 
 import UIKit
-import GoogleSignIn
+import AuthenticationServices
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+	func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+		return self.view.window!
+	}
+	
 	@IBOutlet var signInButtons: [UIButton]!
     
 	let viewModel = SignInViewModel()
@@ -56,6 +60,7 @@ class SignInViewController: UIViewController {
 	
 	func setNotification() {
 		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveLoginSuccess(_:)), name: NSNotification.Name("loginSuccess"), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(didRecieveloginFail(_:)), name: NSNotification.Name("loginFail"), object: nil)
 	}
 	
 	// 로그인 완료 노티피케이션 받으면, 다음 화면으로 이동
@@ -65,20 +70,65 @@ class SignInViewController: UIViewController {
 		}
 	}
 	
+	// 로그인 실패 노티피케이션 받으면, 토스트 띄움
+	@objc func didRecieveloginFail(_ notification: Notification) {
+		DispatchQueue.main.async {
+			LoadingIndicator.hideLoading()
+			self.view.makeToast("네트워크 통신상에 문제가 발생했습니다😱", duration: 5.0, position: .center)
+		}
+	}
+	
+	// Apple ID 연동 성공 시
+	func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+		switch authorization.credential {
+		// Apple ID
+		case let appleIDCredential as ASAuthorizationAppleIDCredential:
+			
+			// 계정 정보 가져오기
+			let userIdentifier = appleIDCredential.user
+			let fullName = appleIDCredential.fullName
+			
+			print("User ID : \(userIdentifier)")
+			print("User Name : \((fullName?.givenName ?? ""))")
+			
+			viewModel.getAppleSignIn(name: fullName?.givenName ?? "", token: userIdentifier)
+	
+		default:
+			break
+		}
+	}
+	
+	// Apple ID 연동 실패 시
+	func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+			// Handle error.
+	}
+	
 	// MARK: - 로그인 버튼 클릭
 	@IBAction func appleButtonTapped(_ sender: UIButton) {
-		// viewModel.getAppleSignIn()
+		LoadingIndicator.showLoading()
+		
+		let appleIDProvider = ASAuthorizationAppleIDProvider()
+		let request = appleIDProvider.createRequest()
+		request.requestedScopes = [.fullName, .email]
+		
+		let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+		authorizationController.delegate = self
+		authorizationController.presentationContextProvider = self
+		authorizationController.performRequests()
 	}
 	
 	@IBAction func kakaoButtonTapped(_ sender: UIButton) {
+		LoadingIndicator.showLoading()
 		viewModel.getKakaoSignIn()
 	}
 	
 	@IBAction func googleButtonTapped(_ sender: UIButton) {
+		LoadingIndicator.showLoading()
 		viewModel.getGoogleSignIn()
 	}
 	
 	@IBAction func naverButtonTapped(_ sender: UIButton) {
+		LoadingIndicator.showLoading()
 		viewModel.getNaverSignIn()
 	}
 }
