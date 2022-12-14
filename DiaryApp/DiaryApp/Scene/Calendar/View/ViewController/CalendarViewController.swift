@@ -173,22 +173,21 @@ extension CalendarViewController:UICollectionViewDataSource{
             cell.dateLabel.textColor = .red
         } else if indexPath.row % 7 == 6 { // 토요일
             cell.dateLabel.textColor = .blue
-        } else { // 월요일 좋아(평일)
+        } else { // 평일
             cell.dateLabel.textColor = .black
         }
         // 초기화 시, 오늘 날짜를 선택하도록💄
         if getStringTodayDate() == "\(components.year!).\(components.month!).\(cell.dateLabel.text!)"{
             cell.isSelected = true
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
-            
         }
         var dateStr = "\(components.year!)-\(components.month!)-\(cell.dateLabel.text!)"
-        cell.tempDate = dateStr.toDate_Calendar()
+        cell.tempDate = dateStr.toDate_Calendar() ?? Date()
  
         // 여기서 중요 item은 가져온 post데이터를 의미한다.
         for item in viewModel.postArray{
             // 각 셀에 부여된 날짜와 post에 기록된 날짜를 서로 비교한다.
-            if cell.tempDate == item.createdAt.toString().toDate_Calendar(){
+            if cell.tempDate == item.datetime.toString().toDate_Calendar(){
                 // 비교해서, 같을 경우 해당 cell의 item으로 추가한다.
                 cell.postArray.append(item)
                 print("DEBUG: \(indexPath.row)번째 값을 추가합니다.")
@@ -211,13 +210,32 @@ extension CalendarViewController:UICollectionViewDataSource{
                         String(Calendar.current.component(.day, from: Date()))
         return strDate
     }
+    func weekday(year: Int? = 0000, month: Int? = 00, day: Int? = 00) -> String? {
+        let calendar = Calendar(identifier: .gregorian)
+        
+        guard let targetDate: Date = {
+            let comps = DateComponents(calendar:calendar, year: year, month: month, day: day)
+            return comps.date
+            }() else { return nil }
+        
+        let day = Calendar.current.component(.weekday, from: targetDate) - 1
+        
+        return Calendar.current.shortWeekdaySymbols[day]
+    }
     
 }
 extension CalendarViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarCollectionViewCell
+        // cell에서 일 가져오고
+        let dateArray = cell.nowDate?.split(separator: ".").map {Int($0)}
+        nowdayLabel.text = "\(cell.dateLabel.text!). \(weekday(year: dateArray?[0], month: dateArray?[1], day: dateArray?[2])!)"
+        
+        
+        
         viewModel.tableCellPostArray = cell.postArray
         tableView.reloadData()
+        
     }
     
 }

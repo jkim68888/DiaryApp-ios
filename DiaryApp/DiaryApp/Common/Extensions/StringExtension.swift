@@ -11,7 +11,7 @@ import UIKit
 extension String {
     func toDate() -> Date? { //"yyyy-MM-dd HH:mm:ss"
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = NSTimeZone(name: "ko_KR") as TimeZone?
         if let date = dateFormatter.date(from: self) {
             return date

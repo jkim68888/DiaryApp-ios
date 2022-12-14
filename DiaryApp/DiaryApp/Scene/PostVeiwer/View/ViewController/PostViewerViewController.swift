@@ -47,7 +47,7 @@ class PostViewerViewController: BaseViewController {
 			// Post에 대한 데이터가 있는 경우 -> Home에서 CollectionView의 Cell 누르고 접근하는 경우
 			postViewerImageView.image = image
 			guard let post = post else { return }
-			postViewerDateLabel.text = post.createdAt.toString()
+			postViewerDateLabel.text = post.datetime.toString()
 			postViewerTitleLabel.text = post.title
 			postViewerDescriptionLabel.text = post.body
 		}

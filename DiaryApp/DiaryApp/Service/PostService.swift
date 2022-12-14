@@ -88,7 +88,7 @@ struct PostService {
 	// MARK: - Create Post
 	func addPost(title: String, body: String, datetime: Date, image: UIImage, completionHandler: @escaping (Bool, Int) -> Void){
 		let route = AFRouter.addPost(title: title, body: body, datetime: datetime, image: image)
-		
+		print("💄DEBUG:PostService_\(datetime)")
 		AFManager
 			.shared
 			.session

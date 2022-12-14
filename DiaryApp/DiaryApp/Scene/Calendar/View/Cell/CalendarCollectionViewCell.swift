@@ -9,13 +9,18 @@ import UIKit
 
 class CalendarCollectionViewCell: UICollectionViewCell {
     var nowDate:String?
-    var tempDate:Date?
+    var tempDate:Date = Date() {
+        didSet{
+            nowDate = tempDate.toString()
+        }
+    }
     var postData: Post?
     var postArray: [Post] = []{
         didSet{
             checkPoint.isHidden = false
         }
     }
+    // 몇일인지, 무슨요일인지 알고 있어야한다.
     
     
     override var isSelected: Bool{
