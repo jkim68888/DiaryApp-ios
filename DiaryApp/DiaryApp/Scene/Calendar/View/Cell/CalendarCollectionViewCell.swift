@@ -9,8 +9,14 @@ import UIKit
 
 class CalendarCollectionViewCell: UICollectionViewCell {
     var nowDate:String?
-    var tempDate:String?
-    var count = 0
+    var tempDate:Date?
+    var postData: Post?
+    var postArray: [Post] = []{
+        didSet{
+            checkPoint.isHidden = false
+        }
+    }
+    
     
     override var isSelected: Bool{
         didSet{
@@ -44,9 +50,8 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         checkPoint.layer.cornerRadius = checkPoint.frame.width / 2
         
     }
-    func clear(_ tappedBtn:Bool){
-        if tappedBtn{
-            checkPoint.isHidden = true
-        }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        checkPoint.isHidden = true
     }
 }

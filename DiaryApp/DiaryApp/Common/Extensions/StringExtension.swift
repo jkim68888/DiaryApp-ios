@@ -12,7 +12,27 @@ extension String {
     func toDate() -> Date? { //"yyyy-MM-dd HH:mm:ss"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.timeZone = NSTimeZone(name: "ko_KR") as TimeZone?
+        if let date = dateFormatter.date(from: self) {
+            return date
+        } else {
+            return nil
+        }
+    }
+    func testToDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy년MM월dd일 HH시mm분ss초"
+        dateFormatter.timeZone = NSTimeZone(name: "ko_KR") as TimeZone?
+        if let date = dateFormatter.date(from: self) {
+            return date
+        } else {
+            return nil
+        }
+    }
+    func toDate_Calendar() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = NSTimeZone(name: "ko_KR") as TimeZone?
         if let date = dateFormatter.date(from: self) {
             return date
         } else {

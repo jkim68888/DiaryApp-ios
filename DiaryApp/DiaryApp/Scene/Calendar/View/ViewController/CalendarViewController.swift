@@ -8,6 +8,10 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
+    let viewModel = CalendarViewModel()
+    
+    var collectionCellIndex: Int?
+    
     let now = Date()
     var cal = Calendar.current
     let dateFormatter = DateFormatter()
@@ -172,38 +176,35 @@ extension CalendarViewController:UICollectionViewDataSource{
         } else { // 월요일 좋아(평일)
             cell.dateLabel.textColor = .black
         }
-        // 초기화 시, 오늘 날짜를 선택하도록
+        // 초기화 시, 오늘 날짜를 선택하도록💄
         if getStringTodayDate() == "\(components.year!).\(components.month!).\(cell.dateLabel.text!)"{
             cell.isSelected = true
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+            
         }
-        cell.tempDate = "\(components.year!).\(components.month!).\(cell.dateLabel.text!)"
-//        cell.postArray = postArray
+        var dateStr = "\(components.year!)-\(components.month!)-\(cell.dateLabel.text!)"
+        cell.tempDate = dateStr.toDate_Calendar()
+ 
+        // 여기서 중요 item은 가져온 post데이터를 의미한다.
+        for item in viewModel.postArray{
+            // 각 셀에 부여된 날짜와 post에 기록된 날짜를 서로 비교한다.
+            if cell.tempDate == item.createdAt.toString().toDate_Calendar(){
+                // 비교해서, 같을 경우 해당 cell의 item으로 추가한다.
+                cell.postArray.append(item)
+                print("DEBUG: \(indexPath.row)번째 값을 추가합니다.")
+                if getStringTodayDate() == "\(components.year!).\(components.month!).\(cell.dateLabel.text!)" {
+                    viewModel.tableCellPostArray = cell.postArray
+                    tableView.reloadData()
+                }
+            }
+        }
+        // 선택한 날짜의 postList만 가져와야한다.
+        /// 전체 postList중에서 post의 createdAt날짜가 Cell 고유의 날짜와 같은 새로만든 newPostList를 cell로 지정한다.
         
-        
-//        // 특정 순서의 Cell(day,특정 일)의 값과 postData의 day값이 같으면..
-//        for item in postArray{
-//
-//            if getStringPostDate(item) == "\(components.year!).\(components.month!).\(cell.dateLabel.text!)"{
-//                // 달력에 Post가 있었음을 알리는 CheckPoint를 활성화 시킨다.
-//                print("💄💄💄💄💄💄찾았다")
-//
-//
-//                cell.tempDate = getStringPostDate(item)
-//
-//                print("💄💄💄💄💄💄")
-//
-//            }
-//        }
-        
+                
         return cell
     }
-//    func getStringPostDate(_ post:TempPost) -> String {
-//        let strDate = String(Calendar.current.component(.year, from: post.createDate)) + "." +
-//                        String(Calendar.current.component(.month, from: post.createDate)) + "." +
-//                        String(Calendar.current.component(.day, from: post.createDate))
-//        return strDate
-//    }
+
     func getStringTodayDate() -> String {
         let strDate = String(Calendar.current.component(.year, from: Date())) + "." +
                         String(Calendar.current.component(.month, from: Date())) + "." +
@@ -214,12 +215,9 @@ extension CalendarViewController:UICollectionViewDataSource{
 }
 extension CalendarViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // 1. 선택했을 때, 해당 Cell에 해당하는 날짜에 작성한 글이 있는지 검색하고, 게시글(Post)를 TableView에 출력한다.
-        // 2. 선택한 Cell에 게시글이 있으면, Cell측에서 글이 있음을 알려주는 포인트(점)을 표시한다.
-        // 3. 현재 선택된 Cell을 표시한다.
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarCollectionViewCell
-        
-         
+        viewModel.tableCellPostArray = cell.postArray
+        tableView.reloadData()
     }
     
 }
@@ -232,12 +230,11 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
 }
 extension CalendarViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return todayPostData.count
-		return 0
+        return viewModel.tableCellPostArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarTableCell", for: indexPath) as! CalendarTableViewCell
-//        cell.postData = todayPostData[indexPath.row]
+        cell.postData = viewModel.tableCellPostArray[indexPath.row]
         return cell
     }
 }
