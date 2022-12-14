@@ -16,5 +16,7 @@ class CalendarViewModel {
     //tableCell을 계산해서 불러오는 메서드
     func printTablePosts() {
         // 특정 날짜에 만들어진 게시글들을 tableCellPostArray에 저장
+        
+        
     }
 }

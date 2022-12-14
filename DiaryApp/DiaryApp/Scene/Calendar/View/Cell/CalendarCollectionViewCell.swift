@@ -10,30 +10,10 @@ import UIKit
 class CalendarCollectionViewCell: UICollectionViewCell {
     var nowDate:String?
     var tempDate:Date?
-     var count = 0
     var postData: Post?
     var postArray: [Post] = []{
         didSet{
-//            var formatter = DateFormatter()
-//            formatter.dateFormat = "yyyy-MM-dd"
-//
-//            for item in postArray{
-//                var item_date_string = formatter.string(from: item.createdAt)
-//                guard var tempDate = tempDate else {return}
-//                var nowCell_date_string = formatter.string(from: tempDate)
-//  
-//                if item_date_string == nowCell_date_string{
-//                    count += 1
-//                    print("💄실행됨")
-//                }
-//
-//            }
             checkPoint.isHidden = false
-//            if count != 0{
-//                checkPoint.isHidden = false
-//            }else{
-//                checkPoint.isHidden = true
-//            }
         }
     }
     

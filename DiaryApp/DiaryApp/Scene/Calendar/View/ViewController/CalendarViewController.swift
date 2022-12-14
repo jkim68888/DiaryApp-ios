@@ -180,9 +180,6 @@ extension CalendarViewController:UICollectionViewDataSource{
         if getStringTodayDate() == "\(components.year!).\(components.month!).\(cell.dateLabel.text!)"{
             cell.isSelected = true
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
-//            collectionCellIndex = indexPath.row
-//            tableCellPostArray = cell.postArray
-//            tableView.reloadData()
             
         }
         var dateStr = "\(components.year!)-\(components.month!)-\(cell.dateLabel.text!)"
@@ -195,6 +192,10 @@ extension CalendarViewController:UICollectionViewDataSource{
                 // 비교해서, 같을 경우 해당 cell의 item으로 추가한다.
                 cell.postArray.append(item)
                 print("DEBUG: \(indexPath.row)번째 값을 추가합니다.")
+                if getStringTodayDate() == "\(components.year!).\(components.month!).\(cell.dateLabel.text!)" {
+                    viewModel.tableCellPostArray = cell.postArray
+                    tableView.reloadData()
+                }
             }
         }
         // 선택한 날짜의 postList만 가져와야한다.
@@ -203,12 +204,7 @@ extension CalendarViewController:UICollectionViewDataSource{
                 
         return cell
     }
-//    func getStringPostDate(_ post:TempPost) -> String {
-//        let strDate = String(Calendar.current.component(.year, from: post.createDate)) + "." +
-//                        String(Calendar.current.component(.month, from: post.createDate)) + "." +
-//                        String(Calendar.current.component(.day, from: post.createDate))
-//        return strDate
-//    }
+
     func getStringTodayDate() -> String {
         let strDate = String(Calendar.current.component(.year, from: Date())) + "." +
                         String(Calendar.current.component(.month, from: Date())) + "." +
@@ -219,13 +215,9 @@ extension CalendarViewController:UICollectionViewDataSource{
 }
 extension CalendarViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // 1. 선택했을 때, 해당 Cell에 해당하는 날짜에 작성한 글이 있는지 검색하고, 게시글(Post)를 TableView에 출력한다.
-        // 2. 선택한 Cell에 게시글이 있으면, Cell측에서 글이 있음을 알려주는 포인트(점)을 표시한다.
-        // 3. 현재 선택된 Cell을 표시한다.
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarCollectionViewCell
-        // 임시로 저장해놓은 tempCellPostArray
         viewModel.tableCellPostArray = cell.postArray
-        
+        tableView.reloadData()
     }
     
 }
