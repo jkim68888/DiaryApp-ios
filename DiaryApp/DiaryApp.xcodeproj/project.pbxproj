@@ -34,7 +34,7 @@
 		9A6C77B628F229E500E1092D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C77B528F229E500E1092D /* Assets.xcassets */; };
 		9A6C77B928F229E500E1092D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C77B728F229E500E1092D /* LaunchScreen.storyboard */; };
 		9AAB90C729010F34004141A4 /* HomePostCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAB90C629010F34004141A4 /* HomePostCollectionReusableView.swift */; };
-		9AAB90D02904CDC7004141A4 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAB90CF2904CDC7004141A4 /* Config.swift */; };
+          9AAB90D02904CDC7004141A4 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAB90CF2904CDC7004141A4 /* Config.swift */; };
 		9AAB90D22904E746004141A4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAB90D12904E746004141A4 /* User.swift */; };
 		A913FA3F28F7CC2800ECA972 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A913FA3E28F7CC2800ECA972 /* Calendar.storyboard */; };
 		A913FA4128F7D09F00ECA972 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913FA4028F7D09F00ECA972 /* CalendarViewController.swift */; };
@@ -51,6 +51,7 @@
 		A95E03CD290665B800F73A33 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E03CC290665B800F73A33 /* CalendarCollectionViewCell.swift */; };
 		A95E03CF2906B3C400F73A33 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E03CE2906B3C400F73A33 /* CalendarTableViewCell.swift */; };
 		A95E03D1290A148600F73A33 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E03D0290A148600F73A33 /* PopUpViewController.swift */; };
+		A96C43652946BEB300D7C283 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C43642946BEB300D7C283 /* Config.swift */; };
 		A9958587291B459500B33502 /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9958586291B459500B33502 /* BaseInterceptor.swift */; };
 		A9958589291B46DB00B33502 /* AFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9958588291B46DB00B33502 /* AFManager.swift */; };
 		A995858B291B4B9100B33502 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A995858A291B4B9100B33502 /* Logger.swift */; };
@@ -95,7 +96,6 @@
 		9A6C77B828F229E500E1092D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A6C77BA28F229E500E1092D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AAB90C629010F34004141A4 /* HomePostCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCollectionReusableView.swift; sourceTree = "<group>"; };
-		9AAB90CF2904CDC7004141A4 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		9AAB90D12904E746004141A4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A913FA3E28F7CC2800ECA972 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		A913FA4028F7D09F00ECA972 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +112,7 @@
 		A95E03CC290665B800F73A33 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		A95E03CE2906B3C400F73A33 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		A95E03D0290A148600F73A33 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		A96C43642946BEB300D7C283 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = SOURCE_ROOT; };
 		A9958586291B459500B33502 /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
 		A9958588291B46DB00B33502 /* AFManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFManager.swift; sourceTree = "<group>"; };
 		A995858A291B4B9100B33502 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -456,7 +457,7 @@
 				9A43DF4D28F7E006004DBE82 /* Scene */,
 				9A6C77B528F229E500E1092D /* Assets.xcassets */,
 				9A6C77BA28F229E500E1092D /* Info.plist */,
-				9AAB90CF2904CDC7004141A4 /* Config.swift */,
+				A96C43642946BEB300D7C283 /* Config.swift */,
 			);
 			path = DiaryApp;
 			sourceTree = "<group>";
@@ -710,6 +711,7 @@
 			files = (
 				9A1FCCC128FFB3DF001B1584 /* PostViewerViewModel.swift in Sources */,
 				A919384028F65D9E00CC8B76 /* SignInViewController.swift in Sources */,
+				A96C43652946BEB300D7C283 /* Config.swift in Sources */,
 				A9958587291B459500B33502 /* BaseInterceptor.swift in Sources */,
 				9A1FCCA128FA9A73001B1584 /* UIButtonExtension.swift in Sources */,
 				9A6C77AD28F229E400E1092D /* AppDelegate.swift in Sources */,
@@ -744,7 +746,6 @@
 				9A1EB6C829250CCF00C1CB2E /* PrivacyViewController.swift in Sources */,
 				9A1FCCAE28FFB1BB001B1584 /* SettingsViewModel.swift in Sources */,
 				A95E03D1290A148600F73A33 /* PopUpViewController.swift in Sources */,
-				9AAB90D02904CDC7004141A4 /* Config.swift in Sources */,
 				9A1FCCA528FE81C2001B1584 /* UINavigationExtension.swift in Sources */,
 				9A1FCCC528FFB40A001B1584 /* HomeViewModel.swift in Sources */,
 				A919382628F64E9900CC8B76 /* HomeViewController.swift in Sources */,
@@ -896,12 +897,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = DiaryApp/DiaryApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6RZ3FF956G;
+				DEVELOPMENT_TEAM = URTJJ24R4X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "하루끝";
@@ -930,11 +930,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = DiaryApp/DiaryApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6RZ3FF956G;
+				DEVELOPMENT_TEAM = URTJJ24R4X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "하루끝";

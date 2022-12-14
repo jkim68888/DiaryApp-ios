@@ -27,6 +27,8 @@ class PostViewController: BaseViewController {
     // 게시글 내부에 들어갈 Placeholedr 담는 변수
     var postScriptTVPlaceHolder: String = "나의 하루 기록하기"
     
+    var selectDate = Date()
+    
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var cancleImgBtn: UIButton!
     @IBOutlet weak var postImageBtn: UIButton!
@@ -110,7 +112,8 @@ class PostViewController: BaseViewController {
     }
 	
     @objc func DatepickerCh(sender:UIDatePicker){
-        postDateTF.text = sender.date.toString()
+        selectDate = sender.date
+        postDateTF.text = selectDate.toString()
     }
 	
     // MARK: - 이미지 선택 뷰 설정
@@ -201,14 +204,14 @@ class PostViewController: BaseViewController {
 			print("UpdatePost")
 			viewModel.updatePost(title: postTitleTF.text ?? "",
 								 body: postScriptTV.text ?? "",
-								 datetime: postDateTF.text?.toDate() ?? Date(),
+								 datetime: selectDate,
 								 image: (postImageView.image ?? UIImage(named: "NoImage.png"))!)
 		} else {
 			// Post가 없는 경우
 			print("AddPost")
 			viewModel.addPost(title: postTitleTF.text ?? "",
 							  body: postScriptTV.text ?? "",
-							  datetime: postDateTF.text?.toDate() ?? Date(),
+							  datetime: selectDate,
 							  image: (postImageView.image ?? UIImage(named: "NoImage.png"))!)
 		}
 	

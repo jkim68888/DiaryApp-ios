@@ -11,18 +11,18 @@ extension Date {
     func toString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.timeZone = NSTimeZone(name: "ko_KR") as TimeZone?
         return dateFormatter.string(from: self)
     }
     func toString_Calendar() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy년 MM월"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.timeZone = NSTimeZone(name: "ko_KR") as TimeZone?
         return dateFormatter.string(from: self)
     }
     func toString_Calendar_NowDay() -> String{
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko")
+        dateFormatter.timeZone = NSTimeZone(name: "ko_KR") as TimeZone?
         dateFormatter.dateFormat = "E"
         return dateFormatter.string(from: self)
     }
