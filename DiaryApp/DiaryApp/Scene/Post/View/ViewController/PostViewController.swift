@@ -26,8 +26,16 @@ class PostViewController: BaseViewController {
 	
     // 게시글 내부에 들어갈 Placeholedr 담는 변수
     var postScriptTVPlaceHolder: String = "나의 하루 기록하기"
-    
+    //만약, calendarView에서 특정 날짜를 선택하여 글을 추가하는 경우 calendarSelectDate를 받아온다.
     var selectDate: String?
+    
+    var calendarSelectDate: Date? {
+        didSet{
+            selectDate = calendarSelectDate?.toString_Long()
+            print("✨DEBUG didSet이 발동되었습니다. 현재 selectTate의 값: \(selectDate) 현재 calendarSelectDate의 값: \(calendarSelectDate)")
+        }
+    }
+    
     
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var cancleImgBtn: UIButton!
@@ -57,7 +65,13 @@ class PostViewController: BaseViewController {
     func setDefaultDataUI(){
 		guard let post = viewModel.post else {
 			print("데이터 추가")
-			postDateTF.text = Date().toString()
+            if calendarSelectDate == nil {
+                postDateTF.text = Date().toString()
+            }else{
+                postDateTF.text = calendarSelectDate?.toDateMinustOneDay().toString()
+            }
+            print("✨DEBUG: calendarSelectDate의 값 : \(calendarSelectDate), calendarSelectDate.toString()의 값 : \(calendarSelectDate?.toDateMinustOneDay().toString())")
+            
 			postTitleTF.text = ""
 			postScriptTV.text = postScriptTVPlaceHolder
 			postScriptTV.textColor = UIColor(hexString: "#C4C4C4")
@@ -288,4 +302,5 @@ extension PostViewController: UITextFieldDelegate{
         return true
     }
 }
+
 

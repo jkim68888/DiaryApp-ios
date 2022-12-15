@@ -9,10 +9,7 @@ import UIKit
 
 class CalendarViewController: UIViewController {
     let viewModel = CalendarViewModel()
-    
-    var collectionCellIndex: Int?
-    
-    let now = Date()
+        
     var cal = Calendar.current
     let dateFormatter = DateFormatter()
     var components = DateComponents()
@@ -21,11 +18,15 @@ class CalendarViewController: UIViewController {
     var daysCountInMonth = 0 //한 달에 몇일까지 있는지
     var weekdayAdding = 0 // 시작일
     
-    let editYear: Int = 0
-    let editMonth: Int = 0
-    let editDay = Calendar.current.component(.day, from: Date())
+    var today_year:Int = Calendar.current.component(.year, from: Date()) // 오늘 몇년인가?
+    var today_Month:Int = Calendar.current.component(.month, from: Date()) // 오늘 몇월인가?
+    var today_Day:Int = Calendar.current.component(.day, from: Date()) // 오늘 몇일인가?
     
-    var setMonth = Calendar.current.component(.month, from: Date())
+    var selectYear: Int?
+    var selectMonth: Int?
+    var selectDay: Int?
+    
+    var selectDate: Date = Date()
 
     @IBOutlet weak var prevMonth: UIButton!
     @IBOutlet weak var nowMonth: UILabel!
@@ -53,13 +54,13 @@ class CalendarViewController: UIViewController {
         self.collectionView.dataSource = self
         
         // Calendar.current와 component를 사용하기 위해 초기 Date 설정해준다. 현재 Date를 불러와 현재의 년도, 월, 일을 세팅한다.
-        components.year = cal.component(.year, from: Date()) // 2022
-        components.month = cal.component(.month, from: Date()) // 10
+        components.year = today_year
+        components.month = today_Month
         components.day = 1
         
         // 달력에서 현재 년도와 월을 설정해준다.
         nowMonth.text = "\(components.year!)년 \(components.month!)월" // "yyyy년 MM월"
-        nowdayLabel.text = String(editDay) + ". " + Date().toString_Calendar_NowDay()
+        nowdayLabel.text = String(today_Day) + ". " + Date().toString_Calendar_NowDay()
         
         // calculation() 함수를 실행한다.
         calculation()
@@ -143,6 +144,15 @@ class CalendarViewController: UIViewController {
         self.collectionView.reloadData()
         initMonthBtn()
     }
+    @IBAction func addPostButtonTapped(_ sender: UIButton) {
+        // 1) 현재 선택되어있는 collectionView의 Cell에있는 day값을 가져와야한다. -> 선택한 일이 몇일인가?
+        // 2) PostviewerView로 넘어간다. -> 이 때, rootView를 calendarView로 해놓아야한다.
+        print("✨DEBUG_addPostTapped: selectDate의 값은\(selectDate)")
+        guard let postViewerVC = storyboard?.instantiateViewController(identifier: "PostViewerViewController") as? PostViewerViewController else { return }
+        postViewerVC.selectDate = selectDate
+        self.navigationController?.pushViewController(postViewerVC, animated: false)
+        print("✨DEBUG: Calendar에서 PostViewer로 이동할 떄")
+    }
 }
 
 extension CalendarViewController:UICollectionViewDataSource{
@@ -180,6 +190,7 @@ extension CalendarViewController:UICollectionViewDataSource{
         if getStringTodayDate() == "\(components.year!).\(components.month!).\(cell.dateLabel.text!)"{
             cell.isSelected = true
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+            
         }
         var dateStr = "\(components.year!)-\(components.month!)-\(cell.dateLabel.text!)"
         cell.tempDate = dateStr.toDate_Calendar() ?? Date()
@@ -227,15 +238,27 @@ extension CalendarViewController:UICollectionViewDataSource{
 extension CalendarViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarCollectionViewCell
+        
         // cell에서 일 가져오고
         let dateArray = cell.nowDate?.split(separator: ".").map {Int($0)}
         nowdayLabel.text = "\(cell.dateLabel.text!). \(weekday(year: dateArray?[0], month: dateArray?[1], day: dateArray?[2])!)"
         
+        selectYear = components.year
+        selectMonth = components.month
+        if cell.dateLabel.text == ""{
+            selectDay = 0
+        }else{
+            selectDay = Int(cell.dateLabel.text ?? "0")
+        }
         
+        print("DEBUG: 지금 선택한 날짜는, 년도:\(selectYear!),월:\(selectMonth!),일:\(selectDay!)")
+        print("DEBUG: cell.nowDate:\(cell.nowDate) cell.tempDate\(cell.tempDate)")
+        print("DEBUG: Plus 1일한 결과는? : \(cell.tempDate.toDatePlustOneDay())")
         
+        selectDate = cell.tempDate.toDatePlustOneDay()
+        print("✨DEBUG:\(selectDate)")
         viewModel.tableCellPostArray = cell.postArray
         tableView.reloadData()
-        
     }
     
 }

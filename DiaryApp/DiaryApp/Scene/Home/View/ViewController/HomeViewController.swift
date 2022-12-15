@@ -111,6 +111,7 @@ class HomeViewController: BaseViewController {
     @IBAction func addPostButtonTapped(_ sender: UIButton) {
         guard let postViewerVC = storyboard?.instantiateViewController(identifier: "PostViewerViewController") as? PostViewerViewController else { return }
         self.navigationController?.pushViewController(postViewerVC, animated: false)
+        print("✨DEBUG: Home에서 PostViewer로 이동할 떄")
     }
 
     @IBAction func settingButtonTapped(_ sender: UIButton) {
