@@ -97,7 +97,10 @@ enum AFRouter: URLRequestConvertible {
 		case .addPost(let title, let body, let datetime, let image):
 			let titleData = title.data(using: .utf8) ?? Data()
 			let bodyData = body.data(using: .utf8) ?? Data()
-			let datetimeData = datetime.toString().data(using: .utf8) ?? Data()
+            let datetimeData = datetime.toString_Long().data(using: .utf8) ?? Data()
+            //let datetimeData = datetime.toData()
+            print("💄DEBUG:AFRouter_datetimeData 값은 :1)\(datetime), 2)\(datetime.toString_Long()), 3)\(String(decoding: datetimeData, as: UTF8.self))")
+            
 			let imageData = image.pngData() ?? Data()
 			
 			multipartFormData.append(titleData, withName: "title")
@@ -110,7 +113,7 @@ enum AFRouter: URLRequestConvertible {
 			let idData = "\(id)".data(using: .utf8) ?? Data()
 			let titleData = title.data(using: .utf8) ?? Data()
 			let bodyData = body.data(using: .utf8) ?? Data()
-			let datetimeData = datetime.toString().data(using: .utf8) ?? Data()
+			let datetimeData = datetime.toString_Long().data(using: .utf8) ?? Data()
 			let imageData = image.pngData() ?? Data()
 			
 			multipartFormData.append(idData, withName: "id")

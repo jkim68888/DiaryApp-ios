@@ -17,7 +17,7 @@ class HomePostCollectionViewCell: UICollectionViewCell {
 				cellImageView.load(url: URL(string: "http://" + image))
 			}
 			
-            cellTitleLabel.text = post.createdAt.toString()
+            cellTitleLabel.text = post.datetime.toString()
 			cellView.clipsToBounds = true
 			cellView.layer.cornerRadius = 10
 			cellView.layer.borderWidth = 1

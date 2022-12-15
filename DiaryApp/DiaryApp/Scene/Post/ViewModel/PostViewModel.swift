@@ -16,6 +16,7 @@ class PostViewModel {
 	func addPost(title: String, body: String, datetime: Date, image: UIImage) {
 		postService.addPost(title: title, body: body, datetime: datetime, image: image) { (success, code) in
 			print("addPost 결과 : \(code)")
+            print("💄DEBUG:PostViewModel_\(datetime)")
 			NotificationCenter.default.post(name: NSNotification.Name("addPostSuccess"), object: nil)
 		}
 	}
