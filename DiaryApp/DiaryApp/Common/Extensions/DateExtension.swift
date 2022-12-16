@@ -33,6 +33,12 @@ extension Date {
         dateFormatter.dateFormat = "E"
         return dateFormatter.string(from: self)
     }
+    func toDatePlustOneDay() -> Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: self) ?? Date()
+    }
+    func toDateMinustOneDay() -> Date {
+        return Calendar.current.date(byAdding: .day, value: -1, to: self) ?? Date()
+    }
     func toData() -> Data {
         let timestamp = self.timeIntervalSinceReferenceDate
         return withUnsafeBytes(of: timestamp) { Data($0) }

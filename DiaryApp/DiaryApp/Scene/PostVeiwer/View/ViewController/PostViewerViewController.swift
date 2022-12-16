@@ -10,6 +10,7 @@ import UIKit
 class PostViewerViewController: BaseViewController {
 	var post: Post?
     var image: UIImage?
+    var selectDate: Date?
     
     @IBOutlet weak var postViewerView: UIView!
     @IBOutlet weak var postViewerImageView: UIImageView!
@@ -19,7 +20,7 @@ class PostViewerViewController: BaseViewController {
     @IBOutlet weak var postViewerStackView: UIStackView!
     @IBOutlet weak var postViewerEditDate: UILabel!
 	@IBOutlet weak var editButton: UIBarButtonItem!
-	
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -42,6 +43,10 @@ class PostViewerViewController: BaseViewController {
 			// Post에 대한 데이터가 없는 경우 -> Home에서 New Post Button을 누른 경우
 			guard let postVC = storyboard?.instantiateViewController(identifier: "PostViewController") as? PostViewController else { return }
 			postVC.delegate = self
+            if selectDate != nil{
+                postVC.calendarSelectDate = selectDate
+            }
+            print("💄DEBUG: PostViewer에서 받아온 calendarSelectDate값은\(postVC.calendarSelectDate)")
 			self.navigationController?.pushViewController(postVC, animated: false)
 		} else {
 			// Post에 대한 데이터가 있는 경우 -> Home에서 CollectionView의 Cell 누르고 접근하는 경우
